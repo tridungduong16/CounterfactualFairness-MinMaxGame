@@ -1,0 +1,61 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Wed May  5 11:01:51 2021
+
+@author: trduong
+"""
+
+
+import pandas as pd
+import numpy as np
+
+from sklearn.metrics import mean_absolute_error
+from sklearn.metrics import mean_squared_error
+
+from geomloss import SamplesLoss
+
+
+def evaluate_pred(y_pred, y_true, metrics_set):
+    '''
+    :param y_pred: numpy array, size = instance num
+    :param y_true: numpy array, size = instance num
+    :param metrics_set: {'RMSE', 'MAE', 'Acc', ...}
+    :return:
+    '''
+    evaluations = {}
+    rmse = np.sqrt(mean_squared_error(y_true, y_pred))
+    evaluations['RMSE'] = rmse
+    
+    mae = mean_absolute_error(y_true, y_pred)
+    evaluations['MAE'] = mae
+
+    return evaluations
+
+def evaluate_distribution(ys, ys_hat):
+    """
+    :param ys: DESCRIPTION
+    :type ys: TYPE
+    :param ys_hat: DESCRIPTION
+    :type ys_hat: TYPE
+    :return: DESCRIPTION
+    :rtype: TYPE
+    """
+    
+    evaluation = {}
+    
+    Loss = SamplesLoss("sinkhorn", p=2, blur=0.05, scaling=0.8)
+    evaluation['sinkhorn'] = Loss(ys, ys_hat)
+
+    Loss = SamplesLoss("hausdorff", p=2, blur=0.05, scaling=0.8)
+    evaluation["hausdorff"] = Loss(ys, ys_hat)
+    
+    Loss = SamplesLoss("energy", p=2, blur=0.05, scaling=0.8)
+    evaluation["energy"] = Loss(ys, ys_hat)
+    
+    Loss = SamplesLoss("gaussian", p=2, blur=0.05, scaling=0.8)
+    evaluation["gaussian"] = Loss(ys, ys_hat)
+    
+    return evaluation 
+
+
