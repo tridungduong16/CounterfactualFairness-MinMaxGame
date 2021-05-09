@@ -1,0 +1,995 @@
+method,RMSE,MAE,sinkhorn,energy,gaussian
+full_prediction,0.941448022824339,0.7575101427899279,"tensor(0.0843, device='cuda:0')","tensor(0.0542, device='cuda:0')","tensor(0.0068, device='cuda:0')"
+unaware_prediction,0.9556052493787894,0.7684111061560043,"tensor(0.0843, device='cuda:0')","tensor(0.0542, device='cuda:0')","tensor(0.0068, device='cuda:0')"
+2021-05-05 15:18:54,071 genetic      DEBUG    Full model
+2021-05-05 15:18:54,071 genetic      DEBUG    Full model
+2021-05-05 15:18:54,071 genetic      DEBUG    Full model
+2021-05-05 15:18:54,071 genetic      DEBUG    Full model
+2021-05-05 15:18:54,071 genetic      DEBUG    Full model
+2021-05-05 15:18:54,071 genetic      DEBUG    Full model
+2021-05-05 15:18:54,071 genetic      DEBUG    Full model
+2021-05-05 15:18:54,071 genetic      DEBUG    Full model
+2021-05-05 15:18:54,071 genetic      DEBUG    Full model
+2021-05-05 15:18:54,071 genetic      DEBUG    Full model
+2021-05-05 15:18:54,071 genetic      DEBUG    Full model
+2021-05-05 15:18:54,071 genetic      DEBUG    Full model
+2021-05-05 15:18:54,071 genetic      DEBUG    Full model
+2021-05-05 15:18:54,071 genetic      DEBUG    Full model
+2021-05-05 15:18:54,071 genetic      DEBUG    Full model
+2021-05-05 15:18:54,071 genetic      DEBUG    Full model
+2021-05-05 15:18:54,071 genetic      DEBUG    Full model
+2021-05-05 15:18:54,071 genetic      DEBUG    Full model
+2021-05-05 15:18:54,071 genetic      DEBUG    Full model
+2021-05-05 15:18:54,071 genetic      DEBUG    Full model
+2021-05-05 15:18:54,071 genetic      DEBUG    Full model
+2021-05-05 15:18:54,108 genetic      DEBUG    Unware model
+2021-05-05 15:18:54,108 genetic      DEBUG    Unware model
+2021-05-05 15:18:54,108 genetic      DEBUG    Unware model
+2021-05-05 15:18:54,108 genetic      DEBUG    Unware model
+2021-05-05 15:18:54,108 genetic      DEBUG    Unware model
+2021-05-05 15:18:54,108 genetic      DEBUG    Unware model
+2021-05-05 15:18:54,108 genetic      DEBUG    Unware model
+2021-05-05 15:18:54,108 genetic      DEBUG    Unware model
+2021-05-05 15:18:54,108 genetic      DEBUG    Unware model
+2021-05-05 15:18:54,108 genetic      DEBUG    Unware model
+2021-05-05 15:18:54,108 genetic      DEBUG    Unware model
+2021-05-05 15:18:54,108 genetic      DEBUG    Unware model
+2021-05-05 15:18:54,108 genetic      DEBUG    Unware model
+2021-05-05 15:18:54,108 genetic      DEBUG    Unware model
+2021-05-05 15:18:54,108 genetic      DEBUG    Unware model
+2021-05-05 15:18:54,108 genetic      DEBUG    Unware model
+2021-05-05 15:18:54,108 genetic      DEBUG    Unware model
+2021-05-05 15:18:54,108 genetic      DEBUG    Unware model
+2021-05-05 15:18:54,108 genetic      DEBUG    Unware model
+2021-05-05 15:18:54,108 genetic      DEBUG    Unware model
+2021-05-05 15:18:54,108 genetic      DEBUG    Unware model
+2021-05-05 15:18:54,130 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:18:54,130 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:18:54,130 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:18:54,130 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:18:54,130 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:18:54,130 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:18:54,130 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:18:54,130 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:18:54,130 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:18:54,130 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:18:54,130 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:18:54,130 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:18:54,130 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:18:54,130 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:18:54,130 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:18:54,130 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:18:54,130 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:18:54,130 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:18:54,130 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:18:54,130 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:18:54,130 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:19,692 genetic      DEBUG    Full model
+2021-05-05 15:27:19,692 genetic      DEBUG    Full model
+2021-05-05 15:27:19,692 genetic      DEBUG    Full model
+2021-05-05 15:27:19,692 genetic      DEBUG    Full model
+2021-05-05 15:27:19,692 genetic      DEBUG    Full model
+2021-05-05 15:27:19,692 genetic      DEBUG    Full model
+2021-05-05 15:27:19,692 genetic      DEBUG    Full model
+2021-05-05 15:27:19,692 genetic      DEBUG    Full model
+2021-05-05 15:27:19,692 genetic      DEBUG    Full model
+2021-05-05 15:27:19,692 genetic      DEBUG    Full model
+2021-05-05 15:27:19,692 genetic      DEBUG    Full model
+2021-05-05 15:27:19,692 genetic      DEBUG    Full model
+2021-05-05 15:27:19,692 genetic      DEBUG    Full model
+2021-05-05 15:27:19,692 genetic      DEBUG    Full model
+2021-05-05 15:27:19,692 genetic      DEBUG    Full model
+2021-05-05 15:27:19,692 genetic      DEBUG    Full model
+2021-05-05 15:27:19,692 genetic      DEBUG    Full model
+2021-05-05 15:27:19,692 genetic      DEBUG    Full model
+2021-05-05 15:27:19,692 genetic      DEBUG    Full model
+2021-05-05 15:27:19,692 genetic      DEBUG    Full model
+2021-05-05 15:27:19,692 genetic      DEBUG    Full model
+2021-05-05 15:27:19,692 genetic      DEBUG    Full model
+2021-05-05 15:27:19,692 genetic      DEBUG    Full model
+2021-05-05 15:27:19,719 genetic      DEBUG    Unware model
+2021-05-05 15:27:19,719 genetic      DEBUG    Unware model
+2021-05-05 15:27:19,719 genetic      DEBUG    Unware model
+2021-05-05 15:27:19,719 genetic      DEBUG    Unware model
+2021-05-05 15:27:19,719 genetic      DEBUG    Unware model
+2021-05-05 15:27:19,719 genetic      DEBUG    Unware model
+2021-05-05 15:27:19,719 genetic      DEBUG    Unware model
+2021-05-05 15:27:19,719 genetic      DEBUG    Unware model
+2021-05-05 15:27:19,719 genetic      DEBUG    Unware model
+2021-05-05 15:27:19,719 genetic      DEBUG    Unware model
+2021-05-05 15:27:19,719 genetic      DEBUG    Unware model
+2021-05-05 15:27:19,719 genetic      DEBUG    Unware model
+2021-05-05 15:27:19,719 genetic      DEBUG    Unware model
+2021-05-05 15:27:19,719 genetic      DEBUG    Unware model
+2021-05-05 15:27:19,719 genetic      DEBUG    Unware model
+2021-05-05 15:27:19,719 genetic      DEBUG    Unware model
+2021-05-05 15:27:19,719 genetic      DEBUG    Unware model
+2021-05-05 15:27:19,719 genetic      DEBUG    Unware model
+2021-05-05 15:27:19,719 genetic      DEBUG    Unware model
+2021-05-05 15:27:19,719 genetic      DEBUG    Unware model
+2021-05-05 15:27:19,719 genetic      DEBUG    Unware model
+2021-05-05 15:27:19,719 genetic      DEBUG    Unware model
+2021-05-05 15:27:19,719 genetic      DEBUG    Unware model
+2021-05-05 15:27:19,752 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:19,752 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:19,752 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:19,752 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:19,752 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:19,752 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:19,752 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:19,752 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:19,752 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:19,752 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:19,752 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:19,752 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:19,752 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:19,752 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:19,752 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:19,752 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:19,752 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:19,752 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:19,752 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:19,752 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:19,752 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:19,752 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:19,752 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:28,738 genetic      DEBUG    Full model
+2021-05-05 15:27:28,738 genetic      DEBUG    Full model
+2021-05-05 15:27:28,738 genetic      DEBUG    Full model
+2021-05-05 15:27:28,738 genetic      DEBUG    Full model
+2021-05-05 15:27:28,738 genetic      DEBUG    Full model
+2021-05-05 15:27:28,738 genetic      DEBUG    Full model
+2021-05-05 15:27:28,738 genetic      DEBUG    Full model
+2021-05-05 15:27:28,738 genetic      DEBUG    Full model
+2021-05-05 15:27:28,738 genetic      DEBUG    Full model
+2021-05-05 15:27:28,738 genetic      DEBUG    Full model
+2021-05-05 15:27:28,738 genetic      DEBUG    Full model
+2021-05-05 15:27:28,738 genetic      DEBUG    Full model
+2021-05-05 15:27:28,738 genetic      DEBUG    Full model
+2021-05-05 15:27:28,738 genetic      DEBUG    Full model
+2021-05-05 15:27:28,738 genetic      DEBUG    Full model
+2021-05-05 15:27:28,738 genetic      DEBUG    Full model
+2021-05-05 15:27:28,738 genetic      DEBUG    Full model
+2021-05-05 15:27:28,738 genetic      DEBUG    Full model
+2021-05-05 15:27:28,738 genetic      DEBUG    Full model
+2021-05-05 15:27:28,738 genetic      DEBUG    Full model
+2021-05-05 15:27:28,738 genetic      DEBUG    Full model
+2021-05-05 15:27:28,738 genetic      DEBUG    Full model
+2021-05-05 15:27:28,738 genetic      DEBUG    Full model
+2021-05-05 15:27:28,754 genetic      DEBUG    Unware model
+2021-05-05 15:27:28,754 genetic      DEBUG    Unware model
+2021-05-05 15:27:28,754 genetic      DEBUG    Unware model
+2021-05-05 15:27:28,754 genetic      DEBUG    Unware model
+2021-05-05 15:27:28,754 genetic      DEBUG    Unware model
+2021-05-05 15:27:28,754 genetic      DEBUG    Unware model
+2021-05-05 15:27:28,754 genetic      DEBUG    Unware model
+2021-05-05 15:27:28,754 genetic      DEBUG    Unware model
+2021-05-05 15:27:28,754 genetic      DEBUG    Unware model
+2021-05-05 15:27:28,754 genetic      DEBUG    Unware model
+2021-05-05 15:27:28,754 genetic      DEBUG    Unware model
+2021-05-05 15:27:28,754 genetic      DEBUG    Unware model
+2021-05-05 15:27:28,754 genetic      DEBUG    Unware model
+2021-05-05 15:27:28,754 genetic      DEBUG    Unware model
+2021-05-05 15:27:28,754 genetic      DEBUG    Unware model
+2021-05-05 15:27:28,754 genetic      DEBUG    Unware model
+2021-05-05 15:27:28,754 genetic      DEBUG    Unware model
+2021-05-05 15:27:28,754 genetic      DEBUG    Unware model
+2021-05-05 15:27:28,754 genetic      DEBUG    Unware model
+2021-05-05 15:27:28,754 genetic      DEBUG    Unware model
+2021-05-05 15:27:28,754 genetic      DEBUG    Unware model
+2021-05-05 15:27:28,754 genetic      DEBUG    Unware model
+2021-05-05 15:27:28,754 genetic      DEBUG    Unware model
+2021-05-05 15:27:28,781 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:28,781 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:28,781 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:28,781 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:28,781 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:28,781 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:28,781 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:28,781 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:28,781 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:28,781 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:28,781 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:28,781 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:28,781 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:28,781 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:28,781 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:28,781 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:28,781 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:28,781 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:28,781 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:28,781 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:28,781 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:28,781 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:27:28,781 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:28:30,586 genetic      DEBUG    Full model
+2021-05-05 15:28:30,586 genetic      DEBUG    Full model
+2021-05-05 15:28:30,586 genetic      DEBUG    Full model
+2021-05-05 15:28:30,586 genetic      DEBUG    Full model
+2021-05-05 15:28:30,586 genetic      DEBUG    Full model
+2021-05-05 15:28:30,586 genetic      DEBUG    Full model
+2021-05-05 15:28:30,586 genetic      DEBUG    Full model
+2021-05-05 15:28:30,586 genetic      DEBUG    Full model
+2021-05-05 15:28:30,586 genetic      DEBUG    Full model
+2021-05-05 15:28:30,586 genetic      DEBUG    Full model
+2021-05-05 15:28:30,586 genetic      DEBUG    Full model
+2021-05-05 15:28:30,586 genetic      DEBUG    Full model
+2021-05-05 15:28:30,586 genetic      DEBUG    Full model
+2021-05-05 15:28:30,586 genetic      DEBUG    Full model
+2021-05-05 15:28:30,586 genetic      DEBUG    Full model
+2021-05-05 15:28:30,586 genetic      DEBUG    Full model
+2021-05-05 15:28:30,586 genetic      DEBUG    Full model
+2021-05-05 15:28:30,586 genetic      DEBUG    Full model
+2021-05-05 15:28:30,586 genetic      DEBUG    Full model
+2021-05-05 15:28:30,586 genetic      DEBUG    Full model
+2021-05-05 15:28:30,586 genetic      DEBUG    Full model
+2021-05-05 15:28:30,586 genetic      DEBUG    Full model
+2021-05-05 15:28:30,586 genetic      DEBUG    Full model
+2021-05-05 15:28:30,607 genetic      DEBUG    Unware model
+2021-05-05 15:28:30,607 genetic      DEBUG    Unware model
+2021-05-05 15:28:30,607 genetic      DEBUG    Unware model
+2021-05-05 15:28:30,607 genetic      DEBUG    Unware model
+2021-05-05 15:28:30,607 genetic      DEBUG    Unware model
+2021-05-05 15:28:30,607 genetic      DEBUG    Unware model
+2021-05-05 15:28:30,607 genetic      DEBUG    Unware model
+2021-05-05 15:28:30,607 genetic      DEBUG    Unware model
+2021-05-05 15:28:30,607 genetic      DEBUG    Unware model
+2021-05-05 15:28:30,607 genetic      DEBUG    Unware model
+2021-05-05 15:28:30,607 genetic      DEBUG    Unware model
+2021-05-05 15:28:30,607 genetic      DEBUG    Unware model
+2021-05-05 15:28:30,607 genetic      DEBUG    Unware model
+2021-05-05 15:28:30,607 genetic      DEBUG    Unware model
+2021-05-05 15:28:30,607 genetic      DEBUG    Unware model
+2021-05-05 15:28:30,607 genetic      DEBUG    Unware model
+2021-05-05 15:28:30,607 genetic      DEBUG    Unware model
+2021-05-05 15:28:30,607 genetic      DEBUG    Unware model
+2021-05-05 15:28:30,607 genetic      DEBUG    Unware model
+2021-05-05 15:28:30,607 genetic      DEBUG    Unware model
+2021-05-05 15:28:30,607 genetic      DEBUG    Unware model
+2021-05-05 15:28:30,607 genetic      DEBUG    Unware model
+2021-05-05 15:28:30,607 genetic      DEBUG    Unware model
+2021-05-05 15:28:30,622 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:28:30,622 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:28:30,622 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:28:30,622 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:28:30,622 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:28:30,622 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:28:30,622 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:28:30,622 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:28:30,622 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:28:30,622 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:28:30,622 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:28:30,622 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:28:30,622 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:28:30,622 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:28:30,622 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:28:30,622 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:28:30,622 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:28:30,622 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:28:30,622 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:28:30,622 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:28:30,622 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:28:30,622 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:28:30,622 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:40:03,711 genetic      DEBUG    Full model
+2021-05-05 15:40:03,711 genetic      DEBUG    Full model
+2021-05-05 15:40:03,711 genetic      DEBUG    Full model
+2021-05-05 15:40:03,711 genetic      DEBUG    Full model
+2021-05-05 15:40:03,711 genetic      DEBUG    Full model
+2021-05-05 15:40:03,711 genetic      DEBUG    Full model
+2021-05-05 15:40:03,711 genetic      DEBUG    Full model
+2021-05-05 15:40:03,711 genetic      DEBUG    Full model
+2021-05-05 15:40:03,711 genetic      DEBUG    Full model
+2021-05-05 15:40:03,711 genetic      DEBUG    Full model
+2021-05-05 15:40:03,711 genetic      DEBUG    Full model
+2021-05-05 15:40:03,711 genetic      DEBUG    Full model
+2021-05-05 15:40:03,711 genetic      DEBUG    Full model
+2021-05-05 15:40:03,711 genetic      DEBUG    Full model
+2021-05-05 15:40:03,711 genetic      DEBUG    Full model
+2021-05-05 15:40:03,711 genetic      DEBUG    Full model
+2021-05-05 15:40:03,711 genetic      DEBUG    Full model
+2021-05-05 15:40:03,711 genetic      DEBUG    Full model
+2021-05-05 15:40:03,711 genetic      DEBUG    Full model
+2021-05-05 15:40:03,711 genetic      DEBUG    Full model
+2021-05-05 15:40:03,711 genetic      DEBUG    Full model
+2021-05-05 15:40:03,711 genetic      DEBUG    Full model
+2021-05-05 15:40:03,711 genetic      DEBUG    Full model
+2021-05-05 15:40:03,730 genetic      DEBUG    Unware model
+2021-05-05 15:40:03,730 genetic      DEBUG    Unware model
+2021-05-05 15:40:03,730 genetic      DEBUG    Unware model
+2021-05-05 15:40:03,730 genetic      DEBUG    Unware model
+2021-05-05 15:40:03,730 genetic      DEBUG    Unware model
+2021-05-05 15:40:03,730 genetic      DEBUG    Unware model
+2021-05-05 15:40:03,730 genetic      DEBUG    Unware model
+2021-05-05 15:40:03,730 genetic      DEBUG    Unware model
+2021-05-05 15:40:03,730 genetic      DEBUG    Unware model
+2021-05-05 15:40:03,730 genetic      DEBUG    Unware model
+2021-05-05 15:40:03,730 genetic      DEBUG    Unware model
+2021-05-05 15:40:03,730 genetic      DEBUG    Unware model
+2021-05-05 15:40:03,730 genetic      DEBUG    Unware model
+2021-05-05 15:40:03,730 genetic      DEBUG    Unware model
+2021-05-05 15:40:03,730 genetic      DEBUG    Unware model
+2021-05-05 15:40:03,730 genetic      DEBUG    Unware model
+2021-05-05 15:40:03,730 genetic      DEBUG    Unware model
+2021-05-05 15:40:03,730 genetic      DEBUG    Unware model
+2021-05-05 15:40:03,730 genetic      DEBUG    Unware model
+2021-05-05 15:40:03,730 genetic      DEBUG    Unware model
+2021-05-05 15:40:03,730 genetic      DEBUG    Unware model
+2021-05-05 15:40:03,730 genetic      DEBUG    Unware model
+2021-05-05 15:40:03,730 genetic      DEBUG    Unware model
+2021-05-05 15:40:03,748 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:40:03,748 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:40:03,748 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:40:03,748 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:40:03,748 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:40:03,748 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:40:03,748 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:40:03,748 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:40:03,748 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:40:03,748 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:40:03,748 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:40:03,748 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:40:03,748 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:40:03,748 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:40:03,748 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:40:03,748 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:40:03,748 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:40:03,748 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:40:03,748 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:40:03,748 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:40:03,748 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:40:03,748 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:40:03,748 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:48:36,759 genetic      DEBUG    Full model
+2021-05-05 15:48:36,759 genetic      DEBUG    Full model
+2021-05-05 15:48:36,759 genetic      DEBUG    Full model
+2021-05-05 15:48:36,759 genetic      DEBUG    Full model
+2021-05-05 15:48:36,759 genetic      DEBUG    Full model
+2021-05-05 15:48:36,759 genetic      DEBUG    Full model
+2021-05-05 15:48:36,759 genetic      DEBUG    Full model
+2021-05-05 15:48:36,759 genetic      DEBUG    Full model
+2021-05-05 15:48:36,759 genetic      DEBUG    Full model
+2021-05-05 15:48:36,759 genetic      DEBUG    Full model
+2021-05-05 15:48:36,759 genetic      DEBUG    Full model
+2021-05-05 15:48:36,759 genetic      DEBUG    Full model
+2021-05-05 15:48:36,759 genetic      DEBUG    Full model
+2021-05-05 15:48:36,759 genetic      DEBUG    Full model
+2021-05-05 15:48:36,759 genetic      DEBUG    Full model
+2021-05-05 15:48:36,759 genetic      DEBUG    Full model
+2021-05-05 15:48:36,759 genetic      DEBUG    Full model
+2021-05-05 15:48:36,759 genetic      DEBUG    Full model
+2021-05-05 15:48:36,759 genetic      DEBUG    Full model
+2021-05-05 15:48:36,759 genetic      DEBUG    Full model
+2021-05-05 15:48:36,759 genetic      DEBUG    Full model
+2021-05-05 15:48:36,759 genetic      DEBUG    Full model
+2021-05-05 15:48:36,759 genetic      DEBUG    Full model
+2021-05-05 15:48:36,777 genetic      DEBUG    Unware model
+2021-05-05 15:48:36,777 genetic      DEBUG    Unware model
+2021-05-05 15:48:36,777 genetic      DEBUG    Unware model
+2021-05-05 15:48:36,777 genetic      DEBUG    Unware model
+2021-05-05 15:48:36,777 genetic      DEBUG    Unware model
+2021-05-05 15:48:36,777 genetic      DEBUG    Unware model
+2021-05-05 15:48:36,777 genetic      DEBUG    Unware model
+2021-05-05 15:48:36,777 genetic      DEBUG    Unware model
+2021-05-05 15:48:36,777 genetic      DEBUG    Unware model
+2021-05-05 15:48:36,777 genetic      DEBUG    Unware model
+2021-05-05 15:48:36,777 genetic      DEBUG    Unware model
+2021-05-05 15:48:36,777 genetic      DEBUG    Unware model
+2021-05-05 15:48:36,777 genetic      DEBUG    Unware model
+2021-05-05 15:48:36,777 genetic      DEBUG    Unware model
+2021-05-05 15:48:36,777 genetic      DEBUG    Unware model
+2021-05-05 15:48:36,777 genetic      DEBUG    Unware model
+2021-05-05 15:48:36,777 genetic      DEBUG    Unware model
+2021-05-05 15:48:36,777 genetic      DEBUG    Unware model
+2021-05-05 15:48:36,777 genetic      DEBUG    Unware model
+2021-05-05 15:48:36,777 genetic      DEBUG    Unware model
+2021-05-05 15:48:36,777 genetic      DEBUG    Unware model
+2021-05-05 15:48:36,777 genetic      DEBUG    Unware model
+2021-05-05 15:48:36,777 genetic      DEBUG    Unware model
+2021-05-05 15:48:36,805 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:48:36,805 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:48:36,805 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:48:36,805 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:48:36,805 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:48:36,805 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:48:36,805 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:48:36,805 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:48:36,805 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:48:36,805 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:48:36,805 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:48:36,805 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:48:36,805 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:48:36,805 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:48:36,805 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:48:36,805 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:48:36,805 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:48:36,805 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:48:36,805 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:48:36,805 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:48:36,805 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:48:36,805 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:48:36,805 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:59:51,739 genetic      DEBUG    Full model
+2021-05-05 15:59:51,739 genetic      DEBUG    Full model
+2021-05-05 15:59:51,739 genetic      DEBUG    Full model
+2021-05-05 15:59:51,739 genetic      DEBUG    Full model
+2021-05-05 15:59:51,739 genetic      DEBUG    Full model
+2021-05-05 15:59:51,739 genetic      DEBUG    Full model
+2021-05-05 15:59:51,739 genetic      DEBUG    Full model
+2021-05-05 15:59:51,739 genetic      DEBUG    Full model
+2021-05-05 15:59:51,739 genetic      DEBUG    Full model
+2021-05-05 15:59:51,739 genetic      DEBUG    Full model
+2021-05-05 15:59:51,739 genetic      DEBUG    Full model
+2021-05-05 15:59:51,739 genetic      DEBUG    Full model
+2021-05-05 15:59:51,739 genetic      DEBUG    Full model
+2021-05-05 15:59:51,739 genetic      DEBUG    Full model
+2021-05-05 15:59:51,739 genetic      DEBUG    Full model
+2021-05-05 15:59:51,739 genetic      DEBUG    Full model
+2021-05-05 15:59:51,739 genetic      DEBUG    Full model
+2021-05-05 15:59:51,739 genetic      DEBUG    Full model
+2021-05-05 15:59:51,739 genetic      DEBUG    Full model
+2021-05-05 15:59:51,739 genetic      DEBUG    Full model
+2021-05-05 15:59:51,739 genetic      DEBUG    Full model
+2021-05-05 15:59:51,739 genetic      DEBUG    Full model
+2021-05-05 15:59:51,739 genetic      DEBUG    Full model
+2021-05-05 15:59:51,761 genetic      DEBUG    Unware model
+2021-05-05 15:59:51,761 genetic      DEBUG    Unware model
+2021-05-05 15:59:51,761 genetic      DEBUG    Unware model
+2021-05-05 15:59:51,761 genetic      DEBUG    Unware model
+2021-05-05 15:59:51,761 genetic      DEBUG    Unware model
+2021-05-05 15:59:51,761 genetic      DEBUG    Unware model
+2021-05-05 15:59:51,761 genetic      DEBUG    Unware model
+2021-05-05 15:59:51,761 genetic      DEBUG    Unware model
+2021-05-05 15:59:51,761 genetic      DEBUG    Unware model
+2021-05-05 15:59:51,761 genetic      DEBUG    Unware model
+2021-05-05 15:59:51,761 genetic      DEBUG    Unware model
+2021-05-05 15:59:51,761 genetic      DEBUG    Unware model
+2021-05-05 15:59:51,761 genetic      DEBUG    Unware model
+2021-05-05 15:59:51,761 genetic      DEBUG    Unware model
+2021-05-05 15:59:51,761 genetic      DEBUG    Unware model
+2021-05-05 15:59:51,761 genetic      DEBUG    Unware model
+2021-05-05 15:59:51,761 genetic      DEBUG    Unware model
+2021-05-05 15:59:51,761 genetic      DEBUG    Unware model
+2021-05-05 15:59:51,761 genetic      DEBUG    Unware model
+2021-05-05 15:59:51,761 genetic      DEBUG    Unware model
+2021-05-05 15:59:51,761 genetic      DEBUG    Unware model
+2021-05-05 15:59:51,761 genetic      DEBUG    Unware model
+2021-05-05 15:59:51,761 genetic      DEBUG    Unware model
+2021-05-05 15:59:51,784 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:59:51,784 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:59:51,784 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:59:51,784 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:59:51,784 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:59:51,784 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:59:51,784 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:59:51,784 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:59:51,784 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:59:51,784 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:59:51,784 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:59:51,784 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:59:51,784 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:59:51,784 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:59:51,784 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:59:51,784 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:59:51,784 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:59:51,784 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:59:51,784 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:59:51,784 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:59:51,784 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:59:51,784 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 15:59:51,784 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 16:12:50,444 genetic      DEBUG    Full model
+2021-05-05 16:12:50,444 genetic      DEBUG    Full model
+2021-05-05 16:12:50,444 genetic      DEBUG    Full model
+2021-05-05 16:12:50,444 genetic      DEBUG    Full model
+2021-05-05 16:12:50,444 genetic      DEBUG    Full model
+2021-05-05 16:12:50,444 genetic      DEBUG    Full model
+2021-05-05 16:12:50,444 genetic      DEBUG    Full model
+2021-05-05 16:12:50,444 genetic      DEBUG    Full model
+2021-05-05 16:12:50,444 genetic      DEBUG    Full model
+2021-05-05 16:12:50,444 genetic      DEBUG    Full model
+2021-05-05 16:12:50,444 genetic      DEBUG    Full model
+2021-05-05 16:12:50,444 genetic      DEBUG    Full model
+2021-05-05 16:12:50,444 genetic      DEBUG    Full model
+2021-05-05 16:12:50,444 genetic      DEBUG    Full model
+2021-05-05 16:12:50,444 genetic      DEBUG    Full model
+2021-05-05 16:12:50,444 genetic      DEBUG    Full model
+2021-05-05 16:12:50,444 genetic      DEBUG    Full model
+2021-05-05 16:12:50,444 genetic      DEBUG    Full model
+2021-05-05 16:12:50,444 genetic      DEBUG    Full model
+2021-05-05 16:12:50,444 genetic      DEBUG    Full model
+2021-05-05 16:12:50,444 genetic      DEBUG    Full model
+2021-05-05 16:12:50,444 genetic      DEBUG    Full model
+2021-05-05 16:12:50,444 genetic      DEBUG    Full model
+2021-05-05 16:12:50,472 genetic      DEBUG    Unware model
+2021-05-05 16:12:50,472 genetic      DEBUG    Unware model
+2021-05-05 16:12:50,472 genetic      DEBUG    Unware model
+2021-05-05 16:12:50,472 genetic      DEBUG    Unware model
+2021-05-05 16:12:50,472 genetic      DEBUG    Unware model
+2021-05-05 16:12:50,472 genetic      DEBUG    Unware model
+2021-05-05 16:12:50,472 genetic      DEBUG    Unware model
+2021-05-05 16:12:50,472 genetic      DEBUG    Unware model
+2021-05-05 16:12:50,472 genetic      DEBUG    Unware model
+2021-05-05 16:12:50,472 genetic      DEBUG    Unware model
+2021-05-05 16:12:50,472 genetic      DEBUG    Unware model
+2021-05-05 16:12:50,472 genetic      DEBUG    Unware model
+2021-05-05 16:12:50,472 genetic      DEBUG    Unware model
+2021-05-05 16:12:50,472 genetic      DEBUG    Unware model
+2021-05-05 16:12:50,472 genetic      DEBUG    Unware model
+2021-05-05 16:12:50,472 genetic      DEBUG    Unware model
+2021-05-05 16:12:50,472 genetic      DEBUG    Unware model
+2021-05-05 16:12:50,472 genetic      DEBUG    Unware model
+2021-05-05 16:12:50,472 genetic      DEBUG    Unware model
+2021-05-05 16:12:50,472 genetic      DEBUG    Unware model
+2021-05-05 16:12:50,472 genetic      DEBUG    Unware model
+2021-05-05 16:12:50,472 genetic      DEBUG    Unware model
+2021-05-05 16:12:50,472 genetic      DEBUG    Unware model
+2021-05-05 16:12:50,490 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 16:12:50,490 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 16:12:50,490 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 16:12:50,490 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 16:12:50,490 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 16:12:50,490 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 16:12:50,490 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 16:12:50,490 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 16:12:50,490 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 16:12:50,490 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 16:12:50,490 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 16:12:50,490 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 16:12:50,490 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 16:12:50,490 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 16:12:50,490 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 16:12:50,490 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 16:12:50,490 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 16:12:50,490 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 16:12:50,490 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 16:12:50,490 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 16:12:50,490 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 16:12:50,490 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 16:12:50,490 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 19:24:27,593 genetic      DEBUG    Full model
+2021-05-05 19:24:27,593 genetic      DEBUG    Full model
+2021-05-05 19:24:27,593 genetic      DEBUG    Full model
+2021-05-05 19:24:27,593 genetic      DEBUG    Full model
+2021-05-05 19:24:27,593 genetic      DEBUG    Full model
+2021-05-05 19:24:27,593 genetic      DEBUG    Full model
+2021-05-05 19:24:27,593 genetic      DEBUG    Full model
+2021-05-05 19:24:27,593 genetic      DEBUG    Full model
+2021-05-05 19:24:27,593 genetic      DEBUG    Full model
+2021-05-05 19:24:27,593 genetic      DEBUG    Full model
+2021-05-05 19:24:27,593 genetic      DEBUG    Full model
+2021-05-05 19:24:27,593 genetic      DEBUG    Full model
+2021-05-05 19:24:27,593 genetic      DEBUG    Full model
+2021-05-05 19:24:27,593 genetic      DEBUG    Full model
+2021-05-05 19:24:27,593 genetic      DEBUG    Full model
+2021-05-05 19:24:27,593 genetic      DEBUG    Full model
+2021-05-05 19:24:27,593 genetic      DEBUG    Full model
+2021-05-05 19:24:27,593 genetic      DEBUG    Full model
+2021-05-05 19:24:27,593 genetic      DEBUG    Full model
+2021-05-05 19:24:27,593 genetic      DEBUG    Full model
+2021-05-05 19:24:27,593 genetic      DEBUG    Full model
+2021-05-05 19:24:27,593 genetic      DEBUG    Full model
+2021-05-05 19:24:27,593 genetic      DEBUG    Full model
+2021-05-05 19:24:27,593 genetic      DEBUG    Full model
+2021-05-05 19:24:27,619 genetic      DEBUG    Unware model
+2021-05-05 19:24:27,619 genetic      DEBUG    Unware model
+2021-05-05 19:24:27,619 genetic      DEBUG    Unware model
+2021-05-05 19:24:27,619 genetic      DEBUG    Unware model
+2021-05-05 19:24:27,619 genetic      DEBUG    Unware model
+2021-05-05 19:24:27,619 genetic      DEBUG    Unware model
+2021-05-05 19:24:27,619 genetic      DEBUG    Unware model
+2021-05-05 19:24:27,619 genetic      DEBUG    Unware model
+2021-05-05 19:24:27,619 genetic      DEBUG    Unware model
+2021-05-05 19:24:27,619 genetic      DEBUG    Unware model
+2021-05-05 19:24:27,619 genetic      DEBUG    Unware model
+2021-05-05 19:24:27,619 genetic      DEBUG    Unware model
+2021-05-05 19:24:27,619 genetic      DEBUG    Unware model
+2021-05-05 19:24:27,619 genetic      DEBUG    Unware model
+2021-05-05 19:24:27,619 genetic      DEBUG    Unware model
+2021-05-05 19:24:27,619 genetic      DEBUG    Unware model
+2021-05-05 19:24:27,619 genetic      DEBUG    Unware model
+2021-05-05 19:24:27,619 genetic      DEBUG    Unware model
+2021-05-05 19:24:27,619 genetic      DEBUG    Unware model
+2021-05-05 19:24:27,619 genetic      DEBUG    Unware model
+2021-05-05 19:24:27,619 genetic      DEBUG    Unware model
+2021-05-05 19:24:27,619 genetic      DEBUG    Unware model
+2021-05-05 19:24:27,619 genetic      DEBUG    Unware model
+2021-05-05 19:24:27,619 genetic      DEBUG    Unware model
+2021-05-05 19:24:27,646 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 19:24:27,646 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 19:24:27,646 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 19:24:27,646 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 19:24:27,646 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 19:24:27,646 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 19:24:27,646 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 19:24:27,646 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 19:24:27,646 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 19:24:27,646 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 19:24:27,646 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 19:24:27,646 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 19:24:27,646 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 19:24:27,646 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 19:24:27,646 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 19:24:27,646 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 19:24:27,646 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 19:24:27,646 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 19:24:27,646 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 19:24:27,646 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 19:24:27,646 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 19:24:27,646 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 19:24:27,646 genetic      DEBUG    Counterfactual fairness model
+2021-05-05 19:24:27,646 genetic      DEBUG    Counterfactual fairness model
+2021-05-09 08:32:01,530 genetic      DEBUG                   method      RMSE       MAE  sinkhorn    energy  gaussian
+0     full_prediction  0.938627  0.755647  0.321524  0.443386  0.081323
+1  unaware_prediction  0.955065  0.767867  0.056604  0.099463  0.029987
+2       cf_prediction  0.988276  0.795386  0.001740  0.006579  0.010150
+3      inv_prediction  0.959832  0.772720  0.059150  0.089235  0.034573
+2021-05-09 08:46:15,716 genetic      DEBUG                   method      RMSE       MAE  sinkhorn    energy  gaussian
+0     full_prediction  0.938627  0.755647  0.321524  0.443386  0.081323
+1  unaware_prediction  0.955065  0.767867  0.056604  0.099463  0.029987
+2       cf_prediction  0.988276  0.795386  0.001740  0.006579  0.010150
+3      inv_prediction  0.958443  0.770619  0.046455  0.077790  0.029896
+2021-05-09 08:49:06,393 genetic      DEBUG                   method      RMSE       MAE  sinkhorn    energy  gaussian
+0     full_prediction  0.938627  0.755647  0.321524  0.443386  0.081323
+1  unaware_prediction  0.955065  0.767867  0.056604  0.099463  0.029987
+2       cf_prediction  0.988276  0.795386  0.001740  0.006579  0.010150
+3      inv_prediction  0.958443  0.770619  0.046455  0.077790  0.029896
+2021-05-09 08:59:45,740 genetic      DEBUG                   method      RMSE       MAE  sinkhorn    energy  gaussian
+0     full_prediction  0.938627  0.755647  0.321524  0.443386  0.081323
+1  unaware_prediction  0.955065  0.767867  0.056604  0.099463  0.029987
+2       cf_prediction  0.988276  0.795386  0.001740  0.006579  0.010150
+3      inv_prediction  0.956406  0.769180  0.053753  0.085653  0.030642
+2021-05-09 09:55:25,918 genetic      DEBUG                   method      RMSE       MAE  sinkhorn    energy  gaussian
+0     full_prediction  0.938627  0.755647  0.321524  0.443386  0.081323
+1  unaware_prediction  0.955065  0.767867  0.056604  0.099463  0.029987
+2       cf_prediction  0.989884  0.796899  0.001832  0.006715  0.008643
+3      inv_prediction  1.237750  0.961396  0.379208  0.134397  0.011801
+2021-05-09 09:58:27,328 genetic      DEBUG                   method      RMSE       MAE      sinkhorn    energy  gaussian
+0     full_prediction  0.938627  0.755647  3.215242e-01  0.443386  0.081323
+1  unaware_prediction  0.955065  0.767867  5.660365e-02  0.099463  0.029987
+2       cf_prediction  0.989884  0.796899  1.832293e-03  0.006715  0.008643
+3      inv_prediction  1.001575  0.806594  8.440038e-07  0.000046  0.000228
+2021-05-09 10:02:14,487 genetic      DEBUG                   method      RMSE       MAE      sinkhorn    energy  gaussian
+0     full_prediction  0.938627  0.755647  3.215242e-01  0.443386  0.081323
+1  unaware_prediction  0.955065  0.767867  5.660365e-02  0.099463  0.029987
+2       cf_prediction  0.989884  0.796899  1.832293e-03  0.006715  0.008643
+3      inv_prediction  1.001575  0.806594  8.440038e-07  0.000046  0.000228
+2021-05-09 10:04:22,720 genetic      DEBUG                   method      RMSE       MAE      sinkhorn    energy  gaussian
+0     full_prediction  0.938627  0.755647  3.215242e-01  0.443386  0.081323
+1  unaware_prediction  0.955065  0.767867  5.660365e-02  0.099463  0.029987
+2       cf_prediction  0.989884  0.796899  1.832293e-03  0.006715  0.008643
+3      inv_prediction  1.001575  0.806594  8.440038e-07  0.000046  0.000228
+2021-05-09 10:05:21,181 genetic      DEBUG                   method      RMSE       MAE      sinkhorn    energy  gaussian
+0     full_prediction  0.938627  0.755647  3.215242e-01  0.443386  0.081323
+1  unaware_prediction  0.955065  0.767867  5.660365e-02  0.099463  0.029987
+2       cf_prediction  0.989884  0.796899  1.832293e-03  0.006715  0.008643
+3      inv_prediction  1.001575  0.806594  8.440038e-07  0.000046  0.000228
+2021-05-09 10:05:40,727 genetic      DEBUG                   method      RMSE       MAE  sinkhorn    energy  gaussian
+0     full_prediction  0.938627  0.755647  0.321524  0.443386  0.081323
+1  unaware_prediction  0.955065  0.767867  0.056604  0.099463  0.029987
+2       cf_prediction  0.989884  0.796899  0.001832  0.006715  0.008643
+3      inv_prediction  0.975710  0.785547  0.016670  0.029944  0.027103
+2021-05-09 10:06:14,861 genetic      DEBUG                   method      RMSE       MAE      sinkhorn    energy  gaussian
+0     full_prediction  0.938627  0.755647  3.215242e-01  0.443386  0.081323
+1  unaware_prediction  0.955065  0.767867  5.660365e-02  0.099463  0.029987
+2       cf_prediction  0.989884  0.796899  1.832293e-03  0.006715  0.008643
+3      inv_prediction  1.001485  0.805972  4.139744e-07  0.000018  0.000121
+2021-05-09 10:08:18,423 genetic      DEBUG                   method      RMSE       MAE  sinkhorn    energy  gaussian
+0     full_prediction  0.938627  0.755647  0.321524  0.443386  0.081323
+1  unaware_prediction  0.955065  0.767867  0.056604  0.099463  0.029987
+2       cf_prediction  0.989884  0.796899  0.001832  0.006715  0.008643
+3      inv_prediction  3.632841  2.413841  1.043768  0.037208  0.001351
+2021-05-09 10:13:15,321 genetic      DEBUG                   method      RMSE       MAE  sinkhorn    energy  gaussian
+0     full_prediction  0.938627  0.755647  0.321524  0.443386  0.081323
+1  unaware_prediction  0.955065  0.767867  0.056604  0.099463  0.029987
+2       cf_prediction  0.989884  0.796899  0.001832  0.006715  0.008643
+3      inv_prediction  0.994048  0.800096  0.000582  0.002845  0.015255
+2021-05-09 10:15:06,557 genetic      DEBUG                   method      RMSE       MAE  sinkhorn    energy  gaussian
+0     full_prediction  0.938627  0.755647  0.321524  0.443386  0.081323
+1  unaware_prediction  0.955065  0.767867  0.056604  0.099463  0.029987
+2       cf_prediction  0.989884  0.796899  0.001832  0.006715  0.008643
+3      inv_prediction  0.997388  0.798611  0.083304  0.064488  0.026200
+2021-05-09 10:17:21,001 genetic      DEBUG                   method      RMSE       MAE  sinkhorn    energy  gaussian
+0     full_prediction  0.938627  0.755647  0.321524  0.443386  0.081323
+1  unaware_prediction  0.955065  0.767867  0.056604  0.099463  0.029987
+2       cf_prediction  0.989884  0.796899  0.001832  0.006715  0.008643
+3      inv_prediction  0.979821  0.787459  0.049527  0.061760  0.027741
+2021-05-09 10:27:21,393 genetic      DEBUG           race  sex      LSAT      UGPA      ZFYA  full_prediction  unaware_prediction  cf_prediction  inv_prediction
+0         1    0  0.374797 -0.328945 -1.216912         0.063242            0.049148      -0.005176       -0.019865
+1         1    0 -0.186888 -0.571182 -0.059365        -0.058810           -0.116302      -0.031267       -0.120862
+2         1    1 -1.310258 -0.328945 -0.535366        -0.196115           -0.356468      -0.021019       -0.254172
+3         1    0  0.000341  0.397765 -1.519822         0.071920            0.049746      -0.136635       -0.001658
+4         1    0 -1.216644  0.882239  0.167817        -0.090202           -0.182710      -0.064497       -0.695598
+...     ...  ...       ...       ...       ...              ...                 ...            ...             ...
+19562     1    1 -0.748573  1.851186  0.741182         0.122401            0.050941      -0.160792       -0.100488
+19563     1    0  0.187569  1.124476 -0.405547         0.178092            0.185549       0.079578       -0.031146
+19564     1    0 -0.186888  1.851186  2.136730         0.186770            0.186146       0.098702        0.006350
+19565     1    1 -1.123030 -0.813419  0.167817        -0.212733           -0.371890      -0.161754       -0.399548
+19566     1    1 -1.684715 -0.328945  0.124544        -0.261111           -0.446605      -0.147079        0.025534
+
+[19567 rows x 9 columns]
+2021-05-09 10:27:27,892 genetic      DEBUG                   method      RMSE       MAE  sinkhorn    energy  gaussian
+0     full_prediction  0.938627  0.755647  0.321524  0.443386  0.081323
+1  unaware_prediction  0.955065  0.767867  0.056604  0.099463  0.029987
+2       cf_prediction  0.989884  0.796899  0.001832  0.006715  0.008643
+3      inv_prediction  0.979821  0.787459  0.049527  0.061760  0.027741
+2021-05-09 10:32:41,851 genetic      DEBUG           race  sex      LSAT      UGPA      ZFYA  full_prediction  unaware_prediction  cf_prediction  inv_prediction
+0         1    0  0.374797 -0.328945 -1.216912         0.063242            0.049148      -0.005176        0.091172
+1         1    0 -0.186888 -0.571182 -0.059365        -0.058810           -0.116302      -0.031267        0.043620
+2         1    1 -1.310258 -0.328945 -0.535366        -0.196115           -0.356468      -0.021019       -0.050837
+3         1    0  0.000341  0.397765 -1.519822         0.071920            0.049746      -0.136635       -0.007076
+4         1    0 -1.216644  0.882239  0.167817        -0.090202           -0.182710      -0.064497       -0.192609
+...     ...  ...       ...       ...       ...              ...                 ...            ...             ...
+19562     1    1 -0.748573  1.851186  0.741182         0.122401            0.050941      -0.160792       -0.085277
+19563     1    0  0.187569  1.124476 -0.405547         0.178092            0.185549       0.079578       -0.107777
+19564     1    0 -0.186888  1.851186  2.136730         0.186770            0.186146       0.098702        0.019376
+19565     1    1 -1.123030 -0.813419  0.167817        -0.212733           -0.371890      -0.161754       -0.069487
+19566     1    1 -1.684715 -0.328945  0.124544        -0.261111           -0.446605      -0.147079       -1.192761
+
+[19567 rows x 9 columns]
+2021-05-09 10:32:46,702 genetic      DEBUG                   method      RMSE       MAE  sinkhorn    energy  gaussian
+0     full_prediction  0.938627  0.755647  0.321524  0.443386  0.081323
+1  unaware_prediction  0.955065  0.767867  0.056604  0.099463  0.029987
+2       cf_prediction  0.989884  0.796899  0.001832  0.006715  0.008643
+3      inv_prediction  0.990762  0.794381  0.080612  0.068850  0.029823
+2021-05-09 10:33:57,710 genetic      DEBUG           race  sex      LSAT      UGPA      ZFYA  full_prediction  unaware_prediction  cf_prediction  inv_prediction
+0         1    0  0.374797 -0.328945 -1.216912         0.063242            0.049148      -0.005176        0.589969
+1         1    0 -0.186888 -0.571182 -0.059365        -0.058810           -0.116302      -0.031267        0.067221
+2         1    1 -1.310258 -0.328945 -0.535366        -0.196115           -0.356468      -0.021019        3.182359
+3         1    0  0.000341  0.397765 -1.519822         0.071920            0.049746      -0.136635        0.545872
+4         1    0 -1.216644  0.882239  0.167817        -0.090202           -0.182710      -0.064497       -1.525327
+...     ...  ...       ...       ...       ...              ...                 ...            ...             ...
+19562     1    1 -0.748573  1.851186  0.741182         0.122401            0.050941      -0.160792        0.045897
+19563     1    0  0.187569  1.124476 -0.405547         0.178092            0.185549       0.079578       -1.266946
+19564     1    0 -0.186888  1.851186  2.136730         0.186770            0.186146       0.098702        0.487248
+19565     1    1 -1.123030 -0.813419  0.167817        -0.212733           -0.371890      -0.161754       -0.293016
+19566     1    1 -1.684715 -0.328945  0.124544        -0.261111           -0.446605      -0.147079        1.882304
+
+[19567 rows x 9 columns]
+2021-05-09 10:34:04,028 genetic      DEBUG                   method      RMSE       MAE  sinkhorn    energy  gaussian
+0     full_prediction  0.938627  0.755647  0.321524  0.443386  0.081323
+1  unaware_prediction  0.955065  0.767867  0.056604  0.099463  0.029987
+2       cf_prediction  0.989884  0.796899  0.001832  0.006715  0.008643
+3      inv_prediction  1.677125  1.230616  0.259759  0.023064  0.002164
+2021-05-09 10:35:34,806 genetic      DEBUG           race  sex      LSAT      UGPA      ZFYA  full_prediction  unaware_prediction  cf_prediction  inv_prediction
+0         1    0  0.374797 -0.328945 -1.216912         0.063242            0.049148      -0.005176        0.589969
+1         1    0 -0.186888 -0.571182 -0.059365        -0.058810           -0.116302      -0.031267        0.067221
+2         1    1 -1.310258 -0.328945 -0.535366        -0.196115           -0.356468      -0.021019        3.182359
+3         1    0  0.000341  0.397765 -1.519822         0.071920            0.049746      -0.136635        0.545872
+4         1    0 -1.216644  0.882239  0.167817        -0.090202           -0.182710      -0.064497       -1.525327
+...     ...  ...       ...       ...       ...              ...                 ...            ...             ...
+19562     1    1 -0.748573  1.851186  0.741182         0.122401            0.050941      -0.160792        0.045897
+19563     1    0  0.187569  1.124476 -0.405547         0.178092            0.185549       0.079578       -1.266946
+19564     1    0 -0.186888  1.851186  2.136730         0.186770            0.186146       0.098702        0.487248
+19565     1    1 -1.123030 -0.813419  0.167817        -0.212733           -0.371890      -0.161754       -0.293016
+19566     1    1 -1.684715 -0.328945  0.124544        -0.261111           -0.446605      -0.147079        1.882304
+
+[19567 rows x 9 columns]
+2021-05-09 10:35:38,884 genetic      DEBUG                   method      RMSE       MAE  sinkhorn    energy  gaussian
+0     full_prediction  0.938627  0.755647  0.321524  0.443386  0.081323
+1  unaware_prediction  0.955065  0.767867  0.056604  0.099463  0.029987
+2       cf_prediction  0.989884  0.796899  0.001832  0.006715  0.008643
+3      inv_prediction  1.677125  1.230616  0.259759  0.023064  0.002164
+2021-05-09 10:38:35,195 genetic      DEBUG           race  sex      LSAT      UGPA      ZFYA  full_prediction  unaware_prediction  cf_prediction  inv_prediction
+0         1    0  0.374797 -0.328945 -1.216912         0.063242            0.049148      -0.005176        0.000304
+1         1    0 -0.186888 -0.571182 -0.059365        -0.058810           -0.116302      -0.031267        0.001764
+2         1    1 -1.310258 -0.328945 -0.535366        -0.196115           -0.356468      -0.021019        0.001764
+3         1    0  0.000341  0.397765 -1.519822         0.071920            0.049746      -0.136635        0.001764
+4         1    0 -1.216644  0.882239  0.167817        -0.090202           -0.182710      -0.064497        0.001076
+...     ...  ...       ...       ...       ...              ...                 ...            ...             ...
+19562     1    1 -0.748573  1.851186  0.741182         0.122401            0.050941      -0.160792        0.001764
+19563     1    0  0.187569  1.124476 -0.405547         0.178092            0.185549       0.079578        0.001764
+19564     1    0 -0.186888  1.851186  2.136730         0.186770            0.186146       0.098702        0.001764
+19565     1    1 -1.123030 -0.813419  0.167817        -0.212733           -0.371890      -0.161754        0.001764
+19566     1    1 -1.684715 -0.328945  0.124544        -0.261111           -0.446605      -0.147079        0.001764
+
+[19567 rows x 9 columns]
+2021-05-09 10:38:42,852 genetic      DEBUG                   method      RMSE       MAE      sinkhorn        energy      gaussian
+0     full_prediction  0.938627  0.755647  3.215242e-01  4.433856e-01  8.132347e-02
+1  unaware_prediction  0.955065  0.767867  5.660365e-02  9.946336e-02  2.998657e-02
+2       cf_prediction  0.989884  0.796899  1.832293e-03  6.715432e-03  8.643053e-03
+3      inv_prediction  0.999973  0.804965  1.523428e-09  1.722947e-07  5.960464e-08
+2021-05-09 10:46:11,197 genetic      DEBUG           race  sex      LSAT      UGPA      ZFYA  full_prediction  unaware_prediction  cf_prediction  inv_prediction
+0         1    0  0.374797 -0.328945 -1.216912         0.063242            0.049148      -0.005176        0.029301
+1         1    0 -0.186888 -0.571182 -0.059365        -0.058810           -0.116302      -0.031267        0.029301
+2         1    1 -1.310258 -0.328945 -0.535366        -0.196115           -0.356468      -0.021019        0.029301
+3         1    0  0.000341  0.397765 -1.519822         0.071920            0.049746      -0.136635        0.029301
+4         1    0 -1.216644  0.882239  0.167817        -0.090202           -0.182710      -0.064497        0.029301
+...     ...  ...       ...       ...       ...              ...                 ...            ...             ...
+19562     1    1 -0.748573  1.851186  0.741182         0.122401            0.050941      -0.160792        0.029301
+19563     1    0  0.187569  1.124476 -0.405547         0.178092            0.185549       0.079578        0.029301
+19564     1    0 -0.186888  1.851186  2.136730         0.186770            0.186146       0.098702        0.029301
+19565     1    1 -1.123030 -0.813419  0.167817        -0.212733           -0.371890      -0.161754        0.029301
+19566     1    1 -1.684715 -0.328945  0.124544        -0.261111           -0.446605      -0.147079        0.029301
+
+[19567 rows x 9 columns]
+2021-05-09 10:46:15,947 genetic      DEBUG                   method         RMSE        MAE      sinkhorn    energy  gaussian
+0     full_prediction     0.938627   0.755647  3.215242e-01  0.443386  0.081323
+1  unaware_prediction     0.955065   0.767867  5.660365e-02  0.099463  0.029987
+2       cf_prediction     0.989884   0.796899  1.832293e-03  0.006715  0.008643
+3      inv_prediction  3586.738036  63.333672  4.890790e+06  0.244949  0.000003
+2021-05-09 10:47:21,437 genetic      DEBUG           race  sex      LSAT      UGPA      ZFYA  full_prediction  unaware_prediction  cf_prediction  inv_prediction
+0         1    0  0.374797 -0.328945 -1.216912         0.063242            0.049148      -0.005176       -0.070477
+1         1    0 -0.186888 -0.571182 -0.059365        -0.058810           -0.116302      -0.031267       -0.070477
+2         1    1 -1.310258 -0.328945 -0.535366        -0.196115           -0.356468      -0.021019       -0.070477
+3         1    0  0.000341  0.397765 -1.519822         0.071920            0.049746      -0.136635       -0.070477
+4         1    0 -1.216644  0.882239  0.167817        -0.090202           -0.182710      -0.064497       -0.070477
+...     ...  ...       ...       ...       ...              ...                 ...            ...             ...
+19562     1    1 -0.748573  1.851186  0.741182         0.122401            0.050941      -0.160792       -0.070477
+19563     1    0  0.187569  1.124476 -0.405547         0.178092            0.185549       0.079578       -0.070477
+19564     1    0 -0.186888  1.851186  2.136730         0.186770            0.186146       0.098702       -0.070477
+19565     1    1 -1.123030 -0.813419  0.167817        -0.212733           -0.371890      -0.161754       -0.070477
+19566     1    1 -1.684715 -0.328945  0.124544        -0.261111           -0.446605      -0.147079       -0.070477
+
+[19567 rows x 9 columns]
+2021-05-09 10:47:27,410 genetic      DEBUG                   method         RMSE        MAE       sinkhorn    energy  gaussian
+0     full_prediction     0.938627   0.755647       0.321524  0.443386  0.081323
+1  unaware_prediction     0.955065   0.767867       0.056604  0.099463  0.029987
+2       cf_prediction     0.989884   0.796899       0.001832  0.006715  0.008643
+3      inv_prediction  3394.223070  51.093199  328783.843750  0.010224  0.000004
+2021-05-09 10:51:38,786 genetic      DEBUG           race  sex      LSAT      UGPA      ZFYA  full_prediction  unaware_prediction  cf_prediction  inv_prediction
+0         1    0  0.374797 -0.328945 -1.216912         0.063242            0.049148      -0.005176       -0.055288
+1         1    0 -0.186888 -0.571182 -0.059365        -0.058810           -0.116302      -0.031267       -0.055288
+2         1    1 -1.310258 -0.328945 -0.535366        -0.196115           -0.356468      -0.021019       -0.055288
+3         1    0  0.000341  0.397765 -1.519822         0.071920            0.049746      -0.136635       -0.055288
+4         1    0 -1.216644  0.882239  0.167817        -0.090202           -0.182710      -0.064497       -0.055288
+...     ...  ...       ...       ...       ...              ...                 ...            ...             ...
+19562     1    1 -0.748573  1.851186  0.741182         0.122401            0.050941      -0.160792       -0.055288
+19563     1    0  0.187569  1.124476 -0.405547         0.178092            0.185549       0.079578       -0.055288
+19564     1    0 -0.186888  1.851186  2.136730         0.186770            0.186146       0.098702       -0.055288
+19565     1    1 -1.123030 -0.813419  0.167817        -0.212733           -0.371890      -0.161754       -0.055288
+19566     1    1 -1.684715 -0.328945  0.124544        -0.261111           -0.446605      -0.147079       -0.055288
+
+[19567 rows x 9 columns]
+2021-05-09 10:51:45,482 genetic      DEBUG                   method         RMSE        MAE      sinkhorn    energy  gaussian
+0     full_prediction     0.938627   0.755647  3.215242e-01  0.443386  0.081323
+1  unaware_prediction     0.955065   0.767867  5.660365e-02  0.099463  0.029987
+2       cf_prediction     0.989884   0.796899  1.832293e-03  0.006715  0.008643
+3      inv_prediction  2664.417375  41.227221  1.945814e+07  0.223190  0.000005
+2021-05-09 10:51:57,530 genetic      DEBUG           race  sex      LSAT      UGPA      ZFYA  full_prediction  unaware_prediction  cf_prediction  inv_prediction
+0         1    0  0.374797 -0.328945 -1.216912         0.063242            0.049148      -0.005176       -0.055288
+1         1    0 -0.186888 -0.571182 -0.059365        -0.058810           -0.116302      -0.031267       -0.055288
+2         1    1 -1.310258 -0.328945 -0.535366        -0.196115           -0.356468      -0.021019       -0.055288
+3         1    0  0.000341  0.397765 -1.519822         0.071920            0.049746      -0.136635       -0.055288
+4         1    0 -1.216644  0.882239  0.167817        -0.090202           -0.182710      -0.064497       -0.055288
+...     ...  ...       ...       ...       ...              ...                 ...            ...             ...
+19562     1    1 -0.748573  1.851186  0.741182         0.122401            0.050941      -0.160792       -0.055288
+19563     1    0  0.187569  1.124476 -0.405547         0.178092            0.185549       0.079578       -0.055288
+19564     1    0 -0.186888  1.851186  2.136730         0.186770            0.186146       0.098702       -0.055288
+19565     1    1 -1.123030 -0.813419  0.167817        -0.212733           -0.371890      -0.161754       -0.055288
+19566     1    1 -1.684715 -0.328945  0.124544        -0.261111           -0.446605      -0.147079       -0.055288
+
+[19567 rows x 9 columns]
+2021-05-09 10:53:54,936 genetic      DEBUG           race  sex      LSAT      UGPA      ZFYA  full_prediction  unaware_prediction  cf_prediction  inv_prediction
+0         1    0  0.374797 -0.328945 -1.216912         0.063242            0.049148      -0.005176        -0.02626
+1         1    0 -0.186888 -0.571182 -0.059365        -0.058810           -0.116302      -0.031267        -0.02626
+2         1    1 -1.310258 -0.328945 -0.535366        -0.196115           -0.356468      -0.021019        -0.02626
+3         1    0  0.000341  0.397765 -1.519822         0.071920            0.049746      -0.136635        -0.02626
+4         1    0 -1.216644  0.882239  0.167817        -0.090202           -0.182710      -0.064497        -0.02626
+...     ...  ...       ...       ...       ...              ...                 ...            ...             ...
+19562     1    1 -0.748573  1.851186  0.741182         0.122401            0.050941      -0.160792        -0.02626
+19563     1    0  0.187569  1.124476 -0.405547         0.178092            0.185549       0.079578        -0.02626
+19564     1    0 -0.186888  1.851186  2.136730         0.186770            0.186146       0.098702        -0.02626
+19565     1    1 -1.123030 -0.813419  0.167817        -0.212733           -0.371890      -0.161754        -0.02626
+19566     1    1 -1.684715 -0.328945  0.124544        -0.261111           -0.446605      -0.147079        -0.02626
+
+[19567 rows x 9 columns]
+2021-05-09 10:53:59,276 genetic      DEBUG                   method        RMSE       MAE       sinkhorn    energy      gaussian
+0     full_prediction    0.938627  0.755647       0.321524  0.443386  8.132347e-02
+1  unaware_prediction    0.955065  0.767867       0.056604  0.099463  2.998657e-02
+2       cf_prediction    0.989884  0.796899       0.001832  0.006715  8.643053e-03
+3      inv_prediction  485.939921  8.646285  101349.476562  0.002632  1.490116e-07
+2021-05-09 10:55:31,074 genetic      DEBUG           race  sex      LSAT      UGPA      ZFYA  full_prediction  unaware_prediction  cf_prediction  inv_prediction
+0         1    0  0.374797 -0.328945 -1.216912         0.063242            0.049148      -0.005176       -0.090347
+1         1    0 -0.186888 -0.571182 -0.059365        -0.058810           -0.116302      -0.031267       -0.035198
+2         1    1 -1.310258 -0.328945 -0.535366        -0.196115           -0.356468      -0.021019       -0.175181
+3         1    0  0.000341  0.397765 -1.519822         0.071920            0.049746      -0.136635        0.747361
+4         1    0 -1.216644  0.882239  0.167817        -0.090202           -0.182710      -0.064497       -0.021832
+...     ...  ...       ...       ...       ...              ...                 ...            ...             ...
+19562     1    1 -0.748573  1.851186  0.741182         0.122401            0.050941      -0.160792       -0.287381
+19563     1    0  0.187569  1.124476 -0.405547         0.178092            0.185549       0.079578       -0.160638
+19564     1    0 -0.186888  1.851186  2.136730         0.186770            0.186146       0.098702       -0.259118
+19565     1    1 -1.123030 -0.813419  0.167817        -0.212733           -0.371890      -0.161754       -0.100463
+19566     1    1 -1.684715 -0.328945  0.124544        -0.261111           -0.446605      -0.147079       -0.627021
+
+[19567 rows x 9 columns]
+2021-05-09 10:55:35,105 genetic      DEBUG                   method      RMSE       MAE  sinkhorn    energy  gaussian
+0     full_prediction  0.938627  0.755647  0.321524  0.443386  0.081323
+1  unaware_prediction  0.955065  0.767867  0.056604  0.099463  0.029987
+2       cf_prediction  0.989884  0.796899  0.001832  0.006715  0.008643
+3      inv_prediction  1.123624  0.878610  0.028975  0.000737  0.001469
+2021-05-09 10:56:27,175 genetic      DEBUG           race  sex      LSAT      UGPA      ZFYA  full_prediction  unaware_prediction  cf_prediction  inv_prediction
+0         1    0  0.374797 -0.328945 -1.216912         0.063242            0.049148      -0.005176       -0.161318
+1         1    0 -0.186888 -0.571182 -0.059365        -0.058810           -0.116302      -0.031267       -0.091284
+2         1    1 -1.310258 -0.328945 -0.535366        -0.196115           -0.356468      -0.021019       -0.069603
+3         1    0  0.000341  0.397765 -1.519822         0.071920            0.049746      -0.136635        0.284159
+4         1    0 -1.216644  0.882239  0.167817        -0.090202           -0.182710      -0.064497       -0.117046
+...     ...  ...       ...       ...       ...              ...                 ...            ...             ...
+19562     1    1 -0.748573  1.851186  0.741182         0.122401            0.050941      -0.160792       -0.018561
+19563     1    0  0.187569  1.124476 -0.405547         0.178092            0.185549       0.079578       -0.306436
+19564     1    0 -0.186888  1.851186  2.136730         0.186770            0.186146       0.098702       -0.075673
+19565     1    1 -1.123030 -0.813419  0.167817        -0.212733           -0.371890      -0.161754        0.300328
+19566     1    1 -1.684715 -0.328945  0.124544        -0.261111           -0.446605      -0.147079       -0.030190
+
+[19567 rows x 9 columns]
+2021-05-09 10:56:31,317 genetic      DEBUG                   method      RMSE       MAE  sinkhorn    energy  gaussian
+0     full_prediction  0.938627  0.755647  0.321524  0.443386  0.081323
+1  unaware_prediction  0.955065  0.767867  0.056604  0.099463  0.029987
+2       cf_prediction  0.989884  0.796899  0.001832  0.006715  0.008643
+3      inv_prediction  1.006420  0.809003  0.000582  0.000195  0.000639
+2021-05-09 10:56:52,980 genetic      DEBUG           race  sex      LSAT      UGPA      ZFYA  full_prediction  unaware_prediction  cf_prediction  inv_prediction
+0         1    0  0.374797 -0.328945 -1.216912         0.063242            0.049148      -0.005176       -0.161318
+1         1    0 -0.186888 -0.571182 -0.059365        -0.058810           -0.116302      -0.031267       -0.091284
+2         1    1 -1.310258 -0.328945 -0.535366        -0.196115           -0.356468      -0.021019       -0.069603
+3         1    0  0.000341  0.397765 -1.519822         0.071920            0.049746      -0.136635        0.284159
+4         1    0 -1.216644  0.882239  0.167817        -0.090202           -0.182710      -0.064497       -0.117046
+...     ...  ...       ...       ...       ...              ...                 ...            ...             ...
+19562     1    1 -0.748573  1.851186  0.741182         0.122401            0.050941      -0.160792       -0.018561
+19563     1    0  0.187569  1.124476 -0.405547         0.178092            0.185549       0.079578       -0.306436
+19564     1    0 -0.186888  1.851186  2.136730         0.186770            0.186146       0.098702       -0.075673
+19565     1    1 -1.123030 -0.813419  0.167817        -0.212733           -0.371890      -0.161754        0.300328
+19566     1    1 -1.684715 -0.328945  0.124544        -0.261111           -0.446605      -0.147079       -0.030190
+
+[19567 rows x 9 columns]
+2021-05-09 10:56:57,951 genetic      DEBUG                   method      RMSE       MAE  sinkhorn    energy  gaussian
+0     full_prediction  0.938627  0.755647  0.321524  0.443386  0.081323
+1  unaware_prediction  0.955065  0.767867  0.056604  0.099463  0.029987
+2       cf_prediction  0.989884  0.796899  0.001832  0.006715  0.008643
+3      inv_prediction  1.006420  0.809003  0.000582  0.000195  0.000639
+2021-05-09 10:58:24,588 genetic      DEBUG           race  sex      LSAT      UGPA      ZFYA  full_prediction  unaware_prediction  cf_prediction  inv_prediction
+0         1    0  0.374797 -0.328945 -1.216912         0.063242            0.049148      -0.005176       -0.149302
+1         1    0 -0.186888 -0.571182 -0.059365        -0.058810           -0.116302      -0.031267       -0.013939
+2         1    1 -1.310258 -0.328945 -0.535366        -0.196115           -0.356468      -0.021019       -0.005865
+3         1    0  0.000341  0.397765 -1.519822         0.071920            0.049746      -0.136635        0.102660
+4         1    0 -1.216644  0.882239  0.167817        -0.090202           -0.182710      -0.064497        0.030420
+...     ...  ...       ...       ...       ...              ...                 ...            ...             ...
+19562     1    1 -0.748573  1.851186  0.741182         0.122401            0.050941      -0.160792        0.004925
+19563     1    0  0.187569  1.124476 -0.405547         0.178092            0.185549       0.079578        0.039169
+19564     1    0 -0.186888  1.851186  2.136730         0.186770            0.186146       0.098702       -0.064562
+19565     1    1 -1.123030 -0.813419  0.167817        -0.212733           -0.371890      -0.161754       -0.226168
+19566     1    1 -1.684715 -0.328945  0.124544        -0.261111           -0.446605      -0.147079        0.030483
+
+[19567 rows x 9 columns]
+2021-05-09 10:58:28,401 genetic      DEBUG                   method      RMSE       MAE  sinkhorn    energy  gaussian
+0     full_prediction  0.938627  0.755647  0.321524  0.443386  0.081323
+1  unaware_prediction  0.955065  0.767867  0.056604  0.099463  0.029987
+2       cf_prediction  0.989884  0.796899  0.001832  0.006715  0.008643
+3      inv_prediction  1.005493  0.808941  0.001210  0.000199  0.000469
+2021-05-09 10:59:06,350 genetic      DEBUG           race  sex      LSAT      UGPA      ZFYA  full_prediction  unaware_prediction  cf_prediction  inv_prediction
+0         1    0  0.374797 -0.328945 -1.216912         0.063242            0.049148      -0.005176       -0.118113
+1         1    0 -0.186888 -0.571182 -0.059365        -0.058810           -0.116302      -0.031267        0.051013
+2         1    1 -1.310258 -0.328945 -0.535366        -0.196115           -0.356468      -0.021019       -0.004502
+3         1    0  0.000341  0.397765 -1.519822         0.071920            0.049746      -0.136635        0.032573
+4         1    0 -1.216644  0.882239  0.167817        -0.090202           -0.182710      -0.064497        0.044010
+...     ...  ...       ...       ...       ...              ...                 ...            ...             ...
+19562     1    1 -0.748573  1.851186  0.741182         0.122401            0.050941      -0.160792       -0.170795
+19563     1    0  0.187569  1.124476 -0.405547         0.178092            0.185549       0.079578       -0.242093
+19564     1    0 -0.186888  1.851186  2.136730         0.186770            0.186146       0.098702        0.028760
+19565     1    1 -1.123030 -0.813419  0.167817        -0.212733           -0.371890      -0.161754        0.041116
+19566     1    1 -1.684715 -0.328945  0.124544        -0.261111           -0.446605      -0.147079       -0.032948
+
+[19567 rows x 9 columns]
+2021-05-09 10:59:10,748 genetic      DEBUG                   method      RMSE       MAE  sinkhorn    energy  gaussian
+0     full_prediction  0.938627  0.755647  0.321524  0.443386  0.081323
+1  unaware_prediction  0.955065  0.767867  0.056604  0.099463  0.029987
+2       cf_prediction  0.989884  0.796899  0.001832  0.006715  0.008643
+3      inv_prediction  1.008019  0.810929  0.000254  0.000180  0.000646
+2021-05-09 11:00:23,506 genetic      DEBUG           race  sex      LSAT      UGPA      ZFYA  full_prediction  unaware_prediction  cf_prediction  inv_prediction
+0         1    0  0.374797 -0.328945 -1.216912         0.063242            0.049148      -0.005176        0.043402
+1         1    0 -0.186888 -0.571182 -0.059365        -0.058810           -0.116302      -0.031267        0.012586
+2         1    1 -1.310258 -0.328945 -0.535366        -0.196115           -0.356468      -0.021019       -0.097576
+3         1    0  0.000341  0.397765 -1.519822         0.071920            0.049746      -0.136635        0.036384
+4         1    0 -1.216644  0.882239  0.167817        -0.090202           -0.182710      -0.064497        0.060549
+...     ...  ...       ...       ...       ...              ...                 ...            ...             ...
+19562     1    1 -0.748573  1.851186  0.741182         0.122401            0.050941      -0.160792       -0.210041
+19563     1    0  0.187569  1.124476 -0.405547         0.178092            0.185549       0.079578        0.036132
+19564     1    0 -0.186888  1.851186  2.136730         0.186770            0.186146       0.098702        0.125808
+19565     1    1 -1.123030 -0.813419  0.167817        -0.212733           -0.371890      -0.161754        0.069921
+19566     1    1 -1.684715 -0.328945  0.124544        -0.261111           -0.446605      -0.147079       -0.180617
+
+[19567 rows x 9 columns]
+2021-05-09 11:00:27,522 genetic      DEBUG                   method      RMSE       MAE  sinkhorn    energy  gaussian
+0     full_prediction  0.938627  0.755647  0.321524  0.443386  0.081323
+1  unaware_prediction  0.955065  0.767867  0.056604  0.099463  0.029987
+2       cf_prediction  0.989884  0.796899  0.001832  0.006715  0.008643
+3      inv_prediction  1.007654  0.811118  0.000292  0.000232  0.000784
