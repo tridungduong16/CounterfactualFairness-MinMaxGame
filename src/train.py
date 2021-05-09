@@ -45,6 +45,10 @@ def train(**parameters):
         Y = dataframe['target']
 
         Z = generator.generator_fit(X)
+
+        ZS = torch.cat((Z,S),1)
+        print(ZS)
+        sys.exit(1)    
         
         predictor_agnostic = discriminator_agnostic.forward(Z)
         predictor_awareness = discriminator_awareness.forward(Z, S)
@@ -75,7 +79,7 @@ if __name__ == "__main__":
         
     """Set up logging"""
     logger = logging.getLogger('genetic')
-    file_handler = logging.FileHandler(filename=conf['log_law'])
+    file_handler = logging.FileHandler(filename=conf['log_train_law'])
     stdout_handler = logging.StreamHandler(sys.stdout)
     formatter = logging.Formatter('%(asctime)s %(name)-12s %(levelname)-8s %(message)s')
     file_handler.setFormatter(formatter)
@@ -97,8 +101,10 @@ if __name__ == "__main__":
     target = 'ZFYA'
     selected_race = ['White', 'Black']
     df = df[df['race'].isin(selected_race)]
-    
     df = df.reset_index(drop = True)
+    
+    df_generator = df[normal_feature]
+
     
     """Preprocess data"""
     df['LSAT'] = (df['LSAT']-df['LSAT'].mean())/df['LSAT'].std()
@@ -110,7 +116,7 @@ if __name__ == "__main__":
     df['sex'] = le.fit_transform(df['sex'])
     df = df[['LSAT', 'UGPA', 'sex', 'race', 'ZFYA']]  
     
-    df_generator = df[normal_feature]
+    # df_generator = df[normal_feature]
     
 
     df = pd.get_dummies(df, columns = ['sex'])
@@ -140,18 +146,20 @@ if __name__ == "__main__":
     problem = parameters['problem']
     
     """Setup generator and discriminator"""
-    emb_size = 128
+    emb_size = 32
     # generator = Generator(df_generator.shape[1])
     generator= AutoEncoder(
-        encoder_layers=[512, 512, emb_size],  # model architecture
+        encoder_layers=[64, 64, emb_size],  # model architecture
         decoder_layers=[],  # decoder optional - you can create bottlenecks if you like
+        encoder_dropout = 0.85,
+        decoder_dropout = 0.85,
         activation='relu',
         swap_p=0.2,  # noise parameter
         lr=0.001,
         lr_decay=.99,
         batch_size=512,  # 512
         verbose=False,
-        optimizer='sgd',
+        optimizer='adamW',
         scaler='gauss_rank',  # gauss rank scaling forces your numeric features into standard normal distributions
     )        
     discriminator_agnostic = Discriminator_Agnostic(emb_size, problem)
@@ -178,6 +186,11 @@ if __name__ == "__main__":
         discriminator_awareness.parameters(), lr=learning_rate
     )
     
+    # lr_decay = torch.optim.lr_scheduler.ExponentialLR(generator_optimizer, lr_decay)
+    scheduler = torch.optim.lr_scheduler.StepLR(generator_optimizer, step_size=5, gamma=0.1)
+    
+    
+    
     
     """Training"""
     n_updates = len(df)// batch_size
@@ -191,11 +204,12 @@ if __name__ == "__main__":
 
 
     
-    epochs = 100
+    epochs = 1
     # epochs = 1
     
     for i in (range(epochs)):
         # logger.debug('Epoch {}'.format((i)))  
+        scheduler.step()
         
         for j in tqdm(range(n_updates)):
             df_term_generator = df_generator.loc[batch_size*j:batch_size*(j+1)]
@@ -210,7 +224,13 @@ if __name__ == "__main__":
             num, bin, cat = generator.forward(df_term_generator)
             encode_output = torch.cat((num , bin), 1)    
             Z = generator.encode(encode_output)
+            logger.debug(Z)
+            logger.debug("=================================")
             
+            # ZS = torch.cat((Z,S),1)
+            # print(ZS)    
+            # sys.exit(1)
+
             # Z = generator(X)
             # print(Z)
 
@@ -219,7 +239,14 @@ if __name__ == "__main__":
                     
             loss_agnostic = loss(predictor_agnostic, Y)
             loss_awareness = loss(predictor_awareness, Y)
-            final_loss = loss_agnostic + F.relu(loss_agnostic - loss_awareness)
+                        
+            final_loss = loss_agnostic + 0.005*F.leaky_relu(loss_agnostic - loss_awareness)
+            # final_loss = loss_agnostic + 5*F.relu(loss_agnostic - loss_awareness)
+            # final_loss = loss_agnostic + F.gelu(loss_agnostic - loss_awareness)
+            # final_loss = loss_agnostic + F.prelu(loss_agnostic - loss_awareness, torch.tensor(0.5).to(device))
+            # final_loss = loss_agnostic + F.rrelu(loss_agnostic - loss_awareness)
+
+            
             
             generator_optimizer.zero_grad()
             discriminator_agnostic_optimizer.zero_grad()
@@ -236,6 +263,9 @@ if __name__ == "__main__":
         logger.debug('Loss Agnostic {}'.format(loss_agnostic))        
         logger.debug('Loss Awareness {}'.format(loss_awareness))
         logger.debug('Final loss {}'.format(final_loss))
+        logger.debug('Gap {}'.format(loss_agnostic - loss_awareness))
+        logger.debug('LeakyRelu Gap {}'.format(F.leaky_relu(loss_agnostic - loss_awareness)))
+
         logger.debug('-------------------')
         
         
@@ -250,9 +280,9 @@ if __name__ == "__main__":
         Z = generator.encode(encode_output)
         predictor_agnostic = discriminator_agnostic(Z)
         
-        df_result = pd.read_csv(conf['result_law'])
-        df_result['inv_prediction'] = predictor_agnostic.cpu().detach().numpy().reshape(-1)
-        df_result.to_csv(conf['result_law'], index = False)
+    df_result = pd.read_csv(conf['result_law'])
+    df_result['inv_prediction'] = predictor_agnostic.cpu().detach().numpy().reshape(-1)
+    df_result.to_csv(conf['result_law'], index = False)
     
     
 

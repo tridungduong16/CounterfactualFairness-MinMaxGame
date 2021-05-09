@@ -58,6 +58,10 @@ if __name__ == "__main__":
     data_path = conf['result_law']
     df = pd.read_csv(data_path)
     
+
+    logger.debug(df)
+
+    
     df_result = pd.DataFrame()
     df_result['method'] = ''
     df_result['RMSE'] = ''

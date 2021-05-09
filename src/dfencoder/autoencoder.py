@@ -612,7 +612,6 @@ class AutoEncoder(torch.nn.Module):
                 self.train_megabatch_epoch(n_updates, df)
             
             else:
-
                 input_df = df.swap(likelihood=self.swap_p)
                 self.train_epoch(n_updates, input_df, df)
 
