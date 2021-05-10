@@ -9,4 +9,6 @@ log_train_law : /home/trduong/Data/counterfactual_fairness_game_theoric/logs/law
 evaluate_law : /home/trduong/Data/counterfactual_fairness_game_theoric/logs/evaluate.log
 
 ae_model_law : /data/trduong/counterfactual_fairness_game_theoric/models/ae_model_law.pt
+state_dict_law : /data/trduong/counterfactual_fairness_game_theoric/models/state_dict_law.pth
+
 

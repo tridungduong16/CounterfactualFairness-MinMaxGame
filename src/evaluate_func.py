@@ -18,6 +18,7 @@ import sys
 
 from sklearn.metrics import mean_absolute_error
 from sklearn.metrics import mean_squared_error
+from sklearn.metrics import r2_score
 
 from geomloss import SamplesLoss
 
@@ -35,11 +36,10 @@ def evaluate_pred(y_pred, y_true):
     """
 
     evaluations = {}
-    rmse = np.sqrt(mean_squared_error(y_true, y_pred))
-    evaluations['RMSE'] = rmse
-    
-    mae = mean_absolute_error(y_true, y_pred)
-    evaluations['MAE'] = mae
+    evaluations['RMSE'] = np.sqrt(mean_squared_error(y_true, y_pred))
+    evaluations['MAE'] = mean_absolute_error(y_true, y_pred)
+    # evaluations['R2score'] = r2_score(y_true, y_pred)
+
 
     return evaluations
 
@@ -68,9 +68,10 @@ def evaluate_distribution(ys, ys_hat):
 
 
 def evaluate_fairness(sensitive_att, df, target):
-    df = df.sample(frac=0.3, replace=True, random_state=1)
+    df = df.sample(frac=0.35, replace=True, random_state=1)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     sinkhorn, energy, gaussian = 0,0,0
+    
     for s in sensitive_att:
         ys = df[df[s] == 1][target].values
         ys_hat = df[df[s] == 0][target].values
@@ -82,6 +83,8 @@ def evaluate_fairness(sensitive_att, df, target):
         sinkhorn += eval_performance['sinkhorn']
         energy += eval_performance['energy']
         gaussian += eval_performance['gaussian']
+        
+        print("Sensitive ", s, sinkhorn)
     
     eval_performance = {}
     eval_performance['sinkhorn'] = sinkhorn/len(sensitive_att)

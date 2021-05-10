@@ -98,7 +98,12 @@ if __name__ == "__main__":
     ae_model.fit(df, epochs=100)
 
     """Save model"""
-    torch.save(ae_model, conf['ae_model_law'])
+    # torch.save(ae_model, conf['ae_model_law'])
+    torch.save(ae_model.state_dict(), conf['state_dict_law'])
     
+    ae_model.load_state_dict(torch.load(conf['state_dict_law']))
+
+    
+    # ae_model.get_representation(df)
 
 

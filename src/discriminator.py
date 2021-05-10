@@ -27,11 +27,13 @@ class Generator(nn.Module):
         x = F.relu(x)      
 
         x = self.predict(x)             
+        x = self.dropout(x)
+
         return x
     
 
 class Discriminator_Agnostic(nn.Module):
-    def __init__(self, input_length: int, problem: str):
+    def __init__(self, input_length: int, problem=None):
         super(Discriminator_Agnostic, self).__init__()
         self.problem = problem
         self.hidden = torch.nn.Linear(input_length, 128)   # hidden layer
@@ -66,27 +68,16 @@ class Discriminator_Agnostic(nn.Module):
         x = self.dropout(x)
         x = F.relu(x)      
 
-        x = self.predict(x)             
+        x = self.predict(x)        
+        x = self.dropout(x)
+
         return x
     
 
 class Discriminator_Awareness(nn.Module):
-    def __init__(self, input_length: int, problem: str):
+    def __init__(self, input_length: int, problem=None):
         super(Discriminator_Awareness, self).__init__()
         self.problem = problem
-    #     self.hidden = torch.nn.Linear(input_length, 100)   # hidden layer
-    #     self.predict = torch.nn.Linear(100, 1)   # output layer
-    #     self.dropout = nn.Dropout(0.5)
-    #     self.activation = nn.Sigmoid()
-    
-    # def forward(self, Z, S):
-        
-    #     x = torch.cat((Z,S),1)    
-    #     x = F.relu(self.hidden(x))   
-    #     x = self.dropout(x)
-    #     x = self.predict(x)
-    #     return x
-    
         self.hidden = torch.nn.Linear(input_length, 128)   # hidden layer
         self.hidden1 = torch.nn.Linear(1024, 512)   # hidden layer
         self.hidden2 = torch.nn.Linear(512, 256)   # hidden layer

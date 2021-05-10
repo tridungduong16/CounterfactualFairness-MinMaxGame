@@ -32,14 +32,15 @@ def GroundTruthModel():
     R = pyro.sample("Race", exo_dist['Nrace'])
     S = pyro.sample("Sex", exo_dist['Nsex'])
     K = pyro.sample("Knowledge", exo_dist['Nknowledge'])
-    
-    # PsuedoDelta 
+        
     G = pyro.sample("UGPA", dist.Normal(K + R + S, 0.1))
     L = pyro.sample("LSAT", dist.Normal(K + R + S, 0.1))
     F = pyro.sample("ZFYA", dist.Normal(K + R + S, 0.1))
+    
+    
 
 
-def infer_knowledge(df):
+def infer_knowledge(df, loop):
     """
     
     :param df: DESCRIPTION
@@ -52,14 +53,37 @@ def infer_knowledge(df):
     knowledge = []
     for i in tqdm(range(len(df))):
         conditioned = pyro.condition(GroundTruthModel, data={"UGPA": df["UGPA"][i], "LSAT": df["LSAT"][i]})
-        posterior = pyro.infer.Importance(conditioned, num_samples=10).run()
+        posterior = pyro.infer.Importance(conditioned, num_samples=loop).run()
         post_marginal = pyro.infer.EmpiricalMarginal(posterior, "Knowledge")
-        post_samples = [post_marginal().item() for _ in range(10)]
+        post_samples = [post_marginal().item() for _ in range(loop)]
         post_unique, post_counts = np.unique(post_samples, return_counts=True)
         mean = np.mean(post_samples)
         knowledge.append(mean)
     return knowledge
+
+
+
+# def infer_knowledge_test(df):
+#     """
     
+#     :param df: DESCRIPTION
+#     :type df: TYPE
+#     :return: DESCRIPTION
+#     :rtype: TYPE
+
+#     """
+    
+#     knowledge = []
+#     for i in tqdm(range(len(df))):
+#         conditioned = pyro.condition(GroundTruthModel, data={"UGPA": df["UGPA"][i], "LSAT": df["LSAT"][i]})
+#         posterior = pyro.infer.Importance(conditioned, num_samples=200).run()
+#         post_marginal = pyro.infer.EmpiricalMarginal(posterior, "Knowledge")
+#         post_samples = [post_marginal().item() for _ in range(200)]
+#         post_unique, post_counts = np.unique(post_samples, return_counts=True)
+#         mean = np.mean(post_samples)
+#         knowledge.append(mean)
+#     return knowledge
+
 
 if __name__ == "__main__":
     
@@ -127,9 +151,15 @@ if __name__ == "__main__":
         
     
     logger.debug('Counterfactual fairness model')
-    knowledged = infer_knowledge(df)
+    
+    df_sample = df.sample(frac=0.2, replace=True, random_state=1).reset_index()
+    knowledged = infer_knowledge(df_sample, loop=5)
     knowledged = np.array(knowledged).reshape(-1,1)
-    reg = LinearRegression().fit(knowledged, df['ZFYA'])
+    reg = LinearRegression().fit(knowledged, df_sample['ZFYA'])
+    
+    knowledged = infer_knowledge(df, loop =5)
+    knowledged = np.array(knowledged).reshape(-1,1)
+    
     y_pred = reg.predict(knowledged)
     df['cf_prediction'] = y_pred.reshape(-1)
     
