@@ -1,8 +1,13 @@
 data_law : /home/trduong/Data/counterfactual_fairness_game_theoric/data/raw/law_data.csv
+data_adult : /home/trduong/Data/counterfactual_fairness_game_theoric/data/raw/adult.data
+processed_data_adult : /home/trduong/Data/counterfactual_fairness_game_theoric/data/raw/processed_adult.csv
 
 result_law : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/law.csv
 result_evaluate_law : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_law.csv
 result_ivr_law : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/law_ivr.csv
+
+result_adult : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
+result_evaluate_adult : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
 
 log_law : /home/trduong/Data/counterfactual_fairness_game_theoric/logs/law.log
 log_train_law : /home/trduong/Data/counterfactual_fairness_game_theoric/logs/law_train.log

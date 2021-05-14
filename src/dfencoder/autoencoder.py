@@ -4,12 +4,14 @@ import gc
 import pandas as pd
 import numpy as np
 import torch
+from torch.autograd import Variable
 from tqdm import tqdm
 
 from .dataframe import EncoderDataFrame
 # from logging import BasicLogger, IpynbLogger, TensorboardXLogger
 from .scalers import StandardScaler, NullScaler, GaussRankScaler
 
+import sys
 def ohe(input_vector, dim, device="cpu"):
     """Does one-hot encoding of input vector."""
     batch_size = len(input_vector)
@@ -94,6 +96,10 @@ class CompleteLayer(torch.nn.Module):
 class AutoEncoder(torch.nn.Module):
     def __init__(
             self,
+            input_shape = None,
+            continuous_index = None,
+            binary_index=None,
+            cat_index=None,
             encoder_layers=None,
             decoder_layers=None,
             encoder_dropout=None,
@@ -128,6 +134,14 @@ class AutoEncoder(torch.nn.Module):
             **kwargs
         ):
         super(AutoEncoder, self).__init__(*args, **kwargs)
+
+        self.continuous_index = continuous_index
+        self.binary_index = binary_index
+        self.cat_index = cat_index
+        self.input_shape = input_shape
+        self.mask = torch.nn.Parameter(torch.randn(self.input_shape))
+        self.mask.requires_grad = True
+
         self.numeric_fts = OrderedDict()
         self.binary_fts = OrderedDict()
         self.categorical_fts = OrderedDict()
@@ -186,6 +200,7 @@ class AutoEncoder(torch.nn.Module):
         self.n_megabatches = n_megabatches
         self.eps = eps
 
+
     def get_scaler(self, name):
         scalers = {
             'standard':StandardScaler,
@@ -226,6 +241,7 @@ class AutoEncoder(torch.nn.Module):
             feature = {}
             vl = df[ft].value_counts()
             if len(vl) < 3:
+                print("value", vl)
                 feature['cats'] = list(vl.index)
                 self.binary_fts[ft] = feature
                 continue
@@ -342,123 +358,6 @@ class AutoEncoder(torch.nn.Module):
                 betas = self.betas,
                 eps = self.eps)
                 
-    def build_model(self, df):
-        """
-        Takes a pandas dataframe as input.
-        Builds autoencoder model.
-
-        Returns the dataframe after making changes.
-        """
-
-        if self.verbose:
-            print('Building model...')
-
-        #get metadata from features
-        self.init_features(df)
-        input_dim = self.build_inputs()
-
-        #construct a canned denoising autoencoder architecture
-        if self.encoder_layers is None:
-            self.encoder_layers = [int(4*input_dim) for _ in range(3)]
-
-        if self.decoder_layers is None:
-            self.decoder_layers = []
-
-        if self.encoder_activations is None:
-            self.encoder_activations = [self.activation for _ in self.encoder_layers]
-
-        if self.decoder_activations is None:
-            self.decoder_activations = [self.activation for _ in self.decoder_layers]
-
-        if self.encoder_dropout is None or type(self.encoder_dropout) == float:
-            drp = self.encoder_dropout
-            self.encoder_dropout = [drp for _ in self.encoder_layers]
-
-        if self.decoder_dropout is None or type(self.decoder_dropout) == float:
-            drp = self.decoder_dropout
-            self.decoder_dropout = [drp for _ in self.decoder_layers]
-
-        for i, dim in enumerate(self.encoder_layers):
-            activation = self.encoder_activations[i]
-            layer = CompleteLayer(
-                input_dim,
-                dim,
-                activation = activation,
-                dropout = self.encoder_dropout[i]
-            )
-            input_dim = dim
-            self.encoder.append(layer)
-            self.add_module(f'encoder_{i}', layer)
-
-        for i, dim in enumerate(self.decoder_layers):
-
-            activation = self.decoder_activations[i]
-            layer = CompleteLayer(
-                input_dim,
-                dim,
-                activation = activation,
-                dropout = self.decoder_dropout[i]
-            )
-            input_dim = dim
-            self.decoder.append(layer)
-            self.add_module(f'decoder_{i}', layer)
-
-        #set up predictive outputs
-        self.build_outputs(dim)
-
-        #get optimizer
-        self.optim = self.build_optimizer()
-        if self.lr_decay is not None:
-            self.lr_decay = torch.optim.lr_scheduler.ExponentialLR(self.optim, self.lr_decay)
-
-        cat_names = list(self.categorical_fts.keys())
-        fts = self.num_names + self.bin_names + cat_names
-        # if self.logger == 'basic':
-        #     self.logger = BasicLogger(fts=fts)
-        # elif self.logger == 'ipynb':
-        #     self.logger = IpynbLogger(fts=fts)
-        # elif self.logger == 'tensorboard':
-        #     self.logger = TensorboardXLogger(logdir=self.logdir, run=self.run, fts=fts)
-        #returns a copy of preprocessed dataframe.
-        self.to(self.device)
-
-        if self.verbose:
-            print('done!')
-
-    def compute_targets(self, df):
-        num = torch.tensor(df[self.num_names].values).float().to(self.device)
-        bin = torch.tensor(df[self.bin_names].astype(int).values).float().to(self.device)
-        codes = []
-        for ft in self.categorical_fts:
-            # print("Ft ", ft)
-            feature = self.categorical_fts[ft]
-            code = torch.tensor(df[ft].cat.codes.astype(int).values).to(self.device)
-            # print("Code ", code, len(code))
-            codes.append(code)
-        # print("Categorical target ")
-        # print(codes)
-        # print(len(codes))
-
-        return num, bin, codes
-
-    def encode_input(self, df):
-        """
-        Handles raw df inputs.
-        Passes categories through embedding layers.
-        """
-        num, bin, codes = self.compute_targets(df)
-        embeddings = []
-        # print("Embedding ")
-        # print(self.categorical_fts)
-        for i, ft in enumerate(self.categorical_fts):
-            # print(i, ft)
-            feature = self.categorical_fts[ft]
-            # print("Features", feature)
-            emb = feature['embedding'](codes[i])
-            # print("Emb", emb)
-            embeddings.append(emb)
-
-        return [num], [bin], embeddings
 
     def compute_outputs(self, x):
         num = self.numeric_output(x)
@@ -471,14 +370,6 @@ class AutoEncoder(torch.nn.Module):
             cat.append(out)
         return num, bin, cat
 
-    def encode(self, x, layers=None):
-        if layers is None:
-            layers = len(self.encoder)
-        for i in range(layers):
-            layer = self.encoder[i]
-            x = layer(x)
-        return x
-
     def decode(self, x, layers=None):
         if layers is None:
             layers = len(self.decoder)
@@ -488,15 +379,6 @@ class AutoEncoder(torch.nn.Module):
         num, bin, cat = self.compute_outputs(x)
         return num, bin, cat
 
-    def forward(self, df):
-        """We do the thang. Takes pandas dataframe as input."""
-        num, bin, embeddings = self.encode_input(df)
-        x = torch.cat(num + bin + embeddings, dim=1)
-
-        encoding = self.encode(x)
-        num, bin, cat = self.decode(encoding)
-
-        return num, bin, cat
 
     def compute_loss(self, num, bin, cat, target_df, logging=False, _id=False):
         if logging:
@@ -585,19 +467,6 @@ class AutoEncoder(torch.nn.Module):
         if self.n_megabatches==1:
             df = self.prepare_df(df)
 
-        # if val is not None:
-        #     val_df = self.prepare_df(val)
-        #     val_in = val_df.swap(likelihood=self.swap_p)
-        #     msg = "Validating during training.\n"
-        #     msg += "Computing baseline performance..."
-        #     baseline = self.compute_baseline_performance(val_in, val_df)
-        #     if self.verbose:
-        #         print(msg)
-        #     result = []
-        #     val_batches = len(val_df)//self.eval_batch_size
-        #     if len(val_df) % self.eval_batch_size != 0:
-        #         val_batches += 1
-
         n_updates = len(df)//self.batch_size
         if len(df) % self.batch_size > 0:
             n_updates += 1
@@ -617,43 +486,6 @@ class AutoEncoder(torch.nn.Module):
 
             if self.lr_decay is not None:
                 self.lr_decay.step()
-
-            # if val is not None:
-            #     self.eval()
-            #     with torch.no_grad():
-            #         swapped_loss = []
-            #         id_loss = []
-            #         for i in range(val_batches):
-            #             start = i * self.eval_batch_size
-            #             stop = (i+1) * self.eval_batch_size
-
-            #             slc_in = val_in.iloc[start:stop]
-            #             slc_out = val_df.iloc[start:stop]
-
-            #             num, bin, cat = self.forward(slc_in)
-            #             _, _, _, net_loss = self.compute_loss(num, bin, cat, slc_out)
-            #             swapped_loss.append(net_loss)
-
-
-            #             num, bin, cat = self.forward(slc_out)
-            #             _, _, _, net_loss = self.compute_loss(num, bin, cat, slc_out, _id=True)
-            #             id_loss.append(net_loss)
-
-            #         # self.logger.end_epoch()
-            #         # if self.project_embeddings:
-            #         #     self.logger.show_embeddings(self.categorical_fts)
-            #         if self.verbose:
-            #             swapped_loss = np.array(swapped_loss).mean()
-            #             id_loss = np.array(id_loss).mean()
-
-            #             msg = '\n'
-            #             msg += 'net validation loss, swapped input: \n'
-            #             msg += f"{round(swapped_loss, 4)} \n\n"
-            #             msg += 'baseline validation loss: '
-            #             msg += f"{round(baseline, 4)} \n\n"
-            #             msg += 'net validation loss, unaltered input: \n'
-            #             msg += f"{round(id_loss, 4)} \n\n\n"
-            #             print(msg)
 
     def train_epoch(self, n_updates, input_df, df, pbar=None):
         """Run regular epoch."""
@@ -879,30 +711,252 @@ class AutoEncoder(torch.nn.Module):
 
         return output_df
 
-    def generator_fit(self, df, epochs=1, val=None):
-
-        if self.optim is None:
-            self.build_model(df)
-
-        if self.n_megabatches==1:
-            df = self.prepare_df(df)        
-
-        n_updates = len(df)//self.batch_size
-
-        if len(df) % self.batch_size > 0:
-            n_updates += 1
-
-        for i in tqdm(range(epochs)):
-            df = df.sample(frac=1.0)
-            df = EncoderDataFrame(df)
-
-            num, bin, embeddings = self.encode_input(df)
-            x = torch.cat(num + bin + embeddings, dim=1)
-            encoding = self.encode(x)
-
-
+    # def generator_fit(self, df, epochs=1, val=None):
+    #
+    #     if self.optim is None:
+    #         self.build_model(df)
+    #
+    #     if self.n_megabatches==1:
+    #         df = self.prepare_df(df)
+    #
+    #     n_updates = len(df)//self.batch_size
+    #
+    #     if len(df) % self.batch_size > 0:
+    #         n_updates += 1
+    #
+    #     for i in tqdm(range(epochs)):
+    #         df = df.sample(frac=1.0)
+    #         df = EncoderDataFrame(df)
+    #
+    #         num, bin, embeddings = self.encode_input(df)
+    #         x = torch.cat(num + bin + embeddings, dim=1)
+    #         encoding = self.encode(x)
 
 
+
+    def build_model(self, df):
+        """
+        Takes a pandas dataframe as input.
+        Builds autoencoder model.
+
+        Returns the dataframe after making changes.
+        """
+
+        if self.verbose:
+            print('Building model...')
+
+        #get metadata from features
+        self.init_features(df)
+        input_dim = self.build_inputs()
+
+        #construct a canned denoising autoencoder architecture
+        if self.encoder_layers is None:
+            self.encoder_layers = [int(4*input_dim) for _ in range(3)]
+
+        if self.decoder_layers is None:
+            self.decoder_layers = []
+
+        if self.encoder_activations is None:
+            self.encoder_activations = [self.activation for _ in self.encoder_layers]
+
+        if self.decoder_activations is None:
+            self.decoder_activations = [self.activation for _ in self.decoder_layers]
+
+        if self.encoder_dropout is None or type(self.encoder_dropout) == float:
+            drp = self.encoder_dropout
+            self.encoder_dropout = [drp for _ in self.encoder_layers]
+
+        if self.decoder_dropout is None or type(self.decoder_dropout) == float:
+            drp = self.decoder_dropout
+            self.decoder_dropout = [drp for _ in self.decoder_layers]
+
+        for i, dim in enumerate(self.encoder_layers):
+            activation = self.encoder_activations[i]
+            layer = CompleteLayer(
+                input_dim,
+                dim,
+                activation = activation,
+                dropout = self.encoder_dropout[i]
+            )
+            input_dim = dim
+            self.encoder.append(layer)
+            self.add_module(f'encoder_{i}', layer)
+
+        for i, dim in enumerate(self.decoder_layers):
+
+            activation = self.decoder_activations[i]
+            layer = CompleteLayer(
+                input_dim,
+                dim,
+                activation = activation,
+                dropout = self.decoder_dropout[i]
+            )
+            input_dim = dim
+            self.decoder.append(layer)
+            self.add_module(f'decoder_{i}', layer)
+
+        #set up predictive outputs
+        self.build_outputs(dim)
+
+        #get optimizer
+        self.optim = self.build_optimizer()
+        if self.lr_decay is not None:
+            self.lr_decay = torch.optim.lr_scheduler.ExponentialLR(self.optim, self.lr_decay)
+
+        cat_names = list(self.categorical_fts.keys())
+        fts = self.num_names + self.bin_names + cat_names
+        # if self.logger == 'basic':
+        #     self.logger = BasicLogger(fts=fts)
+        # elif self.logger == 'ipynb':
+        #     self.logger = IpynbLogger(fts=fts)
+        # elif self.logger == 'tensorboard':
+        #     self.logger = TensorboardXLogger(logdir=self.logdir, run=self.run, fts=fts)
+        #returns a copy of preprocessed dataframe.
+        self.to(self.device)
+
+        if self.verbose:
+            print('done!')
+
+    # def compute_targets(self, X):
+    #
+    #     num = torch.tensor(X[self.contin]).float().to(self.device)
+    #     bin = torch.tensor(df[self.bin_names].astype(int).values).float().to(self.device)
+    #     codes = []
+    #     for ft in self.categorical_fts:
+    #         feature = self.categorical_fts[ft]
+    #         code = torch.tensor(df[ft].cat.codes.astype(int).values).to(self.device)
+    #         codes.append(code)
+    #
+    #     return num, bin, codes
+
+    def compute_targets(self, df):
+        num = torch.tensor(df[self.num_names].values).float().to(self.device)
+        bin = torch.tensor(df[self.bin_names].astype(int).values).float().to(self.device)
+        codes = []
+        for ft in self.categorical_fts:
+            # print("Ft ", ft)
+            feature = self.categorical_fts[ft]
+            code = torch.tensor(df[ft].cat.codes.astype(int).values).to(self.device)
+            # print("Code ", code, len(code))
+            codes.append(code)
+        # print("Categorical target ")
+        # print(codes)
+        # print(len(codes))
+
+        return num, bin, codes
+
+    # def encode_input(self, X):
+    #     """
+    #     Handles raw df inputs.
+    #     Passes categories through embedding layers.
+    #     """
+    #     num, bin, codes = self.compute_targets(X)
+    #     embeddings = []
+    #     for i, ft in enumerate(self.categorical_fts):
+    #         # print(i, ft)
+    #         feature = self.categorical_fts[ft]
+    #         # print("Features", feature)
+    #         emb = feature['embedding'](codes[i])
+    #         # print("Emb", emb)
+    #         embeddings.append(emb)
+    #
+    #     return [num], [bin], embeddings
+
+    def encode_input(self, df):
+        """
+        Handles raw df inputs.
+        Passes categories through embedding layers.
+        """
+        num, bin, codes = self.compute_targets(df)
+        embeddings = []
+        # print("Embedding ")
+        for i, ft in enumerate(self.categorical_fts):
+            feature = self.categorical_fts[ft]
+            # print("Features", feature)
+            emb = feature['embedding'](codes[i])
+            # print("Emb", emb)
+            embeddings.append(emb)
+
+        return [num], [bin], embeddings
+
+    def encode(self, x, layers=None):
+        if layers is None:
+            layers = len(self.encoder)
+        for i in range(layers):
+            layer = self.encoder[i]
+            x = layer(x)
+        return x
+
+    def _independent_straight_through_sampling(self, x):
+        """
+        Straight through sampling.
+        Outputs:
+            z -- shape (batch_size, sequence_length, 2)
+        """
+
+        if torch.cuda.is_available():
+            dev = "cuda:0"
+        else:
+            dev = "cpu"
+        device = torch.device(dev)
+
+        # print("Mask value", self.mask)
+        # print("Value ", x)
+        x = x * self.mask
+        # print("After value ", x)
+
+        z = torch.nn.functional.softmax(x, dim = 1)
+        # print("Softmax ", z)
+
+        reduce_max = torch.max(z, dim=1, keepdim=False).values.reshape(-1, 1)
+
+        equal = z.eq(reduce_max)
+        z_hard = equal.type(torch.FloatTensor).to(device)
+        # print("z_hard ", z_hard)
+
+        # sys.exit(1)
+        # with torch.no_grad():
+        #     z_soft = (z_hard - z)
+        # z_soft = z_soft + z
+        z_soft = (z_hard - z).detach_() + z
+        # print("z_soft ", z_soft)
+        # sys.exit(1)
+        # print(z*z_soft)
+        return z*z_soft
+
+    def forward(self, X):
+        """We do the thang. Takes pandas dataframe as input."""
+
+        num, bin, embeddings = self.encode_input(X)
+        x = torch.cat(num + bin + embeddings, dim=1)
+
+        # print(x)
+        # print("Mask ---------------------------------")
+        # x = x*self.mask
+
+        # print(x)
+        # print("Sampling ---------------------------------")
+        # x = self._independent_straight_through_sampling(x)
+
+        # print(x)
+        # print("Encode ---------------------------------")
+
+        encoding = self.encode(x)
+        num, bin, cat = self.decode(encoding)
+
+        return num, bin, cat
+
+
+    def custom_forward(self, X):
+        """We do the thang. Takes pandas dataframe as input."""
+
+        num, bin, embeddings = self.encode_input(X)
+        x = torch.cat(num + bin + embeddings, dim=1)
+
+        encoding = self.encode(x)
+        # num, bin, cat = self.decode(encoding)
+
+        return encoding
 
 
 
