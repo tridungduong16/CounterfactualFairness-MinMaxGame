@@ -65,7 +65,6 @@ def evaluate_classifier(y_pred, y_true):
     
     return evaluations
 
-
 def evaluate_distribution(ys, ys_hat):
     """
     :param ys: DESCRIPTION
@@ -88,7 +87,6 @@ def evaluate_distribution(ys, ys_hat):
     evaluation["gaussian"] = Loss(ys, ys_hat).cpu().detach().numpy() 
     
     return evaluation 
-
 
 def evaluate_fairness(sensitive_att, df, target):
     df = df.sample(frac=0.35, replace=True, random_state=1)

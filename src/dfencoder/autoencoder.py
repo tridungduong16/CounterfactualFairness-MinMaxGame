@@ -416,7 +416,6 @@ class AutoEncoder(torch.nn.Module):
         return mse_loss, bce_loss, cce_loss, net_loss
 
     def do_backward(self, mse, bce, cce):
-
         mse.backward(retain_graph=True)
         bce.backward(retain_graph=True)
         for i, ls in enumerate(cce):

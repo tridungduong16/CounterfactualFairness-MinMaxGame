@@ -13,6 +13,8 @@ from dfencoder.autoencoder import AutoEncoder
 from sklearn import preprocessing
 from dfencoder.dataframe import EncoderDataFrame
 from geomloss import SamplesLoss  # See also ImagesLoss, VolumesLoss
+from utils.evaluate_func import evaluate_pred, evaluate_distribution, evaluate_fairness
+from sklearn.linear_model import LinearRegression
 
 def train(**parameters):
     """Hyperparameter"""
@@ -176,7 +178,7 @@ if __name__ == "__main__":
 
     emb_size = 32
     discriminator_agnostic = Discriminator_Agnostic(emb_size, problem)
-    discriminator_awareness = Discriminator_Awareness(emb_size+32, problem)
+    discriminator_awareness = Discriminator_Awareness(emb_size*2, problem)
     
     # generator.to(device)
     discriminator_agnostic.to(device)
@@ -187,37 +189,49 @@ if __name__ == "__main__":
     # print("Haizz", df_generator.shape[1])
     generator= AutoEncoder(
         input_shape = df_generator.shape[1],
-        encoder_layers=[256, 256, emb_size],  # model architecture
+        encoder_layers=[8, 8, emb_size],  # model architecture
         decoder_layers=[],  # decoder optional - you can create bottlenecks if you like
-        encoder_dropout = 0.85,
-        decoder_dropout = 0.85,
-        activation='relu',
+        encoder_dropout = 0.5,
+        decoder_dropout = 0.5,
+        activation='leaky_relu',
         swap_p=0.2,  # noise parameter
-        lr=0.001,
+        lr=0.0001,
         lr_decay=.99,
         batch_size=512,  # 512
         verbose=False,
-        optimizer='adamW',
+        optimizer='sgd',
         scaler='gauss_rank',  # gauss rank scaling forces your numeric features into standard normal distributions
     )
     generator.build_model(df_generator)
 
     """Optimizer"""
-    generator_optimizer = torch.optim.Adam(
-        generator.parameters(), lr=learning_rate
-    )
-    
-    discriminator_agnostic_optimizer = torch.optim.Adam(
-        discriminator_agnostic.parameters(), lr=learning_rate
-    )
-    discriminator_awareness_optimizer = torch.optim.Adam(
-        discriminator_awareness.parameters(), lr=learning_rate
-    )
+    # generator_optimizer = torch.optim.Adam(
+    #     generator.parameters(), lr=learning_rate
+    # )
+    # discriminator_agnostic_optimizer = torch.optim.Adam(
+    #     discriminator_agnostic.parameters(), lr=learning_rate
+    # )
+    # discriminator_awareness_optimizer = torch.optim.Adam(
+    #     discriminator_awareness.parameters(), lr=learning_rate
+    # )
+
+    optimizer1 = torch.optim.Adam((*generator.parameters(),
+                                   *discriminator_agnostic.parameters()),
+                                  lr=1e-6,
+                                  weight_decay=1e-5)
+
+    # optimizer1 = torch.optim.SGD((*generator.parameters(),
+    #                                *discriminator_agnostic.parameters()),
+    #                              lr=0.01,
+    #                              momentum=0.9)
+
+    optimizer2 = torch.optim.Adam(discriminator_awareness.parameters())
+
     
     # lr_decay = torch.optim.lr_scheduler.ExponentialLR(generator_optimizer, lr_decay)
-    scheduler = torch.optim.lr_scheduler.StepLR(generator_optimizer, step_size=10, gamma=0.1)
-    scheduler_discriminator_env = torch.optim.lr_scheduler.StepLR(discriminator_awareness_optimizer, step_size=10, gamma=0.1)
-    scheduler_discriminator = torch.optim.lr_scheduler.StepLR(discriminator_agnostic_optimizer, step_size=10, gamma=0.1)
+    # scheduler = torch.optim.lr_scheduler.StepLR(generator_optimizer, step_size=10, gamma=0.1)
+    # scheduler_discriminator_env = torch.optim.lr_scheduler.StepLR(discriminator_awareness_optimizer, step_size=10, gamma=0.1)
+    # scheduler_discriminator = torch.optim.lr_scheduler.StepLR(discriminator_agnostic_optimizer, step_size=10, gamma=0.1)
     
     
     
@@ -229,15 +243,15 @@ if __name__ == "__main__":
     logger.debug('Dataframe length {}'.format(len(df)))
     logger.debug('Batchsize {}'.format((batch_size)))
     
-    # loss = torch.nn.SmoothL1Loss()
-    loss = torch.nn.MSELoss()
-    # loss = torch.nn.L1Loss
+    loss = torch.nn.SmoothL1Loss()
+    loss_function = torch.nn.MSELoss()
+    # loss = torch.nn.L1Loss()
 
     dist_loss = SamplesLoss(loss="sinkhorn", p=2, blur=.05)
 
 
     
-    epochs = 5
+    epochs = 50
     # epochs = 1
     
     for i in (range(epochs)):
@@ -250,102 +264,119 @@ if __name__ == "__main__":
         for j in tqdm(range(n_updates)):
             
             df_term_generator = df_generator.loc[batch_size*j:batch_size*(j+1)]
-
             df_term_generator = EncoderDataFrame(df_term_generator)
-            df_term_generator_noise = df_term_generator.swap(likelihood=0.2)
-
+            df_term_generator_noise = df_term_generator.swap(likelihood=0.25)
             df_term_discriminator = df.loc[batch_size*j:batch_size*(j+1)].reset_index(drop = True)
             df_term_autoencoder = df_autoencoder.loc[batch_size*j:batch_size*(j+1)].reset_index(drop = True)
-            
-            
+
             X = torch.tensor(df_term_discriminator[normal_feature].values.astype(np.float32)).to(device)
             Y = torch.Tensor(df_term_discriminator[target].values).to(device).reshape(-1,1)
-            
             Z = generator.custom_forward(df_term_generator)
             Z_noise = generator.custom_forward(df_term_generator_noise)
 
-
-            # Z = generator.encode(encode_output)
-
-            # sys.exit(1)
-            
-            sensitive_representation = dfencoder_model.get_representation(
+            S = dfencoder_model.get_representation(
                 df_term_autoencoder[full_feature]
             )
-            
-            # logger.debug(Z)
-            # logger.debug("=================================")
-            
-            # ZS = torch.cat((Z,S),1)
-            # print(ZS)    
-            # sys.exit(1)
 
-            # Z = generator(X)
-            # print(Z)
-            distLoss = torch.tensor(0).to(device).float()
+            # S = torch.tensor(df_term_discriminator[sensitive_feature].values)
 
-            predictor_agnostic = discriminator_agnostic(sensitive_representation)
-            predictor_agnostic_z = discriminator_agnostic(Z)
+            ZS = torch.cat((S, Z), 1)
+
+            predictor_awareness = discriminator_awareness(ZS)
+            predictor_agnostic = discriminator_agnostic(Z)
             predictor_agnostic_noise = discriminator_agnostic(Z_noise)
 
-            # predictor_agnostic = discriminator_agnostic(sensitive_representation)
-            # predictor_awareness = discriminator_awareness(Z,sensitive_representation)
-            
-            # for s in sensitive_feature:
-                
-                # index_positive = df_term_discriminator.index[df_term_discriminator[s] == 0].tolist()
-                # index_negative = df_term_discriminator.index[df_term_discriminator[s] == 1].tolist()
-
-                # print(predictor_agnostic)
-                # print(index_positive)
-                # # sys.exit(1)
-
-                # print(predictor_agnostic[[1,2,3]])
-                # print(len(predictor_agnostic))
-                # print(len(index_positive))
-                # print(predictor_agnostic[index_positive])
-
-                # sys.exit(1)
-
-                # sys.exit(1)
-                # index_positive = torch.tensor(df_autoencoder.index[df_autoencoder[s] == 0].tolist()).to(device)
-                # index_negative = torch.tensor(df_autoencoder.index[df_autoencoder[s] == 1].tolist()).to(device)
-                
-                # print(predictor_agnostic[index_positive])
-                # if len(index_positive) != 0:
-                #     # print((index_positive))
-                #     # print((predictor_agnostic))
-                #     # sys.exit(1)
-                #     ys_positive = predictor_agnostic[index_positive]
-                #     # print(ys_positive)
-                #     # print(predictor_awareness)
-                #     ys_hat_positive = predictor_awareness[index_positive]
-                #     distLoss += dist_loss(ys_positive, ys_hat_positive)
-
-                # if len(index_negative) != 0:
-                #     ys_negative = predictor_agnostic[index_negative]
-                #     ys_hat_negative = predictor_awareness[index_negative]
-                #     distLoss += dist_loss(ys_negative, ys_hat_negative)
-            
-            # print(distLoss)
-            # sys.exit(1)
-            # print("Distribution loss ", distLoss)
-
+            """
+            loss = loss(f_i, label)
+            loss = loss(f_i, f_i_noise)
+            loss = loss(f_i, f_e)
+            loss = loss(f_i_noise, f_e)
+            """
             loss_agnostic = loss(predictor_agnostic, Y)
-            loss_agnostic += loss(predictor_agnostic_noise, predictor_agnostic)
-            loss_agnostic += loss(predictor_agnostic_z, predictor_agnostic)
-            loss_agnostic += loss(predictor_agnostic_z, predictor_agnostic_noise)
+            loss_agnostic_noise = loss(predictor_agnostic_noise, Y)
+            loss_awareness = loss(predictor_awareness, Y)
+
+            # final_loss = loss_agnostic + loss_agnostic_noise
+            final_loss = loss_agnostic + loss_agnostic_noise + \
+                         0.01*F.leaky_relu(loss_agnostic + loss_agnostic_noise - loss_awareness)
+            # sum_loss += loss_agnostic
+            # print(loss_agnostic)
+            # sum_loss += loss_agnostic_noise
+            # final_loss = sum_loss
+            # final_loss = loss_agnostic + loss_agnostic_noise + \
+            #              0.01*F.leaky_relu(loss_agnostic - loss_awareness)
+
+            optimizer1.zero_grad()
+            optimizer2.zero_grad()
+
+            final_loss.backward(retain_graph=True)
+            for p in discriminator_awareness.parameters():
+                if p.grad is not None:  # In general, C is a NN, with requires_grad=False for some layers
+                    p.grad.data.mul_(-1)  # Update of grad.data not tracked in computation graph
+
+            optimizer1.step()
+            optimizer2.step()
+
+
+            # generator_optimizer.zero_grad()
+            # discriminator_agnostic_optimizer.zero_grad()
+            # discriminator_awareness_optimizer.zero_grad()
 
             # loss_agnostic = loss(predictor_agnostic, Y)
-            # loss_awareness = loss(predictor_awareness, Y)
+            # loss_agnostic += loss(predictor_agnostic_noise, Y)
+            # loss_agnostic += loss(predictor_agnostic_noise, predictor_agnostic)
+            # loss_agnostic += F.relu(loss(predictor_awareness            mse, bce, cce, net_loss = self.compute_loss(
+            #                 num, bin, cat, target_sample,
+            #                 logging=False
+            #             )
+            #             self.do_backward(mse, bce, cce), predictor_agnostic))
+            # loss_agnostic += F.relu(loss(predictor_awareness, predictor_agnostic_noise))
+            # final_loss = loss_agnostic/5
+            # num, bin, cat = generator.forward(df_term_generator)
+            # mse, bce, cce, net_loss = generator.compute_loss(
+            #     num, bin, cat, df_term_generator_noise,
+            #     logging=False
+            # )
+            #
+            # mse.backward(retain_graph=True)
+            # bce.backward(retain_graph=True)
+            # for i, ls in enumerate(cce):
+            #     if i == len(cce) - 1:
+            #         ls.backward(retain_graph=False)
+            #     else:
+            #         ls.backward(retain_graph=True)
+
+            # generator.do_backward(mse, bce, cce)
+
+            # mse, bce, cce, net_loss = generator.compute_loss(
+            #     num, bin, cat, target_sample,
+            #     logging=False
+            # )
+            # generator.do_backward(mse, bce, cce)
+
+            # loss1 = loss(predictor_agnostic, Y)
+            # loss1.backward(retain_graph=True)
+
+            # loss2 = loss(predictor_agnostic_noise, Y)
+            # loss2.backward(retain_graph=True)
+
+            # loss3 = loss(predictor_agnostic, predictor_agnostic_noise)
+            # loss3.backward(retain_graph=True)
+
+            # loss4 = F.relu(loss1 - loss3)
+            # loss4.backward(retain_graph=True)
+
+            # loss5 = F.relu(loss2 - loss3)
+            # loss5.backward(retain_graph=True)
+
+            # final_loss = loss1 + loss2 + loss3 + 0.1*loss4 + 0.1*loss5
+            # loss3 += loss(predictor_agnostic_noise, predictor_agnostic)
+            # loss4 += F.relu(loss(predictor_awareness, predictor_agnostic))
+            # loss5 += F.relu(loss(predictor_awareness, predictor_agnostic_noise))
+
 
             # final_loss = loss_agnostic + F.leaky_relu(loss_agnostic - torch.sigmoid(loss_awareness))
-            final_loss = loss_agnostic/3
-
-            sum_loss += final_loss
-            # final_loss = 100*loss_agnostic + 0.0001*F.leaky_relu(loss_agnostic - loss_awareness) 
-            # print(final_loss)
-
+            # final_loss = 100*loss_agnostic + 0.0001*F.leaky_relu(loss_agnostic - loss_awareness)
             # final_loss = loss_agnostic + F.relu(loss_agnostic - loss_awareness)
             # final_loss = loss_agnostic + F.gelu(loss_agnostic - loss_awareness)
             # final_loss = loss_agnostic + F.prelu(loss_agnostic - loss_awareness, torch.tensor(0.5).to(device))
@@ -353,15 +384,13 @@ if __name__ == "__main__":
 
             
             
-            generator_optimizer.zero_grad()
-            discriminator_agnostic_optimizer.zero_grad()
-            discriminator_awareness_optimizer.zero_grad()
-            
-            final_loss.backward()
 
-            generator_optimizer.step()
-            discriminator_agnostic_optimizer.step()
-            discriminator_awareness_optimizer.step()
+            
+            # final_loss.backward(retain_graph=True)
+
+            # generator_optimizer.step()
+            # discriminator_agnostic_optimizer.step()
+            # discriminator_awareness_optimizer.step()
 
             # scheduler.step()
             # scheduler_discriminator_env.step()
@@ -370,38 +399,33 @@ if __name__ == "__main__":
         # if i % 10 == 0:
         logger.debug('Epoch {}'.format(i))
         logger.debug("Sum Loss {}".format(sum_loss / n_updates))
-        logger.debug('Loss Agnostic {}'.format(loss_agnostic))        
-
+        # logger.debug('Loss Agnostic {}'.format(loss_agnostic))
         logger.debug('-------------------')
-        
-        
-        # df_result = pd.read_csv(conf['result_law'])
-        # X = torch.tensor(df_generator[normal_feature].values.astype(np.float32)).to(device)
-        # Z = generator(X)
-        # predictor_agnostic = discriminator_agnostic(Z)
-        # df_result['inv_prediction'] = predictor_agnostic.cpu().detach().numpy().reshape(-1)
-        
-        # num, bin, cat = generator.forward(df_generator)
-        # encode_output = torch.cat((num ,bin), 1)
-        # Z = generator.encode(encode_output)
 
-        sensitive_representation = dfencoder_model.get_representation(
+        S = dfencoder_model.get_representation(
             df_autoencoder[full_feature]
         )
 
-        predictor_agnostic = discriminator_agnostic(sensitive_representation)
-        
+        predictor_agnostic = discriminator_agnostic(S)
+        logger.debug("Prediction")
+
+        # S = S.cpu().detach().numpy()
+        # reg = LinearRegression().fit(S, df_autoencoder[target].values)
+        # y_pred = reg.predict(S).reshape(-1)
+        y_pred = predictor_agnostic.cpu().detach().numpy().reshape(-1)
+        y_true = df_autoencoder[target].values
+        eval = evaluate_pred(y_pred, y_true)
+        print(y_pred)
+        print(eval)
+
     df_result = pd.read_csv(conf['result_law'])
-    df_result['inv_prediction'] = predictor_agnostic.cpu().detach().numpy().reshape(-1)
+    df_result['inv_prediction'] = y_pred
     df_result.to_csv(conf['result_law'], index = False)
     
     
 
 
     sys.modules[__name__].__dict__.clear()
-    
-        # sys.exit(1)
-
 
 
     
