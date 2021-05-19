@@ -8,62 +8,59 @@ import torch.nn.functional as F
 import numpy as np
 
 from tqdm import tqdm 
-from model_arch.discriminator import Discriminator_Agnostic, Discriminator_Awareness
+from model_arch.discriminator import Discriminator_Law
 from dfencoder.autoencoder import AutoEncoder
 from sklearn import preprocessing
 from dfencoder.dataframe import EncoderDataFrame
-from geomloss import SamplesLoss  # See also ImagesLoss, VolumesLoss
 from utils.evaluate_func import evaluate_pred, evaluate_distribution, evaluate_fairness
-from sklearn.linear_model import LinearRegression
-
-def train(**parameters):
-    """Hyperparameter"""
-    learning_rate = parameters['learning_rate']
-    epochs = parameters['epochs']
-    input_length = parameters['input_length']
-    dataframe = parameters['dataframe']
-
-    generator = AutoEncoder(input_length)
-    discriminator_agnostic = Discriminator_Agnostic(input_length)
-    discriminator_awareness = Discriminator_Awareness(input_length)
-
-    """Optimizer"""
-    generator_optimizer = torch.optim.Adam(generator.parameters(), lr=learning_rate)
-    discriminator_agnostic_optimizer = torch.optim.Adam(
-        discriminator_agnostic.parameters(), lr=learning_rate
-    )
-    discriminator_awareness_optimizer = torch.optim.Adam(
-        discriminator_awareness.parameters(), lr=learning_rate
-    )
+from sklearn.utils import shuffle
 
 
-    """Loss function"""
-    loss = nn.BCELoss()
-
-
-    """Training steps"""
-    for i in tqdm(epochs):
-        X = dataframe['normal_features']
-        S = dataframe['sensitive_features']
-        Y = dataframe['target']
-
-        Z = generator.generator_fit(X)
-
-        ZS = torch.cat((Z,S),1)
-        # print(ZS)
-        # sys.exit(1)
-        
-        predictor_agnostic = discriminator_agnostic.forward(Z)
-        predictor_awareness = discriminator_awareness.forward(Z, S)
-
-        loss_agnostic = loss(predictor_agnostic, Y)
-        loss_awareness = loss(predictor_awareness, Y)
-        final_loss = (loss_agnostic + loss_awareness) / 2
-        final_loss.backward()
-
-        generator_optimizer.step()
-        discriminator_agnostic_optimizer.step()
-        discriminator_awareness_optimizer.step()
+# def train(**parameters):
+#     """Hyperparameter"""
+#     learning_rate = parameters['learning_rate']
+#     epochs = parameters['epochs']
+#     input_length = parameters['input_length']
+#     dataframe = parameters['dataframe']
+#
+#     generator = AutoEncoder(input_length)
+#     discriminator_agnostic = Discriminator_Law(input_length)
+#     discriminator_awareness = Discriminator_Law(input_length)
+#
+#     """Optimizer"""
+#     generator_optimizer = torch.optim.Adam(generator.parameters(), lr=learning_rate)
+#     discriminator_agnostic_optimizer = torch.optim.Adam(
+#         discriminator_agnostic.parameters(), lr=learning_rate
+#     )
+#     discriminator_awareness_optimizer = torch.optim.Adam(
+#         discriminator_awareness.parameters(), lr=learning_rate
+#     )
+#
+#
+#     """Loss function"""
+#     loss = nn.BCELoss()
+#
+#
+#     """Training steps"""
+#     for i in tqdm(epochs):
+#         X = dataframe['normal_features']
+#         S = dataframe['sensitive_features']
+#         Y = dataframe['target']
+#
+#         Z = generator.generator_fit(X)
+#         ZS = torch.cat((Z,S),1)
+#
+#         predictor_agnostic = discriminator_agnostic.forward(Z)
+#         predictor_awareness = discriminator_awareness.forward(Z, S)
+#
+#         loss_agnostic = loss(predictor_agnostic, Y)
+#         loss_awareness = loss(predictor_awareness, Y)
+#         final_loss = (loss_agnostic + loss_awareness) / 2
+#         final_loss.backward()
+#
+#         generator_optimizer.step()
+#         discriminator_agnostic_optimizer.step()
+#         discriminator_awareness_optimizer.step()
 
 if __name__ == "__main__":
     """Device"""
@@ -81,7 +78,7 @@ if __name__ == "__main__":
             print(exc)
         
     """Set up logging"""
-    logger = logging.getLogger('genetic')
+    logger = logging.getLogger('CFairness')
     file_handler = logging.FileHandler(filename=conf['log_train_law'])
     stdout_handler = logging.StreamHandler(sys.stdout)
     formatter = logging.Formatter('%(asctime)s %(name)-12s %(levelname)-8s %(message)s')
@@ -90,7 +87,6 @@ if __name__ == "__main__":
     logger.addHandler(file_handler)
     logger.addHandler(stdout_handler)
     logger.setLevel(logging.DEBUG)
-    
 
     """Load data"""
     data_path = conf['data_law']
@@ -130,9 +126,9 @@ if __name__ == "__main__":
     """Setup antuo encoder"""
     dfencoder_model = AutoEncoder(
         input_shape = df_autoencoder[full_feature].shape[1],
-        encoder_layers=[512, 512, 32],  # model architecture
+        encoder_layers=[512, 512, 128],  # model architecture
         decoder_layers=[],  # decoder optional - you can create bottlenecks if you like
-        activation='relu',
+        activation='tanh',
         swap_p=0.2,  # noise parameter
         lr=0.01,
         lr_decay=.99,
@@ -143,27 +139,22 @@ if __name__ == "__main__":
     )
     
     dfencoder_model.to(device)
-    dfencoder_model.fit(df_autoencoder[full_feature], epochs=1)    
+    dfencoder_model.fit(df_autoencoder[full_feature], epochs=100)
     
     # sys.exit(1)
-
     # df = pd.get_dummies(df, columns = ['sex'])
     # df = pd.get_dummies(df, columns = ['race'])
 
-    # print(df)
-    # df = pd.get_dummies(df.sex, prefix='Sex')
     # sensitive_feature = ['sex_0','sex_1', 'race_0', 'race_1']
-    # sys.exit(1)
-    
-    # X, y = df[['LSAT', 'UGPA', 'sex', 'race']].values, df['ZFYA'].values
-    
+
+
     """Setup hyperparameter"""    
     logger.debug('Setup hyperparameter')
     parameters = {}
-    parameters['epochs'] = 2
-    parameters['learning_rate'] = 0.001
+    parameters['epochs'] = 300
+    parameters['learning_rate'] = 1e-9
     parameters['dataframe'] = df
-    parameters['batch_size'] = 32
+    parameters['batch_size'] = 64
     parameters['problem'] = 'regression'
 
     """Hyperparameter"""
@@ -174,26 +165,21 @@ if __name__ == "__main__":
     problem = parameters['problem']
     
     """Setup generator and discriminator"""
-    # dfencoder_model = torch.load(conf['ae_model_law'])
-
-    emb_size = 32
-    discriminator_agnostic = Discriminator_Agnostic(emb_size, problem)
-    discriminator_awareness = Discriminator_Awareness(emb_size*2, problem)
-    
-    # generator.to(device)
+    emb_size = 64
+    discriminator_agnostic = Discriminator_Law(emb_size, problem)
+    discriminator_awareness = Discriminator_Law(emb_size + 4, problem)
     discriminator_agnostic.to(device)
     discriminator_awareness.to(device)
 
     """Setup generator"""
     df_generator = df[normal_feature]
-    # print("Haizz", df_generator.shape[1])
     generator= AutoEncoder(
         input_shape = df_generator.shape[1],
-        encoder_layers=[8, 8, emb_size],  # model architecture
+        encoder_layers=[256, 256, emb_size],  # model architecture
         decoder_layers=[],  # decoder optional - you can create bottlenecks if you like
         encoder_dropout = 0.5,
         decoder_dropout = 0.5,
-        activation='leaky_relu',
+        activation='tanh',
         swap_p=0.2,  # noise parameter
         lr=0.0001,
         lr_decay=.99,
@@ -205,35 +191,18 @@ if __name__ == "__main__":
     generator.build_model(df_generator)
 
     """Optimizer"""
-    # generator_optimizer = torch.optim.Adam(
-    #     generator.parameters(), lr=learning_rate
-    # )
-    # discriminator_agnostic_optimizer = torch.optim.Adam(
-    #     discriminator_agnostic.parameters(), lr=learning_rate
-    # )
-    # discriminator_awareness_optimizer = torch.optim.Adam(
-    #     discriminator_awareness.parameters(), lr=learning_rate
-    # )
+    optimizer1 = torch.optim.Adam(
+        generator.parameters(), lr=learning_rate
+    )
+    optimizer2 = torch.optim.SGD(discriminator_agnostic.parameters(),
+                                 lr=learning_rate, momentum=0.9)
+    optimizer3 = torch.optim.SGD(discriminator_awareness.parameters(),
+                                 lr=learning_rate, momentum=0.9)
 
-    optimizer1 = torch.optim.Adam((*generator.parameters(),
-                                   *discriminator_agnostic.parameters()),
-                                  lr=1e-6,
-                                  weight_decay=1e-5)
+    scheduler1 = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer1, 'min')
+    scheduler2 = torch.optim.lr_scheduler.CyclicLR(optimizer2, base_lr=learning_rate, max_lr=0.001)
+    scheduler3 = torch.optim.lr_scheduler.CyclicLR(optimizer3, base_lr=learning_rate, max_lr=0.001)
 
-    # optimizer1 = torch.optim.SGD((*generator.parameters(),
-    #                                *discriminator_agnostic.parameters()),
-    #                              lr=0.01,
-    #                              momentum=0.9)
-
-    optimizer2 = torch.optim.Adam(discriminator_awareness.parameters())
-
-    
-    # lr_decay = torch.optim.lr_scheduler.ExponentialLR(generator_optimizer, lr_decay)
-    # scheduler = torch.optim.lr_scheduler.StepLR(generator_optimizer, step_size=10, gamma=0.1)
-    # scheduler_discriminator_env = torch.optim.lr_scheduler.StepLR(discriminator_awareness_optimizer, step_size=10, gamma=0.1)
-    # scheduler_discriminator = torch.optim.lr_scheduler.StepLR(discriminator_agnostic_optimizer, step_size=10, gamma=0.1)
-    
-    
     
     
     """Training"""
@@ -242,182 +211,139 @@ if __name__ == "__main__":
     logger.debug('Number of updates {}'.format(n_updates))
     logger.debug('Dataframe length {}'.format(len(df)))
     logger.debug('Batchsize {}'.format((batch_size)))
-    
-    loss = torch.nn.SmoothL1Loss()
+
     loss_function = torch.nn.MSELoss()
-    # loss = torch.nn.L1Loss()
-
-    dist_loss = SamplesLoss(loss="sinkhorn", p=2, blur=.05)
+    loss_function = torch.nn.SmoothL1Loss()
 
 
-    
-    epochs = 50
-    # epochs = 1
-    
+    step = 0
     for i in (range(epochs)):
-        # logger.debug('Epoch {}'.format((i)))  
-        # scheduler.step()
-        # scheduler_discriminator_env.step()
-        # scheduler_discriminator.step()
+        df_train = df.copy().sample(frac=1).reset_index(drop=True)
+        df_generator = df_train[normal_feature].copy()
+        df_autoencoder = df_train.copy()
 
-        sum_loss = 0
+        sum_loss = []
+        sum_loss_aware = []
+        sum_loss_gen = []
         for j in tqdm(range(n_updates)):
-            
+            path = step % 10
+            """Only contain normal features"""
             df_term_generator = df_generator.loc[batch_size*j:batch_size*(j+1)]
             df_term_generator = EncoderDataFrame(df_term_generator)
             df_term_generator_noise = df_term_generator.swap(likelihood=0.25)
-            df_term_discriminator = df.loc[batch_size*j:batch_size*(j+1)].reset_index(drop = True)
             df_term_autoencoder = df_autoencoder.loc[batch_size*j:batch_size*(j+1)].reset_index(drop = True)
 
-            X = torch.tensor(df_term_discriminator[normal_feature].values.astype(np.float32)).to(device)
-            Y = torch.Tensor(df_term_discriminator[target].values).to(device).reshape(-1,1)
+            """Label"""
+            Y = torch.Tensor(df_term_autoencoder[target].values).to(device).reshape(-1,1)
+
+            """Feed forward"""
             Z = generator.custom_forward(df_term_generator)
             Z_noise = generator.custom_forward(df_term_generator_noise)
 
+            """Get the representation from autoencoder model"""
             S = dfencoder_model.get_representation(
                 df_term_autoencoder[full_feature]
             )
 
-            # S = torch.tensor(df_term_discriminator[sensitive_feature].values)
+            """Get only sensitive representation"""
+            sex_feature = dfencoder_model.categorical_fts['sex']
+            cats = sex_feature['cats']
+            emb = sex_feature['embedding']
+            cat_index = df_term_autoencoder['sex'].values
+            emb_cat_sex = []
+            for c in cat_index:
+                emb_cat_sex.append(emb.weight.data.cpu().numpy()[cats.index(c), :].tolist())
 
-            ZS = torch.cat((S, Z), 1)
+            race_feature = dfencoder_model.categorical_fts['race']
+            cats = race_feature['cats']
+            emb = race_feature['embedding']
+            cat_index = df_term_autoencoder['race'].values
+            emb_cat_race = []
+            for c in cat_index:
+                emb_cat_race.append(emb.weight.data.cpu().numpy()[cats.index(c), :].tolist())
 
+            emb_cat_race = torch.tensor(np.array(emb_cat_race).astype(np.float32)).to(device)
+            emb_cat_sex = torch.tensor(np.array(emb_cat_sex).astype(np.float32)).to(device)
+            emb = torch.cat((emb_cat_race, emb_cat_sex),1)
+
+            ZS = torch.cat((emb, Z), 1)
+
+            """Prediction and calculate loss"""
             predictor_awareness = discriminator_awareness(ZS)
             predictor_agnostic = discriminator_agnostic(Z)
             predictor_agnostic_noise = discriminator_agnostic(Z_noise)
 
-            """
-            loss = loss(f_i, label)
-            loss = loss(f_i, f_i_noise)
-            loss = loss(f_i, f_e)
-            loss = loss(f_i_noise, f_e)
-            """
-            loss_agnostic = loss(predictor_agnostic, Y)
-            loss_agnostic_noise = loss(predictor_agnostic_noise, Y)
-            loss_awareness = loss(predictor_awareness, Y)
+            """Discriminator loss"""
+            loss_agnostic = loss_function(predictor_agnostic, Y)
+            loss_agnostic += loss_function(predictor_agnostic_noise, Y)
+            loss_awareness = loss_function(predictor_awareness, Y)
+            diff_loss = torch.max(torch.tensor(0).to(device), loss_agnostic - loss_awareness)
 
-            # final_loss = loss_agnostic + loss_agnostic_noise
-            final_loss = loss_agnostic + loss_agnostic_noise + \
-                         0.01*F.leaky_relu(loss_agnostic + loss_agnostic_noise - loss_awareness)
-            # sum_loss += loss_agnostic
-            # print(loss_agnostic)
-            # sum_loss += loss_agnostic_noise
-            # final_loss = sum_loss
-            # final_loss = loss_agnostic + loss_agnostic_noise + \
-            #              0.01*F.leaky_relu(loss_agnostic - loss_awareness)
+            "Generator loss"
+            gen_loss = 0.1 * diff_loss + loss_agnostic
 
+            """Track loss"""
+            sum_loss.append(loss_agnostic)
+            sum_loss_aware.append(loss_awareness)
+            sum_loss_gen.append(gen_loss)
+
+            """Optimizing progress"""
             optimizer1.zero_grad()
             optimizer2.zero_grad()
+            optimizer3.zero_grad()
+            if path in [0, 1, 2]:
+                gen_loss.backward()
+                optimizer1.step()
+                scheduler1.step(loss_agnostic)
+            elif path in [3, 4, 5, 6, 7, 8]:
+                loss_agnostic.backward()
+                optimizer2.step()
+                scheduler2.step()
+            elif path in [9]:
+                loss_awareness.backward()
+                optimizer3.step()
+                scheduler3.step()
+            else:
+                raise ValueError("Invalid path number. ")
 
-            final_loss.backward(retain_graph=True)
-            for p in discriminator_awareness.parameters():
-                if p.grad is not None:  # In general, C is a NN, with requires_grad=False for some layers
-                    p.grad.data.mul_(-1)  # Update of grad.data not tracked in computation graph
+            step += 1
 
-            optimizer1.step()
-            optimizer2.step()
-
-
-            # generator_optimizer.zero_grad()
-            # discriminator_agnostic_optimizer.zero_grad()
-            # discriminator_awareness_optimizer.zero_grad()
-
-            # loss_agnostic = loss(predictor_agnostic, Y)
-            # loss_agnostic += loss(predictor_agnostic_noise, Y)
-            # loss_agnostic += loss(predictor_agnostic_noise, predictor_agnostic)
-            # loss_agnostic += F.relu(loss(predictor_awareness            mse, bce, cce, net_loss = self.compute_loss(
-            #                 num, bin, cat, target_sample,
-            #                 logging=False
-            #             )
-            #             self.do_backward(mse, bce, cce), predictor_agnostic))
-            # loss_agnostic += F.relu(loss(predictor_awareness, predictor_agnostic_noise))
-            # final_loss = loss_agnostic/5
-            # num, bin, cat = generator.forward(df_term_generator)
-            # mse, bce, cce, net_loss = generator.compute_loss(
-            #     num, bin, cat, df_term_generator_noise,
-            #     logging=False
-            # )
-            #
-            # mse.backward(retain_graph=True)
-            # bce.backward(retain_graph=True)
-            # for i, ls in enumerate(cce):
-            #     if i == len(cce) - 1:
-            #         ls.backward(retain_graph=False)
-            #     else:
-            #         ls.backward(retain_graph=True)
-
-            # generator.do_backward(mse, bce, cce)
-
-            # mse, bce, cce, net_loss = generator.compute_loss(
-            #     num, bin, cat, target_sample,
-            #     logging=False
-            # )
-            # generator.do_backward(mse, bce, cce)
-
-            # loss1 = loss(predictor_agnostic, Y)
-            # loss1.backward(retain_graph=True)
-
-            # loss2 = loss(predictor_agnostic_noise, Y)
-            # loss2.backward(retain_graph=True)
-
-            # loss3 = loss(predictor_agnostic, predictor_agnostic_noise)
-            # loss3.backward(retain_graph=True)
-
-            # loss4 = F.relu(loss1 - loss3)
-            # loss4.backward(retain_graph=True)
-
-            # loss5 = F.relu(loss2 - loss3)
-            # loss5.backward(retain_graph=True)
-
-            # final_loss = loss1 + loss2 + loss3 + 0.1*loss4 + 0.1*loss5
-            # loss3 += loss(predictor_agnostic_noise, predictor_agnostic)
-            # loss4 += F.relu(loss(predictor_awareness, predictor_agnostic))
-            # loss5 += F.relu(loss(predictor_awareness, predictor_agnostic_noise))
+            del df_term_generator
+            del df_term_generator_noise
+            del emb_cat_race
+            del emb_cat_sex
+            del emb
+            del ZS
 
 
-            # final_loss = loss_agnostic + F.leaky_relu(loss_agnostic - torch.sigmoid(loss_awareness))
-            # final_loss = 100*loss_agnostic + 0.0001*F.leaky_relu(loss_agnostic - loss_awareness)
-            # final_loss = loss_agnostic + F.relu(loss_agnostic - loss_awareness)
-            # final_loss = loss_agnostic + F.gelu(loss_agnostic - loss_awareness)
-            # final_loss = loss_agnostic + F.prelu(loss_agnostic - loss_awareness, torch.tensor(0.5).to(device))
-            # final_loss = loss_agnostic + F.rrelu(loss_agnostic - loss_awareness)
+        df_train = df.copy()
+        df_generator = df_train[normal_feature].copy()
 
-            
-            
-
-            
-            # final_loss.backward(retain_graph=True)
-
-            # generator_optimizer.step()
-            # discriminator_agnostic_optimizer.step()
-            # discriminator_awareness_optimizer.step()
-
-            # scheduler.step()
-            # scheduler_discriminator_env.step()
-            # scheduler_discriminator.step()
-
-        # if i % 10 == 0:
-        logger.debug('Epoch {}'.format(i))
-        logger.debug("Sum Loss {}".format(sum_loss / n_updates))
-        # logger.debug('Loss Agnostic {}'.format(loss_agnostic))
-        logger.debug('-------------------')
-
-        S = dfencoder_model.get_representation(
-            df_autoencoder[full_feature]
-        )
-
-        predictor_agnostic = discriminator_agnostic(S)
-        logger.debug("Prediction")
-
-        # S = S.cpu().detach().numpy()
-        # reg = LinearRegression().fit(S, df_autoencoder[target].values)
-        # y_pred = reg.predict(S).reshape(-1)
+        """Get the final prediction"""
+        Z = generator.get_representation(df_generator)
+        predictor_agnostic = discriminator_agnostic(Z)
         y_pred = predictor_agnostic.cpu().detach().numpy().reshape(-1)
-        y_true = df_autoencoder[target].values
-        eval = evaluate_pred(y_pred, y_true)
-        print(y_pred)
-        print(eval)
+        y_true = df_train[target].values
 
+        """Evaluation"""
+        df_result = pd.read_csv(conf['result_law'])
+        df_result['inv_prediction'] = y_pred
+
+        eval = evaluate_pred(y_pred, y_true)
+        eval_fairness = evaluate_fairness(sensitive_feature, df_result, 'inv_prediction')
+
+        """Log to file"""
+        logger.debug("Epoch {}".format(i))
+        logger.debug('Loss Agnostic {:.4f}'.format(sum(sum_loss)/len(sum_loss)))
+        logger.debug('Loss Awareness {:.4f}'.format(sum(sum_loss_aware)/len(sum_loss)))
+        logger.debug('Generator loss {:.4f}'.format(sum(sum_loss_gen)/len(sum_loss)))
+        logger.debug("RMSE {:.4f}".format(eval['RMSE']))
+        logger.debug("Fairness {:.7f}".format(eval_fairness['sinkhorn']))
+
+    # print("Prediction ", y_pred)
+    # print("Label ", y_true)
+
+    """Output to file"""
     df_result = pd.read_csv(conf['result_law'])
     df_result['inv_prediction'] = y_pred
     df_result.to_csv(conf['result_law'], index = False)

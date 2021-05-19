@@ -24,7 +24,9 @@ from utils.evaluate_func import evaluate_distribution, evaluate_fairness, evalua
 
 def evaluate_adult(df, df_result, sensitive_features, target):
     df = df.sample(frac=0.1, replace=True, random_state=1)
-    for m in ['full_prediction', 'unaware_prediction']:
+    # for m in ['full_prediction', 'unaware_prediction']:
+    for m in ['full_prediction', 'unaware_prediction', 'inv_prediction']:
+
         performance_reg = evaluate_classifier(df[m].values, df[target].values)
         m_fair = m + "_proba"
         performance_fairness = evaluate_fairness(sensitive_features, df, m_fair)
@@ -68,6 +70,7 @@ if __name__ == "__main__":
     df_result['F1 Score'] = ''
     df_result['Precision'] = ''
     df_result['Recall'] = ''
+    df_result['Accuracy'] = ''
     df_result['sinkhorn'] = ''
     df_result['energy'] = ''
     df_result['gaussian'] = ''

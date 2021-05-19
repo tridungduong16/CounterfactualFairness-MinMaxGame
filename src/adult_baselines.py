@@ -116,7 +116,8 @@ if __name__ == "__main__":
     # df = load_adult_income_dataset(conf['data_adult'])
     df = pd.read_csv(conf['processed_data_adult'])
     df = df.dropna()
-    df = df.sample(frac=0.2, replace=True, random_state=1).reset_index(drop=True)
+    print(df.shape)
+    # df = df.sample(frac=0.2, replace=True, random_state=1).reset_index(drop=True)
 
 
     """Setup features"""
@@ -144,13 +145,14 @@ if __name__ == "__main__":
     """Full model"""
     logger.debug('Full model')
 
-    # clf = LogisticRegression()
-    clf = lgb.LGBMClassifier()
+    clf = LogisticRegression()
+    # clf = lgb.LGBMClassifier()
     clf.fit(df[full_features], df[target])
     y_pred = clf.predict(df[full_features].values)
     df['full_prediction'] = y_pred.reshape(-1)
 
     # print(df)
+    # print(clf.predict(df[full_features].values))
     y_pred = clf.predict_proba(df[full_features].values)[:,0]
     # print(len(y_pred))
     df['full_prediction_proba'] = y_pred.reshape(-1)
@@ -158,7 +160,8 @@ if __name__ == "__main__":
     """Unaware model"""
     logger.debug('Unware model')
 
-    clf = lgb.LGBMClassifier()
+    clf = LogisticRegression()
+    # clf = lgb.LGBMClassifier()
     clf.fit(df[normal_features], df[target])
     y_pred = clf.predict(df[normal_features].values)
     df['unaware_prediction'] = y_pred.reshape(-1)
@@ -167,20 +170,20 @@ if __name__ == "__main__":
     df['unaware_prediction_proba'] = y_pred.reshape(-1)
 
     """Counterfactual fairness model"""
-    for i in full_features:
-        df[i] = [torch.tensor(x) for x in df[i].values]
-        
-    logger.debug('Counterfactual fairness model')
-    knowledged = infer_knowledge(df)
-    knowledged = np.array(knowledged).reshape(-1, 1)
-    # print(knowledged)
-    clf = lgb.LGBMClassifier()
-    clf.fit(knowledged, df[target])
-    y_pred = clf.predict(knowledged)
-    df['cf_prediction'] = y_pred.reshape(-1)
-
-    for i in full_features:
-        df[i] = [x.detach().numpy() for x in df[i]]
+    # for i in full_features:
+    #     df[i] = [torch.tensor(x) for x in df[i].values]
+    #
+    # logger.debug('Counterfactual fairness model')
+    # knowledged = infer_knowledge(df)
+    # knowledged = np.array(knowledged).reshape(-1, 1)
+    # # print(knowledged)
+    # clf = lgb.LGBMClassifier()
+    # clf.fit(knowledged, df[target])
+    # y_pred = clf.predict(knowledged)
+    # df['cf_prediction'] = y_pred.reshape(-1)
+    #
+    # for i in full_features:
+    #     df[i] = [x.detach().numpy() for x in df[i]]
 
     df.to_csv(conf['result_adult'], index = False)
 

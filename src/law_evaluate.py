@@ -24,9 +24,11 @@ from utils.evaluate_func import evaluate_pred, evaluate_distribution, evaluate_f
 def evaluate_law(df, df_result):
     sensitive_att = ['race', 'sex']
     target = 'ZFYA'
-    # for m in ['full_prediction', 'unaware_prediction', 'cf_prediction']:
     for m in ['full_prediction', 'unaware_prediction', 'cf_prediction', 'inv_prediction']:
-        performance_reg = evaluate_pred(df[m].values, df[target].values)        
+        # print(df[m].values)
+        # print(df[target].values)
+
+        performance_reg = evaluate_pred(df[m].values, df[target].values)
         performance_fairness = evaluate_fairness(sensitive_att, df, m)
         performance_reg.update(performance_fairness)
         performance_reg['method'] = m

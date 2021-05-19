@@ -22,6 +22,8 @@ from sklearn.metrics import r2_score
 from sklearn.metrics import f1_score
 from sklearn.metrics import precision_score
 from sklearn.metrics import recall_score
+from sklearn.metrics import accuracy_score
+
 
 from geomloss import SamplesLoss
 
@@ -59,10 +61,13 @@ def evaluate_classifier(y_pred, y_true):
     """
 
     evaluations = {}
+    # print(y_true)
+    # print(y_pred)
     evaluations['F1 Score'] = f1_score(y_true, y_pred, average='weighted')
     evaluations['Precision'] = precision_score(y_true, y_pred)
     evaluations['Recall'] = recall_score(y_true, y_pred)
-    
+    evaluations['Accuracy'] = accuracy_score(y_true, y_pred)
+
     return evaluations
 
 def evaluate_distribution(ys, ys_hat):
@@ -89,7 +94,7 @@ def evaluate_distribution(ys, ys_hat):
     return evaluation 
 
 def evaluate_fairness(sensitive_att, df, target):
-    df = df.sample(frac=0.35, replace=True, random_state=1)
+    df = df.sample(frac=0.15, replace=True, random_state=1)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     sinkhorn, energy, gaussian = 0,0,0
     
@@ -98,13 +103,13 @@ def evaluate_fairness(sensitive_att, df, target):
         ys = df[df[s] == 1][target].values
         ys_hat = df[df[s] == 0][target].values
 
-
         ys = torch.Tensor(ys).to(device).reshape(-1,1)
         ys_hat = torch.Tensor(ys_hat).to(device).reshape(-1,1)
         # print("Predicted ", ys, ys_hat)
 
         eval_performance = evaluate_distribution(ys, ys_hat)
         sinkhorn += eval_performance['sinkhorn']
+        # print(sinkhorn)
         energy += eval_performance['energy']
         gaussian += eval_performance['gaussian']
         

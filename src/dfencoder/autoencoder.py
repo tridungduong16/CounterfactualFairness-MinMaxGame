@@ -240,8 +240,8 @@ class AutoEncoder(torch.nn.Module):
         for ft in objects:
             feature = {}
             vl = df[ft].value_counts()
-            if len(vl) < 3:
-                print("value", vl)
+            if len(vl) < 1:
+                # print("value", vl)
                 feature['cats'] = list(vl.index)
                 self.binary_fts[ft] = feature
                 continue
@@ -278,13 +278,15 @@ class AutoEncoder(torch.nn.Module):
         #create categorical variable embedding layers
         for ft in self.categorical_fts:
             feature = self.categorical_fts[ft]
-            n_cats = len(feature['cats']) + 1
+            # n_cats = len(feature['cats']) + 1
+            n_cats = len(feature['cats'])
             embed_dim = compute_embedding_size(n_cats)
             embed_layer = torch.nn.Embedding(n_cats, embed_dim)
             feature['embedding'] = embed_layer
             self.add_module(f'{ft} embedding', embed_layer)
             #track embedding inputs
             input_dim += embed_dim
+
 
         #include numeric and binary fts
         input_dim += len(self.numeric_fts)
@@ -323,8 +325,9 @@ class AutoEncoder(torch.nn.Module):
 
         for ft in self.categorical_fts:
             feature = self.categorical_fts[ft]
-            col = pd.Categorical(df[ft], categories=feature['cats']+['_other'])
-            col = col.fillna('_other')
+            # col = pd.Categorical(df[ft], categories=feature['cats']+['_other'])
+            # col = col.fillna('_other')
+            col = pd.Categorical(df[ft], categories=feature['cats'])
             output_df[ft] = col
 
         return output_df
@@ -948,9 +951,19 @@ class AutoEncoder(torch.nn.Module):
 
     def custom_forward(self, X):
         """We do the thang. Takes pandas dataframe as input."""
-
+        # print(X.shape)
         num, bin, embeddings = self.encode_input(X)
+        # print("number")
+        # print(num)
+        # print("binary")
+        # print(bin)
+        # print("embedding")
+        # print(embeddings)
         x = torch.cat(num + bin + embeddings, dim=1)
+        # print("x")
+        # print(x)
+        # print(x.shape)
+        # x = self._independent_straight_through_sampling(x)
 
         encoding = self.encode(x)
         # num, bin, cat = self.decode(encoding)
