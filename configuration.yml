@@ -13,7 +13,8 @@ log_law : /home/trduong/Data/counterfactual_fairness_game_theoric/logs/law.log
 log_train_law : /home/trduong/Data/counterfactual_fairness_game_theoric/logs/law_train.log
 evaluate_law : /home/trduong/Data/counterfactual_fairness_game_theoric/logs/evaluate.log
 
-ae_model_law : /data/trduong/counterfactual_fairness_game_theoric/models/ae_model_law.pt
-state_dict_law : /data/trduong/counterfactual_fairness_game_theoric/models/state_dict_law.pth
+law_encoder : /data/trduong/counterfactual_fairness_game_theoric/models/law_encoder.pt
+law_generator : /data/trduong/counterfactual_fairness_game_theoric/models/law_generator.pt
+law_discriminator : /data/trduong/counterfactual_fairness_game_theoric/models/law_discriminator.pt
 
 

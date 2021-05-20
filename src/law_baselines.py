@@ -104,12 +104,16 @@ if __name__ == "__main__":
     selected_race = ['White', 'Black']
     df = df[df['race'].isin(selected_race)]
     df = df.reset_index(drop = True)
-    
+
+    print(df.head())
     """Preprocess data"""
     df['LSAT'] = (df['LSAT']-df['LSAT'].mean())/df['LSAT'].std()
     df['UGPA'] = (df['UGPA']-df['UGPA'].mean())/df['UGPA'].std()
     df['ZFYA'] = (df['ZFYA']-df['ZFYA'].mean())/df['ZFYA'].std()
-    
+
+    print(df.head())
+
+
     le = preprocessing.LabelEncoder()
     df['race'] = le.fit_transform(df['race'])
     df['sex'] = le.fit_transform(df['sex'])

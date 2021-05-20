@@ -1,66 +1,20 @@
 import torch
-import torch.nn as nn 
 import pandas as pd
-import yaml
-import logging 
 import sys 
-import torch.nn.functional as F
 import numpy as np
 
 from tqdm import tqdm 
 from model_arch.discriminator import Discriminator_Law
 from dfencoder.autoencoder import AutoEncoder
-from sklearn import preprocessing
 from dfencoder.dataframe import EncoderDataFrame
 from utils.evaluate_func import evaluate_pred, evaluate_distribution, evaluate_fairness
-from sklearn.utils import shuffle
-
+from utils.helpers import preprocess_dataset
+from utils.helpers import setup_logging
+from utils.helpers import load_config
+from utils.helpers import features_setting
 
 # def train(**parameters):
-#     """Hyperparameter"""
-#     learning_rate = parameters['learning_rate']
-#     epochs = parameters['epochs']
-#     input_length = parameters['input_length']
-#     dataframe = parameters['dataframe']
-#
-#     generator = AutoEncoder(input_length)
-#     discriminator_agnostic = Discriminator_Law(input_length)
-#     discriminator_awareness = Discriminator_Law(input_length)
-#
-#     """Optimizer"""
-#     generator_optimizer = torch.optim.Adam(generator.parameters(), lr=learning_rate)
-#     discriminator_agnostic_optimizer = torch.optim.Adam(
-#         discriminator_agnostic.parameters(), lr=learning_rate
-#     )
-#     discriminator_awareness_optimizer = torch.optim.Adam(
-#         discriminator_awareness.parameters(), lr=learning_rate
-#     )
-#
-#
-#     """Loss function"""
-#     loss = nn.BCELoss()
-#
-#
-#     """Training steps"""
-#     for i in tqdm(epochs):
-#         X = dataframe['normal_features']
-#         S = dataframe['sensitive_features']
-#         Y = dataframe['target']
-#
-#         Z = generator.generator_fit(X)
-#         ZS = torch.cat((Z,S),1)
-#
-#         predictor_agnostic = discriminator_agnostic.forward(Z)
-#         predictor_awareness = discriminator_awareness.forward(Z, S)
-#
-#         loss_agnostic = loss(predictor_agnostic, Y)
-#         loss_awareness = loss(predictor_awareness, Y)
-#         final_loss = (loss_agnostic + loss_awareness) / 2
-#         final_loss.backward()
-#
-#         generator_optimizer.step()
-#         discriminator_agnostic_optimizer.step()
-#         discriminator_awareness_optimizer.step()
+
 
 if __name__ == "__main__":
     """Device"""
@@ -71,64 +25,45 @@ if __name__ == "__main__":
     device = torch.device(dev)
 
     """Load configuration"""
-    with open("/home/trduong/Data/counterfactual_fairness_game_theoric/configuration.yml", 'r') as stream:
-        try:
-            conf = yaml.safe_load(stream)
-        except yaml.YAMLError as exc:
-            print(exc)
-        
+    config_path = "/home/trduong/Data/counterfactual_fairness_game_theoric/configuration.yml"
+    conf = load_config(config_path)
+
     """Set up logging"""
-    logger = logging.getLogger('CFairness')
-    file_handler = logging.FileHandler(filename=conf['log_train_law'])
-    stdout_handler = logging.StreamHandler(sys.stdout)
-    formatter = logging.Formatter('%(asctime)s %(name)-12s %(levelname)-8s %(message)s')
-    file_handler.setFormatter(formatter)
-    stdout_handler.setFormatter(formatter)
-    logger.addHandler(file_handler)
-    logger.addHandler(stdout_handler)
-    logger.setLevel(logging.DEBUG)
+    logger = setup_logging(conf['log_train_law'])
 
     """Load data"""
     data_path = conf['data_law']
     df = pd.read_csv(data_path)
     
     """Setup features"""
-    sensitive_feature = ['race', 'sex']
-    normal_feature = ['LSAT', 'UGPA']
-    categorical_feature = ['race', 'sex']
-    full_feature = sensitive_feature + normal_feature
-    target = 'ZFYA'
+    data_name = "law"
+    dict_ = features_setting("law")
+    sensitive_features = dict_["sensitive_features"]
+    normal_features = dict_["normal_features"]
+    categorical_features = dict_["categorical_features"]
+    continuous_features = dict_["continuous_features"]
+    full_features = dict_["full_features"]
+    target = dict_["target"]
+
+
     selected_race = ['White', 'Black']
     df = df[df['race'].isin(selected_race)]
     df = df.reset_index(drop = True)
-    
-    df_generator = df[normal_feature]
 
-    
     """Preprocess data"""
-    df['LSAT'] = (df['LSAT']-df['LSAT'].mean())/df['LSAT'].std()
-    df['UGPA'] = (df['UGPA']-df['UGPA'].mean())/df['UGPA'].std()
+    df = preprocess_dataset(df, continuous_features, categorical_features)
     df['ZFYA'] = (df['ZFYA']-df['ZFYA'].mean())/df['ZFYA'].std()
-    
-    le = preprocessing.LabelEncoder()
-    df['race'] = le.fit_transform(df['race'])
-
-    le = preprocessing.LabelEncoder()
-    df['sex'] = le.fit_transform(df['sex'])
-
     df = df[['LSAT', 'UGPA', 'sex', 'race', 'ZFYA']]
 
-    for v in categorical_feature:
-        df[v] = pd.Categorical(df[v].values)
+    """Setup auto encoder"""
+    df_autoencoder = df[full_features].copy()
 
-    df_autoencoder = df.copy()
-    
-    """Setup antuo encoder"""
-    dfencoder_model = AutoEncoder(
-        input_shape = df_autoencoder[full_feature].shape[1],
-        encoder_layers=[512, 512, 128],  # model architecture
+    emb_size = 128
+    ae_model = AutoEncoder(
+        input_shape=df[full_features].shape[1],
+        encoder_layers=[512, 512, emb_size],  # model architecture
         decoder_layers=[],  # decoder optional - you can create bottlenecks if you like
-        activation='tanh',
+        activation='relu',
         swap_p=0.2,  # noise parameter
         lr=0.01,
         lr_decay=.99,
@@ -137,21 +72,15 @@ if __name__ == "__main__":
         optimizer='sgd',
         scaler='gauss_rank',  # gauss rank scaling forces your numeric features into standard normal distributions
     )
-    
-    dfencoder_model.to(device)
-    dfencoder_model.fit(df_autoencoder[full_feature], epochs=100)
-    
-    # sys.exit(1)
-    # df = pd.get_dummies(df, columns = ['sex'])
-    # df = pd.get_dummies(df, columns = ['race'])
-
-    # sensitive_feature = ['sex_0','sex_1', 'race_0', 'race_1']
-
+    ae_model.to(device)
+    ae_model.build_model(df[full_features].copy())
+    ae_model.load_state_dict(torch.load(conf['law_encoder']))
+    ae_model.eval()
 
     """Setup hyperparameter"""    
     logger.debug('Setup hyperparameter')
     parameters = {}
-    parameters['epochs'] = 300
+    parameters['epochs'] = 100
     parameters['learning_rate'] = 1e-9
     parameters['dataframe'] = df
     parameters['batch_size'] = 64
@@ -172,7 +101,7 @@ if __name__ == "__main__":
     discriminator_awareness.to(device)
 
     """Setup generator"""
-    df_generator = df[normal_feature]
+    df_generator = df[normal_features]
     generator= AutoEncoder(
         input_shape = df_generator.shape[1],
         encoder_layers=[256, 256, emb_size],  # model architecture
@@ -188,6 +117,7 @@ if __name__ == "__main__":
         optimizer='sgd',
         scaler='gauss_rank',  # gauss rank scaling forces your numeric features into standard normal distributions
     )
+
     generator.build_model(df_generator)
 
     """Optimizer"""
@@ -203,8 +133,6 @@ if __name__ == "__main__":
     scheduler2 = torch.optim.lr_scheduler.CyclicLR(optimizer2, base_lr=learning_rate, max_lr=0.001)
     scheduler3 = torch.optim.lr_scheduler.CyclicLR(optimizer3, base_lr=learning_rate, max_lr=0.001)
 
-    
-    
     """Training"""
     n_updates = len(df)// batch_size
     logger.debug('Training')
@@ -215,38 +143,36 @@ if __name__ == "__main__":
     loss_function = torch.nn.MSELoss()
     loss_function = torch.nn.SmoothL1Loss()
 
-
     step = 0
     for i in (range(epochs)):
         df_train = df.copy().sample(frac=1).reset_index(drop=True)
-        df_generator = df_train[normal_feature].copy()
-        df_autoencoder = df_train.copy()
 
         sum_loss = []
         sum_loss_aware = []
         sum_loss_gen = []
         for j in tqdm(range(n_updates)):
             path = step % 10
-            """Only contain normal features"""
-            df_term_generator = df_generator.loc[batch_size*j:batch_size*(j+1)]
+
+            df_term = df_train.loc[batch_size*j:batch_size*(j+1)].reset_index(drop=True)
+            df_term_generator = df_term[normal_features].copy()
             df_term_generator = EncoderDataFrame(df_term_generator)
             df_term_generator_noise = df_term_generator.swap(likelihood=0.25)
-            df_term_autoencoder = df_autoencoder.loc[batch_size*j:batch_size*(j+1)].reset_index(drop = True)
+            df_term_autoencoder = df_term[full_features].copy()
 
             """Label"""
-            Y = torch.Tensor(df_term_autoencoder[target].values).to(device).reshape(-1,1)
+            Y = torch.Tensor(df_term[target].values).to(device).reshape(-1,1)
 
             """Feed forward"""
             Z = generator.custom_forward(df_term_generator)
             Z_noise = generator.custom_forward(df_term_generator_noise)
 
             """Get the representation from autoencoder model"""
-            S = dfencoder_model.get_representation(
-                df_term_autoencoder[full_feature]
+            S = ae_model.get_representation(
+                df_term_autoencoder[full_features]
             )
 
             """Get only sensitive representation"""
-            sex_feature = dfencoder_model.categorical_fts['sex']
+            sex_feature = ae_model.categorical_fts['sex']
             cats = sex_feature['cats']
             emb = sex_feature['embedding']
             cat_index = df_term_autoencoder['sex'].values
@@ -254,7 +180,7 @@ if __name__ == "__main__":
             for c in cat_index:
                 emb_cat_sex.append(emb.weight.data.cpu().numpy()[cats.index(c), :].tolist())
 
-            race_feature = dfencoder_model.categorical_fts['race']
+            race_feature = ae_model.categorical_fts['race']
             cats = race_feature['cats']
             emb = race_feature['embedding']
             cat_index = df_term_autoencoder['race'].values
@@ -291,15 +217,20 @@ if __name__ == "__main__":
             optimizer1.zero_grad()
             optimizer2.zero_grad()
             optimizer3.zero_grad()
-            if path in [0, 1, 2]:
+
+            for p in discriminator_awareness.parameters():
+                if p.grad is not None:  # In general, C is a NN, with requires_grad=False for some layers
+                    p.grad.data.mul_(-1)  # Update of grad.data not tracked in computation graph
+
+            if path in [0, 1, 2, 3]:
                 gen_loss.backward()
                 optimizer1.step()
-                scheduler1.step(loss_agnostic)
-            elif path in [3, 4, 5, 6, 7, 8]:
+                scheduler1.step(gen_loss)
+            elif path in [4, 5, 6, 7]:
                 loss_agnostic.backward()
                 optimizer2.step()
                 scheduler2.step()
-            elif path in [9]:
+            elif path in [8, 9]:
                 loss_awareness.backward()
                 optimizer3.step()
                 scheduler3.step()
@@ -317,7 +248,7 @@ if __name__ == "__main__":
 
 
         df_train = df.copy()
-        df_generator = df_train[normal_feature].copy()
+        df_generator = df_train[normal_features].copy()
 
         """Get the final prediction"""
         Z = generator.get_representation(df_generator)
@@ -330,7 +261,7 @@ if __name__ == "__main__":
         df_result['inv_prediction'] = y_pred
 
         eval = evaluate_pred(y_pred, y_true)
-        eval_fairness = evaluate_fairness(sensitive_feature, df_result, 'inv_prediction')
+        eval_fairness = evaluate_fairness(sensitive_features, df_result, 'inv_prediction')
 
         """Log to file"""
         logger.debug("Epoch {}".format(i))
@@ -340,16 +271,16 @@ if __name__ == "__main__":
         logger.debug("RMSE {:.4f}".format(eval['RMSE']))
         logger.debug("Fairness {:.7f}".format(eval_fairness['sinkhorn']))
 
-    # print("Prediction ", y_pred)
-    # print("Label ", y_true)
+    """Save model"""
+    logger.debug("Saving model......")
+    torch.save(generator.state_dict(), conf["law_generator"])
+    torch.save(discriminator_agnostic.state_dict(), conf["law_discriminator"])
 
     """Output to file"""
+    logger.debug("Output to file......")
     df_result = pd.read_csv(conf['result_law'])
     df_result['inv_prediction'] = y_pred
     df_result.to_csv(conf['result_law'], index = False)
-    
-    
-
 
     sys.modules[__name__].__dict__.clear()
 
