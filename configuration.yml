@@ -2,7 +2,7 @@ data_law : /home/trduong/Data/counterfactual_fairness_game_theoric/data/raw/law_
 data_adult : /home/trduong/Data/counterfactual_fairness_game_theoric/data/raw/adult.data
 processed_data_adult : /home/trduong/Data/counterfactual_fairness_game_theoric/data/raw/processed_adult.csv
 
-result_law : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/law.csv
+result_law_baseline : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/law_baseline.csv
 result_evaluate_law : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_law.csv
 result_ivr_law : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/law_ivr.csv
 
@@ -11,10 +11,17 @@ result_evaluate_adult : /home/trduong/Data/counterfactual_fairness_game_theoric/
 
 log_law : /home/trduong/Data/counterfactual_fairness_game_theoric/logs/law.log
 log_train_law : /home/trduong/Data/counterfactual_fairness_game_theoric/logs/law_train.log
+log_train_adult : /home/trduong/Data/counterfactual_fairness_game_theoric/logs/adult_train.log
+
 evaluate_law : /home/trduong/Data/counterfactual_fairness_game_theoric/logs/evaluate.log
 
 law_encoder : /data/trduong/counterfactual_fairness_game_theoric/models/law_encoder.pt
 law_generator : /data/trduong/counterfactual_fairness_game_theoric/models/law_generator.pt
 law_discriminator : /data/trduong/counterfactual_fairness_game_theoric/models/law_discriminator.pt
+
+adult_encoder : /data/trduong/counterfactual_fairness_game_theoric/models/adult_encoder.pt
+adult_generator : /data/trduong/counterfactual_fairness_game_theoric/models/adult_generator.pt
+adult_discriminator : /data/trduong/counterfactual_fairness_game_theoric/models/adult_discriminator.pt
+
 
 

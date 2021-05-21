@@ -11,20 +11,17 @@ import pandas as pd
 import numpy as np
 import logging
 import yaml
-import pyro
-import torch 
-import pyro.distributions as dist
+import torch
 import sys
 
 from sklearn.metrics import mean_absolute_error
 from sklearn.metrics import mean_squared_error
-from sklearn.metrics import r2_score
 from sklearn.metrics import f1_score
 from sklearn.metrics import precision_score
 from sklearn.metrics import recall_score
 from sklearn.metrics import accuracy_score
 
-
+from tqdm import tqdm
 from geomloss import SamplesLoss
 
 
@@ -79,7 +76,9 @@ def evaluate_distribution(ys, ys_hat):
     :return: DESCRIPTION
     :rtype: TYPE
     """
-    
+    # print(ys)
+    #
+    # print(ys_hat)
     evaluation = {}
     
     Loss = SamplesLoss("sinkhorn", p=2, blur=0.05, scaling=0.8)
@@ -94,31 +93,36 @@ def evaluate_distribution(ys, ys_hat):
     return evaluation 
 
 def evaluate_fairness(sensitive_att, df, target):
-    df = df.sample(frac=0.15, replace=True, random_state=1)
+    # df = df.sample(frac=0.15, replace=True, random_state=1)
+    batch_size = 16
+    n_updates = len(df)// batch_size
+
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     sinkhorn, energy, gaussian = 0,0,0
-    
-    for s in sensitive_att:
-        # print("Sensitive features ", s)
-        ys = df[df[s] == 1][target].values
-        ys_hat = df[df[s] == 0][target].values
 
-        ys = torch.Tensor(ys).to(device).reshape(-1,1)
-        ys_hat = torch.Tensor(ys_hat).to(device).reshape(-1,1)
-        # print("Predicted ", ys, ys_hat)
+    random_states = [0,1,2,3,4,5,6,7,8,9,10]
+    n_updates = len(random_states)
+    for j in tqdm(random_states):
+        df_term = df.sample(frac=0.2, replace=True, random_state=j)
+        for s in sensitive_att:
+            ys = df_term[df_term[s] == 1][target].values
+            ys_hat = df_term[df_term[s] == 0][target].values
 
-        eval_performance = evaluate_distribution(ys, ys_hat)
-        sinkhorn += eval_performance['sinkhorn']
-        # print(sinkhorn)
-        energy += eval_performance['energy']
-        gaussian += eval_performance['gaussian']
-        
-        # print("Sensitive ", s, sinkhorn)
-    
+            ys = torch.Tensor(ys).to(device).reshape(-1,1)
+            ys_hat = torch.Tensor(ys_hat).to(device).reshape(-1,1)
+
+            eval_performance = evaluate_distribution(ys, ys_hat)
+            sinkhorn += eval_performance['sinkhorn']
+            energy += eval_performance['energy']
+            gaussian += eval_performance['gaussian']
+
+            del ys
+            del ys_hat
+
     eval_performance = {}
-    eval_performance['sinkhorn'] = sinkhorn/len(sensitive_att)
-    eval_performance['energy'] = energy/len(sensitive_att)
-    eval_performance['gaussian'] = gaussian/len(sensitive_att)
+    eval_performance['sinkhorn'] = sinkhorn/(len(sensitive_att)*n_updates)
+    eval_performance['energy'] = energy/(len(sensitive_att)*n_updates)
+    eval_performance['gaussian'] = gaussian/(len(sensitive_att)*n_updates)
     
     return eval_performance
     
