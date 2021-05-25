@@ -80,15 +80,23 @@ def evaluate_distribution(ys, ys_hat):
     #
     # print(ys_hat)
     evaluation = {}
-    
-    Loss = SamplesLoss("sinkhorn", p=2, blur=0.05, scaling=0.8)
+
+    backend = "auto"
+
+    Loss = SamplesLoss("sinkhorn", p=2, blur=0.05, scaling=0.95, backend = backend)
     evaluation['sinkhorn'] = Loss(ys, ys_hat).cpu().detach().numpy() 
     
-    Loss = SamplesLoss("energy", p=2, blur=0.05, scaling=0.8)
+    Loss = SamplesLoss("energy", p=2, blur=0.05, scaling=0.95, backend = backend)
     evaluation["energy"] = Loss(ys, ys_hat).cpu().detach().numpy() 
     
-    Loss = SamplesLoss("gaussian", p=2, blur=0.05, scaling=0.8)
-    evaluation["gaussian"] = Loss(ys, ys_hat).cpu().detach().numpy() 
+    Loss = SamplesLoss("gaussian", p=2, blur=0.5, scaling=0.95, backend = backend)
+    evaluation["gaussian"] = Loss(ys, ys_hat).cpu().detach().numpy()
+
+    Loss = SamplesLoss("laplacian", p=2, blur=0.5, scaling=0.95, backend = backend)
+    evaluation["laplacian"] = Loss(ys, ys_hat).cpu().detach().numpy()
+
+
+
     
     return evaluation 
 
@@ -98,68 +106,71 @@ def evaluate_fairness(sensitive_att, df, target):
     n_updates = len(df)// batch_size
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    sinkhorn, energy, gaussian = 0,0,0
+    sinkhorn, energy, gaussian, laplacian = 0,0,0,0
+    #
+    # random_states = [0,1,2,3,4,5,6,7,8,9,10]
+    # random_states = [0]
+    # n_updates = len(random_states)
+    # for j in tqdm(random_states):
+    #     df_term = df.sample(frac=0.5, replace=True, random_state=j)
+    for s in sensitive_att:
+        ys = df[df[s] == 1][target].values
+        ys_hat = df[df[s] == 0][target].values
 
-    random_states = [0,1,2,3,4,5,6,7,8,9,10]
-    n_updates = len(random_states)
-    for j in tqdm(random_states):
-        df_term = df.sample(frac=0.2, replace=True, random_state=j)
-        for s in sensitive_att:
-            ys = df_term[df_term[s] == 1][target].values
-            ys_hat = df_term[df_term[s] == 0][target].values
+        ys = torch.Tensor(ys).to(device).reshape(-1,1)
+        ys_hat = torch.Tensor(ys_hat).to(device).reshape(-1,1)
 
-            ys = torch.Tensor(ys).to(device).reshape(-1,1)
-            ys_hat = torch.Tensor(ys_hat).to(device).reshape(-1,1)
+        eval_performance = evaluate_distribution(ys, ys_hat)
+        sinkhorn += eval_performance['sinkhorn']
+        energy += eval_performance['energy']
+        gaussian += eval_performance['gaussian']
+        laplacian += eval_performance['laplacian']
 
-            eval_performance = evaluate_distribution(ys, ys_hat)
-            sinkhorn += eval_performance['sinkhorn']
-            energy += eval_performance['energy']
-            gaussian += eval_performance['gaussian']
-
-            del ys
-            del ys_hat
+        del ys
+        del ys_hat
 
     eval_performance = {}
-    eval_performance['sinkhorn'] = sinkhorn/(len(sensitive_att)*n_updates)
-    eval_performance['energy'] = energy/(len(sensitive_att)*n_updates)
-    eval_performance['gaussian'] = gaussian/(len(sensitive_att)*n_updates)
-    
+    eval_performance['sinkhorn'] = sinkhorn
+    eval_performance['energy'] = energy
+    eval_performance['gaussian'] = gaussian
+    eval_performance['laplacian'] = laplacian
+
     return eval_performance
     
     
-if __name__ == "__main__":    
-    """Load configuration"""
-    with open("/home/trduong/Data/counterfactual_fairness_game_theoric/configuration.yml", 'r') as stream:
-        try:
-            conf = yaml.safe_load(stream)
-        except yaml.YAMLError as exc:
-            print(exc)
-        
-    """Set up logging"""
-    logger = logging.getLogger('genetic')
-    file_handler = logging.FileHandler(filename=conf['evaluate_law'])
-    stdout_handler = logging.StreamHandler(sys.stdout)
-    formatter = logging.Formatter('%(asctime)s %(name)-12s %(levelname)-8s %(message)s')
-    file_handler.setFormatter(formatter)
-    stdout_handler.setFormatter(formatter)
-    logger.addHandler(file_handler)
-    logger.addHandler(stdout_handler)
-    logger.setLevel(logging.DEBUG)
-    
-
-    """Load data"""
-    data_path = conf['result_law']
-    df = pd.read_csv(data_path)
-    
-    df = df.sample(frac=0.5, replace=True, random_state=1)
-
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    ys = df[df['race'] == 0].values
-    ys_hat = df[df['race'] == 1].values
-        
-    ys = torch.Tensor(ys).to(device).reshape(-1,1)
-    ys_hat = torch.Tensor(ys_hat).to(device).reshape(-1,1)
-        
-    #evaluate_distribution(ys, ys_hat)
-    Loss = SamplesLoss("sinkhorn", p=2, blur=0.05, scaling=0.8)
-    # Loss(ys, ys_hat)
+# if __name__ == "__main__":
+#     """Load configuration"""
+#     with open("/home/trduong/Data/counterfactual_fairness_game_theoric/configuration.yml", 'r') as stream:
+#         try:
+#             conf = yaml.safe_load(stream)
+#         except yaml.YAMLError as exc:
+#             print(exc)
+#
+#     """Set up logging"""
+#     logger = logging.getLogger('genetic')
+#     file_handler = logging.FileHandler(filename=conf['evaluate_law'])
+#     stdout_handler = logging.StreamHandler(sys.stdout)
+#     formatter = logging.Formatter('%(asctime)s %(name)-12s %(levelname)-8s %(message)s')
+#     file_handler.setFormatter(formatter)
+#     stdout_handler.setFormatter(formatter)
+#     logger.addHandler(file_handler)
+#     logger.addHandler(stdout_handler)
+#     logger.setLevel(logging.DEBUG)
+#
+#
+#     """Load data"""
+#     data_path = conf['result_law']
+#     df = pd.read_csv(data_path)
+#
+#     df = df.sample(frac=0.5, replace=True, random_state=1)
+#
+#     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+#     ys = df[df['race'] == 0].values
+#     ys_hat = df[df['race'] == 1].values
+#
+#     ys = torch.Tensor(ys).to(device).reshape(-1,1)
+#     ys_hat = torch.Tensor(ys_hat).to(device).reshape(-1,1)
+#
+#     #evaluate_distribution(ys, ys_hat)
+#     Loss = SamplesLoss("sinkhorn", p=2, blur=0.05, scaling=0.8)
+#     # Loss(ys, ys_hat)

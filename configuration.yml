@@ -12,6 +12,7 @@ result_evaluate_adult : /home/trduong/Data/counterfactual_fairness_game_theoric/
 log_law : /home/trduong/Data/counterfactual_fairness_game_theoric/logs/law.log
 log_train_law : /home/trduong/Data/counterfactual_fairness_game_theoric/logs/law_train.log
 log_train_adult : /home/trduong/Data/counterfactual_fairness_game_theoric/logs/adult_train.log
+log_baselines_law : /home/trduong/Data/counterfactual_fairness_game_theoric/logs/law_baselines.log
 
 evaluate_law : /home/trduong/Data/counterfactual_fairness_game_theoric/logs/evaluate.log
 

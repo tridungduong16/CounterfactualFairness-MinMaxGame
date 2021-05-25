@@ -16,18 +16,20 @@ import yaml
 import pyro
 import torch 
 import pyro.distributions as dist
+import argparse
 import sys
 from utils.evaluate_func import evaluate_pred, evaluate_distribution, evaluate_fairness
+from utils.helpers import load_config
 
 
 
-def evaluate_law(df, df_result):
+def evaluate_law(df, df_result, col):
     sensitive_att = ['race', 'sex']
     target = 'ZFYA'
-    for m in ['full_prediction', 'unaware_prediction', 'cf_prediction', 'inv_prediction']:
-        # print(df[m].values)
+    for m in col:
+    # for m in ['AL_prediction', 'GL_prediction', 'GD_prediction']:
+    # for m in ['full_prediction', 'unaware_prediction', 'cf_prediction']:
         # print(df[target].values)
-
         performance_reg = evaluate_pred(df[m].values, df[target].values)
         performance_fairness = evaluate_fairness(sensitive_att, df, m)
         performance_reg.update(performance_fairness)
@@ -35,13 +37,17 @@ def evaluate_law(df, df_result):
         df_result = df_result.append(performance_reg, ignore_index=True)
     return df_result
 
-if __name__ == "__main__":    
+if __name__ == "__main__":
+    """Parsing argument"""
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--mode', type=str, default='baseline')
+
+    args = parser.parse_args()
+    mode = args.mode
+
     """Load configuration"""
-    with open("/home/trduong/Data/counterfactual_fairness_game_theoric/configuration.yml", 'r') as stream:
-        try:
-            conf = yaml.safe_load(stream)
-        except yaml.YAMLError as exc:
-            print(exc)
+    config_path = "/home/trduong/Data/counterfactual_fairness_game_theoric/configuration.yml"
+    conf = load_config(config_path)
         
     """Set up logging"""
     logger = logging.getLogger('genetic')
@@ -56,11 +62,24 @@ if __name__ == "__main__":
     
 
     """Load data"""
-    data_path = conf['result_law']
-    df = pd.read_csv(data_path)
-
-    logger.debug(df)
-
+    if mode == "baseline":
+        df = pd.read_csv(conf['result_law_baseline'])
+        df = df[['LSAT', 'UGPA', 'sex', 'race', 'ZFYA']]
+        col = ['full_prediction', 'unaware_prediction', 'cf_prediction']
+    elif mode == "ivr":
+        df = pd.read_csv(conf['result_ivr_law'])
+        col = ['AL_prediction', 'GL_prediction', 'GD_prediction']
+    elif mode == "both":
+        col = ['full_prediction', 'unaware_prediction', 'cf_prediction',
+               'AL_prediction', 'GL_prediction', 'GD_prediction']
+        df = pd.read_csv(conf['result_law_baseline'])
+        df1 = df[['race', 'sex', 'LSAT', 'UGPA',
+                  'full_prediction', 'unaware_prediction', 'cf_prediction', 'ZFYA']]
+        df = pd.read_csv(conf['result_ivr_law'])
+        df2 = df[['AL_prediction', 'GL_prediction', 'GD_prediction']]
+        df = pd.concat([df1, df2], axis=1)
+    # print(df)
+    # sys.exit(1)
     logger.debug(df)
 
     
@@ -68,14 +87,21 @@ if __name__ == "__main__":
     df_result['method'] = ''
     df_result['RMSE'] = ''
     df_result['MAE'] = ''
-    # df_result['R2score'] = ''
     df_result['sinkhorn'] = ''
     df_result['energy'] = ''
     df_result['gaussian'] = ''
-    
+    df_result['laplacian'] = ''
+
 
     """Evaluate performance"""
-    df_result = evaluate_law(df, df_result)
+    df_result = evaluate_law(df, df_result, col)
+    df_result['RMSE'] = df_result['RMSE'].round(decimals=4)
+    df_result['MAE'] = df_result['MAE'].round(decimals=4)
+    df_result['sinkhorn'] = df_result['sinkhorn'].round(decimals=4)
+    df_result['energy'] = df_result['energy'].round(decimals=4)
+    df_result['gaussian'] = df_result['gaussian'].round(decimals=4)
+    df_result['laplacian'] = df_result['laplacian'].round(decimals=4)
+
     df_result.to_csv(conf['result_evaluate_law'], index = False)
     
     logger.debug(df_result)

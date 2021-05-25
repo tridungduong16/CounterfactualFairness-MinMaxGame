@@ -12,8 +12,7 @@ from utils.helpers import preprocess_dataset
 from utils.helpers import setup_logging
 from utils.helpers import load_config
 from utils.helpers import features_setting
-
-# def train(**parameters):
+from sklearn.model_selection import train_test_split
 
 
 if __name__ == "__main__":
@@ -34,7 +33,9 @@ if __name__ == "__main__":
     """Load data"""
     data_path = conf['data_law']
     df = pd.read_csv(data_path)
-    
+
+    df, df_test = train_test_split(df, test_size=0.1, random_state=0)
+
     """Setup features"""
     data_name = "law"
     dict_ = features_setting("law")
@@ -78,7 +79,7 @@ if __name__ == "__main__":
     """Setup hyperparameter"""    
     logger.debug('Setup hyperparameter')
     parameters = {}
-    parameters['epochs'] = 20
+    parameters['epochs'] = 100
     parameters['learning_rate'] = 1e-9
     parameters['dataframe'] = df
     parameters['batch_size'] = 64
@@ -154,7 +155,7 @@ if __name__ == "__main__":
             df_term = df_train.loc[batch_size*j:batch_size*(j+1)].reset_index(drop=True)
             df_term_generator = df_term[normal_features].copy()
             df_term_generator = EncoderDataFrame(df_term_generator)
-            df_term_generator_noise = df_term_generator.swap(likelihood=0.25)
+            df_term_generator_noise = df_term_generator.swap(likelihood=0.1)
             df_term_autoencoder = df_term[full_features].copy()
 
             """Label"""
@@ -220,15 +221,15 @@ if __name__ == "__main__":
                 if p.grad is not None:  # In general, C is a NN, with requires_grad=False for some layers
                     p.grad.data.mul_(-1)  # Update of grad.data not tracked in computation graph
 
-            if path in [0, 1, 2, 3]:
+            if path in [0, 1, 2, 3, 4]:
                 gen_loss.backward()
                 optimizer1.step()
                 scheduler1.step(gen_loss)
-            elif path in [4, 5, 6, 7]:
+            elif path in [5, 6]:
                 loss_agnostic.backward()
                 optimizer2.step()
                 scheduler2.step()
-            elif path in [8, 9]:
+            elif path in [7, 8, 9]:
                 loss_awareness.backward()
                 optimizer3.step()
                 scheduler3.step()
@@ -255,11 +256,10 @@ if __name__ == "__main__":
         y_true = df_train[target].values
 
         """Evaluation"""
-        df_result = pd.read_csv(conf['result_law'])
-        df_result['inv_prediction'] = y_pred
+        df_train['inv_prediction'] = y_pred
 
         eval = evaluate_pred(y_pred, y_true)
-        eval_fairness = evaluate_fairness(sensitive_features, df_result, 'inv_prediction')
+        eval_fairness = evaluate_fairness(sensitive_features, df_train, 'inv_prediction')
 
         """Log to file"""
         logger.debug("Epoch {}".format(i))
@@ -269,17 +269,22 @@ if __name__ == "__main__":
         logger.debug("RMSE {:.4f}".format(eval['RMSE']))
         logger.debug("Fairness {:.7f}".format(eval_fairness['sinkhorn']))
 
+        del df_train
+        del df_generator
+        del eval
+        del eval_fairness
+        del Z
+        del predictor_agnostic
+        del y_pred
+        del y_true
+
+
     """Save model"""
     logger.debug("Saving model......")
     torch.save(generator.state_dict(), conf["law_generator"])
     torch.save(discriminator_agnostic.state_dict(), conf["law_discriminator"])
 
     """Output to file"""
-    # logger.debug("Output to file......")
-    # df_result = pd.read_csv(conf['result_law'])
-    # df_result['inv_prediction'] = y_pred
-    # df_result.to_csv(conf['result_ivr_law'], index = False)
-
     sys.modules[__name__].__dict__.clear()
 
 
