@@ -161,7 +161,8 @@ if __name__ == "__main__":
 
     step = 0
     for i in (range(epochs)):
-        df_train = df.copy()
+        df_train = df.copy().sample(frac=1).reset_index(drop=True)
+
 
         sum_loss = []
         sum_loss_aware = []

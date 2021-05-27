@@ -61,8 +61,8 @@ def evaluate_classifier(y_pred, y_true):
     # print(y_true)
     # print(y_pred)
     evaluations['F1 Score'] = f1_score(y_true, y_pred, average='weighted')
-    evaluations['Precision'] = precision_score(y_true, y_pred)
-    evaluations['Recall'] = recall_score(y_true, y_pred)
+    evaluations['Precision'] = precision_score(y_true, y_pred, average='weighted')
+    evaluations['Recall'] = recall_score(y_true, y_pred, average='weighted')
     evaluations['Accuracy'] = accuracy_score(y_true, y_pred)
 
     return evaluations
