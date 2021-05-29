@@ -55,6 +55,11 @@ if __name__ == "__main__":
     df['ZFYA'] = (df['ZFYA'] - df['ZFYA'].mean()) / df['ZFYA'].std()
     df = df[['LSAT', 'UGPA', 'sex', 'race', 'ZFYA']]
 
+    df_dummy = df.copy()
+    df_dummy = pd.get_dummies(df_dummy, columns=['sex'])
+    df_dummy = pd.get_dummies(df_dummy, columns=['race'])
+    col_sensitive = ['sex_0', 'sex_1', 'race_0', 'race_1']
+
     """Setup auto encoder"""
     df_autoencoder = df[full_features].copy()
     emb_size = 128
@@ -161,6 +166,8 @@ if __name__ == "__main__":
             df_term_generator = EncoderDataFrame(df_term_generator)
             df_term_generator_noise = df_term_generator.swap(likelihood=0.001)
             df_term_autoencoder = df_term[full_features].copy()
+            batch_dummy = df_dummy.loc[batch_size * j:batch_size * (j + 1)].reset_index(drop=True)[col_sensitive]
+
 
             """Label"""
             Y = torch.Tensor(df_term[target].values).to(device).reshape(-1, 1)
@@ -196,6 +203,7 @@ if __name__ == "__main__":
             emb = torch.cat((emb_cat_race, emb_cat_sex), 1)
 
             """Get the sensitive label encoder"""
+            sensitive_onehot = torch.tensor(batch_dummy.values.astype(np.float32)).to(device)
             sensitive_label = torch.tensor(df_term[sensitive_features].values.astype(np.float32)).to(device)
 
             ZS = torch.cat((Z, emb), 1)
@@ -213,7 +221,7 @@ if __name__ == "__main__":
             diff_loss = F.leaky_relu(loss_agnostic - loss_awareness)
 
             "Generator loss"
-            gen_loss = 0.6*diff_loss + loss_agnostic
+            gen_loss = 0.45*diff_loss + loss_agnostic
 
             """Track loss"""
             sum_loss.append(loss_agnostic)
