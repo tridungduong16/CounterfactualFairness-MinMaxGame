@@ -1,27 +1,32 @@
+# Data
 data_law : /home/trduong/Data/counterfactual_fairness_game_theoric/data/raw/law_data.csv
 data_adult : /home/trduong/Data/counterfactual_fairness_game_theoric/data/raw/adult.data
 processed_data_adult : /home/trduong/Data/counterfactual_fairness_game_theoric/data/raw/processed_adult.csv
+data_compas : /home/trduong/Data/counterfactual_fairness_game_theoric/data/raw/compas/{}.csv
+data_german : /home/trduong/Data/counterfactual_fairness_game_theoric/data/raw/processed_adult.csv
 
+#Result
 result_law_baseline : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/law_baseline.csv
 result_evaluate_law : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_law.csv
 result_ivr_law : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/law_ivr.csv
-
 result_adult : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
 result_evaluate_adult : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
 
+#Log file
 log_law : /home/trduong/Data/counterfactual_fairness_game_theoric/logs/law.log
 log_train_law : /home/trduong/Data/counterfactual_fairness_game_theoric/logs/law_train.log
 log_train_adult : /home/trduong/Data/counterfactual_fairness_game_theoric/logs/adult_train.log
 log_baselines_law : /home/trduong/Data/counterfactual_fairness_game_theoric/logs/law_baselines.log
 
+#Evaluate file
 evaluate_law : /home/trduong/Data/counterfactual_fairness_game_theoric/logs/evaluate.log
 
+#Model saved
 law_encoder : /data/trduong/counterfactual_fairness_game_theoric/models/law_encoder.pt
 law_generator : /data/trduong/counterfactual_fairness_game_theoric/models/law_generator.pt
 law_discriminator : /data/trduong/counterfactual_fairness_game_theoric/models/law_discriminator.pt
 discriminator_agnostic_adult : /data/trduong/counterfactual_fairness_game_theoric/models/discriminator_agnostic_adult.pt
 discriminator_awareness_adult : /data/trduong/counterfactual_fairness_game_theoric/models/discriminator_awareness_adult.pt
-
 adult_encoder : /data/trduong/counterfactual_fairness_game_theoric/models/adult_encoder.pt
 adult_generator : /data/trduong/counterfactual_fairness_game_theoric/models/adult_generator.pt
 adult_discriminator : /data/trduong/counterfactual_fairness_game_theoric/models/adult_discriminator.pt

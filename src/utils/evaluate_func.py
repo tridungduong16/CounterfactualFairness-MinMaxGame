@@ -20,6 +20,7 @@ from sklearn.metrics import f1_score
 from sklearn.metrics import precision_score
 from sklearn.metrics import recall_score
 from sklearn.metrics import accuracy_score
+from sklearn.metrics import r2_score
 
 from tqdm import tqdm
 from geomloss import SamplesLoss
@@ -40,7 +41,7 @@ def evaluate_pred(y_pred, y_true):
     evaluations = {}
     evaluations['RMSE'] = np.sqrt(mean_squared_error(y_true, y_pred))
     evaluations['MAE'] = mean_absolute_error(y_true, y_pred)
-    # evaluations['R2score'] = r2_score(y_true, y_pred)
+    evaluations['R2score'] = r2_score(y_true, y_pred)
 
 
     return evaluations
@@ -101,18 +102,11 @@ def evaluate_distribution(ys, ys_hat):
     return evaluation 
 
 def evaluate_fairness(sensitive_att, df, target):
-    # df = df.sample(frac=0.15, replace=True, random_state=1)
-    batch_size = 16
-    n_updates = len(df)// batch_size
-
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     sinkhorn, energy, gaussian, laplacian = 0,0,0,0
-    #
-    # random_states = [0,1,2,3,4,5,6,7,8,9,10]
-    # random_states = [0]
-    # n_updates = len(random_states)
-    # for j in tqdm(random_states):
-    #     df_term = df.sample(frac=0.5, replace=True, random_state=j)
+
+    df = df.sample(frac=0.5, replace=True, random_state=0)
+
     for s in sensitive_att:
         ys = df[df[s] == 1][target].values
         ys_hat = df[df[s] == 0][target].values

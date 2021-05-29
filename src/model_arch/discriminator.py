@@ -1,26 +1,38 @@
 import torch 
 import torch.nn as nn
 import torch.nn.functional as F
-from torch.autograd import Variable
 
-class Discriminator_Law(nn.Module):
+
+class DiscriminatorLaw(nn.Module):
     def __init__(self, input_length: int, problem=None):
-        super(Discriminator_Law, self).__init__()
+        super(DiscriminatorLaw, self).__init__()
         self.problem = problem
-        dim1 = 10
-        dim2 = 16
-        finaldim = 10
+        dim1 = 16
+        dim2 = 8
+        finaldim = 16
         self.hidden = torch.nn.Linear(input_length, dim1)   # hidden layer
         self.hidden1 = torch.nn.Linear(dim1, dim2)   # hidden layer
         self.hidden2 = torch.nn.Linear(dim2, finaldim)   # hidden layer
         self.predict = torch.nn.Linear(finaldim, 1)   # output layer
-        self.dropout = nn.Dropout(0.75)
+        self.dropout = nn.Dropout(0.95)
+        self.batchnorm = nn.BatchNorm1d(dim1)
+        self.batchnorm1 = nn.BatchNorm1d(dim2)
+        self.batchnorm2 = nn.BatchNorm1d(finaldim)
+        self.laynorm = nn.LayerNorm(1)
 
     def forward(self, x):
-        x = self.hidden(x)
-        # x = self.dropout(x)
-        # x = F.leaky_relu(self.hidden1(x))
+        x = F.leaky_relu(self.hidden(x))
+        x = self.batchnorm(x)
         x = self.dropout(x)
+
+        # x = F.leaky_relu(self.hidden1(x))
+        # x = self.batchnorm1(x)
+        # x = self.dropout(x)
+        #
+        # x = F.leaky_relu(self.hidden2(x))
+        # x = self.batchnorm2(x)
+        # x = self.dropout(x)
+
         x = self.predict(x)
         return x
 
@@ -43,8 +55,15 @@ class Discriminator_Adult_Aw(nn.Module):
         self.sig = nn.Sigmoid()
         self.batchnorm1 = nn.BatchNorm1d(128)
         self.batchnorm2 = nn.BatchNorm1d(64)
+        self.laynorm = nn.LayerNorm(64)
 
     def forward(self, x):
+        """
+
+        :param x:
+        :return:
+        """
+
         x = F.relu(self.hidden(x))
         x = self.dropout(x)
         x = self.batchnorm1(x)

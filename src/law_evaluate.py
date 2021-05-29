@@ -40,7 +40,7 @@ def evaluate_law(df, df_result, col):
 if __name__ == "__main__":
     """Parsing argument"""
     parser = argparse.ArgumentParser()
-    parser.add_argument('--mode', type=str, default='baseline')
+    parser.add_argument('--mode', type=str, default='both')
 
     args = parser.parse_args()
     mode = args.mode
@@ -104,7 +104,7 @@ if __name__ == "__main__":
 
     df_result.to_csv(conf['result_evaluate_law'], index = False)
     
-    logger.debug(df_result)
+    logger.debug(df_result[['RMSE', 'sinkhorn']])
     sys.modules[__name__].__dict__.clear()
 
     

@@ -85,7 +85,7 @@ if __name__ == "__main__":
 
     """Train model"""
     ae_model.to(device)
-    ae_model.fit(df, epochs=200)
+    ae_model.fit(df, epochs=1000)
 
     """Save model"""
     torch.save(ae_model.state_dict(), save_path)
