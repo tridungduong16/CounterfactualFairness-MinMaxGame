@@ -24,6 +24,7 @@ from sklearn.metrics import r2_score
 
 from tqdm import tqdm
 from geomloss import SamplesLoss
+from fairlearn.metrics import demographic_parity_difference, demographic_parity_ratio
 
 
 def evaluate_pred(y_pred, y_true):

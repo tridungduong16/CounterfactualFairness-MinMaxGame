@@ -58,7 +58,7 @@ if __name__ == "__main__":
     df_dummy = df.copy()
     df_dummy = pd.get_dummies(df_dummy, columns=['sex'])
     df_dummy = pd.get_dummies(df_dummy, columns=['race'])
-    col_sensitive = ['sex_0', 'sex_1', 'race_0', 'race_1']
+    col_sensitive = ['race_0', 'race_1', 'sex_0', 'sex_1']
 
     """Setup auto encoder"""
     df_autoencoder = df[full_features].copy()
@@ -100,7 +100,7 @@ if __name__ == "__main__":
     """Setup generator and discriminator"""
     emb_size = 64
     discriminator_agnostic = DiscriminatorLaw(emb_size, problem)
-    discriminator_awareness = DiscriminatorLaw(emb_size + 4, problem)
+    discriminator_awareness = DiscriminatorLaw(emb_size + 4 + 6, problem)
     discriminator_agnostic.to(device)
     discriminator_awareness.to(device)
 
@@ -135,11 +135,11 @@ if __name__ == "__main__":
 
     # scheduler1 = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer1, 'min')
     scheduler1 = torch.optim.lr_scheduler.StepLR(optimizer1, step_size=50, gamma=0.1)
-    scheduler2 = torch.optim.lr_scheduler.StepLR(optimizer2, step_size=50, gamma=0.1)
-    scheduler3 = torch.optim.lr_scheduler.StepLR(optimizer3, step_size=50, gamma=0.1)
+    # scheduler2 = torch.optim.lr_scheduler.StepLR(optimizer2, step_size=50, gamma=0.1)
+    # scheduler3 = torch.optim.lr_scheduler.StepLR(optimizer3, step_size=50, gamma=0.1)
 
-    # scheduler2 = torch.optim.lr_scheduler.CyclicLR(optimizer2, base_lr=learning_rate, max_lr=0.0001)
-    # scheduler3 = torch.optim.lr_scheduler.CyclicLR(optimizer3, base_lr=learning_rate, max_lr=0.0001)
+    scheduler2 = torch.optim.lr_scheduler.CyclicLR(optimizer2, base_lr=learning_rate, max_lr=0.0001)
+    scheduler3 = torch.optim.lr_scheduler.CyclicLR(optimizer3, base_lr=learning_rate, max_lr=0.0001)
 
     """Training"""
     n_updates = len(df) // batch_size
@@ -154,6 +154,15 @@ if __name__ == "__main__":
     step = 0
     for i in (range(epochs)):
         df_train = df.copy().sample(frac=1).reset_index(drop=True)
+        df_dummy = df_train.copy()
+        df_dummy = pd.get_dummies(df_dummy, columns=['sex'])
+        df_dummy = pd.get_dummies(df_dummy, columns=['race'])
+
+        # print(df_train[sensitive_features])
+        # print("--------------")
+        # print(df_dummy[col_sensitive])
+        # print("--------------")
+        # print(df_train['race'].value_counts())
 
         sum_loss = []
         sum_loss_aware = []
@@ -161,31 +170,31 @@ if __name__ == "__main__":
         for j in tqdm(range(n_updates)):
             path = step % 10
 
-            df_term = df_train.loc[batch_size * j:batch_size * (j + 1)].reset_index(drop=True)
-            df_term_generator = df_term[normal_features].copy()
-            df_term_generator = EncoderDataFrame(df_term_generator)
-            df_term_generator_noise = df_term_generator.swap(likelihood=0.001)
-            df_term_autoencoder = df_term[full_features].copy()
+            batch_data = df_train.loc[batch_size * j:batch_size * (j + 1)].reset_index(drop=True)
+            batch_generator = batch_data[normal_features].copy()
+            batch_generator = EncoderDataFrame(batch_generator)
+            batch_generator_noise = batch_generator.swap(likelihood=0.001)
+            batch_ae = batch_data[full_features].copy()
             batch_dummy = df_dummy.loc[batch_size * j:batch_size * (j + 1)].reset_index(drop=True)[col_sensitive]
 
 
             """Label"""
-            Y = torch.Tensor(df_term[target].values).to(device).reshape(-1, 1)
+            Y = torch.Tensor(batch_data[target].values).to(device).reshape(-1, 1)
 
             """Feed forward"""
-            Z = generator.custom_forward(df_term_generator)
-            Z_noise = generator.custom_forward(df_term_generator_noise)
+            Z = generator.custom_forward(batch_generator)
+            Z_noise = generator.custom_forward(batch_generator_noise)
 
             """Get the representation from autoencoder model"""
             S = ae_model.get_representation(
-                df_term_autoencoder[full_features]
+                batch_ae[full_features]
             )
 
             """Get only sensitive representation"""
             sex_feature = ae_model.categorical_fts['sex']
             cats = sex_feature['cats']
             emb = sex_feature['embedding']
-            cat_index = df_term_autoencoder['sex'].values
+            cat_index = batch_ae['sex'].values
             emb_cat_sex = []
             for c in cat_index:
                 emb_cat_sex.append(emb.weight.data.cpu().numpy()[cats.index(c), :].tolist())
@@ -193,7 +202,7 @@ if __name__ == "__main__":
             race_feature = ae_model.categorical_fts['race']
             cats = race_feature['cats']
             emb = race_feature['embedding']
-            cat_index = df_term_autoencoder['race'].values
+            cat_index = batch_ae['race'].values
             emb_cat_race = []
             for c in cat_index:
                 emb_cat_race.append(emb.weight.data.cpu().numpy()[cats.index(c), :].tolist())
@@ -204,10 +213,21 @@ if __name__ == "__main__":
 
             """Get the sensitive label encoder"""
             sensitive_onehot = torch.tensor(batch_dummy.values.astype(np.float32)).to(device)
-            sensitive_label = torch.tensor(df_term[sensitive_features].values.astype(np.float32)).to(device)
+            sensitive_label = torch.tensor(batch_data[sensitive_features].values.astype(np.float32)).to(device)
 
             ZS = torch.cat((Z, emb), 1)
-            # ZS = torch.cat((Z, sensitive_label), 1)
+            # print(sensitive_onehot.shape, sensitive_label.shape)
+            ZS = torch.cat((ZS, sensitive_onehot), 1)
+            ZS = torch.cat((ZS, sensitive_label), 1)
+
+            # print(emb[:10])
+            # print("-----------------------------------------")
+            # print(sensitive_onehot[:10])
+            # print("-----------------------------------------")
+            # print(sensitive_label[:10])
+            # print("-----------------------------------------")
+            # sys.exit(0)
+            # print(ZS.shape)
 
             """Prediction and calculate loss"""
             predictor_awareness = discriminator_awareness(ZS)
@@ -221,7 +241,7 @@ if __name__ == "__main__":
             diff_loss = F.leaky_relu(loss_agnostic - loss_awareness)
 
             "Generator loss"
-            gen_loss = 0.45*diff_loss + loss_agnostic
+            gen_loss = 10*diff_loss + loss_agnostic
 
             """Track loss"""
             sum_loss.append(loss_agnostic)
@@ -251,8 +271,8 @@ if __name__ == "__main__":
 
             step += 1
 
-            del df_term_generator
-            del df_term_generator_noise
+            del batch_generator
+            del batch_generator_noise
             del emb_cat_race
             del emb_cat_sex
             del emb

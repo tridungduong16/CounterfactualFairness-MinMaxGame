@@ -1,9 +1,9 @@
 # Data
-data_law : /home/trduong/Data/counterfactual_fairness_game_theoric/data/raw/law_data.csv
-data_adult : /home/trduong/Data/counterfactual_fairness_game_theoric/data/raw/adult.data
-processed_data_adult : /home/trduong/Data/counterfactual_fairness_game_theoric/data/raw/processed_adult.csv
-data_compas : /home/trduong/Data/counterfactual_fairness_game_theoric/data/raw/compas/{}.csv
-data_german : /home/trduong/Data/counterfactual_fairness_game_theoric/data/raw/processed_adult.csv
+data_law : /home/trduong/Data/counterfactual_fairness_game_theoric/data/law_data.csv
+data_adult : /home/trduong/Data/counterfactual_fairness_game_theoric/data/adult.data
+processed_data_adult : /home/trduong/Data/counterfactual_fairness_game_theoric/data/processed_adult.csv
+data_compas : /home/trduong/Data/counterfactual_fairness_game_theoric/data/compas.csv
+data_german : /home/trduong/Data/counterfactual_fairness_game_theoric/data/processed_adult.csv
 
 #Result
 result_law_baseline : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/law_baseline.csv
