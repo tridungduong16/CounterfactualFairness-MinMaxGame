@@ -18,31 +18,43 @@ import torch
 import pyro.distributions as dist
 import sys
 from utils.evaluate_func import evaluate_distribution, evaluate_fairness, evaluate_classifier
+from utils.helpers import load_config
+import argparse
 
 
 
-
-def evaluate_adult(df, df_result, sensitive_features, target):
-    df = df.sample(frac=0.1, replace=True, random_state=1)
-    # for m in ['full_prediction', 'unaware_prediction']:
-    for m in ['full_prediction', 'unaware_prediction', 'inv_prediction']:
-
+def evaluate_adult(df, df_result, sensitive_features, label):
+    for m in ['full_prediction', 'unaware_prediction','AL_prediction', 'GL_prediction', 'GD_prediction']:
+        print(m)
+        print(df[m].values)
+        performance = {}
+        performance['method'] = m
         performance_reg = evaluate_classifier(df[m].values, df[target].values)
-        m_fair = m + "_proba"
-        performance_fairness = evaluate_fairness(sensitive_features, df, m_fair)
-        performance_reg.update(performance_fairness)
-        performance_reg['method'] = m
-        df_result = df_result.append(performance_reg, ignore_index=True)
+        performance_fairness = evaluate_fairness(sensitive_features,
+                                                 df,
+                                                 m,
+                                                 label,
+                                                 problem="classification")
+        performance.update(performance_reg)
+        performance.update(performance_fairness)
+        df_result = df_result.append(performance, ignore_index=True)
+
+
     return df_result
 
-if __name__ == "__main__":    
+
+if __name__ == "__main__":
+    """Parsing argument"""
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--mode', type=str, default='both')
+
+    args = parser.parse_args()
+    mode = args.mode
+
     """Load configuration"""
-    with open("/home/trduong/Data/counterfactual_fairness_game_theoric/configuration.yml", 'r') as stream:
-        try:
-            conf = yaml.safe_load(stream)
-        except yaml.YAMLError as exc:
-            print(exc)
-        
+    config_path = "/home/trduong/Data/counterfactual_fairness_game_theoric/configuration.yml"
+    conf = load_config(config_path)
+
     """Set up logging"""
     logger = logging.getLogger('genetic')
     file_handler = logging.FileHandler(filename=conf['evaluate_law'])
@@ -53,11 +65,28 @@ if __name__ == "__main__":
     logger.addHandler(file_handler)
     logger.addHandler(stdout_handler)
     logger.setLevel(logging.DEBUG)
+
+    """Load data"""
+    if mode == "baseline":
+        df = pd.read_csv(conf['result_adult'])
+        df = df[['gender', 'race', 'income']]
+        col = ['full_prediction', 'unaware_prediction', 'cf_prediction']
+    elif mode == "ivr":
+        df = pd.read_csv(conf['result_ivr_adult'])
+        col = ['AL_prediction', 'GL_prediction', 'GD_prediction']
+    elif mode == "both":
+        col = ['full_prediction', 'unaware_prediction',
+               'AL_prediction', 'GL_prediction', 'GD_prediction']
+        df = pd.read_csv(conf['result_adult'])
+        df1 = df[['race', 'gender', 'full_prediction', 'unaware_prediction', 'income']]
+        df = pd.read_csv(conf['result_ivr_adult'])
+        df2 = df[['AL_prediction', 'GL_prediction', 'GD_prediction']]
+        df = pd.concat([df1, df2], axis=1)
     
 
     """Load data"""
-    data_path = conf['result_adult']
-    df = pd.read_csv(data_path)
+    # data_path = conf['result_adult']
+    # df = pd.read_csv(data_path)
     
     sensitive_features = ['race', 'gender']
     target = 'income'
@@ -71,10 +100,11 @@ if __name__ == "__main__":
     df_result['Precision'] = ''
     df_result['Recall'] = ''
     df_result['Accuracy'] = ''
-    df_result['sinkhorn'] = ''
-    df_result['energy'] = ''
-    df_result['gaussian'] = ''
-    
+    df_result['dpr_race'] = ''
+    df_result['eod_race'] = ''
+    df_result['dpr_gender'] = ''
+    df_result['eod_gender'] = ''
+
 
     """Evaluate performance"""
     df_result = evaluate_adult(df, df_result, sensitive_features, target)

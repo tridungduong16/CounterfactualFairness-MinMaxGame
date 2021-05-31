@@ -33,6 +33,21 @@ def features_setting(data):
                          'gender']
         dict_['sensitive_features'] = ['race', 'gender']
         dict_['target'] = 'income'
+    elif data == "compas":
+        dict_['categorical_features'] = ['age_cat', 'score_text', 'race', 'gender', 'c_charge_degree']
+        dict_['continuous_features'] = ['priors_count']
+        dict_['normal_features'] = ['priors_count', 'age_cat', 'score_text', 'c_charge_degree']
+        dict_['full_features'] = ['priors_count', 'age_cat', 'score_text', 'c_charge_degree',  'race', 'gender']
+        dict_['sensitive_features'] = ['race', 'gender']
+        dict_['target'] = 'two_year_recid'
+    elif data == "german":
+        dict_['categorical_features'] = ['marital_status', 'occupation', 'race', 'gender', 'workclass', 'education']
+        dict_['continuous_features']  = ['age', 'hours_per_week']
+        dict_['normal_features'] = ['age', 'workclass', 'marital_status', 'occupation', 'hours_per_week', 'education']
+        dict_['full_features'] = ['age', 'workclass', 'education', 'marital_status', 'occupation', 'hours_per_week', 'race',
+                         'gender']
+        dict_['sensitive_features'] = ['race', 'gender']
+        dict_['target'] = 'income'
     return dict_
 
 def preprocess_dataset(df, continuous_features, categorical_features):

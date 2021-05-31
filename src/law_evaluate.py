@@ -78,8 +78,8 @@ if __name__ == "__main__":
         df = pd.read_csv(conf['result_ivr_law'])
         df2 = df[['AL_prediction', 'GL_prediction', 'GD_prediction']]
         df = pd.concat([df1, df2], axis=1)
-    # print(df)
-    # sys.exit(1)
+
+
     logger.debug(df)
 
     

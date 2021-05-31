@@ -6,11 +6,9 @@ import logging
 import sys
 import torch.nn.functional as F
 import numpy as np
-import lightgbm as lgb
-from sklearn.linear_model import LogisticRegression
 
 from tqdm import tqdm
-from model_arch.discriminator import Discriminator_Adult_Aw, Discriminator_Adult_Ag
+from model_arch.discriminator import DiscriminatorAdultAw, DiscriminatorAdultAg
 from dfencoder.autoencoder import AutoEncoder
 from dfencoder.dataframe import EncoderDataFrame
 from utils.evaluate_func import evaluate_classifier, evaluate_distribution, evaluate_fairness
@@ -21,9 +19,14 @@ from utils.helpers import features_setting
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import StratifiedKFold
 from tqdm import tqdm
-from sklearn.metrics import classification_report
+import argparse
+import visdom
 
 if __name__ == "__main__":
+    """Parsing argument"""
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--data_name', type=str, default='compas')
+
     """Device"""
     if torch.cuda.is_available():
         dev = "cuda:0"
@@ -35,15 +38,29 @@ if __name__ == "__main__":
     config_path = "/home/trduong/Data/counterfactual_fairness_game_theoric/configuration.yml"
     conf = load_config(config_path)
 
+    """Load parse argument"""
+    args = parser.parse_args()
+    data_name = args.data_name
+
+    if data_name == 'compas':
+        log_file = 'log_train_compas'
+        data_path = conf['data_compas']
+        ae_path = conf['compas_encoder']
+        emb_size = 128
+        discriminator_agnostic = DiscriminatorAdultAg(emb_size)
+        discriminator_awareness = DiscriminatorAdultAw(emb_size + 6)
+        discriminator_agnostic.to(device)
+        discriminator_awareness.to(device)
+
+
+
     """Set up logging"""
-    logger = setup_logging(conf['log_train_adult'])
+    logger = setup_logging(log_file)
 
     """Load data"""
-    data_path = conf['processed_data_adult']
     df = pd.read_csv(data_path)
 
     """Setup features"""
-    data_name = "adult"
     dict_ = features_setting(data_name)
     sensitive_features = dict_["sensitive_features"]
     normal_features = dict_["normal_features"]
@@ -51,6 +68,7 @@ if __name__ == "__main__":
     continuous_features = dict_["continuous_features"]
     full_features = dict_["full_features"]
     target = dict_["target"]
+    col_sensitive = ['race_0', 'race_1', 'gender_0', 'gender_1']
 
     """Preprocess data"""
     df = preprocess_dataset(df, continuous_features, categorical_features)
@@ -75,22 +93,22 @@ if __name__ == "__main__":
     )
     ae_model.to(device)
     ae_model.build_model(df_autoencoder)
-    ae_model.load_state_dict(torch.load(conf['adult_encoder']))
+    ae_model.load_state_dict(torch.load(ae_path))
     ae_model.eval()
 
     """Logistic Regression"""
-    Z = ae_model.get_representation(df_autoencoder)
-    Y = np.array([float(i) for i in df[target].values])
-    clf = LogisticRegression(solver='liblinear')
-    clf.fit(Z.cpu().detach().numpy(), Y)
-    y_pred = clf.predict(Z.cpu().detach().numpy())
-    eval = evaluate_classifier(y_pred, df[target].values)
-    logger.debug(eval)
+    # Z = ae_model.get_representation(df_autoencoder)
+    # Y = np.array([float(i) for i in df[target].values])
+    # clf = LogisticRegression(solver='liblinear')
+    # clf.fit(Z.cpu().detach().numpy(), Y)
+    # y_pred = clf.predict(Z.cpu().detach().numpy())
+    # eval = evaluate_classifier(y_pred, df[target].values)
+    # logger.debug(eval)
 
 
     """Setup hyperparameter"""
     parameters = {}
-    parameters['epochs'] = 500
+    parameters['epochs'] = 60
     parameters['learning_rate'] = 1e-4
     parameters['dataframe'] = df
     parameters['batch_size'] = 256
@@ -124,58 +142,41 @@ if __name__ == "__main__":
     generator.build_model(df_generator)
     generator.to(device)
 
-    print(generator.categorical_fts)
-
-    discriminator_agnostic = Discriminator_Adult_Ag(emb_size, problem)
-    discriminator_awareness = Discriminator_Adult_Aw(emb_size + 4, problem)
-
-
-    # discriminator_awareness = Discriminator_Adult_Aw(emb_size_ae, problem)
-    # emb_size = 64
-    # discriminator_awareness = Discriminator_Adult_Aw(emb_size_ae)
+    # discriminator_agnostic = DiscriminatorAdultAg(emb_size, problem)
+    # discriminator_awareness = DiscriminatorAdultAw(emb_size + 4, problem)
+    # discriminator_agnostic.to(device)
     # discriminator_awareness.to(device)
-    # discriminator_awareness.load_state_dict(torch.load(conf['discriminator_awareness_adult']))
-    # discriminator_awareness.eval()
-
-
-    discriminator_agnostic.to(device)
-    discriminator_awareness.to(device)
 
     optimizer1 = torch.optim.Adam(generator.parameters(), lr=1e-2)
-    # optimizer2 = torch.optim.Adam(discriminator_agnostic.parameters(), lr=learning_rate)
-    # optimizer3 = torch.optim.Adam(discriminator_awareness.parameters(), lr=learning_rate)
-
-
-    optimizer2 = torch.optim.SGD(discriminator_agnostic.parameters(),
-                                 lr=1e-2, momentum=0.9)
-    optimizer3 = torch.optim.SGD(discriminator_awareness.parameters(),
-                                 lr=1e-2, momentum=0.9)
+    optimizer2 = torch.optim.SGD(discriminator_agnostic.parameters(),lr=1e-2, momentum=0.9)
+    optimizer3 = torch.optim.SGD(discriminator_awareness.parameters(),lr=1e-2, momentum=0.9)
 
     scheduler1 = torch.optim.lr_scheduler.StepLR(optimizer1, step_size=50, gamma=0.1)
     scheduler2 = torch.optim.lr_scheduler.StepLR(optimizer2, step_size=50, gamma=0.1)
     scheduler3 = torch.optim.lr_scheduler.StepLR(optimizer3, step_size=50, gamma=0.1)
-
-    # scheduler1 = torch.optim.lr_scheduler.MultiStepLR(optimizer1,
-    #                                                   milestones=[30,80],
-    #                                                   gamma=0.1)
-    # scheduler2 = torch.optim.lr_scheduler.MultiStepLR(optimizer2,
-    #                                                   milestones=[30,80],
-    #                                                   gamma=0.1)
-    # scheduler3 = torch.optim.lr_scheduler.MultiStepLR(optimizer3,
-    #                                                   milestones=[30,80],
-    #                                                   gamma=0.1)
 
     weights = [df[target].value_counts()[0], df[target].value_counts()[1]]
     normedWeights = [0.4, 0.6]
     normedWeights = torch.FloatTensor(normedWeights).to(device)
     loss_fn = nn.CrossEntropyLoss(normedWeights)
 
+    losses = []
+    losses_aware = []
+    losses_gen = []
+
     step = 0
     for i in (range(epochs)):
         df_train = df.copy().sample(frac=1).reset_index(drop=True)
-        losses = []
-        losses1 = []
-        losses2 = []
+        df_dummy = df_train.copy()
+        df_dummy = pd.get_dummies(df_dummy, columns=['gender'])
+        df_dummy = pd.get_dummies(df_dummy, columns=['race'])
+
+
+
+        sum_loss = []
+        sum_loss_aware = []
+        sum_loss_gen = []
+
         """Split batch size"""
         skf = StratifiedKFold(n_splits=300, random_state=0, shuffle=True)
         for train_index, test_index in tqdm(skf.split(df_train[full_features], df_train[target])):
@@ -185,6 +186,8 @@ if __name__ == "__main__":
             batch_generator = df_train.iloc[test_index, :][normal_features].copy()
             batch_generator = EncoderDataFrame(batch_generator)
             batch_generator_noise = batch_generator.swap(likelihood=0.1)
+            batch_dummy = df_dummy.iloc[test_index, :][col_sensitive]
+
 
             Y = df_train.iloc[test_index,:][target].values
             Y = torch.Tensor(Y).to(device).reshape(-1,1).long()
@@ -211,26 +214,32 @@ if __name__ == "__main__":
             emb_cat_sex = torch.tensor(np.array(emb_cat_sex).astype(np.float32)).to(device)
             emb = torch.cat((emb_cat_race, emb_cat_sex),1)
 
+            """Get the sensitive label encoder"""
+            sensitive_onehot = torch.tensor(batch_dummy.values.astype(np.float32)).to(device)
+            sensitive_label = torch.tensor(batch_ae[sensitive_features].values.astype(np.float32)).to(device)
+
             """Concat generator and sensitive representation"""
             Z = generator.custom_forward(batch_generator)
             Z_noise = generator.custom_forward(batch_generator_noise)
             ZS = torch.cat((Z, emb), 1)
-            # ZS = ae_model.get_representation(batch_ae)
+            # ZS = torch.cat((ZS, sensitive_onehot), 1)
+            # ZS = torch.cat((ZS, sensitive_label), 1)
+
             prediction_ag = discriminator_agnostic(Z)
-            prediction_ag_noise = discriminator_agnostic(Z_noise)
+            # print(Z.shape, emb.shape)
+            # print(ZS.shape)
             prediction_aw = discriminator_awareness(ZS)
 
             """Measure loss"""
             loss_agnostic = loss_fn(prediction_ag, Y.reshape(-1))
-            loss_agnostic += loss_fn(prediction_ag_noise, Y.reshape(-1))
             loss_awareness = loss_fn(prediction_aw, Y.reshape(-1))
             diff_loss = F.leaky_relu(loss_agnostic - loss_awareness)
             gen_loss = 0.01 * diff_loss + loss_agnostic
 
             """Track loss"""
-            losses.append(gen_loss.cpu().detach().numpy())
-            losses1.append(loss_agnostic.cpu().detach().numpy())
-            losses2.append(loss_awareness.cpu().detach().numpy())
+            sum_loss.append(loss_agnostic.cpu().detach().numpy())
+            sum_loss_aware.append(loss_awareness.cpu().detach().numpy())
+            sum_loss_gen.append(gen_loss.cpu().detach().numpy())
 
             """Optimization progress"""
             optimizer1.zero_grad()
@@ -249,46 +258,55 @@ if __name__ == "__main__":
                 optimizer3.step()
             step += 1
 
-
-        # print("Parameters")
-        # print("Generator", generator.state_dict()['encoder_0.linear_layer.weight'][0][:10])
-        # print("Discriminator", discriminator_agnostic.state_dict()['hidden.weight'][0][:10])
-        # for param_group in optimizer1.param_groups:
-        #     print("Learning rate {}".format(param_group['lr']))
-        # for param_group in optimizer2.param_groups:
-        #     print("Learning rate {}".format(param_group['lr']))
-        # for param_group in optimizer2.param_groups:
-        #     print("Learning rate {}".format(param_group['lr']))
-
         """Get the final prediction"""
         df_generator = df[normal_features].copy()
-        Z = generator.get_representation(df_generator)
+        Z = generator.custom_forward(df_generator)
         y_pred = discriminator_agnostic(Z)
         y_pred = torch.argmax(y_pred, dim=1)
         y_pred = y_pred.reshape(-1).cpu().detach().numpy()
         y_true = df[target].values
 
-        # unique_counts_1 = np.unique(y_true, return_counts=True)
-        # unique_counts_2 = np.unique(y_pred, return_counts=True)
-        # print(unique_counts_1)
-        # print(unique_counts_2)
-
-        # report = classification_report(y_true, y_pred)
-        # print(report)
+        """Track loss"""
+        l1 = sum(sum_loss) / len(sum_loss)
+        l2 = sum(sum_loss_aware) / len(sum_loss)
+        l3 = sum(sum_loss_gen) / len(sum_loss)
+        losses.append(l1)
+        losses_aware.append(l2)
+        losses_gen.append(l3)
 
         """Evaluation"""
         eval = evaluate_classifier(y_pred, y_true)
         logger.debug("Epoch {}".format(i))
-        logger.debug("Loss generator {:.5f}".format(sum(losses)/len(losses)))
-        logger.debug("Loss discriminator 1 {:.5f}".format(sum(losses1)/len(losses1)))
-        logger.debug("Loss discriminator 2 {:.5f}".format(sum(losses2)/len(losses2)))
+        logger.debug("Loss generator {:.5f}".format(l1))
+        logger.debug("Loss discriminator 1 {:.5f}".format(l2))
+        logger.debug("Loss discriminator 2 {:.5f}".format(l3))
         for key, value in eval.items():
             logger.debug("{} {:.4f}".format(key, value))
         logger.debug("-"*30)
 
 
+
+    viz = visdom.Visdom()
+
+    viz.line(
+        Y=np.array(losses),
+        X=np.array(range(epochs)),
+        opts=dict(title='Compas agnostic loss', webgl=True)
+    )
+
+    viz.line(
+        Y=np.array(losses_aware),
+        X=np.array(range(epochs)),
+        opts=dict(title='Compas awareness loss', webgl=True)
+    )
+
+    viz.line(
+        Y=np.array(losses_gen),
+        X=np.array(range(epochs)),
+        opts=dict(title='Compas generator loss', webgl=True)
+    )
     """Save model"""
     logger.debug("Saving model......")
-    torch.save(generator.state_dict(), conf["adult_generator"])
-    torch.save(discriminator_agnostic.state_dict(), conf["adult_discriminator"])
+    torch.save(generator.state_dict(), conf["compas_generator"])
+    torch.save(discriminator_agnostic.state_dict(), conf["compas_discriminator"])
 

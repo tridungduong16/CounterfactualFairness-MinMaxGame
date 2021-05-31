@@ -1,4 +1,4 @@
-c_charge_degree,age_cat,race,sex,score_text,priors_count,two_year_recid
+c_charge_degree,age_cat,race,gender,score_text,priors_count,two_year_recid
 F,Greater than 45,Other,Male,Low,0,0
 F,25 - 45,African-American,Male,Low,0,1
 F,Less than 25,African-American,Male,Low,4,1

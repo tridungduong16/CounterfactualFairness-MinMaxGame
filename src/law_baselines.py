@@ -83,8 +83,6 @@ if __name__ == "__main__":
     """Load data"""
     data_path = conf['data_law']
     df = pd.read_csv(data_path)
-    # df = df_test.copy()
-    # print(df)
     """Setup features"""
     data_name = "law"
     dict_ = features_setting("law")

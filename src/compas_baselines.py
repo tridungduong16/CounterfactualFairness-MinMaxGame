@@ -20,7 +20,9 @@ from sklearn import preprocessing
 from torch import nn
 from pyro.nn import PyroModule
 from tqdm import tqdm
-
+from utils.helpers import setup_logging
+from utils.helpers import load_config
+from utils.helpers import features_setting
 
 # from utils.helpers import load_adult_income_dataset
 # from utils.dataloader import DataLoader
@@ -90,40 +92,36 @@ def infer_knowledge(df):
 
 
 if __name__ == "__main__":
+    """Device"""
+    if torch.cuda.is_available():
+        dev = "cuda:0"
+    else:
+        dev = "cpu"
+    device = torch.device(dev)
 
     """Load configuration"""
-    with open("/home/trduong/Data/counterfactual_fairness_game_theoric/configuration.yml", 'r') as stream:
-        try:
-            conf = yaml.safe_load(stream)
-        except yaml.YAMLError as exc:
-            print(exc)
+    config_path = "/home/trduong/Data/counterfactual_fairness_game_theoric/configuration.yml"
+    conf = load_config(config_path)
+
+    """Setup for dataset"""
+    data_name = "compas"
+    log_path = conf['log_train_compas']
+    data_path = conf['data_compas']
 
     """Set up logging"""
-    logger = logging.getLogger('genetic')
-    file_handler = logging.FileHandler(filename=conf['log_law'])
-    stdout_handler = logging.StreamHandler(sys.stdout)
-    formatter = logging.Formatter('%(asctime)s %(name)-12s %(levelname)-8s %(message)s')
-    file_handler.setFormatter(formatter)
-    stdout_handler.setFormatter(formatter)
-    logger.addHandler(file_handler)
-    logger.addHandler(stdout_handler)
-    logger.setLevel(logging.DEBUG)
+    logger = setup_logging(log_path)
 
-    """Load data and dataloader and normalize data"""
-    # df = load_adult_income_dataset(conf['data_adult'])
-    df = pd.read_csv(conf['processed_data_adult'])
-    df = df.dropna()
-    print(df.shape)
-    # df = df.sample(frac=0.2, replace=True, random_state=1).reset_index(drop=True)
+    """Load data"""
+    df = pd.read_csv(data_path)
 
     """Setup features"""
-    categorical_features = ['marital_status', 'occupation', 'race', 'gender', 'workclass', 'education']
-    continuous_features = ['age', 'hours_per_week']
-    normal_features = ['age', 'workclass', 'marital_status', 'occupation', 'hours_per_week']
-    full_features = ['age', 'workclass', 'education', 'marital_status', 'occupation', 'hours_per_week', 'race',
-                     'gender']
-    sensitive_features = ['race', 'gender']
-    target = 'income'
+    dict_ = features_setting(data_name)
+    sensitive_features = dict_["sensitive_features"]
+    normal_features = dict_["normal_features"]
+    categorical_features = dict_["categorical_features"]
+    continuous_features = dict_["continuous_features"]
+    full_features = dict_["full_features"]
+    target = dict_["target"]
 
     """Preprocess data"""
     for c in continuous_features:
@@ -136,29 +134,21 @@ if __name__ == "__main__":
         le = preprocessing.LabelEncoder()
         df[c] = le.fit_transform(df[c])
 
-    # peducation = torch.tensor([1/4, 1/4, 1/4, 1/4])
-    # print(dist.Multinomial(total_count=100, probs=peducation))
 
     """Full model"""
     logger.debug('Full model')
 
     clf = LogisticRegression()
-    # clf = lgb.LGBMClassifier()
     clf.fit(df[full_features], df[target])
     y_pred = clf.predict(df[full_features].values)
     df['full_prediction'] = y_pred.reshape(-1)
-
-    # print(df)
-    # print(clf.predict(df[full_features].values))
     y_pred = clf.predict_proba(df[full_features].values)[:, 0]
-    # print(len(y_pred))
     df['full_prediction_proba'] = y_pred.reshape(-1)
 
     """Unaware model"""
     logger.debug('Unware model')
 
     clf = LogisticRegression()
-    # clf = lgb.LGBMClassifier()
     clf.fit(df[normal_features], df[target])
     y_pred = clf.predict(df[normal_features].values)
     df['unaware_prediction'] = y_pred.reshape(-1)
@@ -167,22 +157,7 @@ if __name__ == "__main__":
     df['unaware_prediction_proba'] = y_pred.reshape(-1)
 
     """Counterfactual fairness model"""
-    # for i in full_features:
-    #     df[i] = [torch.tensor(x) for x in df[i].values]
-    #
-    # logger.debug('Counterfactual fairness model')
-    # knowledged = infer_knowledge(df)
-    # knowledged = np.array(knowledged).reshape(-1, 1)
-    # # print(knowledged)
-    # clf = lgb.LGBMClassifier()
-    # clf.fit(knowledged, df[target])
-    # y_pred = clf.predict(knowledged)
-    # df['cf_prediction'] = y_pred.reshape(-1)
-    #
-    # for i in full_features:
-    #     df[i] = [x.detach().numpy() for x in df[i]]
-
-    df.to_csv(conf['result_adult'], index=False)
+    df.to_csv(conf['result_compas'], index=False)
 
 
 

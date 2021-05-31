@@ -38,9 +38,9 @@ class DiscriminatorLaw(nn.Module):
 
 
 
-class Discriminator_Adult_Aw(nn.Module):
+class DiscriminatorAdultAw(nn.Module):
     def __init__(self, input_length: int, problem=None):
-        super(Discriminator_Adult_Aw, self).__init__()
+        super(DiscriminatorAdultAw, self).__init__()
         self.problem = problem
         dim1 = 128
         dim2 = 64
@@ -82,9 +82,9 @@ class Discriminator_Adult_Aw(nn.Module):
         return x
 
 
-class Discriminator_Adult_Ag(nn.Module):
+class DiscriminatorAdultAg(nn.Module):
     def __init__(self, input_length: int, problem=None):
-        super(Discriminator_Adult_Ag, self).__init__()
+        super(DiscriminatorAdultAg, self).__init__()
         self.problem = problem
         dim1 = 128
         dim2 = 64

@@ -21,11 +21,11 @@ from sklearn.metrics import precision_score
 from sklearn.metrics import recall_score
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import r2_score
+from aif360.metrics import ClassificationMetric
 
 from tqdm import tqdm
 from geomloss import SamplesLoss
-from fairlearn.metrics import demographic_parity_difference, demographic_parity_ratio
-
+from fairlearn.metrics import demographic_parity_difference, demographic_parity_ratio, equalized_odds_difference, equalized_odds_ratio
 
 def evaluate_pred(y_pred, y_true):
     """
@@ -60,12 +60,12 @@ def evaluate_classifier(y_pred, y_true):
     """
 
     evaluations = {}
-    # print(y_true)
-    # print(y_pred)
     evaluations['F1 Score'] = f1_score(y_true, y_pred, average='weighted')
     evaluations['Precision'] = precision_score(y_true, y_pred, average='weighted')
     evaluations['Recall'] = recall_score(y_true, y_pred, average='weighted')
     evaluations['Accuracy'] = accuracy_score(y_true, y_pred)
+
+
 
     return evaluations
 
@@ -102,70 +102,48 @@ def evaluate_distribution(ys, ys_hat):
     
     return evaluation 
 
-def evaluate_fairness(sensitive_att, df, target):
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    sinkhorn, energy, gaussian, laplacian = 0,0,0,0
-
-    df = df.sample(frac=0.5, replace=True, random_state=0)
-
-    for s in sensitive_att:
-        ys = df[df[s] == 1][target].values
-        ys_hat = df[df[s] == 0][target].values
-
-        ys = torch.Tensor(ys).to(device).reshape(-1,1)
-        ys_hat = torch.Tensor(ys_hat).to(device).reshape(-1,1)
-
-        eval_performance = evaluate_distribution(ys, ys_hat)
-        sinkhorn += eval_performance['sinkhorn']
-        energy += eval_performance['energy']
-        gaussian += eval_performance['gaussian']
-        laplacian += eval_performance['laplacian']
-
-        del ys
-        del ys_hat
-
+def evaluate_fairness(sensitive_att, df, target, label=None, problem = "regression"):
     eval_performance = {}
-    eval_performance['sinkhorn'] = sinkhorn
-    eval_performance['energy'] = energy
-    eval_performance['gaussian'] = gaussian
-    eval_performance['laplacian'] = laplacian
 
-    return eval_performance
+    if problem == "classification":
+        for s in sensitive_att:
+            y_true = df[label].values
+            y_pred = df[target].values
+            sensitive_value = df[s].values
+            eval_performance["dpr_" + s] = demographic_parity_ratio(y_true,y_pred,sensitive_features = sensitive_value)
+            eval_performance["dpd_" + s] = demographic_parity_difference(y_true,y_pred,sensitive_features = sensitive_value)
+            eval_performance["eod_" + s] = equalized_odds_difference(y_true,y_pred,sensitive_features = sensitive_value)
+            eval_performance["eor_" + s] = equalized_odds_ratio(y_true,y_pred,sensitive_features = sensitive_value)
+
+        return eval_performance
+
+    if problem == "regression":
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        sinkhorn, energy, gaussian, laplacian = 0,0,0,0
+
+        df = df.sample(frac=0.5, replace=True, random_state=0)
+
+        for s in sensitive_att:
+            ys = df[df[s] == 1][target].values
+            ys_hat = df[df[s] == 0][target].values
+
+            ys = torch.Tensor(ys).to(device).reshape(-1,1)
+            ys_hat = torch.Tensor(ys_hat).to(device).reshape(-1,1)
+
+            eval_performance = evaluate_distribution(ys, ys_hat)
+            sinkhorn += eval_performance['sinkhorn']
+            energy += eval_performance['energy']
+            gaussian += eval_performance['gaussian']
+            laplacian += eval_performance['laplacian']
+
+            del ys
+            del ys_hat
+
+        eval_performance['sinkhorn'] = sinkhorn
+        eval_performance['energy'] = energy
+        eval_performance['gaussian'] = gaussian
+        eval_performance['laplacian'] = laplacian
+
+        return eval_performance
     
     
-# if __name__ == "__main__":
-#     """Load configuration"""
-#     with open("/home/trduong/Data/counterfactual_fairness_game_theoric/configuration.yml", 'r') as stream:
-#         try:
-#             conf = yaml.safe_load(stream)
-#         except yaml.YAMLError as exc:
-#             print(exc)
-#
-#     """Set up logging"""
-#     logger = logging.getLogger('genetic')
-#     file_handler = logging.FileHandler(filename=conf['evaluate_law'])
-#     stdout_handler = logging.StreamHandler(sys.stdout)
-#     formatter = logging.Formatter('%(asctime)s %(name)-12s %(levelname)-8s %(message)s')
-#     file_handler.setFormatter(formatter)
-#     stdout_handler.setFormatter(formatter)
-#     logger.addHandler(file_handler)
-#     logger.addHandler(stdout_handler)
-#     logger.setLevel(logging.DEBUG)
-#
-#
-#     """Load data"""
-#     data_path = conf['result_law']
-#     df = pd.read_csv(data_path)
-#
-#     df = df.sample(frac=0.5, replace=True, random_state=1)
-#
-#     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-#     ys = df[df['race'] == 0].values
-#     ys_hat = df[df['race'] == 1].values
-#
-#     ys = torch.Tensor(ys).to(device).reshape(-1,1)
-#     ys_hat = torch.Tensor(ys_hat).to(device).reshape(-1,1)
-#
-#     #evaluate_distribution(ys, ys_hat)
-#     Loss = SamplesLoss("sinkhorn", p=2, blur=0.05, scaling=0.8)
-#     # Loss(ys, ys_hat)

@@ -116,8 +116,6 @@ if __name__ == "__main__":
     # df = load_adult_income_dataset(conf['data_adult'])
     df = pd.read_csv(conf['processed_data_adult'])
     df = df.dropna()
-    print(df.shape)
-    # df = df.sample(frac=0.2, replace=True, random_state=1).reset_index(drop=True)
 
 
     """Setup features"""
@@ -146,22 +144,17 @@ if __name__ == "__main__":
     logger.debug('Full model')
 
     clf = LogisticRegression()
-    # clf = lgb.LGBMClassifier()
     clf.fit(df[full_features], df[target])
     y_pred = clf.predict(df[full_features].values)
     df['full_prediction'] = y_pred.reshape(-1)
 
-    # print(df)
-    # print(clf.predict(df[full_features].values))
     y_pred = clf.predict_proba(df[full_features].values)[:,0]
-    # print(len(y_pred))
     df['full_prediction_proba'] = y_pred.reshape(-1)
 
     """Unaware model"""
     logger.debug('Unware model')
 
     clf = LogisticRegression()
-    # clf = lgb.LGBMClassifier()
     clf.fit(df[normal_features], df[target])
     y_pred = clf.predict(df[normal_features].values)
     df['unaware_prediction'] = y_pred.reshape(-1)

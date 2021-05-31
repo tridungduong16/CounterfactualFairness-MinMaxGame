@@ -26,6 +26,7 @@ if __name__ == "__main__":
 
     # data_name = "law"
     # data_name = "adult"
+    data_name = "compas"
 
     """Device"""
     if torch.cuda.is_available():
@@ -47,6 +48,10 @@ if __name__ == "__main__":
         data_path = conf['processed_data_adult']
         dict_ = features_setting("adult")
         save_path = conf['adult_encoder']
+    elif data_name == "compas":
+        data_path = conf['data_compas']
+        dict_ = features_setting("compas")
+        save_path = conf['compas_encoder']
 
     df = pd.read_csv(data_path)
 

@@ -1,0 +1,9 @@
+2021-05-31 16:31:49,269 CFairness    DEBUG    Epoch 0
+2021-05-31 16:31:49,270 CFairness    DEBUG    Loss generator 0.69291
+2021-05-31 16:31:49,270 CFairness    DEBUG    Loss discriminator 1 0.69488
+2021-05-31 16:31:49,270 CFairness    DEBUG    Loss discriminator 2 0.69312
+2021-05-31 16:31:49,270 CFairness    DEBUG    F1 Score 0.4609
+2021-05-31 16:31:49,270 CFairness    DEBUG    Precision 0.5288
+2021-05-31 16:31:49,270 CFairness    DEBUG    Recall 0.4945
+2021-05-31 16:31:49,270 CFairness    DEBUG    Accuracy 0.4945
+2021-05-31 16:31:49,270 CFairness    DEBUG    ------------------------------

@@ -14,6 +14,7 @@ from utils.helpers import load_config
 from utils.helpers import features_setting
 from sklearn.model_selection import train_test_split
 import torch.nn.functional as F
+import visdom
 
 if __name__ == "__main__":
     """Device"""
@@ -45,6 +46,7 @@ if __name__ == "__main__":
     continuous_features = dict_["continuous_features"]
     full_features = dict_["full_features"]
     target = dict_["target"]
+    col_sensitive = ['race_0', 'race_1', 'sex_0', 'sex_1']
 
     selected_race = ['White', 'Black']
     df = df[df['race'].isin(selected_race)]
@@ -55,10 +57,10 @@ if __name__ == "__main__":
     df['ZFYA'] = (df['ZFYA'] - df['ZFYA'].mean()) / df['ZFYA'].std()
     df = df[['LSAT', 'UGPA', 'sex', 'race', 'ZFYA']]
 
-    df_dummy = df.copy()
-    df_dummy = pd.get_dummies(df_dummy, columns=['sex'])
-    df_dummy = pd.get_dummies(df_dummy, columns=['race'])
-    col_sensitive = ['race_0', 'race_1', 'sex_0', 'sex_1']
+    # df_dummy = df.copy()
+    # df_dummy = pd.get_dummies(df_dummy, columns=['sex'])
+    # df_dummy = pd.get_dummies(df_dummy, columns=['race'])
+
 
     """Setup auto encoder"""
     df_autoencoder = df[full_features].copy()
@@ -84,7 +86,7 @@ if __name__ == "__main__":
     """Setup hyperparameter"""
     logger.debug('Setup hyperparameter')
     parameters = {}
-    parameters['epochs'] = 50
+    parameters['epochs'] = 100
     parameters['learning_rate'] = 1e-2
     parameters['dataframe'] = df
     parameters['batch_size'] = 128
@@ -133,11 +135,7 @@ if __name__ == "__main__":
     optimizer3 = torch.optim.SGD(discriminator_awareness.parameters(),
                                  lr=learning_rate, momentum=0.9)
 
-    # scheduler1 = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer1, 'min')
     scheduler1 = torch.optim.lr_scheduler.StepLR(optimizer1, step_size=50, gamma=0.1)
-    # scheduler2 = torch.optim.lr_scheduler.StepLR(optimizer2, step_size=50, gamma=0.1)
-    # scheduler3 = torch.optim.lr_scheduler.StepLR(optimizer3, step_size=50, gamma=0.1)
-
     scheduler2 = torch.optim.lr_scheduler.CyclicLR(optimizer2, base_lr=learning_rate, max_lr=0.0001)
     scheduler3 = torch.optim.lr_scheduler.CyclicLR(optimizer3, base_lr=learning_rate, max_lr=0.0001)
 
@@ -148,10 +146,12 @@ if __name__ == "__main__":
     logger.debug('Dataframe length {}'.format(len(df)))
     logger.debug('Batchsize {}'.format((batch_size)))
 
-    # loss_function = torch.nn.MSELoss()
     loss_function = torch.nn.SmoothL1Loss()
 
     step = 0
+    losses = []
+    losses_aware = []
+    losses_gen = []
     for i in (range(epochs)):
         df_train = df.copy().sample(frac=1).reset_index(drop=True)
         df_dummy = df_train.copy()
@@ -167,6 +167,8 @@ if __name__ == "__main__":
         sum_loss = []
         sum_loss_aware = []
         sum_loss_gen = []
+
+
         for j in tqdm(range(n_updates)):
             path = step % 10
 
@@ -216,7 +218,6 @@ if __name__ == "__main__":
             sensitive_label = torch.tensor(batch_data[sensitive_features].values.astype(np.float32)).to(device)
 
             ZS = torch.cat((Z, emb), 1)
-            # print(sensitive_onehot.shape, sensitive_label.shape)
             ZS = torch.cat((ZS, sensitive_onehot), 1)
             ZS = torch.cat((ZS, sensitive_label), 1)
 
@@ -244,9 +245,9 @@ if __name__ == "__main__":
             gen_loss = 10*diff_loss + loss_agnostic
 
             """Track loss"""
-            sum_loss.append(loss_agnostic)
-            sum_loss_aware.append(loss_awareness)
-            sum_loss_gen.append(gen_loss)
+            sum_loss.append(loss_agnostic.cpu().detach().numpy())
+            sum_loss_aware.append(loss_awareness.cpu().detach().numpy())
+            sum_loss_gen.append(gen_loss.cpu().detach().numpy())
 
             """Optimizing progress"""
             optimizer1.zero_grad()
@@ -306,10 +307,20 @@ if __name__ == "__main__":
         logger.debug("Prediction")
         logger.debug(y_pred)
 
+        # sum_loss= sum_loss.cpu().detach().numpy()
+        # sum_loss_aware= sum_loss_aware.cpu().detach().numpy()
+        # sum_loss_gen= sum_loss_gen.cpu().detach().numpy()
 
-        logger.debug('Loss Agnostic {:.4f}'.format(sum(sum_loss) / len(sum_loss)))
-        logger.debug('Loss Awareness {:.4f}'.format(sum(sum_loss_aware) / len(sum_loss)))
-        logger.debug('Generator loss {:.4f}'.format(sum(sum_loss_gen) / len(sum_loss)))
+        l1 = sum(sum_loss) / len(sum_loss)
+        l2 = sum(sum_loss_aware) / len(sum_loss)
+        l3 = sum(sum_loss_gen) / len(sum_loss)
+        losses.append(l1)
+        losses_aware.append(l2)
+        losses_gen.append(l3)
+
+        logger.debug('Loss Agnostic {:.4f}'.format(l1))
+        logger.debug('Loss Awareness {:.4f}'.format(l2))
+        logger.debug('Generator loss {:.4f}'.format(l3))
         logger.debug("RMSE {:.4f}".format(eval['RMSE']))
         logger.debug("Fairness {:.7f}".format(eval_fairness['sinkhorn']))
 
@@ -325,6 +336,26 @@ if __name__ == "__main__":
         del loss_agnostic
         del y_pred
         del y_true
+
+    viz = visdom.Visdom()
+
+    viz.line(
+        Y=np.array(losses),
+        X=np.array(range(epochs)),
+        opts=dict(title='Agnostic loss', webgl=True)
+    )
+
+    viz.line(
+        Y=np.array(losses_aware),
+        X=np.array(range(epochs)),
+        opts=dict(title='Awareness loss', webgl=True)
+    )
+
+    viz.line(
+        Y=np.array(losses_gen),
+        X=np.array(range(epochs)),
+        opts=dict(title='Generator loss', webgl=True)
+    )
 
 
     """Save model"""
