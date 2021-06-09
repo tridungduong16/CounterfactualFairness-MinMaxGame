@@ -25,7 +25,12 @@ from aif360.metrics import ClassificationMetric
 
 from tqdm import tqdm
 from geomloss import SamplesLoss
-from fairlearn.metrics import demographic_parity_difference, demographic_parity_ratio, equalized_odds_difference, equalized_odds_ratio
+from fairlearn.metrics import demographic_parity_difference, demographic_parity_ratio
+from fairlearn.metrics import equalized_odds_difference, equalized_odds_ratio
+
+from aif360.datasets import StandardDataset
+from aif360.metrics import BinaryLabelDatasetMetric, ClassificationMetric
+from collections import Counter
 
 def evaluate_pred(y_pred, y_true):
     """
@@ -49,7 +54,7 @@ def evaluate_pred(y_pred, y_true):
 
 def evaluate_classifier(y_pred, y_true):
     """
-    
+    Evaluate performance of classifier in terms of precision, recall, f-measure, accuracy
     :param y_pred: DESCRIPTION
     :type y_pred: TYPE
     :param y_true: DESCRIPTION
@@ -58,6 +63,11 @@ def evaluate_classifier(y_pred, y_true):
     :rtype: TYPE
 
     """
+
+    print(y_true)
+    print(y_pred)
+    print(Counter(y_pred))
+    print(Counter(y_true))
 
     evaluations = {}
     evaluations['F1 Score'] = f1_score(y_true, y_pred, average='weighted')
@@ -78,9 +88,7 @@ def evaluate_distribution(ys, ys_hat):
     :return: DESCRIPTION
     :rtype: TYPE
     """
-    # print(ys)
-    #
-    # print(ys_hat)
+
     evaluation = {}
 
     backend = "auto"
@@ -102,48 +110,124 @@ def evaluate_distribution(ys, ys_hat):
     
     return evaluation 
 
-def evaluate_fairness(sensitive_att, df, target, label=None, problem = "regression"):
-    eval_performance = {}
+def fair_metrics(df, target, label, sensitive, data_name = None):
+    if data_name == 'compas':
+        privileged_classes = 0
+    elif data_name == 'adult':
+        privileged_classes = 1
+    elif data_name == 'bank':
+        privileged_classes = 2
 
+
+    dataset = StandardDataset(df,
+                              label_name=label,
+                              favorable_classes=[1],
+                              protected_attribute_names=[sensitive],
+                              privileged_classes=[[privileged_classes]])
+
+    dataset_pred = dataset.copy()
+    dataset_pred.labels = df[target].values
+
+    attr = dataset_pred.protected_attribute_names[0]
+
+    idx = dataset_pred.protected_attribute_names.index(attr)
+    privileged_groups = [{attr: dataset_pred.privileged_protected_attributes[idx][0]}]
+    unprivileged_groups = [{attr: dataset_pred.unprivileged_protected_attributes[idx][0]}]
+
+    classified_metric = ClassificationMetric(dataset,
+                                             dataset_pred,
+                                             unprivileged_groups=unprivileged_groups,
+                                             privileged_groups=privileged_groups)
+
+    metric_pred = BinaryLabelDatasetMetric(dataset_pred, unprivileged_groups=unprivileged_groups,
+                                           privileged_groups=privileged_groups)
+
+    result = {
+              'true_positive_rate_difference_{}'.format(sensitive):
+                  classified_metric.true_positive_rate_difference(),
+              'generalized_entropy_index_{}'.format(sensitive):
+                  classified_metric.generalized_entropy_index(alpha=2),
+              'equal_opportunity_difference_{}'.format(sensitive):
+                  classified_metric.equal_opportunity_difference(),
+              'average_abs_odds_difference_{}'.format(sensitive):
+                  classified_metric.average_abs_odds_difference()
+              }
+
+    return result
+
+def evaluate_fairness(sensitive_att, df, target, label=None, problem = "regression", dataname=None):
+    """
+    Evaluate the fairness aspects in terms of classification and regression
+    For regerssion: use the distribution distance
+    For classification: use the distribution distance + EOD
+
+    :param sensitive_att:
+    :param df:
+    :param target:
+    :param label:
+    :param problem:
+    :return: dictionary of evaluation metric
+    """
+    eval_performance = {}
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    sinkhorn, energy, gaussian, laplacian = 0, 0, 0, 0
+
+
+    # df_term = df.sample(frac=0.1, replace=True, random_state=0)
+    df_term = df.copy()
     if problem == "classification":
         for s in sensitive_att:
-            y_true = df[label].values
-            y_pred = df[target].values
-            sensitive_value = df[s].values
-            eval_performance["dpr_" + s] = demographic_parity_ratio(y_true,y_pred,sensitive_features = sensitive_value)
-            eval_performance["dpd_" + s] = demographic_parity_difference(y_true,y_pred,sensitive_features = sensitive_value)
-            eval_performance["eod_" + s] = equalized_odds_difference(y_true,y_pred,sensitive_features = sensitive_value)
-            eval_performance["eor_" + s] = equalized_odds_ratio(y_true,y_pred,sensitive_features = sensitive_value)
+            # ys = df_term[df_term[s] == 1][target + "_proba"].values
+            # ys_hat = df_term[df_term[s] == 0][target + "_proba"].values
+            # ys = torch.Tensor(ys).to(device).reshape(-1,1)
+            # ys_hat = torch.Tensor(ys_hat).to(device).reshape(-1,1)
+            # eval_fair = evaluate_distribution(ys, ys_hat)
+            # sinkhorn += eval_fair['sinkhorn']
+            # energy += eval_fair['energy']
+            # gaussian += eval_fair['gaussian']
+            # laplacian += eval_fair['laplacian']
+            eval = fair_metrics(df, target, label, s, dataname)
+            eval_performance.update(eval)
 
-        return eval_performance
-
-    if problem == "regression":
-        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        sinkhorn, energy, gaussian, laplacian = 0,0,0,0
-
+    elif problem == "regression":
         df = df.sample(frac=0.5, replace=True, random_state=0)
-
         for s in sensitive_att:
             ys = df[df[s] == 1][target].values
             ys_hat = df[df[s] == 0][target].values
-
             ys = torch.Tensor(ys).to(device).reshape(-1,1)
             ys_hat = torch.Tensor(ys_hat).to(device).reshape(-1,1)
-
             eval_performance = evaluate_distribution(ys, ys_hat)
             sinkhorn += eval_performance['sinkhorn']
             energy += eval_performance['energy']
             gaussian += eval_performance['gaussian']
             laplacian += eval_performance['laplacian']
-
-            del ys
-            del ys_hat
+            # del ys
+            # del ys_hat
 
         eval_performance['sinkhorn'] = sinkhorn
         eval_performance['energy'] = energy
         eval_performance['gaussian'] = gaussian
         eval_performance['laplacian'] = laplacian
+    return eval_performance
 
-        return eval_performance
-    
-    
+def evaluate_classification_performance(df,
+                                        df_result,
+                                        sensitive_features,
+                                        label,
+                                        prediction_columns,
+                                        data_name):
+    for m in prediction_columns:
+        performance = {}
+        performance['method'] = m
+        print(m, label)
+        performance_reg = evaluate_classifier(df[m].values, df[label].values)
+        performance_fairness = evaluate_fairness(sensitive_features,
+                                                 df,
+                                                 target = m,
+                                                 label = label,
+                                                 problem="classification",
+                                                 dataname=data_name)
+        performance.update(performance_reg)
+        performance.update(performance_fairness)
+        df_result = df_result.append(performance, ignore_index=True)
+    return df_result

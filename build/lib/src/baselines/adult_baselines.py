@@ -24,7 +24,7 @@ import repackage
 repackage.up()
 
 from src.utils.helpers import load_adult_income_dataset
-from src.utils.dataloader import DataLoader
+# from src.utils.dataloader import DataLoader
 
 def GroundTruthModel():
     exo_dist = {
@@ -86,11 +86,11 @@ if __name__ == "__main__":
     
 
     """Load data and dataloader and normalize data"""
-    dataset = load_adult_income_dataset()
-    params= {'dataframe':dataset.copy(),
-              'continuous_features':['age','hours_per_week'],
-              'outcome_name':'income'}
-    d = DataLoader(params)
-    df = d.data_df
-    df = d.normalize_data(df)
-    print(df)
+    # dataset = load_adult_income_dataset()
+    # params= {'dataframe':dataset.copy(),
+    #           'continuous_features':['age','hours_per_week'],
+    #           'outcome_name':'income'}
+    # d = DataLoader(params)
+    # df = d.data_df
+    # df = d.normalize_data(df)
+    # print(df)

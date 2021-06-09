@@ -1,9 +1,9 @@
 # Data
 data_law : /home/trduong/Data/counterfactual_fairness_game_theoric/data/law_data.csv
-data_adult : /home/trduong/Data/counterfactual_fairness_game_theoric/data/adult.data
-processed_data_adult : /home/trduong/Data/counterfactual_fairness_game_theoric/data/processed_adult.csv
-data_compas : /home/trduong/Data/counterfactual_fairness_game_theoric/data/compas.csv
+data_adult : /home/trduong/Data/counterfactual_fairness_game_theoric/data/processed_adult.csv
+data_compas : /home/trduong/Data/counterfactual_fairness_game_theoric/data/processed_compas.csv
 data_german : /home/trduong/Data/counterfactual_fairness_game_theoric/data/processed_adult.csv
+data_bank : /home/trduong/Data/counterfactual_fairness_game_theoric/data/processed_bank.csv
 
 #Result
 result_law_baseline : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/law_baseline.csv
@@ -13,31 +13,41 @@ result_adult : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/r
 result_evaluate_adult : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
 result_ivr_adult : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
 result_compas : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+result_aif_compas : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_aif.csv
 result_evaluate_compas : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
 result_ivr_compas : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+result_bank: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/bank.csv
+result_evaluate_bank: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_bank.csv
+result_ivr_bank : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/bank_ivr.csv
 
 #Log file
-log_law : /home/trduong/Data/counterfactual_fairness_game_theoric/logs/law.log
-log_train_law : /home/trduong/Data/counterfactual_fairness_game_theoric/logs/law_train.log
-log_baselines_law : /home/trduong/Data/counterfactual_fairness_game_theoric/logs/law_baselines.log
-log_train_adult : /home/trduong/Data/counterfactual_fairness_game_theoric/logs/adult_train.log
-log_train_compas : /home/trduong/Data/counterfactual_fairness_game_theoric/logs/compas_train.log
-
-#Evaluate file
-evaluate_law : /home/trduong/Data/counterfactual_fairness_game_theoric/logs/evaluate.log
+log_law: /home/trduong/Data/counterfactual_fairness_game_theoric/logs/law.log
+log_train_law: /home/trduong/Data/counterfactual_fairness_game_theoric/logs/law_train.log
+log_baselines_law: /home/trduong/Data/counterfactual_fairness_game_theoric/logs/law_baselines.log
+log_train_adult: /home/trduong/Data/counterfactual_fairness_game_theoric/logs/adult_train.log
+log_train_compas: /home/trduong/Data/counterfactual_fairness_game_theoric/logs/compas_train.log
+log_train_bank: /home/trduong/Data/counterfactual_fairness_game_theoric/logs/bank_train.log
+evaluate_law: /home/trduong/Data/counterfactual_fairness_game_theoric/logs/evaluate_law.log
+evaluate_adult: /home/trduong/Data/counterfactual_fairness_game_theoric/logs/evaluate_adult.log
+evaluate_compas: /home/trduong/Data/counterfactual_fairness_game_theoric/logs/evaluate_compas.log
 
 #Model saved
 law_encoder : /data/trduong/counterfactual_fairness_game_theoric/models/law_encoder.pt
 law_generator : /data/trduong/counterfactual_fairness_game_theoric/models/law_generator.pt
 law_discriminator : /data/trduong/counterfactual_fairness_game_theoric/models/law_discriminator.pt
-discriminator_agnostic_adult : /data/trduong/counterfactual_fairness_game_theoric/models/discriminator_agnostic_adult.pt
-discriminator_awareness_adult : /data/trduong/counterfactual_fairness_game_theoric/models/discriminator_awareness_adult.pt
+
 adult_encoder : /data/trduong/counterfactual_fairness_game_theoric/models/adult_encoder.pt
 adult_generator : /data/trduong/counterfactual_fairness_game_theoric/models/adult_generator.pt
 adult_discriminator : /data/trduong/counterfactual_fairness_game_theoric/models/adult_discriminator.pt
+
 compas_encoder : /data/trduong/counterfactual_fairness_game_theoric/models/compas_encoder.pt
 compas_generator : /data/trduong/counterfactual_fairness_game_theoric/models/compas_generator.pt
 compas_discriminator : /data/trduong/counterfactual_fairness_game_theoric/models/compas_discriminator.pt
+
+bank_encoder : /data/trduong/counterfactual_fairness_game_theoric/models/compas_encoder.pt
+bank_generator : /data/trduong/counterfactual_fairness_game_theoric/models/compas_generator.pt
+bank_discriminator : /data/trduong/counterfactual_fairness_game_theoric/models/compas_discriminator.pt
+
 
 
 

@@ -24,12 +24,10 @@ from utils.helpers import load_config
 
 
 def evaluate_law(df, df_result, col):
-    sensitive_att = ['race', 'sex']
+    sensitive_att = ['race']
     target = 'ZFYA'
     for m in col:
-    # for m in ['AL_prediction', 'GL_prediction', 'GD_prediction']:
-    # for m in ['full_prediction', 'unaware_prediction', 'cf_prediction']:
-        # print(df[target].values)
+        print(m, sensitive_att)
         performance_reg = evaluate_pred(df[m].values, df[target].values)
         performance_fairness = evaluate_fairness(sensitive_att, df, m)
         performance_reg.update(performance_fairness)
@@ -62,22 +60,48 @@ if __name__ == "__main__":
     
 
     """Load data"""
-    if mode == "baseline":
-        df = pd.read_csv(conf['result_law_baseline'])
-        df = df[['LSAT', 'UGPA', 'sex', 'race', 'ZFYA']]
-        col = ['full_prediction', 'unaware_prediction', 'cf_prediction']
-    elif mode == "ivr":
-        df = pd.read_csv(conf['result_ivr_law'])
-        col = ['AL_prediction', 'GL_prediction', 'GD_prediction']
-    elif mode == "both":
-        col = ['full_prediction', 'unaware_prediction', 'cf_prediction',
-               'AL_prediction', 'GL_prediction', 'GD_prediction']
-        df = pd.read_csv(conf['result_law_baseline'])
-        df1 = df[['race', 'sex', 'LSAT', 'UGPA',
-                  'full_prediction', 'unaware_prediction', 'cf_prediction', 'ZFYA']]
-        df = pd.read_csv(conf['result_ivr_law'])
-        df2 = df[['AL_prediction', 'GL_prediction', 'GD_prediction']]
-        df = pd.concat([df1, df2], axis=1)
+    col_baseline = ['full_linear', 'full_net', 'unaware_linear',
+    'unaware_net', 'level2_lin_True', 'level2_mont_lin_True',
+    'level2_mont_net_True', 'level2_mont_lin_False',
+    'level2_mont_net_False', 'level2_lin_False', 'level3_lin_True',
+    'level3_mont_lin_True', 'level3_mont_net_True', 'level3_mont_lin_False',
+    'level3_mont_net_False', 'level3_lin_False']
+
+    col_ivr = ['AL_prediction', 'GL_prediction', 'GD_prediction']
+
+    col = col_baseline +  col_ivr
+
+
+
+    df1 = pd.read_csv(conf['result_law_baseline'])
+    df2 = pd.read_csv(conf['result_ivr_law']).drop(columns = ['LSAT',
+                                                              'UGPA',
+                                                              'ZFYA',
+                                                              'race',
+                                                              'sex'])
+
+    # print(df1.columns)
+
+    # print(df2.columns)
+    df = pd.concat([df1, df2], axis=1)
+
+
+    # if mode == "baseline":
+    #     df = pd.read_csv(conf['result_law_baseline'])
+    #     df = df[['LSAT', 'UGPA', 'sex', 'race', 'ZFYA']]
+    #     col = ['full_prediction', 'unaware_prediction', 'cf_prediction']
+    # elif mode == "ivr":
+    #     df = pd.read_csv(conf['result_ivr_law'])
+    #     col = ['AL_prediction', 'GL_prediction', 'GD_prediction']
+    # elif mode == "both":
+    #     col = ['full_prediction', 'unaware_prediction', 'cf_prediction',
+    #            'AL_prediction', 'GL_prediction', 'GD_prediction']
+    #     df = pd.read_csv(conf['result_law_baseline'])
+    #     df1 = df[['race', 'sex', 'LSAT', 'UGPA',
+    #               'full_prediction', 'unaware_prediction', 'cf_prediction', 'ZFYA']]
+    #     df = pd.read_csv(conf['result_ivr_law'])
+    #     df2 = df[['AL_prediction', 'GL_prediction', 'GD_prediction']]
+    #     df = pd.concat([df1, df2], axis=1)
 
 
     logger.debug(df)
@@ -101,7 +125,6 @@ if __name__ == "__main__":
     df_result['energy'] = df_result['energy'].round(decimals=4)
     df_result['gaussian'] = df_result['gaussian'].round(decimals=4)
     df_result['laplacian'] = df_result['laplacian'].round(decimals=4)
-
     df_result.to_csv(conf['result_evaluate_law'], index = False)
     
     logger.debug(df_result[['RMSE', 'sinkhorn']])

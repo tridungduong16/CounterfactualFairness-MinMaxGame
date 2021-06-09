@@ -102,7 +102,7 @@ if __name__ == "__main__":
     """Setup generator and discriminator"""
     emb_size = 64
     discriminator_agnostic = DiscriminatorLaw(emb_size, problem)
-    discriminator_awareness = DiscriminatorLaw(emb_size + 4 + 6, problem)
+    discriminator_awareness = DiscriminatorLaw(emb_size + 2, problem)
     discriminator_agnostic.to(device)
     discriminator_awareness.to(device)
 
@@ -210,16 +210,17 @@ if __name__ == "__main__":
                 emb_cat_race.append(emb.weight.data.cpu().numpy()[cats.index(c), :].tolist())
 
             emb_cat_race = torch.tensor(np.array(emb_cat_race).astype(np.float32)).to(device)
-            emb_cat_sex = torch.tensor(np.array(emb_cat_sex).astype(np.float32)).to(device)
-            emb = torch.cat((emb_cat_race, emb_cat_sex), 1)
+            # emb_cat_sex = torch.tensor(np.array(emb_cat_sex).astype(np.float32)).to(device)
+            # emb = torch.cat((emb_cat_race, emb_cat_sex), 1)
+            emb = emb_cat_race
 
             """Get the sensitive label encoder"""
             sensitive_onehot = torch.tensor(batch_dummy.values.astype(np.float32)).to(device)
             sensitive_label = torch.tensor(batch_data[sensitive_features].values.astype(np.float32)).to(device)
 
             ZS = torch.cat((Z, emb), 1)
-            ZS = torch.cat((ZS, sensitive_onehot), 1)
-            ZS = torch.cat((ZS, sensitive_label), 1)
+            # ZS = torch.cat((ZS, sensitive_onehot), 1)
+            # ZS = torch.cat((ZS, sensitive_label), 1)
 
             # print(emb[:10])
             # print("-----------------------------------------")

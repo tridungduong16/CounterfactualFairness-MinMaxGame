@@ -1,0 +1,1584 @@
+2021-05-31 20:38:54,555 CFairness    DEBUG    Epoch 0
+2021-05-31 20:38:54,555 CFairness    DEBUG    Loss generator 0.69528
+2021-05-31 20:38:54,555 CFairness    DEBUG    Loss discriminator 1 0.70113
+2021-05-31 20:38:54,555 CFairness    DEBUG    Loss discriminator 2 0.69546
+2021-05-31 20:38:54,555 CFairness    DEBUG    F1 Score 0.4916
+2021-05-31 20:38:54,555 CFairness    DEBUG    Precision 0.5224
+2021-05-31 20:38:54,555 CFairness    DEBUG    Recall 0.5024
+2021-05-31 20:38:54,555 CFairness    DEBUG    Accuracy 0.5024
+2021-05-31 20:38:54,555 CFairness    DEBUG    ------------------------------
+2021-05-31 20:39:01,025 CFairness    DEBUG    Epoch 1
+2021-05-31 20:39:01,025 CFairness    DEBUG    Loss generator 0.69157
+2021-05-31 20:39:01,025 CFairness    DEBUG    Loss discriminator 1 0.69454
+2021-05-31 20:39:01,025 CFairness    DEBUG    Loss discriminator 2 0.69173
+2021-05-31 20:39:01,025 CFairness    DEBUG    F1 Score 0.4086
+2021-05-31 20:39:01,025 CFairness    DEBUG    Precision 0.4971
+2021-05-31 20:39:01,025 CFairness    DEBUG    Recall 0.4673
+2021-05-31 20:39:01,025 CFairness    DEBUG    Accuracy 0.4673
+2021-05-31 20:39:01,025 CFairness    DEBUG    ------------------------------
+2021-05-31 20:39:07,330 CFairness    DEBUG    Epoch 2
+2021-05-31 20:39:07,330 CFairness    DEBUG    Loss generator 0.69195
+2021-05-31 20:39:07,330 CFairness    DEBUG    Loss discriminator 1 0.69558
+2021-05-31 20:39:07,330 CFairness    DEBUG    Loss discriminator 2 0.69211
+2021-05-31 20:39:07,330 CFairness    DEBUG    F1 Score 0.4200
+2021-05-31 20:39:07,330 CFairness    DEBUG    Precision 0.5077
+2021-05-31 20:39:07,330 CFairness    DEBUG    Recall 0.4741
+2021-05-31 20:39:07,330 CFairness    DEBUG    Accuracy 0.4741
+2021-05-31 20:39:07,330 CFairness    DEBUG    ------------------------------
+2021-05-31 20:39:13,521 CFairness    DEBUG    Epoch 3
+2021-05-31 20:39:13,522 CFairness    DEBUG    Loss generator 0.69413
+2021-05-31 20:39:13,522 CFairness    DEBUG    Loss discriminator 1 0.69575
+2021-05-31 20:39:13,522 CFairness    DEBUG    Loss discriminator 2 0.69431
+2021-05-31 20:39:13,522 CFairness    DEBUG    F1 Score 0.3838
+2021-05-31 20:39:13,522 CFairness    DEBUG    Precision 0.5005
+2021-05-31 20:39:13,522 CFairness    DEBUG    Recall 0.4652
+2021-05-31 20:39:13,522 CFairness    DEBUG    Accuracy 0.4652
+2021-05-31 20:39:13,522 CFairness    DEBUG    ------------------------------
+2021-05-31 20:39:20,245 CFairness    DEBUG    Epoch 4
+2021-05-31 20:39:20,246 CFairness    DEBUG    Loss generator 0.69479
+2021-05-31 20:39:20,246 CFairness    DEBUG    Loss discriminator 1 0.69584
+2021-05-31 20:39:20,246 CFairness    DEBUG    Loss discriminator 2 0.69497
+2021-05-31 20:39:20,246 CFairness    DEBUG    F1 Score 0.4106
+2021-05-31 20:39:20,246 CFairness    DEBUG    Precision 0.4921
+2021-05-31 20:39:20,246 CFairness    DEBUG    Recall 0.4652
+2021-05-31 20:39:20,246 CFairness    DEBUG    Accuracy 0.4652
+2021-05-31 20:39:20,246 CFairness    DEBUG    ------------------------------
+2021-05-31 20:39:26,385 CFairness    DEBUG    Epoch 5
+2021-05-31 20:39:26,386 CFairness    DEBUG    Loss generator 0.69651
+2021-05-31 20:39:26,386 CFairness    DEBUG    Loss discriminator 1 0.69393
+2021-05-31 20:39:26,386 CFairness    DEBUG    Loss discriminator 2 0.69667
+2021-05-31 20:39:26,386 CFairness    DEBUG    F1 Score 0.3805
+2021-05-31 20:39:26,386 CFairness    DEBUG    Precision 0.5219
+2021-05-31 20:39:26,386 CFairness    DEBUG    Recall 0.4713
+2021-05-31 20:39:26,386 CFairness    DEBUG    Accuracy 0.4713
+2021-05-31 20:39:26,386 CFairness    DEBUG    ------------------------------
+2021-05-31 20:39:32,181 CFairness    DEBUG    Epoch 6
+2021-05-31 20:39:32,182 CFairness    DEBUG    Loss generator 0.69562
+2021-05-31 20:39:32,182 CFairness    DEBUG    Loss discriminator 1 0.69117
+2021-05-31 20:39:32,182 CFairness    DEBUG    Loss discriminator 2 0.69579
+2021-05-31 20:39:32,182 CFairness    DEBUG    F1 Score 0.4387
+2021-05-31 20:39:32,182 CFairness    DEBUG    Precision 0.4991
+2021-05-31 20:39:32,182 CFairness    DEBUG    Recall 0.4736
+2021-05-31 20:39:32,182 CFairness    DEBUG    Accuracy 0.4736
+2021-05-31 20:39:32,182 CFairness    DEBUG    ------------------------------
+2021-05-31 20:39:37,853 CFairness    DEBUG    Epoch 7
+2021-05-31 20:39:37,853 CFairness    DEBUG    Loss generator 0.69403
+2021-05-31 20:39:37,853 CFairness    DEBUG    Loss discriminator 1 0.69219
+2021-05-31 20:39:37,853 CFairness    DEBUG    Loss discriminator 2 0.69421
+2021-05-31 20:39:37,853 CFairness    DEBUG    F1 Score 0.4172
+2021-05-31 20:39:37,853 CFairness    DEBUG    Precision 0.5115
+2021-05-31 20:39:37,853 CFairness    DEBUG    Recall 0.4752
+2021-05-31 20:39:37,853 CFairness    DEBUG    Accuracy 0.4752
+2021-05-31 20:39:37,853 CFairness    DEBUG    ------------------------------
+2021-05-31 20:39:43,497 CFairness    DEBUG    Epoch 8
+2021-05-31 20:39:43,497 CFairness    DEBUG    Loss generator 0.69690
+2021-05-31 20:39:43,497 CFairness    DEBUG    Loss discriminator 1 0.69418
+2021-05-31 20:39:43,497 CFairness    DEBUG    Loss discriminator 2 0.69708
+2021-05-31 20:39:43,497 CFairness    DEBUG    F1 Score 0.3517
+2021-05-31 20:39:43,497 CFairness    DEBUG    Precision 0.4997
+2021-05-31 20:39:43,497 CFairness    DEBUG    Recall 0.4611
+2021-05-31 20:39:43,497 CFairness    DEBUG    Accuracy 0.4611
+2021-05-31 20:39:43,497 CFairness    DEBUG    ------------------------------
+2021-05-31 20:39:49,097 CFairness    DEBUG    Epoch 9
+2021-05-31 20:39:49,097 CFairness    DEBUG    Loss generator 0.69360
+2021-05-31 20:39:49,097 CFairness    DEBUG    Loss discriminator 1 0.69415
+2021-05-31 20:39:49,098 CFairness    DEBUG    Loss discriminator 2 0.69376
+2021-05-31 20:39:49,098 CFairness    DEBUG    F1 Score 0.3279
+2021-05-31 20:39:49,098 CFairness    DEBUG    Precision 0.4994
+2021-05-31 20:39:49,098 CFairness    DEBUG    Recall 0.4587
+2021-05-31 20:39:49,098 CFairness    DEBUG    Accuracy 0.4587
+2021-05-31 20:39:49,098 CFairness    DEBUG    ------------------------------
+2021-05-31 20:39:54,760 CFairness    DEBUG    Epoch 10
+2021-05-31 20:39:54,760 CFairness    DEBUG    Loss generator 0.69547
+2021-05-31 20:39:54,760 CFairness    DEBUG    Loss discriminator 1 0.69278
+2021-05-31 20:39:54,761 CFairness    DEBUG    Loss discriminator 2 0.69565
+2021-05-31 20:39:54,761 CFairness    DEBUG    F1 Score 0.2923
+2021-05-31 20:39:54,761 CFairness    DEBUG    Precision 0.4846
+2021-05-31 20:39:54,761 CFairness    DEBUG    Recall 0.4553
+2021-05-31 20:39:54,761 CFairness    DEBUG    Accuracy 0.4553
+2021-05-31 20:39:54,761 CFairness    DEBUG    ------------------------------
+2021-05-31 20:40:00,468 CFairness    DEBUG    Epoch 11
+2021-05-31 20:40:00,469 CFairness    DEBUG    Loss generator 0.69393
+2021-05-31 20:40:00,469 CFairness    DEBUG    Loss discriminator 1 0.69515
+2021-05-31 20:40:00,469 CFairness    DEBUG    Loss discriminator 2 0.69408
+2021-05-31 20:40:00,469 CFairness    DEBUG    F1 Score 0.3298
+2021-05-31 20:40:00,469 CFairness    DEBUG    Precision 0.5024
+2021-05-31 20:40:00,469 CFairness    DEBUG    Recall 0.4593
+2021-05-31 20:40:00,469 CFairness    DEBUG    Accuracy 0.4593
+2021-05-31 20:40:00,469 CFairness    DEBUG    ------------------------------
+2021-05-31 20:40:06,192 CFairness    DEBUG    Epoch 12
+2021-05-31 20:40:06,193 CFairness    DEBUG    Loss generator 0.69689
+2021-05-31 20:40:06,193 CFairness    DEBUG    Loss discriminator 1 0.69805
+2021-05-31 20:40:06,193 CFairness    DEBUG    Loss discriminator 2 0.69708
+2021-05-31 20:40:06,193 CFairness    DEBUG    F1 Score 0.3637
+2021-05-31 20:40:06,193 CFairness    DEBUG    Precision 0.5138
+2021-05-31 20:40:06,193 CFairness    DEBUG    Recall 0.4661
+2021-05-31 20:40:06,193 CFairness    DEBUG    Accuracy 0.4661
+2021-05-31 20:40:06,193 CFairness    DEBUG    ------------------------------
+2021-05-31 20:40:11,848 CFairness    DEBUG    Epoch 13
+2021-05-31 20:40:11,849 CFairness    DEBUG    Loss generator 0.69368
+2021-05-31 20:40:11,849 CFairness    DEBUG    Loss discriminator 1 0.69307
+2021-05-31 20:40:11,849 CFairness    DEBUG    Loss discriminator 2 0.69385
+2021-05-31 20:40:11,849 CFairness    DEBUG    F1 Score 0.3222
+2021-05-31 20:40:11,849 CFairness    DEBUG    Precision 0.5142
+2021-05-31 20:40:11,849 CFairness    DEBUG    Recall 0.4600
+2021-05-31 20:40:11,849 CFairness    DEBUG    Accuracy 0.4600
+2021-05-31 20:40:11,849 CFairness    DEBUG    ------------------------------
+2021-05-31 20:40:17,422 CFairness    DEBUG    Epoch 14
+2021-05-31 20:40:17,422 CFairness    DEBUG    Loss generator 0.69409
+2021-05-31 20:40:17,422 CFairness    DEBUG    Loss discriminator 1 0.69206
+2021-05-31 20:40:17,423 CFairness    DEBUG    Loss discriminator 2 0.69425
+2021-05-31 20:40:17,423 CFairness    DEBUG    F1 Score 0.3308
+2021-05-31 20:40:17,423 CFairness    DEBUG    Precision 0.5311
+2021-05-31 20:40:17,423 CFairness    DEBUG    Recall 0.4634
+2021-05-31 20:40:17,423 CFairness    DEBUG    Accuracy 0.4634
+2021-05-31 20:40:17,423 CFairness    DEBUG    ------------------------------
+2021-05-31 20:40:23,142 CFairness    DEBUG    Epoch 15
+2021-05-31 20:40:23,142 CFairness    DEBUG    Loss generator 0.69514
+2021-05-31 20:40:23,142 CFairness    DEBUG    Loss discriminator 1 0.69237
+2021-05-31 20:40:23,142 CFairness    DEBUG    Loss discriminator 2 0.69531
+2021-05-31 20:40:23,142 CFairness    DEBUG    F1 Score 0.3249
+2021-05-31 20:40:23,142 CFairness    DEBUG    Precision 0.5280
+2021-05-31 20:40:23,142 CFairness    DEBUG    Recall 0.4619
+2021-05-31 20:40:23,142 CFairness    DEBUG    Accuracy 0.4619
+2021-05-31 20:40:23,142 CFairness    DEBUG    ------------------------------
+2021-05-31 20:40:28,893 CFairness    DEBUG    Epoch 16
+2021-05-31 20:40:28,893 CFairness    DEBUG    Loss generator 0.69220
+2021-05-31 20:40:28,893 CFairness    DEBUG    Loss discriminator 1 0.69483
+2021-05-31 20:40:28,893 CFairness    DEBUG    Loss discriminator 2 0.69234
+2021-05-31 20:40:28,893 CFairness    DEBUG    F1 Score 0.3932
+2021-05-31 20:40:28,893 CFairness    DEBUG    Precision 0.5000
+2021-05-31 20:40:28,893 CFairness    DEBUG    Recall 0.4663
+2021-05-31 20:40:28,893 CFairness    DEBUG    Accuracy 0.4663
+2021-05-31 20:40:28,893 CFairness    DEBUG    ------------------------------
+2021-05-31 20:40:34,737 CFairness    DEBUG    Epoch 17
+2021-05-31 20:40:34,737 CFairness    DEBUG    Loss generator 0.69369
+2021-05-31 20:40:34,737 CFairness    DEBUG    Loss discriminator 1 0.69508
+2021-05-31 20:40:34,737 CFairness    DEBUG    Loss discriminator 2 0.69385
+2021-05-31 20:40:34,737 CFairness    DEBUG    F1 Score 0.3350
+2021-05-31 20:40:34,737 CFairness    DEBUG    Precision 0.4826
+2021-05-31 20:40:34,737 CFairness    DEBUG    Recall 0.4561
+2021-05-31 20:40:34,737 CFairness    DEBUG    Accuracy 0.4561
+2021-05-31 20:40:34,738 CFairness    DEBUG    ------------------------------
+2021-05-31 20:40:40,436 CFairness    DEBUG    Epoch 18
+2021-05-31 20:40:40,437 CFairness    DEBUG    Loss generator 0.69084
+2021-05-31 20:40:40,437 CFairness    DEBUG    Loss discriminator 1 0.69485
+2021-05-31 20:40:40,437 CFairness    DEBUG    Loss discriminator 2 0.69097
+2021-05-31 20:40:40,437 CFairness    DEBUG    F1 Score 0.3022
+2021-05-31 20:40:40,437 CFairness    DEBUG    Precision 0.5157
+2021-05-31 20:40:40,437 CFairness    DEBUG    Recall 0.4574
+2021-05-31 20:40:40,437 CFairness    DEBUG    Accuracy 0.4574
+2021-05-31 20:40:40,437 CFairness    DEBUG    ------------------------------
+2021-05-31 20:40:46,120 CFairness    DEBUG    Epoch 19
+2021-05-31 20:40:46,121 CFairness    DEBUG    Loss generator 0.69207
+2021-05-31 20:40:46,121 CFairness    DEBUG    Loss discriminator 1 0.69505
+2021-05-31 20:40:46,121 CFairness    DEBUG    Loss discriminator 2 0.69221
+2021-05-31 20:40:46,121 CFairness    DEBUG    F1 Score 0.2924
+2021-05-31 20:40:46,121 CFairness    DEBUG    Precision 0.5152
+2021-05-31 20:40:46,121 CFairness    DEBUG    Recall 0.4561
+2021-05-31 20:40:46,121 CFairness    DEBUG    Accuracy 0.4561
+2021-05-31 20:40:46,121 CFairness    DEBUG    ------------------------------
+2021-05-31 20:40:52,231 CFairness    DEBUG    Epoch 20
+2021-05-31 20:40:52,233 CFairness    DEBUG    Loss generator 0.69210
+2021-05-31 20:40:52,233 CFairness    DEBUG    Loss discriminator 1 0.69590
+2021-05-31 20:40:52,233 CFairness    DEBUG    Loss discriminator 2 0.69224
+2021-05-31 20:40:52,233 CFairness    DEBUG    F1 Score 0.3395
+2021-05-31 20:40:52,233 CFairness    DEBUG    Precision 0.4946
+2021-05-31 20:40:52,233 CFairness    DEBUG    Recall 0.4588
+2021-05-31 20:40:52,233 CFairness    DEBUG    Accuracy 0.4588
+2021-05-31 20:40:52,233 CFairness    DEBUG    ------------------------------
+2021-05-31 20:40:58,068 CFairness    DEBUG    Epoch 21
+2021-05-31 20:40:58,217 CFairness    DEBUG    Loss generator 0.69615
+2021-05-31 20:40:58,218 CFairness    DEBUG    Loss discriminator 1 0.69430
+2021-05-31 20:40:58,218 CFairness    DEBUG    Loss discriminator 2 0.69632
+2021-05-31 20:40:58,218 CFairness    DEBUG    F1 Score 0.3386
+2021-05-31 20:40:58,218 CFairness    DEBUG    Precision 0.5137
+2021-05-31 20:40:58,218 CFairness    DEBUG    Recall 0.4622
+2021-05-31 20:40:58,218 CFairness    DEBUG    Accuracy 0.4622
+2021-05-31 20:40:58,218 CFairness    DEBUG    ------------------------------
+2021-05-31 20:41:03,936 CFairness    DEBUG    Epoch 22
+2021-05-31 20:41:03,936 CFairness    DEBUG    Loss generator 0.69135
+2021-05-31 20:41:03,936 CFairness    DEBUG    Loss discriminator 1 0.69065
+2021-05-31 20:41:03,936 CFairness    DEBUG    Loss discriminator 2 0.69151
+2021-05-31 20:41:03,937 CFairness    DEBUG    F1 Score 0.3043
+2021-05-31 20:41:03,937 CFairness    DEBUG    Precision 0.5084
+2021-05-31 20:41:03,937 CFairness    DEBUG    Recall 0.4572
+2021-05-31 20:41:03,937 CFairness    DEBUG    Accuracy 0.4572
+2021-05-31 20:41:03,937 CFairness    DEBUG    ------------------------------
+2021-05-31 20:41:09,736 CFairness    DEBUG    Epoch 23
+2021-05-31 20:41:09,736 CFairness    DEBUG    Loss generator 0.69371
+2021-05-31 20:41:09,736 CFairness    DEBUG    Loss discriminator 1 0.69397
+2021-05-31 20:41:09,736 CFairness    DEBUG    Loss discriminator 2 0.69386
+2021-05-31 20:41:09,736 CFairness    DEBUG    F1 Score 0.3440
+2021-05-31 20:41:09,736 CFairness    DEBUG    Precision 0.5020
+2021-05-31 20:41:09,736 CFairness    DEBUG    Recall 0.4608
+2021-05-31 20:41:09,736 CFairness    DEBUG    Accuracy 0.4608
+2021-05-31 20:41:09,736 CFairness    DEBUG    ------------------------------
+2021-05-31 20:41:15,397 CFairness    DEBUG    Epoch 24
+2021-05-31 20:41:15,398 CFairness    DEBUG    Loss generator 0.69177
+2021-05-31 20:41:15,398 CFairness    DEBUG    Loss discriminator 1 0.69407
+2021-05-31 20:41:15,398 CFairness    DEBUG    Loss discriminator 2 0.69191
+2021-05-31 20:41:15,398 CFairness    DEBUG    F1 Score 0.3966
+2021-05-31 20:41:15,398 CFairness    DEBUG    Precision 0.5181
+2021-05-31 20:41:15,398 CFairness    DEBUG    Recall 0.4734
+2021-05-31 20:41:15,398 CFairness    DEBUG    Accuracy 0.4734
+2021-05-31 20:41:15,399 CFairness    DEBUG    ------------------------------
+2021-05-31 20:41:20,895 CFairness    DEBUG    Epoch 25
+2021-05-31 20:41:20,896 CFairness    DEBUG    Loss generator 0.69273
+2021-05-31 20:41:20,896 CFairness    DEBUG    Loss discriminator 1 0.69282
+2021-05-31 20:41:20,896 CFairness    DEBUG    Loss discriminator 2 0.69288
+2021-05-31 20:41:20,896 CFairness    DEBUG    F1 Score 0.4708
+2021-05-31 20:41:20,897 CFairness    DEBUG    Precision 0.5189
+2021-05-31 20:41:20,897 CFairness    DEBUG    Recall 0.4929
+2021-05-31 20:41:20,897 CFairness    DEBUG    Accuracy 0.4929
+2021-05-31 20:41:20,897 CFairness    DEBUG    ------------------------------
+2021-05-31 20:41:26,389 CFairness    DEBUG    Epoch 26
+2021-05-31 20:41:26,390 CFairness    DEBUG    Loss generator 0.69477
+2021-05-31 20:41:26,390 CFairness    DEBUG    Loss discriminator 1 0.69223
+2021-05-31 20:41:26,390 CFairness    DEBUG    Loss discriminator 2 0.69496
+2021-05-31 20:41:26,390 CFairness    DEBUG    F1 Score 0.2937
+2021-05-31 20:41:26,390 CFairness    DEBUG    Precision 0.4837
+2021-05-31 20:41:26,390 CFairness    DEBUG    Recall 0.4553
+2021-05-31 20:41:26,390 CFairness    DEBUG    Accuracy 0.4553
+2021-05-31 20:41:26,390 CFairness    DEBUG    ------------------------------
+2021-05-31 20:41:32,252 CFairness    DEBUG    Epoch 27
+2021-05-31 20:41:32,252 CFairness    DEBUG    Loss generator 0.69414
+2021-05-31 20:41:32,253 CFairness    DEBUG    Loss discriminator 1 0.69311
+2021-05-31 20:41:32,253 CFairness    DEBUG    Loss discriminator 2 0.69430
+2021-05-31 20:41:32,253 CFairness    DEBUG    F1 Score 0.3419
+2021-05-31 20:41:32,253 CFairness    DEBUG    Precision 0.5137
+2021-05-31 20:41:32,253 CFairness    DEBUG    Recall 0.4627
+2021-05-31 20:41:32,253 CFairness    DEBUG    Accuracy 0.4627
+2021-05-31 20:41:32,253 CFairness    DEBUG    ------------------------------
+2021-05-31 20:41:37,720 CFairness    DEBUG    Epoch 28
+2021-05-31 20:41:37,720 CFairness    DEBUG    Loss generator 0.69539
+2021-05-31 20:41:37,720 CFairness    DEBUG    Loss discriminator 1 0.69600
+2021-05-31 20:41:37,720 CFairness    DEBUG    Loss discriminator 2 0.69556
+2021-05-31 20:41:37,720 CFairness    DEBUG    F1 Score 0.2869
+2021-05-31 20:41:37,720 CFairness    DEBUG    Precision 0.5540
+2021-05-31 20:41:37,720 CFairness    DEBUG    Recall 0.4556
+2021-05-31 20:41:37,720 CFairness    DEBUG    Accuracy 0.4556
+2021-05-31 20:41:37,720 CFairness    DEBUG    ------------------------------
+2021-05-31 20:41:43,549 CFairness    DEBUG    Epoch 29
+2021-05-31 20:41:43,549 CFairness    DEBUG    Loss generator 0.69311
+2021-05-31 20:41:43,549 CFairness    DEBUG    Loss discriminator 1 0.69429
+2021-05-31 20:41:43,549 CFairness    DEBUG    Loss discriminator 2 0.69326
+2021-05-31 20:41:43,549 CFairness    DEBUG    F1 Score 0.4800
+2021-05-31 20:41:43,549 CFairness    DEBUG    Precision 0.5110
+2021-05-31 20:41:43,549 CFairness    DEBUG    Recall 0.4919
+2021-05-31 20:41:43,549 CFairness    DEBUG    Accuracy 0.4919
+2021-05-31 20:41:43,549 CFairness    DEBUG    ------------------------------
+2021-05-31 20:41:49,321 CFairness    DEBUG    Epoch 30
+2021-05-31 20:41:49,321 CFairness    DEBUG    Loss generator 0.69526
+2021-05-31 20:41:49,322 CFairness    DEBUG    Loss discriminator 1 0.69451
+2021-05-31 20:41:49,322 CFairness    DEBUG    Loss discriminator 2 0.69543
+2021-05-31 20:41:49,322 CFairness    DEBUG    F1 Score 0.4676
+2021-05-31 20:41:49,322 CFairness    DEBUG    Precision 0.5021
+2021-05-31 20:41:49,322 CFairness    DEBUG    Recall 0.4827
+2021-05-31 20:41:49,322 CFairness    DEBUG    Accuracy 0.4827
+2021-05-31 20:41:49,322 CFairness    DEBUG    ------------------------------
+2021-05-31 20:41:54,929 CFairness    DEBUG    Epoch 31
+2021-05-31 20:41:54,929 CFairness    DEBUG    Loss generator 0.69263
+2021-05-31 20:41:54,929 CFairness    DEBUG    Loss discriminator 1 0.69784
+2021-05-31 20:41:54,929 CFairness    DEBUG    Loss discriminator 2 0.69275
+2021-05-31 20:41:54,929 CFairness    DEBUG    F1 Score 0.3041
+2021-05-31 20:41:54,929 CFairness    DEBUG    Precision 0.5141
+2021-05-31 20:41:54,929 CFairness    DEBUG    Recall 0.4576
+2021-05-31 20:41:54,929 CFairness    DEBUG    Accuracy 0.4576
+2021-05-31 20:41:54,929 CFairness    DEBUG    ------------------------------
+2021-05-31 20:42:00,624 CFairness    DEBUG    Epoch 32
+2021-05-31 20:42:00,625 CFairness    DEBUG    Loss generator 0.69149
+2021-05-31 20:42:00,625 CFairness    DEBUG    Loss discriminator 1 0.69601
+2021-05-31 20:42:00,625 CFairness    DEBUG    Loss discriminator 2 0.69162
+2021-05-31 20:42:00,625 CFairness    DEBUG    F1 Score 0.3097
+2021-05-31 20:42:00,625 CFairness    DEBUG    Precision 0.5088
+2021-05-31 20:42:00,625 CFairness    DEBUG    Recall 0.4579
+2021-05-31 20:42:00,625 CFairness    DEBUG    Accuracy 0.4579
+2021-05-31 20:42:00,625 CFairness    DEBUG    ------------------------------
+2021-05-31 20:42:06,316 CFairness    DEBUG    Epoch 33
+2021-05-31 20:42:06,317 CFairness    DEBUG    Loss generator 0.69357
+2021-05-31 20:42:06,317 CFairness    DEBUG    Loss discriminator 1 0.69061
+2021-05-31 20:42:06,317 CFairness    DEBUG    Loss discriminator 2 0.69374
+2021-05-31 20:42:06,317 CFairness    DEBUG    F1 Score 0.2980
+2021-05-31 20:42:06,318 CFairness    DEBUG    Precision 0.6354
+2021-05-31 20:42:06,318 CFairness    DEBUG    Recall 0.4598
+2021-05-31 20:42:06,318 CFairness    DEBUG    Accuracy 0.4598
+2021-05-31 20:42:06,318 CFairness    DEBUG    ------------------------------
+2021-05-31 20:42:11,879 CFairness    DEBUG    Epoch 34
+2021-05-31 20:42:11,880 CFairness    DEBUG    Loss generator 0.69606
+2021-05-31 20:42:11,880 CFairness    DEBUG    Loss discriminator 1 0.69355
+2021-05-31 20:42:11,880 CFairness    DEBUG    Loss discriminator 2 0.69625
+2021-05-31 20:42:11,880 CFairness    DEBUG    F1 Score 0.2883
+2021-05-31 20:42:11,880 CFairness    DEBUG    Precision 0.5185
+2021-05-31 20:42:11,880 CFairness    DEBUG    Recall 0.4556
+2021-05-31 20:42:11,880 CFairness    DEBUG    Accuracy 0.4556
+2021-05-31 20:42:11,880 CFairness    DEBUG    ------------------------------
+2021-05-31 20:42:17,530 CFairness    DEBUG    Epoch 35
+2021-05-31 20:42:17,530 CFairness    DEBUG    Loss generator 0.69371
+2021-05-31 20:42:17,530 CFairness    DEBUG    Loss discriminator 1 0.69581
+2021-05-31 20:42:17,530 CFairness    DEBUG    Loss discriminator 2 0.69387
+2021-05-31 20:42:17,530 CFairness    DEBUG    F1 Score 0.3092
+2021-05-31 20:42:17,530 CFairness    DEBUG    Precision 0.5015
+2021-05-31 20:42:17,530 CFairness    DEBUG    Recall 0.4572
+2021-05-31 20:42:17,530 CFairness    DEBUG    Accuracy 0.4572
+2021-05-31 20:42:17,530 CFairness    DEBUG    ------------------------------
+2021-05-31 20:42:23,176 CFairness    DEBUG    Epoch 36
+2021-05-31 20:42:23,176 CFairness    DEBUG    Loss generator 0.69117
+2021-05-31 20:42:23,176 CFairness    DEBUG    Loss discriminator 1 0.69091
+2021-05-31 20:42:23,176 CFairness    DEBUG    Loss discriminator 2 0.69132
+2021-05-31 20:42:23,176 CFairness    DEBUG    F1 Score 0.3251
+2021-05-31 20:42:23,176 CFairness    DEBUG    Precision 0.5162
+2021-05-31 20:42:23,176 CFairness    DEBUG    Recall 0.4606
+2021-05-31 20:42:23,176 CFairness    DEBUG    Accuracy 0.4606
+2021-05-31 20:42:23,176 CFairness    DEBUG    ------------------------------
+2021-05-31 20:42:28,838 CFairness    DEBUG    Epoch 37
+2021-05-31 20:42:28,838 CFairness    DEBUG    Loss generator 0.69065
+2021-05-31 20:42:28,838 CFairness    DEBUG    Loss discriminator 1 0.68995
+2021-05-31 20:42:28,838 CFairness    DEBUG    Loss discriminator 2 0.69079
+2021-05-31 20:42:28,838 CFairness    DEBUG    F1 Score 0.3155
+2021-05-31 20:42:28,838 CFairness    DEBUG    Precision 0.4932
+2021-05-31 20:42:28,838 CFairness    DEBUG    Recall 0.4569
+2021-05-31 20:42:28,838 CFairness    DEBUG    Accuracy 0.4569
+2021-05-31 20:42:28,838 CFairness    DEBUG    ------------------------------
+2021-05-31 20:42:34,387 CFairness    DEBUG    Epoch 38
+2021-05-31 20:42:34,387 CFairness    DEBUG    Loss generator 0.69362
+2021-05-31 20:42:34,387 CFairness    DEBUG    Loss discriminator 1 0.69173
+2021-05-31 20:42:34,387 CFairness    DEBUG    Loss discriminator 2 0.69380
+2021-05-31 20:42:34,387 CFairness    DEBUG    F1 Score 0.3926
+2021-05-31 20:42:34,387 CFairness    DEBUG    Precision 0.5063
+2021-05-31 20:42:34,387 CFairness    DEBUG    Recall 0.4686
+2021-05-31 20:42:34,387 CFairness    DEBUG    Accuracy 0.4686
+2021-05-31 20:42:34,387 CFairness    DEBUG    ------------------------------
+2021-05-31 20:42:39,933 CFairness    DEBUG    Epoch 39
+2021-05-31 20:42:39,934 CFairness    DEBUG    Loss generator 0.69365
+2021-05-31 20:42:39,934 CFairness    DEBUG    Loss discriminator 1 0.68862
+2021-05-31 20:42:39,934 CFairness    DEBUG    Loss discriminator 2 0.69384
+2021-05-31 20:42:39,934 CFairness    DEBUG    F1 Score 0.3000
+2021-05-31 20:42:39,934 CFairness    DEBUG    Precision 0.4926
+2021-05-31 20:42:39,934 CFairness    DEBUG    Recall 0.4559
+2021-05-31 20:42:39,934 CFairness    DEBUG    Accuracy 0.4559
+2021-05-31 20:42:39,934 CFairness    DEBUG    ------------------------------
+2021-05-31 20:42:45,612 CFairness    DEBUG    Epoch 40
+2021-05-31 20:42:45,613 CFairness    DEBUG    Loss generator 0.69077
+2021-05-31 20:42:45,613 CFairness    DEBUG    Loss discriminator 1 0.68930
+2021-05-31 20:42:45,613 CFairness    DEBUG    Loss discriminator 2 0.69094
+2021-05-31 20:42:45,613 CFairness    DEBUG    F1 Score 0.2954
+2021-05-31 20:42:45,613 CFairness    DEBUG    Precision 0.5420
+2021-05-31 20:42:45,613 CFairness    DEBUG    Recall 0.4572
+2021-05-31 20:42:45,613 CFairness    DEBUG    Accuracy 0.4572
+2021-05-31 20:42:45,614 CFairness    DEBUG    ------------------------------
+2021-05-31 20:42:51,697 CFairness    DEBUG    Epoch 41
+2021-05-31 20:42:51,698 CFairness    DEBUG    Loss generator 0.69227
+2021-05-31 20:42:51,698 CFairness    DEBUG    Loss discriminator 1 0.69249
+2021-05-31 20:42:51,698 CFairness    DEBUG    Loss discriminator 2 0.69242
+2021-05-31 20:42:51,698 CFairness    DEBUG    F1 Score 0.2849
+2021-05-31 20:42:51,698 CFairness    DEBUG    Precision 0.3887
+2021-05-31 20:42:51,698 CFairness    DEBUG    Recall 0.4550
+2021-05-31 20:42:51,699 CFairness    DEBUG    Accuracy 0.4550
+2021-05-31 20:42:51,699 CFairness    DEBUG    ------------------------------
+2021-05-31 20:42:57,384 CFairness    DEBUG    Epoch 42
+2021-05-31 20:42:57,385 CFairness    DEBUG    Loss generator 0.69312
+2021-05-31 20:42:57,385 CFairness    DEBUG    Loss discriminator 1 0.69320
+2021-05-31 20:42:57,385 CFairness    DEBUG    Loss discriminator 2 0.69326
+2021-05-31 20:42:57,385 CFairness    DEBUG    F1 Score 0.2873
+2021-05-31 20:42:57,385 CFairness    DEBUG    Precision 0.6036
+2021-05-31 20:42:57,385 CFairness    DEBUG    Recall 0.4559
+2021-05-31 20:42:57,385 CFairness    DEBUG    Accuracy 0.4559
+2021-05-31 20:42:57,385 CFairness    DEBUG    ------------------------------
+2021-05-31 20:43:02,886 CFairness    DEBUG    Epoch 43
+2021-05-31 20:43:02,886 CFairness    DEBUG    Loss generator 0.69147
+2021-05-31 20:43:02,886 CFairness    DEBUG    Loss discriminator 1 0.69593
+2021-05-31 20:43:02,886 CFairness    DEBUG    Loss discriminator 2 0.69160
+2021-05-31 20:43:02,886 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:43:02,886 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:43:02,886 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:43:02,886 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:43:02,886 CFairness    DEBUG    ------------------------------
+2021-05-31 20:43:08,497 CFairness    DEBUG    Epoch 44
+2021-05-31 20:43:08,497 CFairness    DEBUG    Loss generator 0.69248
+2021-05-31 20:43:08,497 CFairness    DEBUG    Loss discriminator 1 0.69082
+2021-05-31 20:43:08,497 CFairness    DEBUG    Loss discriminator 2 0.69264
+2021-05-31 20:43:08,497 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:43:08,497 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:43:08,497 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:43:08,497 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:43:08,497 CFairness    DEBUG    ------------------------------
+2021-05-31 20:43:14,057 CFairness    DEBUG    Epoch 45
+2021-05-31 20:43:14,057 CFairness    DEBUG    Loss generator 0.69248
+2021-05-31 20:43:14,057 CFairness    DEBUG    Loss discriminator 1 0.69018
+2021-05-31 20:43:14,057 CFairness    DEBUG    Loss discriminator 2 0.69263
+2021-05-31 20:43:14,057 CFairness    DEBUG    F1 Score 0.3005
+2021-05-31 20:43:14,057 CFairness    DEBUG    Precision 0.5409
+2021-05-31 20:43:14,057 CFairness    DEBUG    Recall 0.4582
+2021-05-31 20:43:14,057 CFairness    DEBUG    Accuracy 0.4582
+2021-05-31 20:43:14,057 CFairness    DEBUG    ------------------------------
+2021-05-31 20:43:19,720 CFairness    DEBUG    Epoch 46
+2021-05-31 20:43:19,720 CFairness    DEBUG    Loss generator 0.69178
+2021-05-31 20:43:19,720 CFairness    DEBUG    Loss discriminator 1 0.69217
+2021-05-31 20:43:19,720 CFairness    DEBUG    Loss discriminator 2 0.69193
+2021-05-31 20:43:19,720 CFairness    DEBUG    F1 Score 0.3155
+2021-05-31 20:43:19,720 CFairness    DEBUG    Precision 0.5069
+2021-05-31 20:43:19,720 CFairness    DEBUG    Recall 0.4584
+2021-05-31 20:43:19,720 CFairness    DEBUG    Accuracy 0.4584
+2021-05-31 20:43:19,720 CFairness    DEBUG    ------------------------------
+2021-05-31 20:43:25,392 CFairness    DEBUG    Epoch 47
+2021-05-31 20:43:25,392 CFairness    DEBUG    Loss generator 0.69434
+2021-05-31 20:43:25,393 CFairness    DEBUG    Loss discriminator 1 0.69202
+2021-05-31 20:43:25,393 CFairness    DEBUG    Loss discriminator 2 0.69451
+2021-05-31 20:43:25,393 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:43:25,393 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:43:25,393 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:43:25,393 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:43:25,393 CFairness    DEBUG    ------------------------------
+2021-05-31 20:43:30,939 CFairness    DEBUG    Epoch 48
+2021-05-31 20:43:30,940 CFairness    DEBUG    Loss generator 0.69087
+2021-05-31 20:43:30,940 CFairness    DEBUG    Loss discriminator 1 0.69142
+2021-05-31 20:43:30,940 CFairness    DEBUG    Loss discriminator 2 0.69103
+2021-05-31 20:43:30,940 CFairness    DEBUG    F1 Score 0.3009
+2021-05-31 20:43:30,940 CFairness    DEBUG    Precision 0.5619
+2021-05-31 20:43:30,940 CFairness    DEBUG    Recall 0.4590
+2021-05-31 20:43:30,940 CFairness    DEBUG    Accuracy 0.4590
+2021-05-31 20:43:30,940 CFairness    DEBUG    ------------------------------
+2021-05-31 20:43:36,675 CFairness    DEBUG    Epoch 49
+2021-05-31 20:43:36,676 CFairness    DEBUG    Loss generator 0.68997
+2021-05-31 20:43:36,676 CFairness    DEBUG    Loss discriminator 1 0.69198
+2021-05-31 20:43:36,676 CFairness    DEBUG    Loss discriminator 2 0.69011
+2021-05-31 20:43:36,676 CFairness    DEBUG    F1 Score 0.3812
+2021-05-31 20:43:36,676 CFairness    DEBUG    Precision 0.5053
+2021-05-31 20:43:36,676 CFairness    DEBUG    Recall 0.4665
+2021-05-31 20:43:36,676 CFairness    DEBUG    Accuracy 0.4665
+2021-05-31 20:43:36,676 CFairness    DEBUG    ------------------------------
+2021-05-31 20:43:42,370 CFairness    DEBUG    Epoch 50
+2021-05-31 20:43:42,371 CFairness    DEBUG    Loss generator 0.69103
+2021-05-31 20:43:42,371 CFairness    DEBUG    Loss discriminator 1 0.68840
+2021-05-31 20:43:42,371 CFairness    DEBUG    Loss discriminator 2 0.69120
+2021-05-31 20:43:42,371 CFairness    DEBUG    F1 Score 0.2857
+2021-05-31 20:43:42,371 CFairness    DEBUG    Precision 0.3553
+2021-05-31 20:43:42,371 CFairness    DEBUG    Recall 0.4535
+2021-05-31 20:43:42,371 CFairness    DEBUG    Accuracy 0.4535
+2021-05-31 20:43:42,371 CFairness    DEBUG    ------------------------------
+2021-05-31 20:43:48,039 CFairness    DEBUG    Epoch 51
+2021-05-31 20:43:48,039 CFairness    DEBUG    Loss generator 0.69213
+2021-05-31 20:43:48,039 CFairness    DEBUG    Loss discriminator 1 0.69248
+2021-05-31 20:43:48,039 CFairness    DEBUG    Loss discriminator 2 0.69229
+2021-05-31 20:43:48,039 CFairness    DEBUG    F1 Score 0.2962
+2021-05-31 20:43:48,039 CFairness    DEBUG    Precision 0.5849
+2021-05-31 20:43:48,039 CFairness    DEBUG    Recall 0.4584
+2021-05-31 20:43:48,039 CFairness    DEBUG    Accuracy 0.4584
+2021-05-31 20:43:48,039 CFairness    DEBUG    ------------------------------
+2021-05-31 20:43:53,617 CFairness    DEBUG    Epoch 52
+2021-05-31 20:43:53,617 CFairness    DEBUG    Loss generator 0.69289
+2021-05-31 20:43:53,617 CFairness    DEBUG    Loss discriminator 1 0.69153
+2021-05-31 20:43:53,617 CFairness    DEBUG    Loss discriminator 2 0.69308
+2021-05-31 20:43:53,617 CFairness    DEBUG    F1 Score 0.3203
+2021-05-31 20:43:53,617 CFairness    DEBUG    Precision 0.5182
+2021-05-31 20:43:53,617 CFairness    DEBUG    Recall 0.4601
+2021-05-31 20:43:53,617 CFairness    DEBUG    Accuracy 0.4601
+2021-05-31 20:43:53,617 CFairness    DEBUG    ------------------------------
+2021-05-31 20:43:59,560 CFairness    DEBUG    Epoch 53
+2021-05-31 20:43:59,560 CFairness    DEBUG    Loss generator 0.69440
+2021-05-31 20:43:59,560 CFairness    DEBUG    Loss discriminator 1 0.68871
+2021-05-31 20:43:59,560 CFairness    DEBUG    Loss discriminator 2 0.69460
+2021-05-31 20:43:59,560 CFairness    DEBUG    F1 Score 0.2866
+2021-05-31 20:43:59,560 CFairness    DEBUG    Precision 0.3717
+2021-05-31 20:43:59,560 CFairness    DEBUG    Recall 0.4530
+2021-05-31 20:43:59,560 CFairness    DEBUG    Accuracy 0.4530
+2021-05-31 20:43:59,560 CFairness    DEBUG    ------------------------------
+2021-05-31 20:44:05,628 CFairness    DEBUG    Epoch 54
+2021-05-31 20:44:05,629 CFairness    DEBUG    Loss generator 0.69189
+2021-05-31 20:44:05,629 CFairness    DEBUG    Loss discriminator 1 0.69128
+2021-05-31 20:44:05,629 CFairness    DEBUG    Loss discriminator 2 0.69205
+2021-05-31 20:44:05,629 CFairness    DEBUG    F1 Score 0.2944
+2021-05-31 20:44:05,629 CFairness    DEBUG    Precision 0.5120
+2021-05-31 20:44:05,629 CFairness    DEBUG    Recall 0.4563
+2021-05-31 20:44:05,629 CFairness    DEBUG    Accuracy 0.4563
+2021-05-31 20:44:05,629 CFairness    DEBUG    ------------------------------
+2021-05-31 20:44:12,552 CFairness    DEBUG    Epoch 55
+2021-05-31 20:44:12,552 CFairness    DEBUG    Loss generator 0.69429
+2021-05-31 20:44:12,552 CFairness    DEBUG    Loss discriminator 1 0.69228
+2021-05-31 20:44:12,552 CFairness    DEBUG    Loss discriminator 2 0.69446
+2021-05-31 20:44:12,552 CFairness    DEBUG    F1 Score 0.2866
+2021-05-31 20:44:12,552 CFairness    DEBUG    Precision 0.4145
+2021-05-31 20:44:12,552 CFairness    DEBUG    Recall 0.4543
+2021-05-31 20:44:12,552 CFairness    DEBUG    Accuracy 0.4543
+2021-05-31 20:44:12,552 CFairness    DEBUG    ------------------------------
+2021-05-31 20:44:19,165 CFairness    DEBUG    Epoch 56
+2021-05-31 20:44:19,165 CFairness    DEBUG    Loss generator 0.69302
+2021-05-31 20:44:19,165 CFairness    DEBUG    Loss discriminator 1 0.68759
+2021-05-31 20:44:19,166 CFairness    DEBUG    Loss discriminator 2 0.69322
+2021-05-31 20:44:19,166 CFairness    DEBUG    F1 Score 0.2860
+2021-05-31 20:44:19,166 CFairness    DEBUG    Precision 0.5704
+2021-05-31 20:44:19,166 CFairness    DEBUG    Recall 0.4554
+2021-05-31 20:44:19,166 CFairness    DEBUG    Accuracy 0.4554
+2021-05-31 20:44:19,166 CFairness    DEBUG    ------------------------------
+2021-05-31 20:44:25,294 CFairness    DEBUG    Epoch 57
+2021-05-31 20:44:25,294 CFairness    DEBUG    Loss generator 0.69086
+2021-05-31 20:44:25,294 CFairness    DEBUG    Loss discriminator 1 0.68815
+2021-05-31 20:44:25,294 CFairness    DEBUG    Loss discriminator 2 0.69104
+2021-05-31 20:44:25,294 CFairness    DEBUG    F1 Score 0.2844
+2021-05-31 20:44:25,294 CFairness    DEBUG    Precision 0.2070
+2021-05-31 20:44:25,294 CFairness    DEBUG    Recall 0.4545
+2021-05-31 20:44:25,294 CFairness    DEBUG    Accuracy 0.4545
+2021-05-31 20:44:25,294 CFairness    DEBUG    ------------------------------
+2021-05-31 20:44:32,381 CFairness    DEBUG    Epoch 58
+2021-05-31 20:44:32,382 CFairness    DEBUG    Loss generator 0.69148
+2021-05-31 20:44:32,382 CFairness    DEBUG    Loss discriminator 1 0.69051
+2021-05-31 20:44:32,382 CFairness    DEBUG    Loss discriminator 2 0.69165
+2021-05-31 20:44:32,382 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:44:32,382 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:44:32,382 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:44:32,382 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:44:32,382 CFairness    DEBUG    ------------------------------
+2021-05-31 20:44:38,431 CFairness    DEBUG    Epoch 59
+2021-05-31 20:44:38,431 CFairness    DEBUG    Loss generator 0.69259
+2021-05-31 20:44:38,431 CFairness    DEBUG    Loss discriminator 1 0.68881
+2021-05-31 20:44:38,431 CFairness    DEBUG    Loss discriminator 2 0.69279
+2021-05-31 20:44:38,431 CFairness    DEBUG    F1 Score 0.3159
+2021-05-31 20:44:38,431 CFairness    DEBUG    Precision 0.5097
+2021-05-31 20:44:38,431 CFairness    DEBUG    Recall 0.4587
+2021-05-31 20:44:38,431 CFairness    DEBUG    Accuracy 0.4587
+2021-05-31 20:44:38,431 CFairness    DEBUG    ------------------------------
+2021-05-31 20:44:44,425 CFairness    DEBUG    Epoch 60
+2021-05-31 20:44:44,426 CFairness    DEBUG    Loss generator 0.69313
+2021-05-31 20:44:44,426 CFairness    DEBUG    Loss discriminator 1 0.68760
+2021-05-31 20:44:44,426 CFairness    DEBUG    Loss discriminator 2 0.69334
+2021-05-31 20:44:44,426 CFairness    DEBUG    F1 Score 0.2900
+2021-05-31 20:44:44,426 CFairness    DEBUG    Precision 0.5504
+2021-05-31 20:44:44,426 CFairness    DEBUG    Recall 0.4563
+2021-05-31 20:44:44,426 CFairness    DEBUG    Accuracy 0.4563
+2021-05-31 20:44:44,426 CFairness    DEBUG    ------------------------------
+2021-05-31 20:44:50,366 CFairness    DEBUG    Epoch 61
+2021-05-31 20:44:50,366 CFairness    DEBUG    Loss generator 0.69139
+2021-05-31 20:44:50,366 CFairness    DEBUG    Loss discriminator 1 0.69022
+2021-05-31 20:44:50,366 CFairness    DEBUG    Loss discriminator 2 0.69158
+2021-05-31 20:44:50,366 CFairness    DEBUG    F1 Score 0.2872
+2021-05-31 20:44:50,366 CFairness    DEBUG    Precision 0.5425
+2021-05-31 20:44:50,366 CFairness    DEBUG    Recall 0.4556
+2021-05-31 20:44:50,366 CFairness    DEBUG    Accuracy 0.4556
+2021-05-31 20:44:50,366 CFairness    DEBUG    ------------------------------
+2021-05-31 20:44:56,538 CFairness    DEBUG    Epoch 62
+2021-05-31 20:44:56,539 CFairness    DEBUG    Loss generator 0.69171
+2021-05-31 20:44:56,539 CFairness    DEBUG    Loss discriminator 1 0.69176
+2021-05-31 20:44:56,539 CFairness    DEBUG    Loss discriminator 2 0.69187
+2021-05-31 20:44:56,539 CFairness    DEBUG    F1 Score 0.2865
+2021-05-31 20:44:56,539 CFairness    DEBUG    Precision 0.5043
+2021-05-31 20:44:56,539 CFairness    DEBUG    Recall 0.4553
+2021-05-31 20:44:56,539 CFairness    DEBUG    Accuracy 0.4553
+2021-05-31 20:44:56,539 CFairness    DEBUG    ------------------------------
+2021-05-31 20:45:02,594 CFairness    DEBUG    Epoch 63
+2021-05-31 20:45:02,594 CFairness    DEBUG    Loss generator 0.69126
+2021-05-31 20:45:02,594 CFairness    DEBUG    Loss discriminator 1 0.68719
+2021-05-31 20:45:02,594 CFairness    DEBUG    Loss discriminator 2 0.69143
+2021-05-31 20:45:02,595 CFairness    DEBUG    F1 Score 0.2846
+2021-05-31 20:45:02,595 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:45:02,595 CFairness    DEBUG    Recall 0.4550
+2021-05-31 20:45:02,595 CFairness    DEBUG    Accuracy 0.4550
+2021-05-31 20:45:02,595 CFairness    DEBUG    ------------------------------
+2021-05-31 20:45:09,054 CFairness    DEBUG    Epoch 64
+2021-05-31 20:45:09,054 CFairness    DEBUG    Loss generator 0.69168
+2021-05-31 20:45:09,054 CFairness    DEBUG    Loss discriminator 1 0.68918
+2021-05-31 20:45:09,054 CFairness    DEBUG    Loss discriminator 2 0.69186
+2021-05-31 20:45:09,054 CFairness    DEBUG    F1 Score 0.2945
+2021-05-31 20:45:09,054 CFairness    DEBUG    Precision 0.6064
+2021-05-31 20:45:09,054 CFairness    DEBUG    Recall 0.4582
+2021-05-31 20:45:09,054 CFairness    DEBUG    Accuracy 0.4582
+2021-05-31 20:45:09,054 CFairness    DEBUG    ------------------------------
+2021-05-31 20:45:15,389 CFairness    DEBUG    Epoch 65
+2021-05-31 20:45:15,389 CFairness    DEBUG    Loss generator 0.69215
+2021-05-31 20:45:15,389 CFairness    DEBUG    Loss discriminator 1 0.68967
+2021-05-31 20:45:15,389 CFairness    DEBUG    Loss discriminator 2 0.69233
+2021-05-31 20:45:15,390 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:45:15,390 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:45:15,390 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:45:15,390 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:45:15,390 CFairness    DEBUG    ------------------------------
+2021-05-31 20:45:21,195 CFairness    DEBUG    Epoch 66
+2021-05-31 20:45:21,196 CFairness    DEBUG    Loss generator 0.69019
+2021-05-31 20:45:21,196 CFairness    DEBUG    Loss discriminator 1 0.69157
+2021-05-31 20:45:21,196 CFairness    DEBUG    Loss discriminator 2 0.69034
+2021-05-31 20:45:21,196 CFairness    DEBUG    F1 Score 0.3449
+2021-05-31 20:45:21,196 CFairness    DEBUG    Precision 0.5148
+2021-05-31 20:45:21,196 CFairness    DEBUG    Recall 0.4634
+2021-05-31 20:45:21,196 CFairness    DEBUG    Accuracy 0.4634
+2021-05-31 20:45:21,196 CFairness    DEBUG    ------------------------------
+2021-05-31 20:45:27,009 CFairness    DEBUG    Epoch 67
+2021-05-31 20:45:27,010 CFairness    DEBUG    Loss generator 0.69151
+2021-05-31 20:45:27,010 CFairness    DEBUG    Loss discriminator 1 0.69208
+2021-05-31 20:45:27,010 CFairness    DEBUG    Loss discriminator 2 0.69165
+2021-05-31 20:45:27,010 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:45:27,010 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:45:27,010 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:45:27,010 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:45:27,010 CFairness    DEBUG    ------------------------------
+2021-05-31 20:45:32,926 CFairness    DEBUG    Epoch 68
+2021-05-31 20:45:32,926 CFairness    DEBUG    Loss generator 0.69289
+2021-05-31 20:45:32,926 CFairness    DEBUG    Loss discriminator 1 0.69131
+2021-05-31 20:45:32,926 CFairness    DEBUG    Loss discriminator 2 0.69304
+2021-05-31 20:45:32,926 CFairness    DEBUG    F1 Score 0.3027
+2021-05-31 20:45:32,926 CFairness    DEBUG    Precision 0.5345
+2021-05-31 20:45:32,926 CFairness    DEBUG    Recall 0.4584
+2021-05-31 20:45:32,926 CFairness    DEBUG    Accuracy 0.4584
+2021-05-31 20:45:32,926 CFairness    DEBUG    ------------------------------
+2021-05-31 20:45:38,749 CFairness    DEBUG    Epoch 69
+2021-05-31 20:45:38,749 CFairness    DEBUG    Loss generator 0.69282
+2021-05-31 20:45:38,749 CFairness    DEBUG    Loss discriminator 1 0.68955
+2021-05-31 20:45:38,749 CFairness    DEBUG    Loss discriminator 2 0.69298
+2021-05-31 20:45:38,749 CFairness    DEBUG    F1 Score 0.2904
+2021-05-31 20:45:38,749 CFairness    DEBUG    Precision 0.5706
+2021-05-31 20:45:38,749 CFairness    DEBUG    Recall 0.4566
+2021-05-31 20:45:38,749 CFairness    DEBUG    Accuracy 0.4566
+2021-05-31 20:45:38,749 CFairness    DEBUG    ------------------------------
+2021-05-31 20:45:44,499 CFairness    DEBUG    Epoch 70
+2021-05-31 20:45:44,499 CFairness    DEBUG    Loss generator 0.68994
+2021-05-31 20:45:44,499 CFairness    DEBUG    Loss discriminator 1 0.68671
+2021-05-31 20:45:44,499 CFairness    DEBUG    Loss discriminator 2 0.69010
+2021-05-31 20:45:44,499 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:45:44,499 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:45:44,499 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:45:44,499 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:45:44,499 CFairness    DEBUG    ------------------------------
+2021-05-31 20:45:50,280 CFairness    DEBUG    Epoch 71
+2021-05-31 20:45:50,280 CFairness    DEBUG    Loss generator 0.68949
+2021-05-31 20:45:50,280 CFairness    DEBUG    Loss discriminator 1 0.68860
+2021-05-31 20:45:50,280 CFairness    DEBUG    Loss discriminator 2 0.68966
+2021-05-31 20:45:50,280 CFairness    DEBUG    F1 Score 0.3171
+2021-05-31 20:45:50,280 CFairness    DEBUG    Precision 0.5165
+2021-05-31 20:45:50,280 CFairness    DEBUG    Recall 0.4595
+2021-05-31 20:45:50,280 CFairness    DEBUG    Accuracy 0.4595
+2021-05-31 20:45:50,280 CFairness    DEBUG    ------------------------------
+2021-05-31 20:45:56,139 CFairness    DEBUG    Epoch 72
+2021-05-31 20:45:56,140 CFairness    DEBUG    Loss generator 0.69286
+2021-05-31 20:45:56,140 CFairness    DEBUG    Loss discriminator 1 0.69122
+2021-05-31 20:45:56,140 CFairness    DEBUG    Loss discriminator 2 0.69309
+2021-05-31 20:45:56,140 CFairness    DEBUG    F1 Score 0.3478
+2021-05-31 20:45:56,140 CFairness    DEBUG    Precision 0.5220
+2021-05-31 20:45:56,140 CFairness    DEBUG    Recall 0.4652
+2021-05-31 20:45:56,140 CFairness    DEBUG    Accuracy 0.4652
+2021-05-31 20:45:56,140 CFairness    DEBUG    ------------------------------
+2021-05-31 20:46:02,046 CFairness    DEBUG    Epoch 73
+2021-05-31 20:46:02,047 CFairness    DEBUG    Loss generator 0.69309
+2021-05-31 20:46:02,047 CFairness    DEBUG    Loss discriminator 1 0.69093
+2021-05-31 20:46:02,047 CFairness    DEBUG    Loss discriminator 2 0.69330
+2021-05-31 20:46:02,047 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:46:02,047 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:46:02,047 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:46:02,047 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:46:02,047 CFairness    DEBUG    ------------------------------
+2021-05-31 20:46:08,467 CFairness    DEBUG    Epoch 74
+2021-05-31 20:46:08,467 CFairness    DEBUG    Loss generator 0.69118
+2021-05-31 20:46:08,467 CFairness    DEBUG    Loss discriminator 1 0.68724
+2021-05-31 20:46:08,467 CFairness    DEBUG    Loss discriminator 2 0.69136
+2021-05-31 20:46:08,467 CFairness    DEBUG    F1 Score 0.3039
+2021-05-31 20:46:08,467 CFairness    DEBUG    Precision 0.4988
+2021-05-31 20:46:08,467 CFairness    DEBUG    Recall 0.4566
+2021-05-31 20:46:08,467 CFairness    DEBUG    Accuracy 0.4566
+2021-05-31 20:46:08,467 CFairness    DEBUG    ------------------------------
+2021-05-31 20:46:14,364 CFairness    DEBUG    Epoch 75
+2021-05-31 20:46:14,364 CFairness    DEBUG    Loss generator 0.69225
+2021-05-31 20:46:14,364 CFairness    DEBUG    Loss discriminator 1 0.68781
+2021-05-31 20:46:14,364 CFairness    DEBUG    Loss discriminator 2 0.69244
+2021-05-31 20:46:14,364 CFairness    DEBUG    F1 Score 0.3363
+2021-05-31 20:46:14,364 CFairness    DEBUG    Precision 0.4847
+2021-05-31 20:46:14,364 CFairness    DEBUG    Recall 0.4566
+2021-05-31 20:46:14,364 CFairness    DEBUG    Accuracy 0.4566
+2021-05-31 20:46:14,364 CFairness    DEBUG    ------------------------------
+2021-05-31 20:46:20,320 CFairness    DEBUG    Epoch 76
+2021-05-31 20:46:20,323 CFairness    DEBUG    Loss generator 0.69237
+2021-05-31 20:46:20,323 CFairness    DEBUG    Loss discriminator 1 0.68642
+2021-05-31 20:46:20,323 CFairness    DEBUG    Loss discriminator 2 0.69258
+2021-05-31 20:46:20,323 CFairness    DEBUG    F1 Score 0.2930
+2021-05-31 20:46:20,323 CFairness    DEBUG    Precision 0.5417
+2021-05-31 20:46:20,323 CFairness    DEBUG    Recall 0.4567
+2021-05-31 20:46:20,323 CFairness    DEBUG    Accuracy 0.4567
+2021-05-31 20:46:20,323 CFairness    DEBUG    ------------------------------
+2021-05-31 20:46:26,133 CFairness    DEBUG    Epoch 77
+2021-05-31 20:46:26,134 CFairness    DEBUG    Loss generator 0.69439
+2021-05-31 20:46:26,134 CFairness    DEBUG    Loss discriminator 1 0.69101
+2021-05-31 20:46:26,134 CFairness    DEBUG    Loss discriminator 2 0.69458
+2021-05-31 20:46:26,134 CFairness    DEBUG    F1 Score 0.3315
+2021-05-31 20:46:26,134 CFairness    DEBUG    Precision 0.5075
+2021-05-31 20:46:26,134 CFairness    DEBUG    Recall 0.4603
+2021-05-31 20:46:26,134 CFairness    DEBUG    Accuracy 0.4603
+2021-05-31 20:46:26,134 CFairness    DEBUG    ------------------------------
+2021-05-31 20:46:32,002 CFairness    DEBUG    Epoch 78
+2021-05-31 20:46:32,003 CFairness    DEBUG    Loss generator 0.69438
+2021-05-31 20:46:32,003 CFairness    DEBUG    Loss discriminator 1 0.69037
+2021-05-31 20:46:32,003 CFairness    DEBUG    Loss discriminator 2 0.69459
+2021-05-31 20:46:32,003 CFairness    DEBUG    F1 Score 0.3622
+2021-05-31 20:46:32,004 CFairness    DEBUG    Precision 0.5088
+2021-05-31 20:46:32,004 CFairness    DEBUG    Recall 0.4647
+2021-05-31 20:46:32,004 CFairness    DEBUG    Accuracy 0.4647
+2021-05-31 20:46:32,004 CFairness    DEBUG    ------------------------------
+2021-05-31 20:46:37,746 CFairness    DEBUG    Epoch 79
+2021-05-31 20:46:37,746 CFairness    DEBUG    Loss generator 0.69315
+2021-05-31 20:46:37,747 CFairness    DEBUG    Loss discriminator 1 0.68980
+2021-05-31 20:46:37,747 CFairness    DEBUG    Loss discriminator 2 0.69335
+2021-05-31 20:46:37,747 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:46:37,747 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:46:37,747 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:46:37,747 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:46:37,747 CFairness    DEBUG    ------------------------------
+2021-05-31 20:46:43,548 CFairness    DEBUG    Epoch 80
+2021-05-31 20:46:43,548 CFairness    DEBUG    Loss generator 0.69234
+2021-05-31 20:46:43,548 CFairness    DEBUG    Loss discriminator 1 0.68830
+2021-05-31 20:46:43,548 CFairness    DEBUG    Loss discriminator 2 0.69252
+2021-05-31 20:46:43,548 CFairness    DEBUG    F1 Score 0.3841
+2021-05-31 20:46:43,548 CFairness    DEBUG    Precision 0.4917
+2021-05-31 20:46:43,548 CFairness    DEBUG    Recall 0.4619
+2021-05-31 20:46:43,548 CFairness    DEBUG    Accuracy 0.4619
+2021-05-31 20:46:43,548 CFairness    DEBUG    ------------------------------
+2021-05-31 20:46:49,388 CFairness    DEBUG    Epoch 81
+2021-05-31 20:46:49,388 CFairness    DEBUG    Loss generator 0.69078
+2021-05-31 20:46:49,388 CFairness    DEBUG    Loss discriminator 1 0.68602
+2021-05-31 20:46:49,388 CFairness    DEBUG    Loss discriminator 2 0.69098
+2021-05-31 20:46:49,388 CFairness    DEBUG    F1 Score 0.3980
+2021-05-31 20:46:49,388 CFairness    DEBUG    Precision 0.5266
+2021-05-31 20:46:49,388 CFairness    DEBUG    Recall 0.4765
+2021-05-31 20:46:49,388 CFairness    DEBUG    Accuracy 0.4765
+2021-05-31 20:46:49,388 CFairness    DEBUG    ------------------------------
+2021-05-31 20:46:55,111 CFairness    DEBUG    Epoch 82
+2021-05-31 20:46:55,111 CFairness    DEBUG    Loss generator 0.69336
+2021-05-31 20:46:55,111 CFairness    DEBUG    Loss discriminator 1 0.68735
+2021-05-31 20:46:55,112 CFairness    DEBUG    Loss discriminator 2 0.69357
+2021-05-31 20:46:55,112 CFairness    DEBUG    F1 Score 0.3087
+2021-05-31 20:46:55,112 CFairness    DEBUG    Precision 0.5267
+2021-05-31 20:46:55,112 CFairness    DEBUG    Recall 0.4590
+2021-05-31 20:46:55,112 CFairness    DEBUG    Accuracy 0.4590
+2021-05-31 20:46:55,112 CFairness    DEBUG    ------------------------------
+2021-05-31 20:47:00,832 CFairness    DEBUG    Epoch 83
+2021-05-31 20:47:00,833 CFairness    DEBUG    Loss generator 0.69470
+2021-05-31 20:47:00,833 CFairness    DEBUG    Loss discriminator 1 0.68932
+2021-05-31 20:47:00,833 CFairness    DEBUG    Loss discriminator 2 0.69490
+2021-05-31 20:47:00,833 CFairness    DEBUG    F1 Score 0.2970
+2021-05-31 20:47:00,833 CFairness    DEBUG    Precision 0.4825
+2021-05-31 20:47:00,833 CFairness    DEBUG    Recall 0.4553
+2021-05-31 20:47:00,833 CFairness    DEBUG    Accuracy 0.4553
+2021-05-31 20:47:00,833 CFairness    DEBUG    ------------------------------
+2021-05-31 20:47:06,601 CFairness    DEBUG    Epoch 84
+2021-05-31 20:47:06,602 CFairness    DEBUG    Loss generator 0.69367
+2021-05-31 20:47:06,602 CFairness    DEBUG    Loss discriminator 1 0.69082
+2021-05-31 20:47:06,602 CFairness    DEBUG    Loss discriminator 2 0.69384
+2021-05-31 20:47:06,602 CFairness    DEBUG    F1 Score 0.2911
+2021-05-31 20:47:06,602 CFairness    DEBUG    Precision 0.4736
+2021-05-31 20:47:06,602 CFairness    DEBUG    Recall 0.4550
+2021-05-31 20:47:06,602 CFairness    DEBUG    Accuracy 0.4550
+2021-05-31 20:47:06,602 CFairness    DEBUG    ------------------------------
+2021-05-31 20:47:12,204 CFairness    DEBUG    Epoch 85
+2021-05-31 20:47:12,205 CFairness    DEBUG    Loss generator 0.69065
+2021-05-31 20:47:12,205 CFairness    DEBUG    Loss discriminator 1 0.69008
+2021-05-31 20:47:12,205 CFairness    DEBUG    Loss discriminator 2 0.69082
+2021-05-31 20:47:12,205 CFairness    DEBUG    F1 Score 0.3539
+2021-05-31 20:47:12,205 CFairness    DEBUG    Precision 0.5135
+2021-05-31 20:47:12,205 CFairness    DEBUG    Recall 0.4645
+2021-05-31 20:47:12,205 CFairness    DEBUG    Accuracy 0.4645
+2021-05-31 20:47:12,205 CFairness    DEBUG    ------------------------------
+2021-05-31 20:47:18,259 CFairness    DEBUG    Epoch 86
+2021-05-31 20:47:18,260 CFairness    DEBUG    Loss generator 0.69566
+2021-05-31 20:47:18,260 CFairness    DEBUG    Loss discriminator 1 0.68573
+2021-05-31 20:47:18,260 CFairness    DEBUG    Loss discriminator 2 0.69591
+2021-05-31 20:47:18,260 CFairness    DEBUG    F1 Score 0.3316
+2021-05-31 20:47:18,260 CFairness    DEBUG    Precision 0.5117
+2021-05-31 20:47:18,260 CFairness    DEBUG    Recall 0.4610
+2021-05-31 20:47:18,260 CFairness    DEBUG    Accuracy 0.4610
+2021-05-31 20:47:18,260 CFairness    DEBUG    ------------------------------
+2021-05-31 20:47:24,070 CFairness    DEBUG    Epoch 87
+2021-05-31 20:47:24,070 CFairness    DEBUG    Loss generator 0.69248
+2021-05-31 20:47:24,070 CFairness    DEBUG    Loss discriminator 1 0.68776
+2021-05-31 20:47:24,070 CFairness    DEBUG    Loss discriminator 2 0.69267
+2021-05-31 20:47:24,070 CFairness    DEBUG    F1 Score 0.3129
+2021-05-31 20:47:24,070 CFairness    DEBUG    Precision 0.4980
+2021-05-31 20:47:24,070 CFairness    DEBUG    Recall 0.4572
+2021-05-31 20:47:24,070 CFairness    DEBUG    Accuracy 0.4572
+2021-05-31 20:47:24,070 CFairness    DEBUG    ------------------------------
+2021-05-31 20:47:29,988 CFairness    DEBUG    Epoch 88
+2021-05-31 20:47:29,988 CFairness    DEBUG    Loss generator 0.69621
+2021-05-31 20:47:29,988 CFairness    DEBUG    Loss discriminator 1 0.68559
+2021-05-31 20:47:29,988 CFairness    DEBUG    Loss discriminator 2 0.69644
+2021-05-31 20:47:29,988 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:47:29,988 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:47:29,988 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:47:29,988 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:47:29,989 CFairness    DEBUG    ------------------------------
+2021-05-31 20:47:36,084 CFairness    DEBUG    Epoch 89
+2021-05-31 20:47:36,085 CFairness    DEBUG    Loss generator 0.69353
+2021-05-31 20:47:36,085 CFairness    DEBUG    Loss discriminator 1 0.68652
+2021-05-31 20:47:36,085 CFairness    DEBUG    Loss discriminator 2 0.69377
+2021-05-31 20:47:36,085 CFairness    DEBUG    F1 Score 0.3264
+2021-05-31 20:47:36,085 CFairness    DEBUG    Precision 0.4907
+2021-05-31 20:47:36,085 CFairness    DEBUG    Recall 0.4572
+2021-05-31 20:47:36,085 CFairness    DEBUG    Accuracy 0.4572
+2021-05-31 20:47:36,085 CFairness    DEBUG    ------------------------------
+2021-05-31 20:47:41,568 CFairness    DEBUG    Epoch 90
+2021-05-31 20:47:41,569 CFairness    DEBUG    Loss generator 0.69251
+2021-05-31 20:47:41,569 CFairness    DEBUG    Loss discriminator 1 0.69214
+2021-05-31 20:47:41,569 CFairness    DEBUG    Loss discriminator 2 0.69270
+2021-05-31 20:47:41,569 CFairness    DEBUG    F1 Score 0.3404
+2021-05-31 20:47:41,569 CFairness    DEBUG    Precision 0.5085
+2021-05-31 20:47:41,569 CFairness    DEBUG    Recall 0.4616
+2021-05-31 20:47:41,569 CFairness    DEBUG    Accuracy 0.4616
+2021-05-31 20:47:41,569 CFairness    DEBUG    ------------------------------
+2021-05-31 20:47:47,059 CFairness    DEBUG    Epoch 91
+2021-05-31 20:47:47,060 CFairness    DEBUG    Loss generator 0.69434
+2021-05-31 20:47:47,060 CFairness    DEBUG    Loss discriminator 1 0.69173
+2021-05-31 20:47:47,060 CFairness    DEBUG    Loss discriminator 2 0.69456
+2021-05-31 20:47:47,060 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:47:47,060 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:47:47,060 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:47:47,060 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:47:47,060 CFairness    DEBUG    ------------------------------
+2021-05-31 20:47:52,660 CFairness    DEBUG    Epoch 92
+2021-05-31 20:47:52,661 CFairness    DEBUG    Loss generator 0.69372
+2021-05-31 20:47:52,661 CFairness    DEBUG    Loss discriminator 1 0.69244
+2021-05-31 20:47:52,662 CFairness    DEBUG    Loss discriminator 2 0.69391
+2021-05-31 20:47:52,662 CFairness    DEBUG    F1 Score 0.3094
+2021-05-31 20:47:52,662 CFairness    DEBUG    Precision 0.5226
+2021-05-31 20:47:52,662 CFairness    DEBUG    Recall 0.4588
+2021-05-31 20:47:52,662 CFairness    DEBUG    Accuracy 0.4588
+2021-05-31 20:47:52,662 CFairness    DEBUG    ------------------------------
+2021-05-31 20:47:58,300 CFairness    DEBUG    Epoch 93
+2021-05-31 20:47:58,300 CFairness    DEBUG    Loss generator 0.68985
+2021-05-31 20:47:58,300 CFairness    DEBUG    Loss discriminator 1 0.68656
+2021-05-31 20:47:58,300 CFairness    DEBUG    Loss discriminator 2 0.69001
+2021-05-31 20:47:58,300 CFairness    DEBUG    F1 Score 0.3022
+2021-05-31 20:47:58,300 CFairness    DEBUG    Precision 0.5528
+2021-05-31 20:47:58,300 CFairness    DEBUG    Recall 0.4590
+2021-05-31 20:47:58,300 CFairness    DEBUG    Accuracy 0.4590
+2021-05-31 20:47:58,300 CFairness    DEBUG    ------------------------------
+2021-05-31 20:48:04,157 CFairness    DEBUG    Epoch 94
+2021-05-31 20:48:04,157 CFairness    DEBUG    Loss generator 0.69076
+2021-05-31 20:48:04,157 CFairness    DEBUG    Loss discriminator 1 0.68339
+2021-05-31 20:48:04,157 CFairness    DEBUG    Loss discriminator 2 0.69096
+2021-05-31 20:48:04,157 CFairness    DEBUG    F1 Score 0.2924
+2021-05-31 20:48:04,157 CFairness    DEBUG    Precision 0.5479
+2021-05-31 20:48:04,157 CFairness    DEBUG    Recall 0.4567
+2021-05-31 20:48:04,157 CFairness    DEBUG    Accuracy 0.4567
+2021-05-31 20:48:04,157 CFairness    DEBUG    ------------------------------
+2021-05-31 20:48:09,904 CFairness    DEBUG    Epoch 95
+2021-05-31 20:48:09,904 CFairness    DEBUG    Loss generator 0.69035
+2021-05-31 20:48:09,904 CFairness    DEBUG    Loss discriminator 1 0.68476
+2021-05-31 20:48:09,904 CFairness    DEBUG    Loss discriminator 2 0.69055
+2021-05-31 20:48:09,904 CFairness    DEBUG    F1 Score 0.2857
+2021-05-31 20:48:09,904 CFairness    DEBUG    Precision 0.4250
+2021-05-31 20:48:09,904 CFairness    DEBUG    Recall 0.4548
+2021-05-31 20:48:09,905 CFairness    DEBUG    Accuracy 0.4548
+2021-05-31 20:48:09,905 CFairness    DEBUG    ------------------------------
+2021-05-31 20:48:15,485 CFairness    DEBUG    Epoch 96
+2021-05-31 20:48:15,485 CFairness    DEBUG    Loss generator 0.68936
+2021-05-31 20:48:15,485 CFairness    DEBUG    Loss discriminator 1 0.68599
+2021-05-31 20:48:15,485 CFairness    DEBUG    Loss discriminator 2 0.68956
+2021-05-31 20:48:15,485 CFairness    DEBUG    F1 Score 0.2925
+2021-05-31 20:48:15,485 CFairness    DEBUG    Precision 0.4576
+2021-05-31 20:48:15,485 CFairness    DEBUG    Recall 0.4543
+2021-05-31 20:48:15,485 CFairness    DEBUG    Accuracy 0.4543
+2021-05-31 20:48:15,485 CFairness    DEBUG    ------------------------------
+2021-05-31 20:48:21,182 CFairness    DEBUG    Epoch 97
+2021-05-31 20:48:21,184 CFairness    DEBUG    Loss generator 0.68888
+2021-05-31 20:48:21,184 CFairness    DEBUG    Loss discriminator 1 0.69105
+2021-05-31 20:48:21,184 CFairness    DEBUG    Loss discriminator 2 0.68903
+2021-05-31 20:48:21,184 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:48:21,184 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:48:21,184 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:48:21,184 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:48:21,184 CFairness    DEBUG    ------------------------------
+2021-05-31 20:48:26,888 CFairness    DEBUG    Epoch 98
+2021-05-31 20:48:26,889 CFairness    DEBUG    Loss generator 0.69062
+2021-05-31 20:48:26,889 CFairness    DEBUG    Loss discriminator 1 0.69180
+2021-05-31 20:48:26,889 CFairness    DEBUG    Loss discriminator 2 0.69078
+2021-05-31 20:48:26,889 CFairness    DEBUG    F1 Score 0.3129
+2021-05-31 20:48:26,889 CFairness    DEBUG    Precision 0.4548
+2021-05-31 20:48:26,889 CFairness    DEBUG    Recall 0.4517
+2021-05-31 20:48:26,889 CFairness    DEBUG    Accuracy 0.4517
+2021-05-31 20:48:26,889 CFairness    DEBUG    ------------------------------
+2021-05-31 20:48:32,556 CFairness    DEBUG    Epoch 99
+2021-05-31 20:48:32,557 CFairness    DEBUG    Loss generator 0.68974
+2021-05-31 20:48:32,557 CFairness    DEBUG    Loss discriminator 1 0.68780
+2021-05-31 20:48:32,557 CFairness    DEBUG    Loss discriminator 2 0.68991
+2021-05-31 20:48:32,557 CFairness    DEBUG    F1 Score 0.2863
+2021-05-31 20:48:32,557 CFairness    DEBUG    Precision 0.5964
+2021-05-31 20:48:32,557 CFairness    DEBUG    Recall 0.4556
+2021-05-31 20:48:32,557 CFairness    DEBUG    Accuracy 0.4556
+2021-05-31 20:48:32,557 CFairness    DEBUG    ------------------------------
+2021-05-31 20:48:38,173 CFairness    DEBUG    Epoch 100
+2021-05-31 20:48:38,173 CFairness    DEBUG    Loss generator 0.68952
+2021-05-31 20:48:38,173 CFairness    DEBUG    Loss discriminator 1 0.69181
+2021-05-31 20:48:38,173 CFairness    DEBUG    Loss discriminator 2 0.68966
+2021-05-31 20:48:38,173 CFairness    DEBUG    F1 Score 0.3196
+2021-05-31 20:48:38,173 CFairness    DEBUG    Precision 0.4841
+2021-05-31 20:48:38,173 CFairness    DEBUG    Recall 0.4559
+2021-05-31 20:48:38,173 CFairness    DEBUG    Accuracy 0.4559
+2021-05-31 20:48:38,173 CFairness    DEBUG    ------------------------------
+2021-05-31 20:48:43,805 CFairness    DEBUG    Epoch 101
+2021-05-31 20:48:43,805 CFairness    DEBUG    Loss generator 0.69103
+2021-05-31 20:48:43,805 CFairness    DEBUG    Loss discriminator 1 0.69211
+2021-05-31 20:48:43,805 CFairness    DEBUG    Loss discriminator 2 0.69118
+2021-05-31 20:48:43,805 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:48:43,805 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:48:43,805 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:48:43,805 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:48:43,805 CFairness    DEBUG    ------------------------------
+2021-05-31 20:48:49,418 CFairness    DEBUG    Epoch 102
+2021-05-31 20:48:49,418 CFairness    DEBUG    Loss generator 0.69050
+2021-05-31 20:48:49,418 CFairness    DEBUG    Loss discriminator 1 0.69052
+2021-05-31 20:48:49,418 CFairness    DEBUG    Loss discriminator 2 0.69066
+2021-05-31 20:48:49,418 CFairness    DEBUG    F1 Score 0.3157
+2021-05-31 20:48:49,418 CFairness    DEBUG    Precision 0.5066
+2021-05-31 20:48:49,418 CFairness    DEBUG    Recall 0.4584
+2021-05-31 20:48:49,418 CFairness    DEBUG    Accuracy 0.4584
+2021-05-31 20:48:49,418 CFairness    DEBUG    ------------------------------
+2021-05-31 20:48:55,078 CFairness    DEBUG    Epoch 103
+2021-05-31 20:48:55,078 CFairness    DEBUG    Loss generator 0.69393
+2021-05-31 20:48:55,078 CFairness    DEBUG    Loss discriminator 1 0.68992
+2021-05-31 20:48:55,078 CFairness    DEBUG    Loss discriminator 2 0.69411
+2021-05-31 20:48:55,078 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:48:55,078 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:48:55,078 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:48:55,078 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:48:55,079 CFairness    DEBUG    ------------------------------
+2021-05-31 20:49:00,769 CFairness    DEBUG    Epoch 104
+2021-05-31 20:49:00,770 CFairness    DEBUG    Loss generator 0.69141
+2021-05-31 20:49:00,770 CFairness    DEBUG    Loss discriminator 1 0.69153
+2021-05-31 20:49:00,770 CFairness    DEBUG    Loss discriminator 2 0.69157
+2021-05-31 20:49:00,770 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:49:00,770 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:49:00,770 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:49:00,770 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:49:00,770 CFairness    DEBUG    ------------------------------
+2021-05-31 20:49:06,420 CFairness    DEBUG    Epoch 105
+2021-05-31 20:49:06,421 CFairness    DEBUG    Loss generator 0.69208
+2021-05-31 20:49:06,421 CFairness    DEBUG    Loss discriminator 1 0.69148
+2021-05-31 20:49:06,421 CFairness    DEBUG    Loss discriminator 2 0.69223
+2021-05-31 20:49:06,421 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:49:06,421 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:49:06,421 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:49:06,421 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:49:06,421 CFairness    DEBUG    ------------------------------
+2021-05-31 20:49:12,192 CFairness    DEBUG    Epoch 106
+2021-05-31 20:49:12,193 CFairness    DEBUG    Loss generator 0.69033
+2021-05-31 20:49:12,193 CFairness    DEBUG    Loss discriminator 1 0.69123
+2021-05-31 20:49:12,193 CFairness    DEBUG    Loss discriminator 2 0.69047
+2021-05-31 20:49:12,193 CFairness    DEBUG    F1 Score 0.2981
+2021-05-31 20:49:12,193 CFairness    DEBUG    Precision 0.4948
+2021-05-31 20:49:12,193 CFairness    DEBUG    Recall 0.4559
+2021-05-31 20:49:12,193 CFairness    DEBUG    Accuracy 0.4559
+2021-05-31 20:49:12,193 CFairness    DEBUG    ------------------------------
+2021-05-31 20:49:17,920 CFairness    DEBUG    Epoch 107
+2021-05-31 20:49:17,920 CFairness    DEBUG    Loss generator 0.69124
+2021-05-31 20:49:17,920 CFairness    DEBUG    Loss discriminator 1 0.69170
+2021-05-31 20:49:17,920 CFairness    DEBUG    Loss discriminator 2 0.69139
+2021-05-31 20:49:17,920 CFairness    DEBUG    F1 Score 0.2846
+2021-05-31 20:49:17,920 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:49:17,920 CFairness    DEBUG    Recall 0.4550
+2021-05-31 20:49:17,920 CFairness    DEBUG    Accuracy 0.4550
+2021-05-31 20:49:17,920 CFairness    DEBUG    ------------------------------
+2021-05-31 20:49:23,574 CFairness    DEBUG    Epoch 108
+2021-05-31 20:49:23,574 CFairness    DEBUG    Loss generator 0.69416
+2021-05-31 20:49:23,574 CFairness    DEBUG    Loss discriminator 1 0.69411
+2021-05-31 20:49:23,574 CFairness    DEBUG    Loss discriminator 2 0.69432
+2021-05-31 20:49:23,574 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:49:23,574 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:49:23,574 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:49:23,574 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:49:23,574 CFairness    DEBUG    ------------------------------
+2021-05-31 20:49:29,152 CFairness    DEBUG    Epoch 109
+2021-05-31 20:49:29,152 CFairness    DEBUG    Loss generator 0.69040
+2021-05-31 20:49:29,152 CFairness    DEBUG    Loss discriminator 1 0.69350
+2021-05-31 20:49:29,152 CFairness    DEBUG    Loss discriminator 2 0.69052
+2021-05-31 20:49:29,152 CFairness    DEBUG    F1 Score 0.2959
+2021-05-31 20:49:29,152 CFairness    DEBUG    Precision 0.4982
+2021-05-31 20:49:29,152 CFairness    DEBUG    Recall 0.4559
+2021-05-31 20:49:29,152 CFairness    DEBUG    Accuracy 0.4559
+2021-05-31 20:49:29,152 CFairness    DEBUG    ------------------------------
+2021-05-31 20:49:34,853 CFairness    DEBUG    Epoch 110
+2021-05-31 20:49:34,853 CFairness    DEBUG    Loss generator 0.69115
+2021-05-31 20:49:34,853 CFairness    DEBUG    Loss discriminator 1 0.69043
+2021-05-31 20:49:34,853 CFairness    DEBUG    Loss discriminator 2 0.69128
+2021-05-31 20:49:34,853 CFairness    DEBUG    F1 Score 0.3017
+2021-05-31 20:49:34,853 CFairness    DEBUG    Precision 0.4862
+2021-05-31 20:49:34,853 CFairness    DEBUG    Recall 0.4556
+2021-05-31 20:49:34,853 CFairness    DEBUG    Accuracy 0.4556
+2021-05-31 20:49:34,853 CFairness    DEBUG    ------------------------------
+2021-05-31 20:49:40,507 CFairness    DEBUG    Epoch 111
+2021-05-31 20:49:40,507 CFairness    DEBUG    Loss generator 0.69138
+2021-05-31 20:49:40,507 CFairness    DEBUG    Loss discriminator 1 0.68641
+2021-05-31 20:49:40,507 CFairness    DEBUG    Loss discriminator 2 0.69156
+2021-05-31 20:49:40,507 CFairness    DEBUG    F1 Score 0.2946
+2021-05-31 20:49:40,507 CFairness    DEBUG    Precision 0.5060
+2021-05-31 20:49:40,507 CFairness    DEBUG    Recall 0.4561
+2021-05-31 20:49:40,507 CFairness    DEBUG    Accuracy 0.4561
+2021-05-31 20:49:40,507 CFairness    DEBUG    ------------------------------
+2021-05-31 20:49:46,201 CFairness    DEBUG    Epoch 112
+2021-05-31 20:49:46,201 CFairness    DEBUG    Loss generator 0.69181
+2021-05-31 20:49:46,201 CFairness    DEBUG    Loss discriminator 1 0.69052
+2021-05-31 20:49:46,201 CFairness    DEBUG    Loss discriminator 2 0.69198
+2021-05-31 20:49:46,201 CFairness    DEBUG    F1 Score 0.3196
+2021-05-31 20:49:46,202 CFairness    DEBUG    Precision 0.5146
+2021-05-31 20:49:46,202 CFairness    DEBUG    Recall 0.4597
+2021-05-31 20:49:46,202 CFairness    DEBUG    Accuracy 0.4597
+2021-05-31 20:49:46,202 CFairness    DEBUG    ------------------------------
+2021-05-31 20:49:51,859 CFairness    DEBUG    Epoch 113
+2021-05-31 20:49:51,860 CFairness    DEBUG    Loss generator 0.69311
+2021-05-31 20:49:51,860 CFairness    DEBUG    Loss discriminator 1 0.68890
+2021-05-31 20:49:51,860 CFairness    DEBUG    Loss discriminator 2 0.69331
+2021-05-31 20:49:51,860 CFairness    DEBUG    F1 Score 0.3201
+2021-05-31 20:49:51,860 CFairness    DEBUG    Precision 0.5338
+2021-05-31 20:49:51,860 CFairness    DEBUG    Recall 0.4616
+2021-05-31 20:49:51,860 CFairness    DEBUG    Accuracy 0.4616
+2021-05-31 20:49:51,860 CFairness    DEBUG    ------------------------------
+2021-05-31 20:49:57,725 CFairness    DEBUG    Epoch 114
+2021-05-31 20:49:57,726 CFairness    DEBUG    Loss generator 0.69531
+2021-05-31 20:49:57,726 CFairness    DEBUG    Loss discriminator 1 0.68883
+2021-05-31 20:49:57,726 CFairness    DEBUG    Loss discriminator 2 0.69553
+2021-05-31 20:49:57,726 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:49:57,726 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:49:57,726 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:49:57,726 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:49:57,727 CFairness    DEBUG    ------------------------------
+2021-05-31 20:50:03,579 CFairness    DEBUG    Epoch 115
+2021-05-31 20:50:03,579 CFairness    DEBUG    Loss generator 0.69215
+2021-05-31 20:50:03,579 CFairness    DEBUG    Loss discriminator 1 0.68709
+2021-05-31 20:50:03,579 CFairness    DEBUG    Loss discriminator 2 0.69233
+2021-05-31 20:50:03,579 CFairness    DEBUG    F1 Score 0.2873
+2021-05-31 20:50:03,579 CFairness    DEBUG    Precision 0.4439
+2021-05-31 20:50:03,580 CFairness    DEBUG    Recall 0.4546
+2021-05-31 20:50:03,580 CFairness    DEBUG    Accuracy 0.4546
+2021-05-31 20:50:03,580 CFairness    DEBUG    ------------------------------
+2021-05-31 20:50:09,360 CFairness    DEBUG    Epoch 116
+2021-05-31 20:50:09,360 CFairness    DEBUG    Loss generator 0.68920
+2021-05-31 20:50:09,360 CFairness    DEBUG    Loss discriminator 1 0.68835
+2021-05-31 20:50:09,360 CFairness    DEBUG    Loss discriminator 2 0.68935
+2021-05-31 20:50:09,360 CFairness    DEBUG    F1 Score 0.2866
+2021-05-31 20:50:09,360 CFairness    DEBUG    Precision 0.4613
+2021-05-31 20:50:09,360 CFairness    DEBUG    Recall 0.4550
+2021-05-31 20:50:09,360 CFairness    DEBUG    Accuracy 0.4550
+2021-05-31 20:50:09,360 CFairness    DEBUG    ------------------------------
+2021-05-31 20:50:15,702 CFairness    DEBUG    Epoch 117
+2021-05-31 20:50:15,702 CFairness    DEBUG    Loss generator 0.69049
+2021-05-31 20:50:15,702 CFairness    DEBUG    Loss discriminator 1 0.68890
+2021-05-31 20:50:15,702 CFairness    DEBUG    Loss discriminator 2 0.69066
+2021-05-31 20:50:15,702 CFairness    DEBUG    F1 Score 0.2884
+2021-05-31 20:50:15,702 CFairness    DEBUG    Precision 0.5341
+2021-05-31 20:50:15,702 CFairness    DEBUG    Recall 0.4558
+2021-05-31 20:50:15,702 CFairness    DEBUG    Accuracy 0.4558
+2021-05-31 20:50:15,702 CFairness    DEBUG    ------------------------------
+2021-05-31 20:50:21,357 CFairness    DEBUG    Epoch 118
+2021-05-31 20:50:21,358 CFairness    DEBUG    Loss generator 0.69209
+2021-05-31 20:50:21,358 CFairness    DEBUG    Loss discriminator 1 0.69179
+2021-05-31 20:50:21,358 CFairness    DEBUG    Loss discriminator 2 0.69224
+2021-05-31 20:50:21,358 CFairness    DEBUG    F1 Score 0.2860
+2021-05-31 20:50:21,358 CFairness    DEBUG    Precision 0.5704
+2021-05-31 20:50:21,358 CFairness    DEBUG    Recall 0.4554
+2021-05-31 20:50:21,358 CFairness    DEBUG    Accuracy 0.4554
+2021-05-31 20:50:21,358 CFairness    DEBUG    ------------------------------
+2021-05-31 20:50:27,139 CFairness    DEBUG    Epoch 119
+2021-05-31 20:50:27,140 CFairness    DEBUG    Loss generator 0.68864
+2021-05-31 20:50:27,140 CFairness    DEBUG    Loss discriminator 1 0.69013
+2021-05-31 20:50:27,140 CFairness    DEBUG    Loss discriminator 2 0.68877
+2021-05-31 20:50:27,140 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:50:27,140 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:50:27,140 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:50:27,140 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:50:27,140 CFairness    DEBUG    ------------------------------
+2021-05-31 20:50:32,921 CFairness    DEBUG    Epoch 120
+2021-05-31 20:50:32,921 CFairness    DEBUG    Loss generator 0.68866
+2021-05-31 20:50:32,921 CFairness    DEBUG    Loss discriminator 1 0.68717
+2021-05-31 20:50:32,921 CFairness    DEBUG    Loss discriminator 2 0.68880
+2021-05-31 20:50:32,921 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:50:32,921 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:50:32,921 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:50:32,921 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:50:32,922 CFairness    DEBUG    ------------------------------
+2021-05-31 20:50:38,686 CFairness    DEBUG    Epoch 121
+2021-05-31 20:50:38,686 CFairness    DEBUG    Loss generator 0.69387
+2021-05-31 20:50:38,686 CFairness    DEBUG    Loss discriminator 1 0.68864
+2021-05-31 20:50:38,686 CFairness    DEBUG    Loss discriminator 2 0.69405
+2021-05-31 20:50:38,686 CFairness    DEBUG    F1 Score 0.2888
+2021-05-31 20:50:38,686 CFairness    DEBUG    Precision 0.5005
+2021-05-31 20:50:38,686 CFairness    DEBUG    Recall 0.4554
+2021-05-31 20:50:38,686 CFairness    DEBUG    Accuracy 0.4554
+2021-05-31 20:50:38,686 CFairness    DEBUG    ------------------------------
+2021-05-31 20:50:44,394 CFairness    DEBUG    Epoch 122
+2021-05-31 20:50:44,394 CFairness    DEBUG    Loss generator 0.68997
+2021-05-31 20:50:44,394 CFairness    DEBUG    Loss discriminator 1 0.68578
+2021-05-31 20:50:44,394 CFairness    DEBUG    Loss discriminator 2 0.69014
+2021-05-31 20:50:44,395 CFairness    DEBUG    F1 Score 0.2900
+2021-05-31 20:50:44,395 CFairness    DEBUG    Precision 0.6226
+2021-05-31 20:50:44,395 CFairness    DEBUG    Recall 0.4569
+2021-05-31 20:50:44,395 CFairness    DEBUG    Accuracy 0.4569
+2021-05-31 20:50:44,395 CFairness    DEBUG    ------------------------------
+2021-05-31 20:50:50,084 CFairness    DEBUG    Epoch 123
+2021-05-31 20:50:50,084 CFairness    DEBUG    Loss generator 0.69081
+2021-05-31 20:50:50,084 CFairness    DEBUG    Loss discriminator 1 0.68929
+2021-05-31 20:50:50,084 CFairness    DEBUG    Loss discriminator 2 0.69096
+2021-05-31 20:50:50,084 CFairness    DEBUG    F1 Score 0.3416
+2021-05-31 20:50:50,084 CFairness    DEBUG    Precision 0.5217
+2021-05-31 20:50:50,084 CFairness    DEBUG    Recall 0.4640
+2021-05-31 20:50:50,084 CFairness    DEBUG    Accuracy 0.4640
+2021-05-31 20:50:50,084 CFairness    DEBUG    ------------------------------
+2021-05-31 20:50:55,793 CFairness    DEBUG    Epoch 124
+2021-05-31 20:50:55,793 CFairness    DEBUG    Loss generator 0.68902
+2021-05-31 20:50:55,793 CFairness    DEBUG    Loss discriminator 1 0.68744
+2021-05-31 20:50:55,793 CFairness    DEBUG    Loss discriminator 2 0.68919
+2021-05-31 20:50:55,793 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:50:55,793 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:50:55,793 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:50:55,793 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:50:55,793 CFairness    DEBUG    ------------------------------
+2021-05-31 20:51:01,385 CFairness    DEBUG    Epoch 125
+2021-05-31 20:51:01,385 CFairness    DEBUG    Loss generator 0.68958
+2021-05-31 20:51:01,385 CFairness    DEBUG    Loss discriminator 1 0.68665
+2021-05-31 20:51:01,386 CFairness    DEBUG    Loss discriminator 2 0.68974
+2021-05-31 20:51:01,386 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:51:01,386 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:51:01,386 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:51:01,386 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:51:01,386 CFairness    DEBUG    ------------------------------
+2021-05-31 20:51:07,249 CFairness    DEBUG    Epoch 126
+2021-05-31 20:51:07,250 CFairness    DEBUG    Loss generator 0.69066
+2021-05-31 20:51:07,250 CFairness    DEBUG    Loss discriminator 1 0.69104
+2021-05-31 20:51:07,250 CFairness    DEBUG    Loss discriminator 2 0.69080
+2021-05-31 20:51:07,250 CFairness    DEBUG    F1 Score 0.2868
+2021-05-31 20:51:07,250 CFairness    DEBUG    Precision 0.6743
+2021-05-31 20:51:07,250 CFairness    DEBUG    Recall 0.4559
+2021-05-31 20:51:07,250 CFairness    DEBUG    Accuracy 0.4559
+2021-05-31 20:51:07,250 CFairness    DEBUG    ------------------------------
+2021-05-31 20:51:13,154 CFairness    DEBUG    Epoch 127
+2021-05-31 20:51:13,154 CFairness    DEBUG    Loss generator 0.69099
+2021-05-31 20:51:13,154 CFairness    DEBUG    Loss discriminator 1 0.69137
+2021-05-31 20:51:13,154 CFairness    DEBUG    Loss discriminator 2 0.69114
+2021-05-31 20:51:13,155 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:51:13,155 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:51:13,155 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:51:13,155 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:51:13,155 CFairness    DEBUG    ------------------------------
+2021-05-31 20:51:19,167 CFairness    DEBUG    Epoch 128
+2021-05-31 20:51:19,167 CFairness    DEBUG    Loss generator 0.69148
+2021-05-31 20:51:19,167 CFairness    DEBUG    Loss discriminator 1 0.69330
+2021-05-31 20:51:19,167 CFairness    DEBUG    Loss discriminator 2 0.69162
+2021-05-31 20:51:19,167 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:51:19,167 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:51:19,167 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:51:19,168 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:51:19,168 CFairness    DEBUG    ------------------------------
+2021-05-31 20:51:25,486 CFairness    DEBUG    Epoch 129
+2021-05-31 20:51:25,486 CFairness    DEBUG    Loss generator 0.69274
+2021-05-31 20:51:25,486 CFairness    DEBUG    Loss discriminator 1 0.69178
+2021-05-31 20:51:25,486 CFairness    DEBUG    Loss discriminator 2 0.69289
+2021-05-31 20:51:25,486 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:51:25,486 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:51:25,486 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:51:25,486 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:51:25,486 CFairness    DEBUG    ------------------------------
+2021-05-31 20:51:31,054 CFairness    DEBUG    Epoch 130
+2021-05-31 20:51:31,055 CFairness    DEBUG    Loss generator 0.68960
+2021-05-31 20:51:31,055 CFairness    DEBUG    Loss discriminator 1 0.69037
+2021-05-31 20:51:31,055 CFairness    DEBUG    Loss discriminator 2 0.68972
+2021-05-31 20:51:31,055 CFairness    DEBUG    F1 Score 0.2857
+2021-05-31 20:51:31,055 CFairness    DEBUG    Precision 0.4250
+2021-05-31 20:51:31,055 CFairness    DEBUG    Recall 0.4548
+2021-05-31 20:51:31,055 CFairness    DEBUG    Accuracy 0.4548
+2021-05-31 20:51:31,055 CFairness    DEBUG    ------------------------------
+2021-05-31 20:51:36,671 CFairness    DEBUG    Epoch 131
+2021-05-31 20:51:36,672 CFairness    DEBUG    Loss generator 0.69087
+2021-05-31 20:51:36,672 CFairness    DEBUG    Loss discriminator 1 0.69033
+2021-05-31 20:51:36,672 CFairness    DEBUG    Loss discriminator 2 0.69100
+2021-05-31 20:51:36,672 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:51:36,672 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:51:36,672 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:51:36,672 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:51:36,672 CFairness    DEBUG    ------------------------------
+2021-05-31 20:51:42,281 CFairness    DEBUG    Epoch 132
+2021-05-31 20:51:42,282 CFairness    DEBUG    Loss generator 0.69259
+2021-05-31 20:51:42,282 CFairness    DEBUG    Loss discriminator 1 0.69300
+2021-05-31 20:51:42,282 CFairness    DEBUG    Loss discriminator 2 0.69274
+2021-05-31 20:51:42,282 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:51:42,282 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:51:42,282 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:51:42,282 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:51:42,282 CFairness    DEBUG    ------------------------------
+2021-05-31 20:51:47,928 CFairness    DEBUG    Epoch 133
+2021-05-31 20:51:47,928 CFairness    DEBUG    Loss generator 0.69073
+2021-05-31 20:51:47,928 CFairness    DEBUG    Loss discriminator 1 0.68909
+2021-05-31 20:51:47,928 CFairness    DEBUG    Loss discriminator 2 0.69088
+2021-05-31 20:51:47,928 CFairness    DEBUG    F1 Score 0.3055
+2021-05-31 20:51:47,928 CFairness    DEBUG    Precision 0.5114
+2021-05-31 20:51:47,928 CFairness    DEBUG    Recall 0.4576
+2021-05-31 20:51:47,928 CFairness    DEBUG    Accuracy 0.4576
+2021-05-31 20:51:47,928 CFairness    DEBUG    ------------------------------
+2021-05-31 20:51:53,576 CFairness    DEBUG    Epoch 134
+2021-05-31 20:51:53,576 CFairness    DEBUG    Loss generator 0.69016
+2021-05-31 20:51:53,576 CFairness    DEBUG    Loss discriminator 1 0.68862
+2021-05-31 20:51:53,576 CFairness    DEBUG    Loss discriminator 2 0.69032
+2021-05-31 20:51:53,576 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:51:53,576 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:51:53,576 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:51:53,576 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:51:53,576 CFairness    DEBUG    ------------------------------
+2021-05-31 20:51:59,213 CFairness    DEBUG    Epoch 135
+2021-05-31 20:51:59,213 CFairness    DEBUG    Loss generator 0.69070
+2021-05-31 20:51:59,213 CFairness    DEBUG    Loss discriminator 1 0.69055
+2021-05-31 20:51:59,213 CFairness    DEBUG    Loss discriminator 2 0.69085
+2021-05-31 20:51:59,213 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:51:59,213 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:51:59,213 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:51:59,213 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:51:59,213 CFairness    DEBUG    ------------------------------
+2021-05-31 20:52:05,202 CFairness    DEBUG    Epoch 136
+2021-05-31 20:52:05,202 CFairness    DEBUG    Loss generator 0.69106
+2021-05-31 20:52:05,202 CFairness    DEBUG    Loss discriminator 1 0.68828
+2021-05-31 20:52:05,202 CFairness    DEBUG    Loss discriminator 2 0.69122
+2021-05-31 20:52:05,202 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:52:05,202 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:52:05,202 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:52:05,202 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:52:05,202 CFairness    DEBUG    ------------------------------
+2021-05-31 20:52:10,930 CFairness    DEBUG    Epoch 137
+2021-05-31 20:52:10,931 CFairness    DEBUG    Loss generator 0.69034
+2021-05-31 20:52:10,931 CFairness    DEBUG    Loss discriminator 1 0.68875
+2021-05-31 20:52:10,931 CFairness    DEBUG    Loss discriminator 2 0.69049
+2021-05-31 20:52:10,931 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:52:10,931 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:52:10,931 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:52:10,931 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:52:10,931 CFairness    DEBUG    ------------------------------
+2021-05-31 20:52:16,707 CFairness    DEBUG    Epoch 138
+2021-05-31 20:52:16,708 CFairness    DEBUG    Loss generator 0.69131
+2021-05-31 20:52:16,708 CFairness    DEBUG    Loss discriminator 1 0.68864
+2021-05-31 20:52:16,708 CFairness    DEBUG    Loss discriminator 2 0.69145
+2021-05-31 20:52:16,708 CFairness    DEBUG    F1 Score 0.2864
+2021-05-31 20:52:16,708 CFairness    DEBUG    Precision 0.4795
+2021-05-31 20:52:16,708 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:52:16,708 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:52:16,708 CFairness    DEBUG    ------------------------------
+2021-05-31 20:52:22,700 CFairness    DEBUG    Epoch 139
+2021-05-31 20:52:22,701 CFairness    DEBUG    Loss generator 0.68973
+2021-05-31 20:52:22,701 CFairness    DEBUG    Loss discriminator 1 0.68943
+2021-05-31 20:52:22,701 CFairness    DEBUG    Loss discriminator 2 0.68986
+2021-05-31 20:52:22,701 CFairness    DEBUG    F1 Score 0.2942
+2021-05-31 20:52:22,701 CFairness    DEBUG    Precision 0.5131
+2021-05-31 20:52:22,701 CFairness    DEBUG    Recall 0.4563
+2021-05-31 20:52:22,701 CFairness    DEBUG    Accuracy 0.4563
+2021-05-31 20:52:22,701 CFairness    DEBUG    ------------------------------
+2021-05-31 20:52:28,651 CFairness    DEBUG    Epoch 140
+2021-05-31 20:52:28,651 CFairness    DEBUG    Loss generator 0.68900
+2021-05-31 20:52:28,651 CFairness    DEBUG    Loss discriminator 1 0.68510
+2021-05-31 20:52:28,651 CFairness    DEBUG    Loss discriminator 2 0.68915
+2021-05-31 20:52:28,651 CFairness    DEBUG    F1 Score 0.2946
+2021-05-31 20:52:28,651 CFairness    DEBUG    Precision 0.5012
+2021-05-31 20:52:28,651 CFairness    DEBUG    Recall 0.4559
+2021-05-31 20:52:28,651 CFairness    DEBUG    Accuracy 0.4559
+2021-05-31 20:52:28,651 CFairness    DEBUG    ------------------------------
+2021-05-31 20:52:34,560 CFairness    DEBUG    Epoch 141
+2021-05-31 20:52:34,560 CFairness    DEBUG    Loss generator 0.69108
+2021-05-31 20:52:34,560 CFairness    DEBUG    Loss discriminator 1 0.68957
+2021-05-31 20:52:34,560 CFairness    DEBUG    Loss discriminator 2 0.69125
+2021-05-31 20:52:34,561 CFairness    DEBUG    F1 Score 0.3180
+2021-05-31 20:52:34,561 CFairness    DEBUG    Precision 0.5366
+2021-05-31 20:52:34,561 CFairness    DEBUG    Recall 0.4614
+2021-05-31 20:52:34,561 CFairness    DEBUG    Accuracy 0.4614
+2021-05-31 20:52:34,561 CFairness    DEBUG    ------------------------------
+2021-05-31 20:52:40,820 CFairness    DEBUG    Epoch 142
+2021-05-31 20:52:40,820 CFairness    DEBUG    Loss generator 0.69148
+2021-05-31 20:52:40,820 CFairness    DEBUG    Loss discriminator 1 0.68837
+2021-05-31 20:52:40,820 CFairness    DEBUG    Loss discriminator 2 0.69166
+2021-05-31 20:52:40,821 CFairness    DEBUG    F1 Score 0.2851
+2021-05-31 20:52:40,821 CFairness    DEBUG    Precision 0.7520
+2021-05-31 20:52:40,821 CFairness    DEBUG    Recall 0.4553
+2021-05-31 20:52:40,821 CFairness    DEBUG    Accuracy 0.4553
+2021-05-31 20:52:40,821 CFairness    DEBUG    ------------------------------
+2021-05-31 20:52:46,455 CFairness    DEBUG    Epoch 143
+2021-05-31 20:52:46,456 CFairness    DEBUG    Loss generator 0.68961
+2021-05-31 20:52:46,456 CFairness    DEBUG    Loss discriminator 1 0.69064
+2021-05-31 20:52:46,456 CFairness    DEBUG    Loss discriminator 2 0.68975
+2021-05-31 20:52:46,456 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:52:46,456 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:52:46,456 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:52:46,456 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:52:46,456 CFairness    DEBUG    ------------------------------
+2021-05-31 20:52:52,538 CFairness    DEBUG    Epoch 144
+2021-05-31 20:52:52,539 CFairness    DEBUG    Loss generator 0.68923
+2021-05-31 20:52:52,539 CFairness    DEBUG    Loss discriminator 1 0.68990
+2021-05-31 20:52:52,539 CFairness    DEBUG    Loss discriminator 2 0.68936
+2021-05-31 20:52:52,539 CFairness    DEBUG    F1 Score 0.2869
+2021-05-31 20:52:52,539 CFairness    DEBUG    Precision 0.3946
+2021-05-31 20:52:52,539 CFairness    DEBUG    Recall 0.4537
+2021-05-31 20:52:52,539 CFairness    DEBUG    Accuracy 0.4537
+2021-05-31 20:52:52,539 CFairness    DEBUG    ------------------------------
+2021-05-31 20:52:58,418 CFairness    DEBUG    Epoch 145
+2021-05-31 20:52:58,418 CFairness    DEBUG    Loss generator 0.69011
+2021-05-31 20:52:58,418 CFairness    DEBUG    Loss discriminator 1 0.69032
+2021-05-31 20:52:58,418 CFairness    DEBUG    Loss discriminator 2 0.69025
+2021-05-31 20:52:58,418 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:52:58,418 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:52:58,418 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:52:58,418 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:52:58,419 CFairness    DEBUG    ------------------------------
+2021-05-31 20:53:04,339 CFairness    DEBUG    Epoch 146
+2021-05-31 20:53:04,339 CFairness    DEBUG    Loss generator 0.68966
+2021-05-31 20:53:04,339 CFairness    DEBUG    Loss discriminator 1 0.68820
+2021-05-31 20:53:04,339 CFairness    DEBUG    Loss discriminator 2 0.68982
+2021-05-31 20:53:04,339 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:53:04,339 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:53:04,339 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:53:04,339 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:53:04,339 CFairness    DEBUG    ------------------------------
+2021-05-31 20:53:10,128 CFairness    DEBUG    Epoch 147
+2021-05-31 20:53:10,128 CFairness    DEBUG    Loss generator 0.68934
+2021-05-31 20:53:10,128 CFairness    DEBUG    Loss discriminator 1 0.68939
+2021-05-31 20:53:10,128 CFairness    DEBUG    Loss discriminator 2 0.68948
+2021-05-31 20:53:10,128 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:53:10,129 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:53:10,129 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:53:10,129 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:53:10,129 CFairness    DEBUG    ------------------------------
+2021-05-31 20:53:16,198 CFairness    DEBUG    Epoch 148
+2021-05-31 20:53:16,199 CFairness    DEBUG    Loss generator 0.69097
+2021-05-31 20:53:16,199 CFairness    DEBUG    Loss discriminator 1 0.69046
+2021-05-31 20:53:16,199 CFairness    DEBUG    Loss discriminator 2 0.69111
+2021-05-31 20:53:16,199 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:53:16,199 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:53:16,200 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:53:16,200 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:53:16,200 CFairness    DEBUG    ------------------------------
+2021-05-31 20:53:21,949 CFairness    DEBUG    Epoch 149
+2021-05-31 20:53:21,950 CFairness    DEBUG    Loss generator 0.69079
+2021-05-31 20:53:21,950 CFairness    DEBUG    Loss discriminator 1 0.69093
+2021-05-31 20:53:21,950 CFairness    DEBUG    Loss discriminator 2 0.69094
+2021-05-31 20:53:21,950 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:53:21,950 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:53:21,950 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:53:21,950 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:53:21,950 CFairness    DEBUG    ------------------------------
+2021-05-31 20:53:27,479 CFairness    DEBUG    Epoch 150
+2021-05-31 20:53:27,480 CFairness    DEBUG    Loss generator 0.69406
+2021-05-31 20:53:27,480 CFairness    DEBUG    Loss discriminator 1 0.68907
+2021-05-31 20:53:27,480 CFairness    DEBUG    Loss discriminator 2 0.69424
+2021-05-31 20:53:27,480 CFairness    DEBUG    F1 Score 0.3115
+2021-05-31 20:53:27,480 CFairness    DEBUG    Precision 0.5122
+2021-05-31 20:53:27,480 CFairness    DEBUG    Recall 0.4584
+2021-05-31 20:53:27,480 CFairness    DEBUG    Accuracy 0.4584
+2021-05-31 20:53:27,480 CFairness    DEBUG    ------------------------------
+2021-05-31 20:53:32,998 CFairness    DEBUG    Epoch 151
+2021-05-31 20:53:32,998 CFairness    DEBUG    Loss generator 0.69123
+2021-05-31 20:53:32,998 CFairness    DEBUG    Loss discriminator 1 0.69012
+2021-05-31 20:53:32,998 CFairness    DEBUG    Loss discriminator 2 0.69138
+2021-05-31 20:53:32,998 CFairness    DEBUG    F1 Score 0.2885
+2021-05-31 20:53:32,998 CFairness    DEBUG    Precision 0.5514
+2021-05-31 20:53:32,998 CFairness    DEBUG    Recall 0.4559
+2021-05-31 20:53:32,998 CFairness    DEBUG    Accuracy 0.4559
+2021-05-31 20:53:32,998 CFairness    DEBUG    ------------------------------
+2021-05-31 20:53:38,569 CFairness    DEBUG    Epoch 152
+2021-05-31 20:53:38,569 CFairness    DEBUG    Loss generator 0.69102
+2021-05-31 20:53:38,569 CFairness    DEBUG    Loss discriminator 1 0.68865
+2021-05-31 20:53:38,569 CFairness    DEBUG    Loss discriminator 2 0.69119
+2021-05-31 20:53:38,569 CFairness    DEBUG    F1 Score 0.3041
+2021-05-31 20:53:38,569 CFairness    DEBUG    Precision 0.4940
+2021-05-31 20:53:38,569 CFairness    DEBUG    Recall 0.4563
+2021-05-31 20:53:38,569 CFairness    DEBUG    Accuracy 0.4563
+2021-05-31 20:53:38,569 CFairness    DEBUG    ------------------------------
+2021-05-31 20:53:44,427 CFairness    DEBUG    Epoch 153
+2021-05-31 20:53:44,427 CFairness    DEBUG    Loss generator 0.68947
+2021-05-31 20:53:44,427 CFairness    DEBUG    Loss discriminator 1 0.69019
+2021-05-31 20:53:44,427 CFairness    DEBUG    Loss discriminator 2 0.68961
+2021-05-31 20:53:44,427 CFairness    DEBUG    F1 Score 0.2897
+2021-05-31 20:53:44,427 CFairness    DEBUG    Precision 0.5560
+2021-05-31 20:53:44,427 CFairness    DEBUG    Recall 0.4563
+2021-05-31 20:53:44,427 CFairness    DEBUG    Accuracy 0.4563
+2021-05-31 20:53:44,427 CFairness    DEBUG    ------------------------------
+2021-05-31 20:53:50,142 CFairness    DEBUG    Epoch 154
+2021-05-31 20:53:50,143 CFairness    DEBUG    Loss generator 0.68948
+2021-05-31 20:53:50,143 CFairness    DEBUG    Loss discriminator 1 0.68942
+2021-05-31 20:53:50,143 CFairness    DEBUG    Loss discriminator 2 0.68964
+2021-05-31 20:53:50,143 CFairness    DEBUG    F1 Score 0.3061
+2021-05-31 20:53:50,143 CFairness    DEBUG    Precision 0.5151
+2021-05-31 20:53:50,143 CFairness    DEBUG    Recall 0.4579
+2021-05-31 20:53:50,143 CFairness    DEBUG    Accuracy 0.4579
+2021-05-31 20:53:50,143 CFairness    DEBUG    ------------------------------
+2021-05-31 20:53:55,840 CFairness    DEBUG    Epoch 155
+2021-05-31 20:53:55,841 CFairness    DEBUG    Loss generator 0.69212
+2021-05-31 20:53:55,841 CFairness    DEBUG    Loss discriminator 1 0.68779
+2021-05-31 20:53:55,841 CFairness    DEBUG    Loss discriminator 2 0.69230
+2021-05-31 20:53:55,841 CFairness    DEBUG    F1 Score 0.2970
+2021-05-31 20:53:55,841 CFairness    DEBUG    Precision 0.5481
+2021-05-31 20:53:55,841 CFairness    DEBUG    Recall 0.4577
+2021-05-31 20:53:55,841 CFairness    DEBUG    Accuracy 0.4577
+2021-05-31 20:53:55,841 CFairness    DEBUG    ------------------------------
+2021-05-31 20:54:01,551 CFairness    DEBUG    Epoch 156
+2021-05-31 20:54:01,552 CFairness    DEBUG    Loss generator 0.68941
+2021-05-31 20:54:01,552 CFairness    DEBUG    Loss discriminator 1 0.68528
+2021-05-31 20:54:01,552 CFairness    DEBUG    Loss discriminator 2 0.68958
+2021-05-31 20:54:01,552 CFairness    DEBUG    F1 Score 0.3023
+2021-05-31 20:54:01,552 CFairness    DEBUG    Precision 0.5094
+2021-05-31 20:54:01,552 CFairness    DEBUG    Recall 0.4571
+2021-05-31 20:54:01,552 CFairness    DEBUG    Accuracy 0.4571
+2021-05-31 20:54:01,552 CFairness    DEBUG    ------------------------------
+2021-05-31 20:54:07,353 CFairness    DEBUG    Epoch 157
+2021-05-31 20:54:07,353 CFairness    DEBUG    Loss generator 0.69082
+2021-05-31 20:54:07,353 CFairness    DEBUG    Loss discriminator 1 0.68882
+2021-05-31 20:54:07,353 CFairness    DEBUG    Loss discriminator 2 0.69097
+2021-05-31 20:54:07,353 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:54:07,353 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:54:07,353 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:54:07,353 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:54:07,353 CFairness    DEBUG    ------------------------------
+2021-05-31 20:54:13,285 CFairness    DEBUG    Epoch 158
+2021-05-31 20:54:13,285 CFairness    DEBUG    Loss generator 0.68928
+2021-05-31 20:54:13,285 CFairness    DEBUG    Loss discriminator 1 0.68686
+2021-05-31 20:54:13,285 CFairness    DEBUG    Loss discriminator 2 0.68944
+2021-05-31 20:54:13,285 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:54:13,285 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:54:13,285 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:54:13,285 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:54:13,285 CFairness    DEBUG    ------------------------------
+2021-05-31 20:54:19,556 CFairness    DEBUG    Epoch 159
+2021-05-31 20:54:19,556 CFairness    DEBUG    Loss generator 0.69112
+2021-05-31 20:54:19,556 CFairness    DEBUG    Loss discriminator 1 0.68677
+2021-05-31 20:54:19,556 CFairness    DEBUG    Loss discriminator 2 0.69129
+2021-05-31 20:54:19,556 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:54:19,556 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:54:19,556 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:54:19,556 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:54:19,556 CFairness    DEBUG    ------------------------------
+2021-05-31 20:54:25,116 CFairness    DEBUG    Epoch 160
+2021-05-31 20:54:25,116 CFairness    DEBUG    Loss generator 0.69046
+2021-05-31 20:54:25,117 CFairness    DEBUG    Loss discriminator 1 0.69044
+2021-05-31 20:54:25,117 CFairness    DEBUG    Loss discriminator 2 0.69060
+2021-05-31 20:54:25,117 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:54:25,117 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:54:25,117 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:54:25,117 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:54:25,117 CFairness    DEBUG    ------------------------------
+2021-05-31 20:54:30,654 CFairness    DEBUG    Epoch 161
+2021-05-31 20:54:30,654 CFairness    DEBUG    Loss generator 0.68955
+2021-05-31 20:54:30,655 CFairness    DEBUG    Loss discriminator 1 0.68979
+2021-05-31 20:54:30,655 CFairness    DEBUG    Loss discriminator 2 0.68969
+2021-05-31 20:54:30,655 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:54:30,655 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:54:30,655 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:54:30,655 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:54:30,655 CFairness    DEBUG    ------------------------------
+2021-05-31 20:54:36,092 CFairness    DEBUG    Epoch 162
+2021-05-31 20:54:36,093 CFairness    DEBUG    Loss generator 0.69101
+2021-05-31 20:54:36,093 CFairness    DEBUG    Loss discriminator 1 0.68865
+2021-05-31 20:54:36,093 CFairness    DEBUG    Loss discriminator 2 0.69115
+2021-05-31 20:54:36,093 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:54:36,093 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:54:36,093 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:54:36,093 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:54:36,093 CFairness    DEBUG    ------------------------------
+2021-05-31 20:54:41,615 CFairness    DEBUG    Epoch 163
+2021-05-31 20:54:41,616 CFairness    DEBUG    Loss generator 0.69115
+2021-05-31 20:54:41,616 CFairness    DEBUG    Loss discriminator 1 0.68991
+2021-05-31 20:54:41,616 CFairness    DEBUG    Loss discriminator 2 0.69131
+2021-05-31 20:54:41,616 CFairness    DEBUG    F1 Score 0.2867
+2021-05-31 20:54:41,616 CFairness    DEBUG    Precision 0.4795
+2021-05-31 20:54:41,616 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:54:41,616 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:54:41,616 CFairness    DEBUG    ------------------------------
+2021-05-31 20:54:47,120 CFairness    DEBUG    Epoch 164
+2021-05-31 20:54:47,120 CFairness    DEBUG    Loss generator 0.69048
+2021-05-31 20:54:47,120 CFairness    DEBUG    Loss discriminator 1 0.69005
+2021-05-31 20:54:47,120 CFairness    DEBUG    Loss discriminator 2 0.69060
+2021-05-31 20:54:47,120 CFairness    DEBUG    F1 Score 0.3077
+2021-05-31 20:54:47,120 CFairness    DEBUG    Precision 0.5121
+2021-05-31 20:54:47,120 CFairness    DEBUG    Recall 0.4579
+2021-05-31 20:54:47,120 CFairness    DEBUG    Accuracy 0.4579
+2021-05-31 20:54:47,120 CFairness    DEBUG    ------------------------------
+2021-05-31 20:54:53,524 CFairness    DEBUG    Epoch 165
+2021-05-31 20:54:53,524 CFairness    DEBUG    Loss generator 0.68858
+2021-05-31 20:54:53,524 CFairness    DEBUG    Loss discriminator 1 0.68949
+2021-05-31 20:54:53,524 CFairness    DEBUG    Loss discriminator 2 0.68872
+2021-05-31 20:54:53,524 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:54:53,524 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:54:53,524 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:54:53,524 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:54:53,524 CFairness    DEBUG    ------------------------------
+2021-05-31 20:54:59,081 CFairness    DEBUG    Epoch 166
+2021-05-31 20:54:59,081 CFairness    DEBUG    Loss generator 0.68932
+2021-05-31 20:54:59,081 CFairness    DEBUG    Loss discriminator 1 0.69081
+2021-05-31 20:54:59,081 CFairness    DEBUG    Loss discriminator 2 0.68943
+2021-05-31 20:54:59,081 CFairness    DEBUG    F1 Score 0.2849
+2021-05-31 20:54:59,081 CFairness    DEBUG    Precision 0.3887
+2021-05-31 20:54:59,081 CFairness    DEBUG    Recall 0.4550
+2021-05-31 20:54:59,081 CFairness    DEBUG    Accuracy 0.4550
+2021-05-31 20:54:59,081 CFairness    DEBUG    ------------------------------
+2021-05-31 20:55:04,546 CFairness    DEBUG    Epoch 167
+2021-05-31 20:55:04,546 CFairness    DEBUG    Loss generator 0.68805
+2021-05-31 20:55:04,547 CFairness    DEBUG    Loss discriminator 1 0.69228
+2021-05-31 20:55:04,547 CFairness    DEBUG    Loss discriminator 2 0.68815
+2021-05-31 20:55:04,547 CFairness    DEBUG    F1 Score 0.2853
+2021-05-31 20:55:04,547 CFairness    DEBUG    Precision 0.5704
+2021-05-31 20:55:04,547 CFairness    DEBUG    Recall 0.4553
+2021-05-31 20:55:04,547 CFairness    DEBUG    Accuracy 0.4553
+2021-05-31 20:55:04,547 CFairness    DEBUG    ------------------------------
+2021-05-31 20:55:10,090 CFairness    DEBUG    Epoch 168
+2021-05-31 20:55:10,090 CFairness    DEBUG    Loss generator 0.69081
+2021-05-31 20:55:10,090 CFairness    DEBUG    Loss discriminator 1 0.69187
+2021-05-31 20:55:10,090 CFairness    DEBUG    Loss discriminator 2 0.69094
+2021-05-31 20:55:10,091 CFairness    DEBUG    F1 Score 0.3135
+2021-05-31 20:55:10,091 CFairness    DEBUG    Precision 0.5148
+2021-05-31 20:55:10,091 CFairness    DEBUG    Recall 0.4588
+2021-05-31 20:55:10,091 CFairness    DEBUG    Accuracy 0.4588
+2021-05-31 20:55:10,091 CFairness    DEBUG    ------------------------------
+2021-05-31 20:55:15,713 CFairness    DEBUG    Epoch 169
+2021-05-31 20:55:15,714 CFairness    DEBUG    Loss generator 0.69249
+2021-05-31 20:55:15,714 CFairness    DEBUG    Loss discriminator 1 0.69238
+2021-05-31 20:55:15,714 CFairness    DEBUG    Loss discriminator 2 0.69263
+2021-05-31 20:55:15,714 CFairness    DEBUG    F1 Score 0.2899
+2021-05-31 20:55:15,714 CFairness    DEBUG    Precision 0.6037
+2021-05-31 20:55:15,714 CFairness    DEBUG    Recall 0.4567
+2021-05-31 20:55:15,714 CFairness    DEBUG    Accuracy 0.4567
+2021-05-31 20:55:15,714 CFairness    DEBUG    ------------------------------
+2021-05-31 20:55:21,328 CFairness    DEBUG    Epoch 170
+2021-05-31 20:55:21,329 CFairness    DEBUG    Loss generator 0.69098
+2021-05-31 20:55:21,329 CFairness    DEBUG    Loss discriminator 1 0.69395
+2021-05-31 20:55:21,329 CFairness    DEBUG    Loss discriminator 2 0.69110
+2021-05-31 20:55:21,329 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:55:21,329 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:55:21,329 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:55:21,329 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:55:21,329 CFairness    DEBUG    ------------------------------
+2021-05-31 20:55:27,019 CFairness    DEBUG    Epoch 171
+2021-05-31 20:55:27,020 CFairness    DEBUG    Loss generator 0.69094
+2021-05-31 20:55:27,020 CFairness    DEBUG    Loss discriminator 1 0.69092
+2021-05-31 20:55:27,020 CFairness    DEBUG    Loss discriminator 2 0.69106
+2021-05-31 20:55:27,020 CFairness    DEBUG    F1 Score 0.2876
+2021-05-31 20:55:27,020 CFairness    DEBUG    Precision 0.4939
+2021-05-31 20:55:27,020 CFairness    DEBUG    Recall 0.4553
+2021-05-31 20:55:27,020 CFairness    DEBUG    Accuracy 0.4553
+2021-05-31 20:55:27,020 CFairness    DEBUG    ------------------------------
+2021-05-31 20:55:32,687 CFairness    DEBUG    Epoch 172
+2021-05-31 20:55:32,687 CFairness    DEBUG    Loss generator 0.69132
+2021-05-31 20:55:32,687 CFairness    DEBUG    Loss discriminator 1 0.69279
+2021-05-31 20:55:32,687 CFairness    DEBUG    Loss discriminator 2 0.69145
+2021-05-31 20:55:32,687 CFairness    DEBUG    F1 Score 0.3091
+2021-05-31 20:55:32,687 CFairness    DEBUG    Precision 0.5387
+2021-05-31 20:55:32,687 CFairness    DEBUG    Recall 0.4598
+2021-05-31 20:55:32,687 CFairness    DEBUG    Accuracy 0.4598
+2021-05-31 20:55:32,687 CFairness    DEBUG    ------------------------------
+2021-05-31 20:55:38,356 CFairness    DEBUG    Epoch 173
+2021-05-31 20:55:38,356 CFairness    DEBUG    Loss generator 0.68881
+2021-05-31 20:55:38,356 CFairness    DEBUG    Loss discriminator 1 0.69474
+2021-05-31 20:55:38,356 CFairness    DEBUG    Loss discriminator 2 0.68890
+2021-05-31 20:55:38,357 CFairness    DEBUG    F1 Score 0.2863
+2021-05-31 20:55:38,357 CFairness    DEBUG    Precision 0.5477
+2021-05-31 20:55:38,357 CFairness    DEBUG    Recall 0.4554
+2021-05-31 20:55:38,357 CFairness    DEBUG    Accuracy 0.4554
+2021-05-31 20:55:38,357 CFairness    DEBUG    ------------------------------
+2021-05-31 20:55:44,027 CFairness    DEBUG    Epoch 174
+2021-05-31 20:55:44,027 CFairness    DEBUG    Loss generator 0.69022
+2021-05-31 20:55:44,027 CFairness    DEBUG    Loss discriminator 1 0.69142
+2021-05-31 20:55:44,027 CFairness    DEBUG    Loss discriminator 2 0.69033
+2021-05-31 20:55:44,027 CFairness    DEBUG    F1 Score 0.2911
+2021-05-31 20:55:44,027 CFairness    DEBUG    Precision 0.5342
+2021-05-31 20:55:44,028 CFairness    DEBUG    Recall 0.4563
+2021-05-31 20:55:44,028 CFairness    DEBUG    Accuracy 0.4563
+2021-05-31 20:55:44,028 CFairness    DEBUG    ------------------------------
+2021-05-31 20:55:49,734 CFairness    DEBUG    Epoch 175
+2021-05-31 20:55:49,734 CFairness    DEBUG    Loss generator 0.68854
+2021-05-31 20:55:49,734 CFairness    DEBUG    Loss discriminator 1 0.68942
+2021-05-31 20:55:49,734 CFairness    DEBUG    Loss discriminator 2 0.68863
+2021-05-31 20:55:49,734 CFairness    DEBUG    F1 Score 0.2847
+2021-05-31 20:55:49,734 CFairness    DEBUG    Precision 0.2071
+2021-05-31 20:55:49,734 CFairness    DEBUG    Recall 0.4551
+2021-05-31 20:55:49,734 CFairness    DEBUG    Accuracy 0.4551
+2021-05-31 20:55:49,734 CFairness    DEBUG    ------------------------------

@@ -7130,3 +7130,75 @@ Index: []
 2       AL_prediction  0.824062   0.822564  0.831608  0.831608  0.498908  0.145186    0.200958    0.266931
 3       GL_prediction  0.800068   0.804723  0.817665  0.817665  0.671241  0.017649    0.264384    0.142150
 4       GD_prediction  0.798531   0.804997  0.817604  0.817604  0.674048  0.014672    0.259885    0.136575
+2021-05-31 20:28:48,510 genetic      DEBUG                   method  F1 Score  Precision  ...  dpd_race  eor_gender  eor_race
+0     full_prediction  0.651889   0.670202  ...  0.382151    0.277101  0.079099
+1  unaware_prediction  0.636093   0.659442  ...  0.254275    0.555995  0.188075
+2       AL_prediction  0.688831   0.691089  ...  0.475073    0.471686  0.127323
+3       GL_prediction  0.689212   0.692198  ...  0.328372    0.791182  0.133793
+4       GD_prediction  0.671533   0.671958  ...  0.501466    0.882065  0.173913
+
+[5 rows x 13 columns]
+2021-05-31 23:17:22,580 genetic      DEBUG                   method  F1 Score  Precision    Recall  ...  dpd_gender  dpd_race  eor_gender  eor_race
+0     full_prediction  0.651889   0.670202  0.664128  ...    0.237817  0.382151    0.277101  0.079099
+1  unaware_prediction  0.636093   0.659442  0.651815  ...    0.131810  0.254275    0.555995  0.188075
+2       AL_prediction  0.688831   0.691089  0.691672  ...    0.204073  0.475073    0.471686  0.127323
+3       GL_prediction  0.689212   0.692198  0.692482  ...    0.112174  0.328372    0.791182  0.133793
+4       GD_prediction  0.671533   0.671958  0.671257  ...    0.084242  0.501466    0.882065  0.173913
+
+[5 rows x 13 columns]
+2021-06-01 10:56:40,484 genetic      DEBUG                   method  F1 Score  Precision  ...  dpd_race  eor_gender  eor_race
+0     full_prediction  0.601559   0.619021  ...  0.392749    0.379261       0.0
+1  unaware_prediction  0.586055   0.611091  ...  0.326284    0.496810       0.0
+2       AL_prediction  0.683944   0.685537  ...  0.846154    0.845319       0.0
+3       GL_prediction  0.731135   0.737607  ...  0.500000    0.823845       0.0
+4       GD_prediction  0.644709   0.672099  ...  1.000000    0.527668       0.0
+
+[5 rows x 13 columns]
+2021-06-01 14:32:20,675 genetic      DEBUG                   method  F1 Score  Precision  ...  dpd_race  eor_gender  eor_race
+0     full_prediction  0.601559   0.619021  ...  0.392749    0.379261       0.0
+1  unaware_prediction  0.586055   0.611091  ...  0.326284    0.496810       0.0
+2       AL_prediction  0.686649   0.686905  ...  0.862069    0.710688       0.0
+3       GL_prediction  0.674584   0.681101  ...  0.500000    0.587243       0.0
+4       GD_prediction  0.643768   0.661315  ...  1.000000    0.686964       0.0
+
+[5 rows x 13 columns]
+2021-06-01 15:47:10,028 genetic      DEBUG                   method  F1 Score  Precision    Recall  ...  dpd_gender  dpd_race  eor_gender  eor_race
+0     full_prediction  0.601559   0.619021  0.616505  ...    0.202818  0.392749    0.379261       0.0
+1  unaware_prediction  0.586055   0.611091  0.606796  ...    0.134981  0.326284    0.496810       0.0
+2       AL_prediction  0.686649   0.686905  0.687702  ...    0.101478  0.862069    0.710688       0.0
+3       GL_prediction  0.674138   0.678325  0.677994  ...    0.109914  0.733990    0.612948       0.0
+4       GD_prediction  0.527820   0.533023  0.527508  ...    0.001608  0.576923    0.966953       0.0
+
+[5 rows x 13 columns]
+2021-06-01 16:19:16,008 genetic      DEBUG                   method  F1 Score  Precision    Recall  ...  dpd_gender  dpd_race  eor_gender  eor_race
+0     full_prediction  0.601559   0.619021  0.616505  ...    0.202818  0.392749    0.379261       0.0
+1  unaware_prediction  0.586055   0.611091  0.606796  ...    0.134981  0.326284    0.496810       0.0
+2       AL_prediction  0.686649   0.686905  0.687702  ...    0.101478  0.862069    0.710688       0.0
+3       GL_prediction  0.740726   0.743601  0.742718  ...    0.123088  0.500000    0.686964       0.0
+4       GD_prediction  0.677864   0.677766  0.677994  ...    0.122604  0.689655    0.618717       0.0
+
+[5 rows x 13 columns]
+2021-06-01 16:48:07,849 genetic      DEBUG                   method  F1 Score  Precision    Recall  ...  dpd_gender  dpd_race  eor_gender  eor_race
+0     full_prediction  0.601559   0.619021  0.616505  ...    0.202818  0.392749    0.379261       0.0
+1  unaware_prediction  0.586055   0.611091  0.606796  ...    0.134981  0.326284    0.496810       0.0
+2       AL_prediction  0.686649   0.686905  0.687702  ...    0.101478  0.862069    0.710688       0.0
+3       GL_prediction  0.740726   0.743601  0.742718  ...    0.123088  0.500000    0.686964       0.0
+4       GD_prediction  0.677864   0.677766  0.677994  ...    0.122604  0.689655    0.618717       0.0
+
+[5 rows x 13 columns]
+2021-06-01 19:10:12,594 genetic      DEBUG                   method  F1 Score  Precision    Recall  ...  dpd_gender  dpd_race  eor_gender  eor_race
+0     full_prediction  0.601559   0.619021  0.616505  ...    0.202818  0.392749    0.379261       0.0
+1  unaware_prediction  0.586055   0.611091  0.606796  ...    0.134981  0.326284    0.496810       0.0
+2       AL_prediction  0.686649   0.686905  0.687702  ...    0.101478  0.862069    0.710688       0.0
+3       GL_prediction  0.526203   0.540718  0.548544  ...    0.025413  0.413793    0.674242       0.0
+4       GD_prediction  0.291101   0.212673  0.461165  ...    0.000000  0.000000    1.000000       0.0
+
+[5 rows x 13 columns]
+2021-06-01 19:18:46,910 genetic      DEBUG                   method  F1 Score  Precision    Recall  ...  dpd_gender  dpd_race  eor_gender  eor_race
+0     full_prediction  0.601559   0.619021  0.616505  ...    0.202818  0.392749    0.379261       0.0
+1  unaware_prediction  0.586055   0.611091  0.606796  ...    0.134981  0.326284    0.496810       0.0
+2       AL_prediction  0.686649   0.686905  0.687702  ...    0.101478  0.862069    0.710688       0.0
+3       GL_prediction  0.526203   0.540718  0.548544  ...    0.025413  0.413793    0.674242       0.0
+4       GD_prediction  0.291101   0.212673  0.461165  ...    0.000000  0.000000    1.000000       0.0
+
+[5 rows x 13 columns]

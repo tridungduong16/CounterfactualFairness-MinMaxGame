@@ -8,7 +8,7 @@ import torch.nn.functional as F
 import numpy as np
 
 from tqdm import tqdm
-from model_arch.discriminator import DiscriminatorAdultAw, DiscriminatorAdultAg
+from model_arch.discriminator import DiscriminatorCompasAg, DiscriminatorCompasAw
 from dfencoder.autoencoder import AutoEncoder
 from dfencoder.dataframe import EncoderDataFrame
 from utils.evaluate_func import evaluate_classifier, evaluate_distribution, evaluate_fairness
@@ -43,12 +43,12 @@ if __name__ == "__main__":
     data_name = args.data_name
 
     if data_name == 'compas':
-        log_file = 'log_train_compas'
+        log_file = conf['log_train_compas']
         data_path = conf['data_compas']
         ae_path = conf['compas_encoder']
         emb_size = 128
-        discriminator_agnostic = DiscriminatorAdultAg(emb_size)
-        discriminator_awareness = DiscriminatorAdultAw(emb_size + 6)
+        discriminator_agnostic = DiscriminatorCompasAg(emb_size)
+        discriminator_awareness = DiscriminatorCompasAw(emb_size + 2)
         discriminator_agnostic.to(device)
         discriminator_awareness.to(device)
 
@@ -68,7 +68,8 @@ if __name__ == "__main__":
     continuous_features = dict_["continuous_features"]
     full_features = dict_["full_features"]
     target = dict_["target"]
-    col_sensitive = ['race_0', 'race_1', 'gender_0', 'gender_1']
+    col_sensitive = ['race_0', 'race_1',
+                     'gender_0', 'gender_1']
 
     """Preprocess data"""
     df = preprocess_dataset(df, continuous_features, categorical_features)
@@ -96,20 +97,10 @@ if __name__ == "__main__":
     ae_model.load_state_dict(torch.load(ae_path))
     ae_model.eval()
 
-    """Logistic Regression"""
-    # Z = ae_model.get_representation(df_autoencoder)
-    # Y = np.array([float(i) for i in df[target].values])
-    # clf = LogisticRegression(solver='liblinear')
-    # clf.fit(Z.cpu().detach().numpy(), Y)
-    # y_pred = clf.predict(Z.cpu().detach().numpy())
-    # eval = evaluate_classifier(y_pred, df[target].values)
-    # logger.debug(eval)
-
-
     """Setup hyperparameter"""
     parameters = {}
-    parameters['epochs'] = 60
-    parameters['learning_rate'] = 1e-4
+    parameters['epochs'] = 600
+    parameters['learning_rate'] = 1e-3
     parameters['dataframe'] = df
     parameters['batch_size'] = 256
     parameters['problem'] = 'classification'
@@ -142,20 +133,15 @@ if __name__ == "__main__":
     generator.build_model(df_generator)
     generator.to(device)
 
-    # discriminator_agnostic = DiscriminatorAdultAg(emb_size, problem)
-    # discriminator_awareness = DiscriminatorAdultAw(emb_size + 4, problem)
-    # discriminator_agnostic.to(device)
-    # discriminator_awareness.to(device)
+    learning_rate = 1e-3
+    optimizer1 = torch.optim.Adam(generator.parameters(), lr=learning_rate)
+    optimizer2 = torch.optim.SGD(discriminator_agnostic.parameters(),lr=learning_rate, momentum=0.9)
+    optimizer3 = torch.optim.SGD(discriminator_awareness.parameters(),lr=learning_rate, momentum=0.9)
 
-    optimizer1 = torch.optim.Adam(generator.parameters(), lr=1e-2)
-    optimizer2 = torch.optim.SGD(discriminator_agnostic.parameters(),lr=1e-2, momentum=0.9)
-    optimizer3 = torch.optim.SGD(discriminator_awareness.parameters(),lr=1e-2, momentum=0.9)
+    scheduler1 = torch.optim.lr_scheduler.StepLR(optimizer1, step_size=100, gamma=0.1)
+    scheduler2 = torch.optim.lr_scheduler.StepLR(optimizer2, step_size=100, gamma=0.1)
+    scheduler3 = torch.optim.lr_scheduler.StepLR(optimizer3, step_size=100, gamma=0.1)
 
-    scheduler1 = torch.optim.lr_scheduler.StepLR(optimizer1, step_size=50, gamma=0.1)
-    scheduler2 = torch.optim.lr_scheduler.StepLR(optimizer2, step_size=50, gamma=0.1)
-    scheduler3 = torch.optim.lr_scheduler.StepLR(optimizer3, step_size=50, gamma=0.1)
-
-    weights = [df[target].value_counts()[0], df[target].value_counts()[1]]
     normedWeights = [0.4, 0.6]
     normedWeights = torch.FloatTensor(normedWeights).to(device)
     loss_fn = nn.CrossEntropyLoss(normedWeights)
@@ -165,6 +151,7 @@ if __name__ == "__main__":
     losses_gen = []
 
     step = 0
+    learning_rates = []
     for i in (range(epochs)):
         df_train = df.copy().sample(frac=1).reset_index(drop=True)
         df_dummy = df_train.copy()
@@ -178,9 +165,8 @@ if __name__ == "__main__":
         sum_loss_gen = []
 
         """Split batch size"""
-        skf = StratifiedKFold(n_splits=300, random_state=0, shuffle=True)
+        skf = StratifiedKFold(n_splits=100, random_state=0, shuffle=True)
         for train_index, test_index in tqdm(skf.split(df_train[full_features], df_train[target])):
-
             batch_ae = df_train.iloc[test_index,:][full_features].copy()
             batch_Z = ae_model.get_representation(batch_ae)
             batch_generator = df_train.iloc[test_index, :][normal_features].copy()
@@ -208,22 +194,36 @@ if __name__ == "__main__":
             cat_index = batch_ae['race'].values
             emb_cat_race = []
             for c in cat_index:
+                # print(c)
                 emb_cat_race.append(emb.weight.data.cpu().numpy()[cats.index(c), :].tolist())
 
             emb_cat_race = torch.tensor(np.array(emb_cat_race).astype(np.float32)).to(device)
-            emb_cat_sex = torch.tensor(np.array(emb_cat_sex).astype(np.float32)).to(device)
-            emb = torch.cat((emb_cat_race, emb_cat_sex),1)
+            # emb_cat_sex = torch.tensor(np.array(emb_cat_sex).astype(np.float32)).to(device)
+            # emb = torch.cat((emb_cat_race, emb_cat_sex),1)
 
+            # print(emb_cat_race.shape)
+            # print(emb.shape)
+            # sys.exit(1)
             """Get the sensitive label encoder"""
             sensitive_onehot = torch.tensor(batch_dummy.values.astype(np.float32)).to(device)
             sensitive_label = torch.tensor(batch_ae[sensitive_features].values.astype(np.float32)).to(device)
 
             """Concat generator and sensitive representation"""
             Z = generator.custom_forward(batch_generator)
-            Z_noise = generator.custom_forward(batch_generator_noise)
-            ZS = torch.cat((Z, emb), 1)
+            # ZS = torch.cat((Z, emb), 1)
+            ZS = torch.cat((Z, emb_cat_race), 1)
+
             # ZS = torch.cat((ZS, sensitive_onehot), 1)
             # ZS = torch.cat((ZS, sensitive_label), 1)
+
+            # print(emb[:10])
+            # print("-----------------------------------------")
+            # print(sensitive_onehot[:10])
+            # print("-----------------------------------------")
+            # print(sensitive_label[:10])
+            # print("-----------------------------------------")
+            # sys.exit(0)
+            # print(ZS.shape)
 
             prediction_ag = discriminator_agnostic(Z)
             # print(Z.shape, emb.shape)
@@ -234,7 +234,7 @@ if __name__ == "__main__":
             loss_agnostic = loss_fn(prediction_ag, Y.reshape(-1))
             loss_awareness = loss_fn(prediction_aw, Y.reshape(-1))
             diff_loss = F.leaky_relu(loss_agnostic - loss_awareness)
-            gen_loss = 0.01 * diff_loss + loss_agnostic
+            gen_loss = 5 * diff_loss + loss_agnostic
 
             """Track loss"""
             sum_loss.append(loss_agnostic.cpu().detach().numpy())
@@ -246,17 +246,30 @@ if __name__ == "__main__":
             optimizer2.zero_grad()
             optimizer3.zero_grad()
 
+            # 012, 3456, 789
             path = step % 10
-            if path in [0, 1, 2]:
+            if path in [0, 5]:
                 gen_loss.backward()
                 optimizer1.step()
-            elif path in [3, 4, 5, 6, 7]:
+            elif path in [1, 2, 3, 4]:
                 loss_agnostic.backward()
                 optimizer2.step()
-            elif path in [8, 9]:
+            elif path in [6, 7, 8, 9]:
                 loss_awareness.backward()
                 optimizer3.step()
             step += 1
+
+        """Update learning rate"""
+        current_lr = scheduler1.get_last_lr()[0]
+        scheduler1.step()
+        scheduler2.step()
+        scheduler3.step()
+        learning_rates.append(current_lr)
+        if current_lr <= 1e-9:
+            optimizer1.param_groups[0]['lr'] = learning_rate
+            optimizer2.param_groups[0]['lr'] = learning_rate
+            optimizer3.param_groups[0]['lr'] = learning_rate
+
 
         """Get the final prediction"""
         df_generator = df[normal_features].copy()
@@ -280,6 +293,10 @@ if __name__ == "__main__":
         logger.debug("Loss generator {:.5f}".format(l1))
         logger.debug("Loss discriminator 1 {:.5f}".format(l2))
         logger.debug("Loss discriminator 2 {:.5f}".format(l3))
+        logger.debug("Learning rate {:.10f}".format(current_lr))
+        # logger.debug("Learning rate {:.5f}".format(scheduler2._last_lr))
+        # logger.debug("Learning rate {:.5f}".format(scheduler3._last_lr))
+
         for key, value in eval.items():
             logger.debug("{} {:.4f}".format(key, value))
         logger.debug("-"*30)
@@ -305,6 +322,13 @@ if __name__ == "__main__":
         X=np.array(range(epochs)),
         opts=dict(title='Compas generator loss', webgl=True)
     )
+
+    viz.line(
+        Y=np.array(learning_rates),
+        X=np.array(range(epochs)),
+        opts=dict(title='Learning rates', webgl=True)
+    )
+
     """Save model"""
     logger.debug("Saving model......")
     torch.save(generator.state_dict(), conf["compas_generator"])

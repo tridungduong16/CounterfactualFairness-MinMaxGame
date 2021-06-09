@@ -14,19 +14,17 @@ import torch
 import argparse
 
 from dfencoder.autoencoder import AutoEncoder
-
 from utils.helpers import preprocess_dataset
 from utils.helpers import load_config
 from utils.helpers import features_setting
+from torchsummary import summary
 
 if __name__ == "__main__":
     """Parsing argument"""
     parser = argparse.ArgumentParser()
     parser.add_argument('--data_name', type=str, default='law')
-
-    # data_name = "law"
-    # data_name = "adult"
-    data_name = "compas"
+    args = parser.parse_args()
+    data_name = args.data_name
 
     """Device"""
     if torch.cuda.is_available():
@@ -91,6 +89,11 @@ if __name__ == "__main__":
     """Train model"""
     ae_model.to(device)
     ae_model.fit(df, epochs=1000)
+    # print(ae_model)
+    # race_feature = ae_model.categorical_fts['race']
+    # cats = race_feature['cats']
+    # emb = race_feature['embedding']
+    # print(emb)
 
     """Save model"""
     torch.save(ae_model.state_dict(), save_path)
