@@ -41,11 +41,10 @@ def GroundTruthModel_Adult():
         'Neducation': dist.Categorical(probs=prob_education),
         'Nmarital_status': dist.Categorical(probs=prob_maritalstatus),
         'Noccupation': dist.Categorical(probs=prob_occupation),
-        'Nknowledge1': dist.Normal(torch.tensor(0.), torch.tensor(10.)),
+        'Nknowledge1': dist.Normal(torch.tensor(0.), torch.tensor(1.)),
         'Nknowledge2': dist.Normal(torch.tensor(0.), torch.tensor(1.)),
-        'Nknowledge3': dist.Normal(torch.tensor(0.), torch.tensor(5.)),        'Nknowledge3': dist.Normal(torch.tensor(0.), torch.tensor(5.)),
-        'Nknowledge3': dist.Normal(torch.tensor(0.), torch.tensor(5.)),
-        'Nknowledge4': dist.Normal(torch.tensor(0.), torch.tensor(5.)),
+        'Nknowledge3': dist.Normal(torch.tensor(0.), torch.tensor(1.)),
+        'Nknowledge4': dist.Normal(torch.tensor(0.), torch.tensor(1.)),
         'Nage': dist.Normal(torch.tensor(0.), torch.tensor(1.))
     }
 
@@ -99,9 +98,9 @@ def GroundTruthModel_Adult():
     mu_H = R + S + E + M + O + A + K1 + K2 + K3 + K4
     H = pyro.sample("Hour", dist.Normal(mu_H, 1))
 
-    mu_incom = R + S + E + M + O + A + K1 + K2 + K3 + K4 + H
-    mu_incom = torch.nn.Sigmoid(mu_incom)
-    I = pyro.sample("income", dist.Bernoulli(mu_incom))
+    # mu_incom = R + S + E + M + O + A + K1 + K2 + K3 + K4 + H
+    # mu_incom = torch.nn.Sigmoid(mu_incom)
+    # I = pyro.sample("income", dist.Bernoulli(mu_incom))
 
 
     # M = pyro.sample("Marital", dist.Normal(R + S + E + M + K + A + O, 1))
@@ -311,9 +310,9 @@ if __name__ == "__main__":
     df_test['unaware_proba'] = y_pred.reshape(-1)
 
     """Counterfactual fairness model"""
-    print(df.shape)
+    # print(df.shape)
     knowledged_train = infer_knowledge_adult(df_train)
-    print(knowledged_train)
+    # print(knowledged_train)
     knowledged_test = infer_knowledge_adult(df_test)
 
     clf = LogisticRegression()

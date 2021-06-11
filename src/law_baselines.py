@@ -206,7 +206,7 @@ def infer_knowledge_level3(df, flag=True, monte=True):
             post_samples2 = posterior.get_samples(100)['Knowledge2'].detach().numpy()
             post_samples3 = posterior.get_samples(100)['Knowledge3'].detach().numpy()
         else:
-            posterior = pyro.infer.Importance(conditioned, num_samples=10).run()
+            posterior = pyro.infer.Importance(conditioned, num_samples=50).run()
 
             post_marginal_1 = pyro.infer.EmpiricalMarginal(posterior, "Knowledge1")
             post_marginal_2 = pyro.infer.EmpiricalMarginal(posterior, "Knowledge2")

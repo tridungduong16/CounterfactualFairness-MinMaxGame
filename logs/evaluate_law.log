@@ -954,3 +954,15 @@
 8      AL_prediction  0.9241  0.203377    0.9840
 9      GL_prediction  0.9576  0.144601    0.2533
 10     GD_prediction  1.0075  0.053127    0.0224
+2021-06-11 13:49:16,371 genetic      DEBUG                  method    RMSE   R2score  sinkhorn
+0        full_linear  0.9616  0.137510    0.6048
+1           full_net  1.7555 -1.874864    2.9845
+2     unaware_linear  0.9840  0.096726    0.1081
+3        unaware_net  1.1219 -0.174088    0.0804
+4    level2_lin_True  1.0382 -0.005397    0.0079
+5   level2_lin_False  1.3239 -0.634879    0.1552
+6    level3_lin_True  1.2361 -0.425315    0.0306
+7   level3_lin_False  1.1222 -0.174771    0.0664
+8      AL_prediction  0.9241  0.203377    0.9840
+9      GL_prediction  0.9576  0.144601    0.2533
+10     GD_prediction  1.0075  0.053127    0.0224
