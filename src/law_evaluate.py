@@ -60,12 +60,14 @@ if __name__ == "__main__":
     
 
     """Load data"""
-    col_baseline = ['full_linear', 'full_net', 'unaware_linear',
-    'unaware_net', 'level2_lin_True', 'level2_mont_lin_True',
-    'level2_mont_net_True', 'level2_mont_lin_False',
-    'level2_mont_net_False', 'level2_lin_False', 'level3_lin_True',
-    'level3_mont_lin_True', 'level3_mont_net_True', 'level3_mont_lin_False',
-    'level3_mont_net_False', 'level3_lin_False']
+    col_baseline = ["full_linear",
+                    "full_net",
+                    "unaware_linear",
+                    "unaware_net",
+                    "level2_lin_True",
+                    "level2_lin_False",
+                    "level3_lin_True",
+                    "level3_lin_False"]
 
     col_ivr = ['AL_prediction', 'GL_prediction', 'GD_prediction']
 
@@ -104,7 +106,6 @@ if __name__ == "__main__":
     #     df = pd.concat([df1, df2], axis=1)
 
 
-    logger.debug(df)
 
     
     df_result = pd.DataFrame()
@@ -126,8 +127,9 @@ if __name__ == "__main__":
     df_result['gaussian'] = df_result['gaussian'].round(decimals=4)
     df_result['laplacian'] = df_result['laplacian'].round(decimals=4)
     df_result.to_csv(conf['result_evaluate_law'], index = False)
-    
-    logger.debug(df_result[['RMSE', 'sinkhorn']])
+
+
+    logger.debug(df_result[['method', 'RMSE', 'R2score', 'sinkhorn']])
     sys.modules[__name__].__dict__.clear()
 
     

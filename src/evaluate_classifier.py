@@ -21,7 +21,7 @@ if __name__ == "__main__":
     """Parsing argument"""
     parser = argparse.ArgumentParser()
     # parser.add_argument('--mode', type=str, default='both')
-    parser.add_argument('--data_name', type=str, default='compas')
+    # parser.add_argument('--data_name', type=str, default='compas')
     # parser.add_argument('--data_name', type=str, default='adult')
     # parser.add_argument('--data_name', type=str, default='bank')
 

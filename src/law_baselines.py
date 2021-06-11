@@ -28,6 +28,7 @@ from utils.helpers import load_config
 from utils.helpers import preprocess_dataset
 from utils.helpers import features_setting
 from model_arch.discriminator import train_law
+from sklearn.ensemble import GradientBoostingRegressor
 
 
 def FalseModel_Level2():
@@ -161,7 +162,7 @@ def infer_knowledge_level2(df, flag=True, monte=True):
             posterior.run()
             post_samples = posterior.get_samples(100)['Knowledge'].detach().numpy()
         else:
-            posterior = pyro.infer.Importance(conditioned, num_samples=10).run()
+            posterior = pyro.infer.Importance(conditioned, num_samples=30).run()
             post_marginal = pyro.infer.EmpiricalMarginal(posterior, "Knowledge")
             post_samples = [post_marginal().item() for _ in range(100)]
 
@@ -195,10 +196,10 @@ def infer_knowledge_level3(df, flag=True, monte=True):
             conditioned = pyro.condition(FalseModel_Level3, data={"UGPA": df["UGPA"][i],
                                                                  "LSAT": df["LSAT"][i]})
         if monte:
-            hmc_kernel = HMC(conditioned, step_size=1.9, num_steps=1)
+            hmc_kernel = HMC(conditioned, step_size=0.9, num_steps=10)
             posterior = MCMC(hmc_kernel,
-                             num_samples=1,
-                             warmup_steps=1)
+                             num_samples=10,
+                             warmup_steps=10)
             posterior.run()
 
             post_samples1 = posterior.get_samples(100)['Knowledge1'].detach().numpy()
@@ -211,9 +212,9 @@ def infer_knowledge_level3(df, flag=True, monte=True):
             post_marginal_2 = pyro.infer.EmpiricalMarginal(posterior, "Knowledge2")
             post_marginal_3 = pyro.infer.EmpiricalMarginal(posterior, "Knowledge3")
 
-            post_samples1 = [post_marginal_1().item() for _ in range(10)]
-            post_samples2 = [post_marginal_2().item() for _ in range(10)]
-            post_samples3 = [post_marginal_3().item() for _ in range(10)]
+            post_samples1 = [post_marginal_1().item() for _ in range(100)]
+            post_samples2 = [post_marginal_2().item() for _ in range(100)]
+            post_samples3 = [post_marginal_3().item() for _ in range(100)]
 
         mean1 = np.mean(post_samples1)
         mean2 = np.mean(post_samples2)
@@ -238,7 +239,9 @@ def train(df_train, df_test, flag, monte, level):
         knowledged_train = infer_knowledge_level3(df_train, flag, monte)
         knowledged_test = infer_knowledge_level3(df_test, flag, monte)
 
-    reg = LinearRegression().fit(knowledged_train, df_train['ZFYA'])
+    reg = GradientBoostingRegressor(random_state=0)
+    reg.fit(knowledged_train, df_train['ZFYA'])
+    # reg = LinearRegression().fit(knowledged_train, df_train['ZFYA'])
     train_x = torch.tensor(knowledged_train).float()
     test_x = torch.tensor(knowledged_test).float()
     train_y = torch.tensor(df_train['ZFYA'].values).float().reshape(-1, 1)
@@ -413,11 +416,11 @@ if __name__ == "__main__":
     flag, monte, level = True, False, 2
     df_test = train(df_train, df_test, flag, monte, level)
 
-    flag, monte, level = True, True, 2
-    df_test = train(df_train, df_test, flag, monte, level)
+    # flag, monte, level = True, True, 2
+    # df_test = train(df_train, df_test, flag, monte, level)
 
-    flag, monte, level = False, True, 2
-    df_test = train(df_train, df_test, flag, monte, level)
+    # flag, monte, level = False, True, 2
+    # df_test = train(df_train, df_test, flag, monte, level)
 
     flag, monte, level = False, False, 2
     df_test = train(df_train, df_test, flag, monte, level)
@@ -425,11 +428,11 @@ if __name__ == "__main__":
     flag, monte, level = True, False, 3
     df_test = train(df_train, df_test, flag, monte, level)
 
-    flag, monte, level = True, True, 3
-    df_test = train(df_train, df_test, flag, monte, level)
+    # flag, monte, level = True, True, 3
+    # df_test = train(df_train, df_test, flag, monte, level)
 
-    flag, monte, level = False, True, 3
-    df_test = train(df_train, df_test, flag, monte, level)
+    # flag, monte, level = False, True, 3
+    # df_test = train(df_train, df_test, flag, monte, level)
 
     flag, monte, level = False, False, 3
     df_test = train(df_train, df_test, flag, monte, level)
