@@ -21,7 +21,7 @@ if __name__ == "__main__":
     """Parsing argument"""
     parser = argparse.ArgumentParser()
     # parser.add_argument('--mode', type=str, default='both')
-    # parser.add_argument('--data_name', type=str, default='compas')
+    parser.add_argument('--data_name', type=str, default='compas')
     # parser.add_argument('--data_name', type=str, default='adult')
     # parser.add_argument('--data_name', type=str, default='bank')
 
@@ -51,37 +51,26 @@ if __name__ == "__main__":
     ivr_path = conf['result_ivr_{}'.format(data_name)]
     evaluate_path = conf['result_evaluate_{}'.format(data_name)]
 
-    baseline_columns = ['full_prediction', 'unaware_prediction']
+    baseline_columns = ['full', 'unaware', 'cf']
     method_columns = ['AL_prediction', 'GL_prediction', 'GD_prediction']
-
-    baseline_columns_proba = ['AL_prediction_proba', 'GL_prediction_proba', 'GD_prediction_proba']
-    method_columns_proba = ['AL_prediction_proba', 'GL_prediction_proba', 'GD_prediction_proba']
 
     prediction_columns = baseline_columns + method_columns
 
 
 
     """Load data"""
-    df = pd.read_csv(baseline_path)
-    df1 = df[sensitive_features + ['full_prediction',
-                                   'full_prediction_proba',
-                                   'unaware_prediction',
-                                   'unaware_prediction_proba',
-                                   label]]
-    df = pd.read_csv(ivr_path)
-    df2 = df[['AL_prediction', 'AL_prediction_proba',
-              'GL_prediction', 'GL_prediction_proba',
-              'GD_prediction', 'GD_prediction_proba']]
-    df = pd.concat([df1, df2], axis=1)
+    df1 = pd.read_csv(baseline_path)
+    df2 = pd.read_csv(ivr_path)
+    # df = pd.concat([df1, df2], axis=1)
 
     df_result = pd.DataFrame()
 
     """Evaluate performance"""
-    df_result = evaluate_classification_performance(df,
+    df_result = evaluate_classification_performance(df1,
                                                     df_result,
                                                     sensitive_features,
                                                     label,
-                                                    prediction_columns,
+                                                    baseline_columns,
                                                     data_name)
 
     cols = list(df_result)

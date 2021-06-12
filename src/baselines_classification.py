@@ -166,35 +166,28 @@ def infer_knowledge_adult(df):
     return features
 
 def GroundTruthModel_Compas():
-    count_dict = {'marital_status': 5,
-                  'occupation': 6,
-                  'race': 2,
-                  'gender': 2,
-                  'workclass': 4,
-                  'education': 8}
-
-    prob_education = torch.tensor([1 / count_dict['education']] * count_dict['education'])
-    prob_occupation = torch.tensor([1 / count_dict['occupation']] * count_dict['occupation'])
-    prob_maritalstatus = torch.tensor([1 / count_dict['marital_status']] * count_dict['marital_status'])
+    prob_age = torch.tensor([2/3, 1/6, 1/6])
 
     exo_dist = {
         'Nrace': dist.Bernoulli(torch.tensor(0.75)),
         'Nsex': dist.Bernoulli(torch.tensor(0.5)),
-        'Neducation': dist.Categorical(probs=prob_education),
-        'Nmarital_status': dist.Categorical(probs=prob_maritalstatus),
-        'Noccupation': dist.Categorical(probs=prob_occupation),
-        'Nknowledge': dist.Normal(torch.tensor(0.), torch.tensor(1.)),
-        'Nage': dist.Normal(torch.tensor(0.), torch.tensor(1.))
+        'Nage': dist.Normal(torch.tensor(0.), torch.tensor(1.)),
+        'Nagecat': dist.Categorical(probs=prob_age),
+        'UJ': dist.Normal(torch.tensor(0.), torch.tensor(1.)),
+        'UD': dist.Normal(torch.tensor(0.), torch.tensor(1.)),
     }
 
-    R = pyro.sample("Race", exo_dist['Nrace'])
     S = pyro.sample("Sex", exo_dist['Nsex'])
-    E = pyro.sample("Education", exo_dist['Neducation'])
-    M = pyro.sample("Marital", exo_dist['Nmarital_status'])
-    O = pyro.sample("Occupation", exo_dist['Noccupation'])
-    K = pyro.sample("Knowledge", exo_dist['Nknowledge'])
+    R = pyro.sample("Race", exo_dist['Nrace'])
     A = pyro.sample("Age", exo_dist['Nage'])
-    H = pyro.sample("Hour", dist.Normal(R + S + E + M + K + A + O, 1))
+    AC = pyro.sample("Age_cat", exo_dist['Nagecat'])
+    UJ = pyro.sample("UJ", exo_dist['UJ'])
+    UD = pyro.sample("UD", exo_dist['UD'])
+
+    JF = pyro.sample("JF", dist.Normal(R + S + A + AC + UJ, 1))
+    JM = pyro.sample("JM", dist.Normal(R + S + A + AC + UJ, 1))
+    JO = pyro.sample("JO", dist.Normal(R + S + A + AC + UD, 1))
+    P = pyro.sample("P", dist.Normal(R + S + A + AC + UD, 1))
 
 def infer_knowledge_compas(df):
     """
@@ -205,32 +198,47 @@ def infer_knowledge_compas(df):
     :rtype: TYPE
     """
 
-    knowledge = []
+    knowledge1 = []
+    knowledge2 = []
 
     for i in tqdm(range(len(df))):
-        conditioned = pyro.condition(GroundTruthModel_Adult, data={"H": df["hours_per_week"][i],
+        conditioned = pyro.condition(GroundTruthModel_Compas, data={"S": df["sex"][i],
                                                              "A": df["age"][i],
+                                                             "AC": df["age_cat"][i],
                                                              "R": df["race"][i],
-                                                             "S": df["gender"][i],
-                                                             "O": df["occupation"][i],
-                                                             "M": df["marital_status"][i]
-                                                             }
+                                                             "JF": df["juv_fel_count"][i],
+                                                             "JM": df["juv_misd_count"][i],
+                                                             "JO": df["juv_other_count"][i],
+                                                              "P": df["priors_count"][i]
+                                                }
                                      )
         posterior = pyro.infer.Importance(conditioned, num_samples=10).run()
-        post_marginal = pyro.infer.EmpiricalMarginal(posterior, "Knowledge")
-        post_samples = [post_marginal().item() for _ in range(10)]
-        post_unique, post_counts = np.unique(post_samples, return_counts=True)
-        mean = np.mean(post_samples)
-        knowledge.append(mean)
-    return knowledge
+
+        post_marginal_1 = pyro.infer.EmpiricalMarginal(posterior, "UJ")
+        post_marginal_2 = pyro.infer.EmpiricalMarginal(posterior, "UD")
+
+        post_samples1 = [post_marginal_1().item() for _ in range(100)]
+        post_samples2 = [post_marginal_2().item() for _ in range(100)]
+
+        mean1 = np.mean(post_samples1)
+        mean2 = np.mean(post_samples2)
+
+        knowledge1.append(mean1)
+        knowledge2.append(mean2)
+
+    knowledge1 = np.array(knowledge1).reshape(-1, 1)
+    knowledge2 = np.array(knowledge2).reshape(-1, 1)
+    knowledged = np.concatenate((knowledge1, knowledge2), axis=1)
+
+    return knowledged
 
 
 
 if __name__ == "__main__":
     """Parsing argument"""
     parser = argparse.ArgumentParser()
-    # parser.add_argument('--data_name', type=str, default='compas')
-    parser.add_argument('--data_name', type=str, default='adult')
+    parser.add_argument('--data_name', type=str, default='compas')
+    # parser.add_argument('--data_name', type=str, default='adult')
     # parser.add_argument('--data_name', type=str, default='bank')
     args = parser.parse_args()
 
@@ -249,10 +257,10 @@ if __name__ == "__main__":
     logger.addHandler(stdout_handler)
     logger.setLevel(logging.DEBUG)
 
-    dataname = args.data_name
+    data_name = args.data_name
 
-    log_path = conf['log_train_{}'.format(dataname)]
-    data_path = conf['data_{}'.format(dataname)]
+    log_path = conf['log_train_{}'.format(data_name)]
+    data_path = conf['data_{}'.format(data_name)]
 
     """Set up logging"""
     logger = setup_logging(log_path)
@@ -261,7 +269,7 @@ if __name__ == "__main__":
     df = pd.read_csv(data_path)
 
     """Setup features"""
-    dict_ = features_setting(dataname)
+    dict_ = features_setting(data_name)
     sensitive_features = dict_["sensitive_features"]
     normal_features = dict_["normal_features"]
     categorical_features = dict_["categorical_features"]
@@ -283,13 +291,11 @@ if __name__ == "__main__":
         print(le_name_mapping)
         print(df[c].value_counts())
 
+    print(df)
     """Split dataset into train and test"""
-    # df = df.sample(frac=0.01)
     df_train, df_test = train_test_split(df, test_size=0.1, random_state=0)
     df_train = df.reset_index(drop = True)
     df_test = df_test.reset_index(drop=True)
-
-    print(df_train.shape, df_test.shape)
 
     """Full model"""
     logger.debug('Full model')
@@ -310,10 +316,16 @@ if __name__ == "__main__":
     df_test['unaware_proba'] = y_pred.reshape(-1)
 
     """Counterfactual fairness model"""
-    # print(df.shape)
-    knowledged_train = infer_knowledge_adult(df_train)
-    # print(knowledged_train)
-    knowledged_test = infer_knowledge_adult(df_test)
+    for i in normal_features:
+        df_train[i] = [torch.tensor(x) for x in df_train[i].values]
+        df_test[i] = [torch.tensor(x) for x in df_test[i].values]
+
+    if data_name == 'adult':
+        knowledged_train = infer_knowledge_adult(df_train)
+        knowledged_test = infer_knowledge_adult(df_test)
+    elif data_name == 'compas':
+        knowledged_train = infer_knowledge_compas(df_train)
+        knowledged_test = infer_knowledge_compas(df_test)
 
     clf = LogisticRegression()
     clf.fit(knowledged_train, df[target])
@@ -321,7 +333,11 @@ if __name__ == "__main__":
     df_test['cf'] = y_pred.reshape(-1)
     y_pred = clf.predict_proba(knowledged_test)[:, 0]
     df_test['cf_proba'] = y_pred.reshape(-1)
-    df_test.to_csv(conf['result_{}'.format(dataname)], index=False)
+
+    for i in normal_features:
+        df_test[i] = [x.detach().numpy() for x in df_test[i]]
+
+    df_test.to_csv(conf['result_{}'.format(data_name)], index=False)
 
 
 

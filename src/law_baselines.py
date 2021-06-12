@@ -149,8 +149,7 @@ def infer_knowledge_level2(df, flag=True, monte=True):
 
     for i in tqdm(range(len(df))):
         if flag:
-            conditioned = pyro.condition(GroundTruthModel_Level2, data={"UGPA": df["UGPA"][i],
-                                                                 "LSAT": df["LSAT"][i]})
+            conditioned = pyro.condition(GroundTruthModel_Level2, data={"UGPA": df["UGPA"][i],                                                     "LSAT": df["LSAT"][i]})
         else:
             conditioned = pyro.condition(FalseModel_Level2, data={"UGPA": df["UGPA"][i],
                                                                  "LSAT": df["LSAT"][i]})
@@ -162,7 +161,7 @@ def infer_knowledge_level2(df, flag=True, monte=True):
             posterior.run()
             post_samples = posterior.get_samples(100)['Knowledge'].detach().numpy()
         else:
-            posterior = pyro.infer.Importance(conditioned, num_samples=30).run()
+            posterior = pyro.infer.Importance(conditioned, num_samples=60).run()
             post_marginal = pyro.infer.EmpiricalMarginal(posterior, "Knowledge")
             post_samples = [post_marginal().item() for _ in range(100)]
 

@@ -966,3 +966,9 @@
 8      AL_prediction  0.9241  0.203377    0.9840
 9      GL_prediction  0.9576  0.144601    0.2533
 10     GD_prediction  1.0075  0.053127    0.0224
+2021-06-12 14:12:34,943 genetic      DEBUG        method  ...  true_positive_rate_difference_sex
+0     full  ...                           0.347791
+1  unaware  ...                           0.158483
+2       cf  ...                           0.079105
+
+[3 rows x 13 columns]

@@ -2,6 +2,9 @@ import torch
 import pandas as pd
 import sys
 import numpy as np
+import argparse
+import visdom
+import torch.nn.functional as F
 
 from tqdm import tqdm
 from model_arch.discriminator import DiscriminatorLaw
@@ -13,9 +16,19 @@ from utils.helpers import setup_logging
 from utils.helpers import load_config
 from utils.helpers import features_setting
 from sklearn.model_selection import train_test_split
-import torch.nn.functional as F
+
 
 if __name__ == "__main__":
+    """Parsing argument"""
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--lambda_weight', type=float, default=0.1)
+    parser.add_argument('--run_lambda', action='store_true')
+
+    args = parser.parse_args()
+
+    lambda_weight = args.lambda_weight
+    run_lambda = args.run_lambda
+
     """Device"""
     if torch.cuda.is_available():
         dev = "cuda:0"
@@ -29,6 +42,9 @@ if __name__ == "__main__":
 
     """Set up logging"""
     logger = setup_logging(conf['log_train_law'])
+
+    if run_lambda:
+        logger.debug("Run lambda with weight {}".format(lambda_weight))
 
     """Load data"""
     data_path = conf['data_law']
@@ -147,6 +163,11 @@ if __name__ == "__main__":
     loss_function = torch.nn.SmoothL1Loss()
 
     step = 0
+
+    losses = []
+    losses_aware = []
+    losses_gen = []
+
     for i in (range(epochs)):
         df_train = df.copy().sample(frac=1).reset_index(drop=True)
 
@@ -213,13 +234,15 @@ if __name__ == "__main__":
             diff_loss = F.leaky_relu(loss_agnostic - loss_awareness)
 
             "Generator loss"
-            gen_loss = 0.1*diff_loss + loss_agnostic
+            gen_loss = lambda_weight*diff_loss + loss_agnostic
 
             """Track loss"""
-            sum_loss.append(loss_agnostic)
-            sum_loss_aware.append(loss_awareness)
-            sum_loss_gen.append(gen_loss)
-
+            # sum_loss.append(loss_agnostic)
+            # sum_loss_aware.append(loss_awareness)
+            # sum_loss_gen.append(gen_loss)
+            sum_loss.append(loss_agnostic.cpu().detach().numpy())
+            sum_loss_aware.append(loss_awareness.cpu().detach().numpy())
+            sum_loss_gen.append(gen_loss.cpu().detach().numpy())
             """Optimizing progress"""
             optimizer1.zero_grad()
             optimizer2.zero_grad()
@@ -263,6 +286,13 @@ if __name__ == "__main__":
         y_pred = predictor_agnostic.cpu().detach().numpy().reshape(-1)
         y_true = df_train[target].values
 
+        l1 = sum(sum_loss) / len(sum_loss)
+        l2 = sum(sum_loss_aware) / len(sum_loss)
+        l3 = sum(sum_loss_gen) / len(sum_loss)
+        losses.append(l1)
+        losses_aware.append(l2)
+        losses_gen.append(l3)
+
         """Evaluation"""
         df_train['inv_prediction'] = y_pred
 
@@ -299,10 +329,34 @@ if __name__ == "__main__":
         del y_true
 
 
+    viz = visdom.Visdom()
+
+    viz.line(
+        Y=np.array(losses),
+        X=np.array(range(epochs)),
+        opts=dict(title='Agnostic loss', webgl=True)
+    )
+
+    viz.line(
+        Y=np.array(losses_aware),
+        X=np.array(range(epochs)),
+        opts=dict(title='Awareness loss', webgl=True)
+    )
+
+    viz.line(
+        Y=np.array(losses_gen),
+        X=np.array(range(epochs)),
+        opts=dict(title='Generator loss', webgl=True)
+    )
+
     """Save model"""
     logger.debug("Saving model......")
-    torch.save(generator.state_dict(), conf["law_generator"])
-    torch.save(discriminator_agnostic.state_dict(), conf["law_discriminator"])
+    if run_lambda:
+        torch.save(generator.state_dict(), conf["lambda_law_generator"].format(lambda_weight))
+        torch.save(discriminator_agnostic.state_dict(), conf["lambda_law_discriminator"].format(lambda_weight))
+    else:
+        torch.save(generator.state_dict(), conf["law_generator"])
+        torch.save(discriminator_agnostic.state_dict(), conf["law_discriminator"])
 
     """Output to file"""
     sys.modules[__name__].__dict__.clear()

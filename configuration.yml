@@ -36,6 +36,11 @@ law_encoder : /data/trduong/counterfactual_fairness_game_theoric/models/law_enco
 law_generator : /data/trduong/counterfactual_fairness_game_theoric/models/law_generator.pt
 law_discriminator : /data/trduong/counterfactual_fairness_game_theoric/models/law_discriminator.pt
 
+lambda_law_encoder : /home/trduong/Data/counterfactual_fairness_game_theoric/models/lambda/law_encoder_{}.pt
+lambda_law_generator: /home/trduong/Data/counterfactual_fairness_game_theoric/models/lambda/law_generator_{}.pt
+lambda_law_discriminator : /home/trduong/Data/counterfactual_fairness_game_theoric/models/lambda/law_discriminator_{}.pt
+
+
 adult_encoder : /data/trduong/counterfactual_fairness_game_theoric/models/adult_encoder.pt
 adult_generator : /data/trduong/counterfactual_fairness_game_theoric/models/adult_generator.pt
 adult_discriminator : /data/trduong/counterfactual_fairness_game_theoric/models/adult_discriminator.pt

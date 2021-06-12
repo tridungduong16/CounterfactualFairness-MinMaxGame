@@ -16,7 +16,18 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.ensemble import GradientBoostingRegressor
 
+import argparse
+
 if __name__ == "__main__":
+    """Parsing argument"""
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--lambda_weight', type=float, default=0.1)
+    parser.add_argument('--run_lambda', action='store_true')
+
+    args = parser.parse_args()
+    lambda_weight = args.lambda_weight
+    run_lambda = args.run_lambda
+
     """Device"""
     if torch.cuda.is_available():
         dev = "cuda:0"
@@ -101,7 +112,10 @@ if __name__ == "__main__":
     )
     generator.to(device)
     generator.build_model(df_generator)
-    generator.load_state_dict(torch.load(conf['law_generator']))
+    # if run_lambda:
+    #     generator.load_state_dict(torch.load(conf['law_generator']))
+    # else:
+    #     generator.load_state_dict(torch.load(conf['law_generator']))
     generator.eval()
 
 
@@ -111,6 +125,14 @@ if __name__ == "__main__":
     discriminator_agnostic.to(device)
     discriminator_agnostic.load_state_dict(torch.load(conf['law_discriminator']))
     discriminator_agnostic.eval()
+
+    if run_lambda:
+        generator.load_state_dict(torch.load(conf["lambda_law_generator"].format(lambda_weight)))
+        discriminator_agnostic.load_state_dict(torch.load(conf["lambda_law_discriminator"].format(lambda_weight)))
+    else:
+        generator.load_state_dict(torch.load(conf['law_generator']))
+        discriminator_agnostic.load_state_dict(torch.load(conf['law_discriminator']))
+
 
 
     """Autoencoder + Linear regression"""
