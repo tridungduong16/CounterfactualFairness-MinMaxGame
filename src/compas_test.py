@@ -10,6 +10,39 @@ from utils.helpers import load_config
 from utils.helpers import features_setting
 from sklearn.model_selection import train_test_split
 
+def get_predict(ae_model, generator, discriminator, df, dict_, l = ''):
+
+    name = 'GD_prediction' + str(l)
+
+    df_generator = df[dict_["normal_features"]].copy()
+    df_autoencoder = df[dict_["full_features"]].copy()
+
+    Z = ae_model.get_representation(df_autoencoder)
+    Z = Z.cpu().detach().numpy()
+    reg = LogisticRegression(solver='saga', max_iter=1000)
+    reg.fit(Z, df[dict_["target"]].values)
+    y_pred = reg.predict(Z)
+    df["AL_prediction"] = y_pred
+
+    """Generator + Linear regression"""
+    Z = generator.custom_forward(df_generator)
+    Z = Z.cpu().detach().numpy()
+    reg = LogisticRegression(solver='saga', max_iter=1000)
+    reg.fit(Z, df[dict_["target"]].values)
+    y_pred = reg.predict(Z)
+    df["GL_prediction"] = y_pred
+
+    """Generator + Discriminator"""
+    Z = generator.custom_forward(df_generator)
+    predictor_agnostic = discriminator(Z)
+    y_pred = torch.argmax(predictor_agnostic, dim=1)
+    y_pred = y_pred.reshape(-1).cpu().detach().numpy()
+    df[name] = y_pred
+    df[name + "_proba"] = predictor_agnostic.cpu().detach().numpy()[:,0]
+
+
+    return df
+
 if __name__ == "__main__":
     """Device"""
     if torch.cuda.is_available():
@@ -29,7 +62,6 @@ if __name__ == "__main__":
     data_path = conf['data_compas']
     df = pd.read_csv(data_path)
 
-
     """Setup features"""
     data_name = "compas"
     dict_ = features_setting(data_name)
@@ -39,7 +71,7 @@ if __name__ == "__main__":
     continuous_features = dict_["continuous_features"]
     full_features = dict_["full_features"]
     target = dict_["target"]
-    col_sensitive = ['race_0', 'race_1', 'gender_0', 'gender_1']
+    col_sensitive = ['race_0', 'race_1', 'sex_0', 'sex_1']
 
     """Preprocess data"""
     df = preprocess_dataset(df, continuous_features, categorical_features)
@@ -96,46 +128,48 @@ if __name__ == "__main__":
 
     """Load discriminator"""
     emb_size = 128
-    discriminator_agnostic = DiscriminatorCompasAg(emb_size)
-    discriminator_agnostic.to(device)
-    discriminator_agnostic.load_state_dict(torch.load(conf['compas_discriminator']))
-    discriminator_agnostic.eval()
+    discriminator = DiscriminatorCompasAg(emb_size)
+    discriminator.to(device)
+    discriminator.load_state_dict(torch.load(conf['compas_discriminator']))
+    discriminator.eval()
 
     """Split dataset into train and test"""
     df, df_test = train_test_split(df, test_size=0.1, random_state=0)
     df = df_test.copy()
 
-    df_generator = df[normal_features]
-    df_autoencoder = df[full_features].copy()
+    # df_generator = df[normal_features]
+    # df_autoencoder = df[full_features].copy()
+
+    df = get_predict(ae_model, generator, discriminator, df, dict_)
 
     """Autoencoder + Linear regression"""
-    Z = ae_model.get_representation(df_autoencoder)
-    Z = Z.cpu().detach().numpy()
-    reg = LogisticRegression(solver='saga', max_iter=1000)
-    reg.fit(Z, df[target].values)
-    y_pred = reg.predict(Z)
-    df["AL_prediction"] = y_pred
-    df["AL_prediction_proba"] = reg.predict_proba(Z)[:,0]
-
-    """Generator + Linear regression"""
-    Z = generator.custom_forward(df_generator)
-    Z = Z.cpu().detach().numpy()
-    reg = LogisticRegression(solver='saga', max_iter=1000)
-    reg.fit(Z, df[target].values)
-    y_pred = reg.predict(Z)
-    df["GL_prediction"] = y_pred
-    df["GL_prediction_proba"] = reg.predict_proba(Z)[:,0]
-
-    """Generator + Discriminator"""
-    Z = generator.custom_forward(df_generator)
-    predictor_agnostic = discriminator_agnostic(Z)
-    y_pred = torch.argmax(predictor_agnostic, dim=1)
-    y_pred = y_pred.reshape(-1).cpu().detach().numpy()
-    df["GD_prediction"] = y_pred
-    df["GD_prediction_proba"] = predictor_agnostic.cpu().detach().numpy()[:,0]
+    # Z = ae_model.get_representation(df_autoencoder)
+    # Z = Z.cpu().detach().numpy()
+    # reg = LogisticRegression(solver='saga', max_iter=1000)
+    # reg.fit(Z, df[target].values)
+    # y_pred = reg.predict(Z)
+    # df["AL_prediction"] = y_pred
+    # df["AL_prediction_proba"] = reg.predict_proba(Z)[:,0]
+    #
+    # """Generator + Linear regression"""
+    # Z = generator.custom_forward(df_generator)
+    # Z = Z.cpu().detach().numpy()
+    # reg = LogisticRegression(solver='saga', max_iter=1000)
+    # reg.fit(Z, df[target].values)
+    # y_pred = reg.predict(Z)
+    # df["GL_prediction"] = y_pred
+    # df["GL_prediction_proba"] = reg.predict_proba(Z)[:,0]
+    #
+    # """Generator + Discriminator"""
+    # Z = generator.custom_forward(df_generator)
+    # predictor_agnostic = discriminator_agnostic(Z)
+    # y_pred = torch.argmax(predictor_agnostic, dim=1)
+    # y_pred = y_pred.reshape(-1).cpu().detach().numpy()
+    # df["GD_prediction"] = y_pred
+    # df["GD_prediction_proba"] = predictor_agnostic.cpu().detach().numpy()[:,0]
 
     # print(df)
-    df.to_csv(conf["result_ivr_compas"], index = False)
+    df.to_csv(conf["ivr_compas"], index = False)
 
 
 

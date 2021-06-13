@@ -96,7 +96,7 @@ class CompleteLayer(torch.nn.Module):
 class AutoEncoder(torch.nn.Module):
     def __init__(
             self,
-            input_shape = None,
+            input_shape = 10,
             continuous_index = None,
             binary_index=None,
             cat_index=None,

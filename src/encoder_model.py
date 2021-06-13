@@ -58,6 +58,7 @@ if __name__ == "__main__":
     normal_features = dict_["normal_features"]
     categorical_features = dict_["categorical_features"]
     continuous_features = dict_["continuous_features"]
+    discrete_features = dict_["discrete_features"]
     full_features = dict_["full_features"]
     target = dict_["target"]
 
@@ -68,6 +69,7 @@ if __name__ == "__main__":
         df = df.reset_index(drop=True)
 
     df = preprocess_dataset(df, continuous_features, categorical_features)
+    print("Full features ", full_features)
     df = df[full_features]
 
     emb_size = 128

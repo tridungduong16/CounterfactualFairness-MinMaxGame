@@ -26,6 +26,7 @@ if __name__ == "__main__":
     """Parsing argument"""
     parser = argparse.ArgumentParser()
     parser.add_argument('--data_name', type=str, default='compas')
+    parser.add_argument('--epoch', type=int, default=600)
 
     """Device"""
     if torch.cuda.is_available():
@@ -60,6 +61,8 @@ if __name__ == "__main__":
     """Load data"""
     df = pd.read_csv(data_path)
 
+
+
     """Setup features"""
     dict_ = features_setting(data_name)
     sensitive_features = dict_["sensitive_features"]
@@ -69,12 +72,15 @@ if __name__ == "__main__":
     full_features = dict_["full_features"]
     target = dict_["target"]
     col_sensitive = ['race_0', 'race_1',
-                     'gender_0', 'gender_1']
+                     'sex_0', 'sex_1']
 
     """Preprocess data"""
     df = preprocess_dataset(df, continuous_features, categorical_features)
     df_generator = df[normal_features]
     df[target] = df[target].astype(float)
+
+    print(df.head())
+    sys.exit(1)
 
     """Setup auto encoder"""
     df_autoencoder = df[full_features].copy()
@@ -99,7 +105,7 @@ if __name__ == "__main__":
 
     """Setup hyperparameter"""
     parameters = {}
-    parameters['epochs'] = 600
+    parameters['epochs'] = args.epochs
     parameters['learning_rate'] = 1e-3
     parameters['dataframe'] = df
     parameters['batch_size'] = 256
@@ -155,9 +161,8 @@ if __name__ == "__main__":
     for i in (range(epochs)):
         df_train = df.copy().sample(frac=1).reset_index(drop=True)
         df_dummy = df_train.copy()
-        df_dummy = pd.get_dummies(df_dummy, columns=['gender'])
+        df_dummy = pd.get_dummies(df_dummy, columns=['sex'])
         df_dummy = pd.get_dummies(df_dummy, columns=['race'])
-
 
 
         sum_loss = []
@@ -180,10 +185,10 @@ if __name__ == "__main__":
 
 
             """Get only sensitive representation"""
-            sex_feature = ae_model.categorical_fts['gender']
+            sex_feature = ae_model.categorical_fts['sex']
             cats = sex_feature['cats']
             emb = sex_feature['embedding']
-            cat_index = batch_ae['gender'].values
+            cat_index = batch_ae['sex'].values
             emb_cat_sex = []
             for c in cat_index:
                 emb_cat_sex.append(emb.weight.data.cpu().numpy()[cats.index(c), :].tolist())

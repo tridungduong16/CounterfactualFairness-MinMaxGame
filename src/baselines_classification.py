@@ -165,7 +165,7 @@ def infer_knowledge_adult(df):
     features = np.concatenate((knowledge1, knowledge2, knowledge3, hours), axis=1)
     return features
 
-def GroundTruthModel_Compas():
+def GroundTruthModel1_Compas():
     prob_age = torch.tensor([2/3, 1/6, 1/6])
 
     exo_dist = {
@@ -189,7 +189,37 @@ def GroundTruthModel_Compas():
     JO = pyro.sample("JO", dist.Normal(R + S + A + AC + UD, 1))
     P = pyro.sample("P", dist.Normal(R + S + A + AC + UD, 1))
 
-def infer_knowledge_compas(df):
+def GroundTruthModel2_Compas():
+    prob_age = torch.tensor([2/3, 1/6, 1/6])
+
+    exo_dist = {
+        'Nrace': dist.Bernoulli(torch.tensor(0.75)),
+        'Nsex': dist.Bernoulli(torch.tensor(0.5)),
+        'Nage': dist.Normal(torch.tensor(0.), torch.tensor(1.)),
+        'Nagecat': dist.Categorical(probs=prob_age),
+        'UJ': dist.Normal(torch.tensor(0.), torch.tensor(1.)),
+        'UD': dist.Normal(torch.tensor(0.), torch.tensor(1.)),
+    }
+
+    S = pyro.sample("Sex", exo_dist['Nsex'])
+    R = pyro.sample("Race", exo_dist['Nrace'])
+    A = pyro.sample("Age", exo_dist['Nage'])
+    AC = pyro.sample("Age_cat", exo_dist['Nagecat'])
+    UJ = pyro.sample("UJ", exo_dist['UJ'])
+    UD = pyro.sample("UD", exo_dist['UD'])
+
+    expF = torch.exp(R + S + A + AC + UJ)
+    expM = torch.exp(R + S + A + AC + UJ)
+    expO = torch.exp(R + S + A + AC + UD)
+    expP = torch.exp(R + S + A + AC + UD)
+
+    # print(expF, expM, expO)
+    JF = pyro.sample("JF", dist.Poisson(expF))
+    JM = pyro.sample("JM", dist.Poisson(expM))
+    JO = pyro.sample("JO", dist.Poisson(expO))
+    P = pyro.sample("P", dist.Poisson(expP))
+
+def infer_knowledge_compas(df, model = 1):
     """
 
     :param df: DESCRIPTION
@@ -202,17 +232,30 @@ def infer_knowledge_compas(df):
     knowledge2 = []
 
     for i in tqdm(range(len(df))):
-        conditioned = pyro.condition(GroundTruthModel_Compas, data={"S": df["sex"][i],
-                                                             "A": df["age"][i],
-                                                             "AC": df["age_cat"][i],
-                                                             "R": df["race"][i],
-                                                             "JF": df["juv_fel_count"][i],
-                                                             "JM": df["juv_misd_count"][i],
-                                                             "JO": df["juv_other_count"][i],
-                                                              "P": df["priors_count"][i]
-                                                }
-                                     )
-        posterior = pyro.infer.Importance(conditioned, num_samples=10).run()
+        if model == 1:
+            conditioned = pyro.condition(GroundTruthModel1_Compas, data={"S": df["sex"][i],
+                                                                 "A": df["age"][i],
+                                                                 "AC": df["age_cat"][i],
+                                                                 "R": df["race"][i],
+                                                                 "JF": df["juv_fel_count"][i],
+                                                                 "JM": df["juv_misd_count"][i],
+                                                                 "JO": df["juv_other_count"][i],
+                                                                  "P": df["priors_count"][i]
+                                                    }
+                                         )
+        else:
+            conditioned = pyro.condition(GroundTruthModel2_Compas, data={"S": df["sex"][i],
+                                                                 "A": df["age"][i],
+                                                                 "AC": df["age_cat"][i],
+                                                                 "R": df["race"][i],
+                                                                 "JF": df["juv_fel_count"][i],
+                                                                 "JM": df["juv_misd_count"][i],
+                                                                 "JO": df["juv_other_count"][i],
+                                                                  "P": df["priors_count"][i]
+                                                    }
+                                         )
+
+        posterior = pyro.infer.Importance(conditioned, num_samples=100).run()
 
         post_marginal_1 = pyro.infer.EmpiricalMarginal(posterior, "UJ")
         post_marginal_2 = pyro.infer.EmpiricalMarginal(posterior, "UD")
@@ -231,8 +274,6 @@ def infer_knowledge_compas(df):
     knowledged = np.concatenate((knowledge1, knowledge2), axis=1)
 
     return knowledged
-
-
 
 if __name__ == "__main__":
     """Parsing argument"""
@@ -275,7 +316,12 @@ if __name__ == "__main__":
     categorical_features = dict_["categorical_features"]
     continuous_features = dict_["continuous_features"]
     full_features = dict_["full_features"]
+    discrete_features = dict_['discrete_features']
     target = dict_["target"]
+
+    print("Normal features:", normal_features)
+    print("Categorical features:", categorical_features)
+    print("Full features:", full_features)
 
     """Preprocess data"""
     for c in continuous_features:
@@ -324,15 +370,27 @@ if __name__ == "__main__":
         knowledged_train = infer_knowledge_adult(df_train)
         knowledged_test = infer_knowledge_adult(df_test)
     elif data_name == 'compas':
-        knowledged_train = infer_knowledge_compas(df_train)
-        knowledged_test = infer_knowledge_compas(df_test)
+        """Groundtruth model 1"""
+        knowledged_train = infer_knowledge_compas(df_train, 1)
+        knowledged_test = infer_knowledge_compas(df_test, 1)
 
-    clf = LogisticRegression()
-    clf.fit(knowledged_train, df[target])
-    y_pred = clf.predict(knowledged_test)
-    df_test['cf'] = y_pred.reshape(-1)
-    y_pred = clf.predict_proba(knowledged_test)[:, 0]
-    df_test['cf_proba'] = y_pred.reshape(-1)
+        clf = LogisticRegression()
+        clf.fit(knowledged_train, df[target])
+        y_pred = clf.predict(knowledged_test)
+        df_test['cf1'] = y_pred.reshape(-1)
+        y_pred = clf.predict_proba(knowledged_test)[:, 0]
+        df_test['cf1_proba'] = y_pred.reshape(-1)
+
+        """Groundtruth model 2"""
+        knowledged_train = infer_knowledge_compas(df_train, 2)
+        knowledged_test = infer_knowledge_compas(df_test, 2)
+
+        clf = LogisticRegression()
+        clf.fit(knowledged_train, df[target])
+        y_pred = clf.predict(knowledged_test)
+        df_test['cf2'] = y_pred.reshape(-1)
+        y_pred = clf.predict_proba(knowledged_test)[:, 0]
+        df_test['cf2_proba'] = y_pred.reshape(-1)
 
     for i in normal_features:
         df_test[i] = [x.detach().numpy() for x in df_test[i]]

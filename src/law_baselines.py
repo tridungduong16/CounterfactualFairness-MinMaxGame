@@ -531,5 +531,5 @@ if __name__ == "__main__":
     df_test['sex'] = [x.detach().numpy() for x in df_test['sex']]
 
     """Output the result"""
-    df_test.to_csv(conf['result_law_baseline'], index = False)
+    df_test.to_csv(conf['law_baseline'], index = False)
     sys.modules[__name__].__dict__.clear()

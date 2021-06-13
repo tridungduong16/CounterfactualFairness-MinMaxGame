@@ -18,15 +18,66 @@ from sklearn.ensemble import GradientBoostingRegressor
 
 import argparse
 
+def load_aemodel(model, path, df):
+    print("Path {}".format(path))
+    print("Model ", model)
+    print(df)
+    model.build_model(df.copy())
+    model.load_state_dict(path)
+    model.eval()
+    return model
+
+def get_predict(ae_model, generator, discriminator, df, normal_features, full_features, l = ''):
+
+    GD_prediction = 'GD_prediction' + l
+
+    df_generator = df[normal_features].copy()
+    df_autoencoder = df[full_features].copy()
+
+    Z = ae_model.get_representation(df_autoencoder)
+    Z = Z.cpu().detach().numpy()
+    reg = LinearRegression()
+    reg.fit(Z, df['ZFYA'].values)
+    y_pred = reg.predict(Z)
+    df["AL_prediction"] = y_pred
+
+    """Generator + Linear regression"""
+    Z = generator.custom_forward(df_generator)
+    Z = Z.cpu().detach().numpy()
+    reg = LinearRegression()
+    reg.fit(Z, df['ZFYA'].values)
+    y_pred = reg.predict(Z)
+    df["GL_prediction"] = y_pred
+
+    """Generator + Discriminator"""
+    Z = generator.custom_forward(df_generator)
+    predictor_agnostic = discriminator(Z)
+    y_pred = predictor_agnostic.cpu().detach().numpy().reshape(-1)
+    df[GD_prediction] = y_pred
+
+    return df
+
+
+
 if __name__ == "__main__":
     """Parsing argument"""
     parser = argparse.ArgumentParser()
-    parser.add_argument('--lambda_weight', type=float, default=0.1)
+    parser.add_argument('--lambda_weight', type=str, default="0.1 0.5 1 1.5 2 2.5 3 3.5 4 4.5 5 5.5 6 6.5 7 7.5 8 8.5 9 9.5 10 20 30 40 50")
     parser.add_argument('--run_lambda', action='store_true')
 
     args = parser.parse_args()
-    lambda_weight = args.lambda_weight
     run_lambda = args.run_lambda
+    lambda_weight = args.lambda_weight
+    print(lambda_weight)
+    print(lambda_weight.split(" "))
+    lambda_weight = [float(x) for x in lambda_weight.split(' ')]
+    lambda_weight = [str(x) for x in lambda_weight]
+
+
+    if run_lambda:
+        print("Run lambda with lambda ", lambda_weight)
+    else:
+        print("Run normal flow")
 
     """Device"""
     if torch.cuda.is_available():
@@ -45,7 +96,6 @@ if __name__ == "__main__":
     """Load data"""
     data_path = conf['data_law']
     df = pd.read_csv(data_path)
-
 
     """Setup features"""
     data_name = "law"
@@ -68,8 +118,6 @@ if __name__ == "__main__":
 
     df, df_test = train_test_split(df, test_size=0.1, random_state=0)
     df = df_test.copy()
-    # print(df_test[['LSAT', 'UGPA', 'sex', 'race', 'ZFYA']])
-    # sys.exit(1)
 
     """Load auto encoder"""
     df_autoencoder = df[full_features].copy()
@@ -88,6 +136,7 @@ if __name__ == "__main__":
         scaler='gauss_rank',  # gauss rank scaling forces your numeric features into standard normal distributions
     )
     ae_model.to(device)
+    # ae_model = load_aemodel(ae_model, conf['law_encoder'], df_autoencoder)
     ae_model.build_model(df[full_features].copy())
     ae_model.load_state_dict(torch.load(conf['law_encoder']))
     ae_model.eval()
@@ -95,7 +144,7 @@ if __name__ == "__main__":
     """Load generator"""
     emb_size = 64
     df_generator = df[normal_features]
-    generator= AutoEncoder(
+    generator = AutoEncoder(
         input_shape = df_generator.shape[1],
         encoder_layers=[256, 256, emb_size],  # model architecture
         decoder_layers=[],  # decoder optional - you can create bottlenecks if you like
@@ -112,53 +161,56 @@ if __name__ == "__main__":
     )
     generator.to(device)
     generator.build_model(df_generator)
-    # if run_lambda:
-    #     generator.load_state_dict(torch.load(conf['law_generator']))
-    # else:
-    #     generator.load_state_dict(torch.load(conf['law_generator']))
     generator.eval()
-
 
     """Load discriminator"""
     emb_size = 64
-    discriminator_agnostic = DiscriminatorLaw(emb_size)
-    discriminator_agnostic.to(device)
-    discriminator_agnostic.load_state_dict(torch.load(conf['law_discriminator']))
-    discriminator_agnostic.eval()
+    discriminator = DiscriminatorLaw(emb_size)
+    discriminator.to(device)
+    discriminator.load_state_dict(torch.load(conf['law_discriminator']))
+    discriminator.eval()
 
     if run_lambda:
-        generator.load_state_dict(torch.load(conf["lambda_law_generator"].format(lambda_weight)))
-        discriminator_agnostic.load_state_dict(torch.load(conf["lambda_law_discriminator"].format(lambda_weight)))
+        for l in lambda_weight:
+            print("Lambda ", l)
+            generator.load_state_dict(torch.load(conf["lambda_law_generator"].format(l)))
+            discriminator.load_state_dict(torch.load(conf["lambda_law_discriminator"].format(l)))
+            df = get_predict(ae_model, generator, df, normal_features, full_features, l)
     else:
         generator.load_state_dict(torch.load(conf['law_generator']))
-        discriminator_agnostic.load_state_dict(torch.load(conf['law_discriminator']))
+        discriminator.load_state_dict(torch.load(conf['law_discriminator']))
 
+    df = get_predict(ae_model, generator, discriminator, df, normal_features, full_features)
 
+    if run_lambda:
+        df.to_csv(conf["ivr_law_lambda"], index = False)
+    else:
+        df.to_csv(conf["ivr_law"], index = False)
 
     """Autoencoder + Linear regression"""
-    Z = ae_model.get_representation(df_autoencoder)
-    Z = Z.cpu().detach().numpy()
-    reg = LinearRegression()
-    reg.fit(Z, df['ZFYA'].values)
-    y_pred = reg.predict(Z)
-    df["AL_prediction"] = y_pred
+    # Z = ae_model.get_representation(df_autoencoder)
+    # Z = Z.cpu().detach().numpy()
+    # reg = LinearRegression()
+    # reg.fit(Z, df['ZFYA'].values)
+    # y_pred = reg.predict(Z)
+    # df["AL_prediction"] = y_pred
 
     """Generator + Linear regression"""
-    Z = generator.custom_forward(df_generator)
-    Z = Z.cpu().detach().numpy()
-    reg = LinearRegression()
-    reg.fit(Z, df['ZFYA'].values)
-    y_pred = reg.predict(Z)
-    df["GL_prediction"] = y_pred
+    # Z = generator.custom_forward(df_generator)
+    # Z = Z.cpu().detach().numpy()
+    # reg = LinearRegression()
+    # reg.fit(Z, df['ZFYA'].values)
+    # y_pred = reg.predict(Z)
+    # df["GL_prediction"] = y_pred
 
     """Generator + Discriminator"""
-    Z = generator.custom_forward(df_generator)
-    predictor_agnostic = discriminator_agnostic(Z)
-    y_pred = predictor_agnostic.cpu().detach().numpy().reshape(-1)
-    df["GD_prediction"] = y_pred
+    # Z = generator.custom_forward(df_generator)
+    # predictor_agnostic = discriminator_agnostic(Z)
+    # y_pred = predictor_agnostic.cpu().detach().numpy().reshape(-1)
+    # df["GD_prediction"] = y_pred
 
-    print(df['GD_prediction'])
-    df.to_csv(conf["result_ivr_law"], index = False)
+
+
 
 
 

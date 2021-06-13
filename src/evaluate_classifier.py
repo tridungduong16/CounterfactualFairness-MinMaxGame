@@ -14,7 +14,7 @@ import logging
 import argparse
 import sys
 
-from utils.evaluate_func import evaluate_distribution, evaluate_fairness, evaluate_classifier, evaluate_classification_performance
+from utils.evaluate_func import evaluate_distribution, evaluate_fairness, evaluate_classifier, classification_performance
 from utils.helpers import load_config
 from utils.helpers import features_setting
 if __name__ == "__main__":
@@ -43,35 +43,52 @@ if __name__ == "__main__":
     logger.addHandler(stdout_handler)
     logger.setLevel(logging.DEBUG)
 
+    """Setup features"""
     dict_ = features_setting(data_name)
-    sensitive_features = dict_['sensitive_features']
-    label = dict_['target']
+    sensitive_features = dict_["sensitive_features"]
+    normal_features = dict_["normal_features"]
+    categorical_features = dict_["categorical_features"]
+    continuous_features = dict_["continuous_features"]
+    full_features = dict_["full_features"]
+    target = dict_["target"]
 
-    baseline_path = conf['result_{}'.format(data_name)]
-    ivr_path = conf['result_ivr_{}'.format(data_name)]
-    evaluate_path = conf['result_evaluate_{}'.format(data_name)]
+    baseline_path = conf['{}'.format(data_name)]
+    ivr_path = conf['ivr_{}'.format(data_name)]
+    evaluate_path = conf['evaluate_{}'.format(data_name)]
 
-    baseline_columns = ['full', 'unaware', 'cf']
-    method_columns = ['AL_prediction', 'GL_prediction', 'GD_prediction']
+    logger.debug("Baseline path: {}".format(baseline_path))
+    logger.debug("Evaluate path: {}".format(evaluate_path))
+    logger.debug("Invariant path: {}".format(ivr_path))
 
-    prediction_columns = baseline_columns + method_columns
+    # baseline_columns = ['full', 'unaware', 'cf1', 'cf2']
+    # method_columns = ['AL_prediction', 'GL_prediction', 'GD_prediction']
+    # prediction_columns = baseline_columns + method_columns
 
 
 
     """Load data"""
     df1 = pd.read_csv(baseline_path)
     df2 = pd.read_csv(ivr_path)
-    # df = pd.concat([df1, df2], axis=1)
+    df2 = df2.drop(columns=full_features+[target])
+    df = pd.concat([df1, df2], axis=1)
+    col = ['full',
+           'unaware',
+           'cf1',
+           'cf2',
+           'AL_prediction',
+           'GL_prediction',
+           'GD_prediction'
+           ]
 
     df_result = pd.DataFrame()
 
     """Evaluate performance"""
-    df_result = evaluate_classification_performance(df1,
-                                                    df_result,
-                                                    sensitive_features,
-                                                    label,
-                                                    baseline_columns,
-                                                    data_name)
+    df_result = classification_performance(df,
+                                        df_result,
+                                        sensitive_features,
+                                        target,
+                                        col,
+                                        data_name)
 
     cols = list(df_result)
     cols.insert(0, cols.pop(cols.index('method')))

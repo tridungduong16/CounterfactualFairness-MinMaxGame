@@ -64,10 +64,10 @@ def evaluate_classifier(y_pred, y_true):
 
     """
 
-    print(y_true)
-    print(y_pred)
-    print(Counter(y_pred))
-    print(Counter(y_true))
+    # print(y_true)
+    # print(y_pred)
+    # print(Counter(y_pred))
+    # print(Counter(y_true))
 
     evaluations = {}
     evaluations['F1 Score'] = f1_score(y_true, y_pred, average='weighted')
@@ -210,7 +210,7 @@ def evaluate_fairness(sensitive_att, df, target, label=None, problem = "regressi
         eval_performance['laplacian'] = laplacian
     return eval_performance
 
-def evaluate_classification_performance(df,
+def classification_performance(df,
                                         df_result,
                                         sensitive_features,
                                         label,
@@ -220,6 +220,7 @@ def evaluate_classification_performance(df,
         performance = {}
         performance['method'] = m
         print(m, label)
+        print(df[m].values, df[label].values)
         performance_reg = evaluate_classifier(df[m].values, df[label].values)
         performance_fairness = evaluate_fairness(sensitive_features,
                                                  df,

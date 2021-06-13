@@ -37,11 +37,13 @@ def features_setting(data):
 
     elif data == "compas":
         dict_['categorical_features'] = ['age_cat', 'c_charge_degree', 'sex', 'race']
-        dict_['continuous_features'] = ['age', 'juv_fel_count', 'juv_misd_count', 'juv_other_count', 'priors_count']
-        dict_['full_features'] = dict_['categorical_features'] + dict_['continuous_features']
+        dict_['continuous_features'] = ['age']
+        dict_['discrete_features'] = ['juv_fel_count', 'juv_misd_count', 'juv_other_count', 'priors_count']
+        dict_['full_features'] = dict_['categorical_features'] + dict_['continuous_features'] + dict_['discrete_features']
         dict_['sensitive_features'] = ['race', 'sex']
         dict_['normal_features'] = [x for x in dict_['full_features'] if x not in dict_['sensitive_features']]
         dict_['target'] = 'two_year_recid'
+
 
     elif data == "german":
         dict_['categorical_features'] = ['marital_status', 'occupation', 'race', 'gender', 'workclass', 'education']
@@ -173,6 +175,36 @@ def load_config(config_path):
         except yaml.YAMLError as exc:
             print(exc)
     return conf
+
+# def get_predict(ae_model, generator, df, normal_features, full_features, l = ''):
+#
+#     GD_prediction = 'GD_prediction' + l
+#
+#     df_generator = df[normal_features].copy()
+#     df_autoencoder = df[full_features].copy()
+#
+#     Z = ae_model.get_representation(df_autoencoder)
+#     Z = Z.cpu().detach().numpy()
+#     reg = LogisticRegression(solver='saga', max_iter=1000)
+#     reg.fit(Z, df['ZFYA'].values)
+#     y_pred = reg.predict(Z)
+#     df["AL_prediction"] = y_pred
+#
+#     """Generator + Linear regression"""
+#     Z = generator.custom_forward(df_generator)
+#     Z = Z.cpu().detach().numpy()
+#     reg = LogisticRegression(solver='saga', max_iter=1000)
+#     reg.fit(Z, df['ZFYA'].values)
+#     y_pred = reg.predict(Z)
+#     df["GL_prediction"] = y_pred
+#
+#     """Generator + Discriminator"""
+#     Z = generator.custom_forward(df_generator)
+#     predictor_agnostic = discriminator_agnostic(Z)
+#     y_pred = predictor_agnostic.cpu().detach().numpy().reshape(-1)
+#     df[GD_prediction] = y_pred
+#
+#     return df
 
 if __name__ == "__main__":
     """Load configuration"""

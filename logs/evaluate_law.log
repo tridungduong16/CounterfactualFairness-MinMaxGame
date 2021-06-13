@@ -972,3 +972,22 @@
 2       cf  ...                           0.079105
 
 [3 rows x 13 columns]
+2021-06-12 15:23:12,593 genetic      DEBUG        method  ...  true_positive_rate_difference_sex
+0     full  ...                           0.347791
+1  unaware  ...                           0.158483
+2      cf1  ...                           0.185625
+3      cf2  ...                           0.126841
+
+[4 rows x 13 columns]
+2021-06-12 19:42:29,844 genetic      DEBUG                  method    RMSE   R2score  sinkhorn
+0        full_linear  0.9616  0.137510    0.6048
+1           full_net  1.0922 -0.112830    0.4679
+2     unaware_linear  0.9840  0.096726    0.1081
+3        unaware_net  1.1102 -0.149736    0.0146
+4    level2_lin_True  1.0626 -0.053214    0.0143
+5   level2_lin_False  1.0342  0.002336    0.0140
+6    level3_lin_True  1.3985 -0.824316    0.0563
+7   level3_lin_False  1.0614 -0.050810    0.0118
+8      AL_prediction  0.9241  0.203377    0.9840
+9      GL_prediction  0.9590  0.142168    0.2559
+10     GD_prediction  1.0281  0.014107    0.0044

@@ -355,6 +355,7 @@ if __name__ == "__main__":
         torch.save(generator.state_dict(), conf["lambda_law_generator"].format(lambda_weight))
         torch.save(discriminator_agnostic.state_dict(), conf["lambda_law_discriminator"].format(lambda_weight))
     else:
+        logger.debug("Save normal model")
         torch.save(generator.state_dict(), conf["law_generator"])
         torch.save(discriminator_agnostic.state_dict(), conf["law_discriminator"])
 

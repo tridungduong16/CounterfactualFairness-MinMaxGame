@@ -38,10 +38,20 @@ def evaluate_law(df, df_result, col):
 if __name__ == "__main__":
     """Parsing argument"""
     parser = argparse.ArgumentParser()
-    parser.add_argument('--mode', type=str, default='both')
+    parser.add_argument('--lambda_weight', type=str, default="0.1 0.5 1 1.5 2 2.5 3 3.5 4 4.5")
+    parser.add_argument('--run_lambda', action='store_true')
 
     args = parser.parse_args()
-    mode = args.mode
+    run_lambda = args.run_lambda
+    lambda_weight = args.lambda_weight
+    lambda_weight = [float(x) for x in lambda_weight.split(' ')]
+    lambda_weight = [str(x) for x in lambda_weight]
+
+
+    if run_lambda:
+        print("Run lambda with lambda ", lambda_weight)
+    else:
+        print("Run normal flow")
 
     """Load configuration"""
     config_path = "/home/trduong/Data/counterfactual_fairness_game_theoric/configuration.yml"
@@ -60,54 +70,38 @@ if __name__ == "__main__":
     
 
     """Load data"""
-    col_baseline = ["full_linear",
-                    "full_net",
-                    "unaware_linear",
-                    "unaware_net",
-                    "level2_lin_True",
-                    "level2_lin_False",
-                    "level3_lin_True",
-                    "level3_lin_False"]
+    # col_baseline = ["full_linear",
+    #                 "full_net",
+    #                 "unaware_linear",
+    #                 "unaware_net",
+    #                 "level2_lin_True",
+    #                 "level2_lin_False",
+    #                 "level3_lin_True",
+    #                 "level3_lin_False"]
 
-    col_ivr = ['AL_prediction', 'GL_prediction', 'GD_prediction']
+    # col_ivr = ['AL_prediction', 'GL_prediction', 'GD_prediction']
 
-    col = col_baseline +  col_ivr
+    # col = col_baseline +  col_ivr
 
-
-
-    df1 = pd.read_csv(conf['result_law_baseline'])
-    df2 = pd.read_csv(conf['result_ivr_law']).drop(columns = ['LSAT',
-                                                              'UGPA',
-                                                              'ZFYA',
-                                                              'race',
-                                                              'sex'])
-
-    # print(df1.columns)
-
-    # print(df2.columns)
-    df = pd.concat([df1, df2], axis=1)
-
-
-    # if mode == "baseline":
-    #     df = pd.read_csv(conf['result_law_baseline'])
-    #     df = df[['LSAT', 'UGPA', 'sex', 'race', 'ZFYA']]
-    #     col = ['full_prediction', 'unaware_prediction', 'cf_prediction']
-    # elif mode == "ivr":
-    #     df = pd.read_csv(conf['result_ivr_law'])
-    #     col = ['AL_prediction', 'GL_prediction', 'GD_prediction']
-    # elif mode == "both":
-    #     col = ['full_prediction', 'unaware_prediction', 'cf_prediction',
-    #            'AL_prediction', 'GL_prediction', 'GD_prediction']
-    #     df = pd.read_csv(conf['result_law_baseline'])
-    #     df1 = df[['race', 'sex', 'LSAT', 'UGPA',
-    #               'full_prediction', 'unaware_prediction', 'cf_prediction', 'ZFYA']]
-    #     df = pd.read_csv(conf['result_ivr_law'])
-    #     df2 = df[['AL_prediction', 'GL_prediction', 'GD_prediction']]
-    #     df = pd.concat([df1, df2], axis=1)
+    result_path = ''
+    if run_lambda:
+        GD_prediction = 'GD_prediction'
+        col = ['GD_prediction_' + str(l)  for l in lambda_weight]
+        df = pd.read_csv(conf["ivr_law_lambda"])
+        result_path = conf['ivr_law_lambda']
+    else:
+        col = ["full_linear", "full_net",
+                        "unaware_linear", "unaware_net",
+                        "level2_lin_True", "level2_lin_False",
+                        "level3_lin_True", "level3_lin_False",
+                        "AL_prediction", "GL_prediction", "GD_prediction"]
+        df2 = pd.read_csv(conf["ivr_law"])
+        df1 = pd.read_csv(conf['law_baseline'])
+        df2 = df2.drop(columns = ['LSAT','UGPA','ZFYA', 'race','sex'])
+        df = pd.concat([df1, df2], axis=1)
+        result_path = conf['evaluate_law']
 
 
-
-    
     df_result = pd.DataFrame()
     df_result['method'] = ''
     df_result['RMSE'] = ''
@@ -126,8 +120,7 @@ if __name__ == "__main__":
     df_result['energy'] = df_result['energy'].round(decimals=4)
     df_result['gaussian'] = df_result['gaussian'].round(decimals=4)
     df_result['laplacian'] = df_result['laplacian'].round(decimals=4)
-    df_result.to_csv(conf['result_evaluate_law'], index = False)
-
+    df_result.to_csv(result_path, index = False)
 
     logger.debug(df_result[['method', 'RMSE', 'R2score', 'sinkhorn']])
     sys.modules[__name__].__dict__.clear()
