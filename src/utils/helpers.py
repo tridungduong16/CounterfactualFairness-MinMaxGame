@@ -6,6 +6,7 @@ import pandas as pd
 import logging
 import yaml
 import sys
+from dfencoder.scalers import GaussRankScaler
 from sklearn import preprocessing
 
 
@@ -23,6 +24,7 @@ def features_setting(data):
         dict_['normal_features'] = ['LSAT', 'UGPA']
         dict_['categorical_features'] = ['race', 'sex']
         dict_['continuous_features'] = ['LSAT', 'UGPA']
+        dict_['discrete_features'] = []
         dict_['target'] = 'ZFYA'
         dict_['full_features'] = ['race', 'sex', 'LSAT', 'UGPA']
 
@@ -74,8 +76,11 @@ def preprocess_dataset(df, continuous_features, categorical_features):
     :return:
     :rtype:
     """
-    for c in continuous_features:
-        df[c] = (df[c] - df[c].mean()) / df[c].std()
+    # scaler = GaussRankScaler()
+    # scaler.fit_transform(x)
+
+    # for c in continuous_features:
+    #     df[c] = (df[c] - df[c].mean()) / df[c].std()
 
     for c in categorical_features:
         le = preprocessing.LabelEncoder()

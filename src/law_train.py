@@ -4,6 +4,8 @@ import sys
 import numpy as np
 import argparse
 import visdom
+import gc
+import pprint
 import torch.nn.functional as F
 
 from tqdm import tqdm
@@ -21,8 +23,9 @@ from sklearn.model_selection import train_test_split
 if __name__ == "__main__":
     """Parsing argument"""
     parser = argparse.ArgumentParser()
-    parser.add_argument('--lambda_weight', type=float, default=0.1)
+    parser.add_argument('--lambda_weight', type=float, default=5)
     parser.add_argument('--run_lambda', action='store_true')
+    parser.add_argument('--epoch', type=int, default=50)
 
     args = parser.parse_args()
 
@@ -66,10 +69,13 @@ if __name__ == "__main__":
     df = df[df['race'].isin(selected_race)]
     df = df.reset_index(drop=True)
 
+    print(df)
     """Preprocess data"""
-    df = preprocess_dataset(df, continuous_features, categorical_features)
+    df = preprocess_dataset(df, [], categorical_features)
     df['ZFYA'] = (df['ZFYA'] - df['ZFYA'].mean()) / df['ZFYA'].std()
     df = df[['LSAT', 'UGPA', 'sex', 'race', 'ZFYA']]
+
+    print(df)
 
     """Setup auto encoder"""
     df_autoencoder = df[full_features].copy()
@@ -95,7 +101,7 @@ if __name__ == "__main__":
     """Setup hyperparameter"""
     logger.debug('Setup hyperparameter')
     parameters = {}
-    parameters['epochs'] = 200
+    parameters['epochs'] = args.epoch
     parameters['learning_rate'] = 1e-2
     parameters['dataframe'] = df
     parameters['batch_size'] = 128
@@ -134,7 +140,7 @@ if __name__ == "__main__":
     )
 
     generator.build_model(df_generator)
-    learning_rate = 1e-6
+    learning_rate = 1e-4
     """Optimizer"""
     optimizer1 = torch.optim.Adam(
         generator.parameters(), lr=learning_rate
@@ -145,12 +151,11 @@ if __name__ == "__main__":
                                  lr=learning_rate, momentum=0.9)
 
     # scheduler1 = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer1, 'min')
-    scheduler1 = torch.optim.lr_scheduler.StepLR(optimizer1, step_size=50, gamma=0.1)
-    scheduler2 = torch.optim.lr_scheduler.StepLR(optimizer2, step_size=50, gamma=0.1)
-    scheduler3 = torch.optim.lr_scheduler.StepLR(optimizer3, step_size=50, gamma=0.1)
-
-    # scheduler2 = torch.optim.lr_scheduler.CyclicLR(optimizer2, base_lr=learning_rate, max_lr=0.0001)
-    # scheduler3 = torch.optim.lr_scheduler.CyclicLR(optimizer3, base_lr=learning_rate, max_lr=0.0001)
+    scheduler1 = torch.optim.lr_scheduler.StepLR(optimizer1, step_size=20, gamma=0.1)
+    # scheduler2 = torch.optim.lr_scheduler.StepLR(optimizer2, step_size=50, gamma=0.1)
+    # scheduler3 = torch.optim.lr_scheduler.StepLR(optimizer3, step_size=50, gamma=0.1)
+    scheduler2 = torch.optim.lr_scheduler.CyclicLR(optimizer2, base_lr=learning_rate, max_lr=1e-2)
+    scheduler3 = torch.optim.lr_scheduler.CyclicLR(optimizer3, base_lr=learning_rate, max_lr=1e-2)
 
     """Training"""
     n_updates = len(df) // batch_size
@@ -252,10 +257,10 @@ if __name__ == "__main__":
                 if p.grad is not None:  # In general, C is a NN, with requires_grad=False for some layers
                     p.grad.data.mul_(-1)  # Update of grad.data not tracked in computation graph
 
-            if path in [0]:
+            if path in [0, 5]:
                 gen_loss.backward()
                 optimizer1.step()
-            elif path in [1, 2, 3, 4, 5]:
+            elif path in [1, 2, 3, 4]:
                 loss_agnostic.backward()
                 optimizer2.step()
             elif path in [6, 7, 8, 9]:
@@ -273,9 +278,15 @@ if __name__ == "__main__":
             del emb
             del ZS
 
+        """Update learning rate"""
+        current_lr = scheduler1.get_last_lr()[0]
         scheduler1.step()
         scheduler2.step()
         scheduler3.step()
+        if current_lr <= 1e-9:
+            optimizer1.param_groups[0]['lr'] = learning_rate
+            optimizer2.param_groups[0]['lr'] = learning_rate
+            optimizer3.param_groups[0]['lr'] = learning_rate
 
         df_train = df.copy()
         df_generator = df_train[normal_features].copy()
@@ -308,10 +319,20 @@ if __name__ == "__main__":
         logger.debug("Prediction")
         logger.debug(y_pred)
 
+        display_loss = '->'.join([str(round(x,3)) for x in losses])
+        display_aware = '->'.join([str(round(x,3)) for x in losses_aware])
+        display_gen = '->'.join([str(round(x,3)) for x in losses_gen])
 
-        logger.debug('Loss Agnostic {:.4f}'.format(sum(sum_loss) / len(sum_loss)))
-        logger.debug('Loss Awareness {:.4f}'.format(sum(sum_loss_aware) / len(sum_loss)))
-        logger.debug('Generator loss {:.4f}'.format(sum(sum_loss_gen) / len(sum_loss)))
+        logger.debug("Loss Agnostic")
+        logger.debug(display_loss)
+        logger.debug("Loss Awareness")
+        logger.debug(display_aware)
+        logger.debug("Generator Agnostic")
+        logger.debug(display_gen)
+
+        # logger.debug('Loss Agnostic {:.4f}'.format(sum(sum_loss) / len(sum_loss)))
+        # logger.debug('Loss Awareness {:.4f}'.format(sum(sum_loss_aware) / len(sum_loss)))
+        # logger.debug('Generator loss {:.4f}'.format(sum(sum_loss_gen) / len(sum_loss)))
         logger.debug("RMSE {:.4f}".format(eval['RMSE']))
         logger.debug("Fairness {:.7f}".format(eval_fairness['sinkhorn']))
 
@@ -327,6 +348,12 @@ if __name__ == "__main__":
         del loss_agnostic
         del y_pred
         del y_true
+
+        print('Collecting...')
+        n = gc.collect()
+        print('Unreachable objects:', n)
+        print('Remaining Garbage:', )
+        pprint.pprint(gc.garbage)
 
 
     viz = visdom.Visdom()

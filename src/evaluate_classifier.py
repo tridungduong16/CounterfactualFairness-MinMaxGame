@@ -34,7 +34,7 @@ if __name__ == "__main__":
 
     """Set up logging"""
     logger = logging.getLogger('genetic')
-    file_handler = logging.FileHandler(filename=conf['evaluate_law'])
+    file_handler = logging.FileHandler(filename=conf['evaluate_compas_log'])
     stdout_handler = logging.StreamHandler(sys.stdout)
     formatter = logging.Formatter('%(asctime)s %(name)-12s %(levelname)-8s %(message)s')
     file_handler.setFormatter(formatter)

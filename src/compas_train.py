@@ -6,6 +6,8 @@ import logging
 import sys
 import torch.nn.functional as F
 import numpy as np
+import gc
+import pprint
 
 from tqdm import tqdm
 from model_arch.discriminator import DiscriminatorCompasAg, DiscriminatorCompasAw
@@ -26,7 +28,7 @@ if __name__ == "__main__":
     """Parsing argument"""
     parser = argparse.ArgumentParser()
     parser.add_argument('--data_name', type=str, default='compas')
-    parser.add_argument('--epoch', type=int, default=600)
+    parser.add_argument('--epoch', type=int, default=200)
 
     """Device"""
     if torch.cuda.is_available():
@@ -69,18 +71,20 @@ if __name__ == "__main__":
     normal_features = dict_["normal_features"]
     categorical_features = dict_["categorical_features"]
     continuous_features = dict_["continuous_features"]
+    discrete_features = dict_["discrete_features"]
     full_features = dict_["full_features"]
     target = dict_["target"]
     col_sensitive = ['race_0', 'race_1',
                      'sex_0', 'sex_1']
+    standard_features = continuous_features + discrete_features
 
     """Preprocess data"""
-    df = preprocess_dataset(df, continuous_features, categorical_features)
+    df = preprocess_dataset(df, standard_features, categorical_features)
     df_generator = df[normal_features]
     df[target] = df[target].astype(float)
 
     print(df.head())
-    sys.exit(1)
+    # sys.exit(1)
 
     """Setup auto encoder"""
     df_autoencoder = df[full_features].copy()
@@ -105,7 +109,7 @@ if __name__ == "__main__":
 
     """Setup hyperparameter"""
     parameters = {}
-    parameters['epochs'] = args.epochs
+    parameters['epochs'] = args.epoch
     parameters['learning_rate'] = 1e-3
     parameters['dataframe'] = df
     parameters['batch_size'] = 256
@@ -148,7 +152,7 @@ if __name__ == "__main__":
     scheduler2 = torch.optim.lr_scheduler.StepLR(optimizer2, step_size=100, gamma=0.1)
     scheduler3 = torch.optim.lr_scheduler.StepLR(optimizer3, step_size=100, gamma=0.1)
 
-    normedWeights = [0.4, 0.6]
+    normedWeights = [0.45, 0.55]
     normedWeights = torch.FloatTensor(normedWeights).to(device)
     loss_fn = nn.CrossEntropyLoss(normedWeights)
 
@@ -239,7 +243,7 @@ if __name__ == "__main__":
             loss_agnostic = loss_fn(prediction_ag, Y.reshape(-1))
             loss_awareness = loss_fn(prediction_aw, Y.reshape(-1))
             diff_loss = F.leaky_relu(loss_agnostic - loss_awareness)
-            gen_loss = 5 * diff_loss + loss_agnostic
+            gen_loss = 10 * diff_loss + loss_agnostic
 
             """Track loss"""
             sum_loss.append(loss_agnostic.cpu().detach().numpy())
@@ -253,16 +257,18 @@ if __name__ == "__main__":
 
             # 012, 3456, 789
             path = step % 10
-            if path in [0, 5]:
+            if path in [0]:
                 gen_loss.backward()
                 optimizer1.step()
-            elif path in [1, 2, 3, 4]:
+            elif path in [1, 2, 3, 4, 5]:
                 loss_agnostic.backward()
                 optimizer2.step()
             elif path in [6, 7, 8, 9]:
                 loss_awareness.backward()
                 optimizer3.step()
             step += 1
+
+
 
         """Update learning rate"""
         current_lr = scheduler1.get_last_lr()[0]
@@ -305,6 +311,13 @@ if __name__ == "__main__":
         for key, value in eval.items():
             logger.debug("{} {:.4f}".format(key, value))
         logger.debug("-"*30)
+
+        print('Collecting...')
+        n = gc.collect()
+        print('Unreachable objects:', n)
+        print('Remaining Garbage:', )
+        pprint.pprint(gc.garbage)
+
 
 
 

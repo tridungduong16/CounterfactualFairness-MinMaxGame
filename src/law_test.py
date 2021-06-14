@@ -18,14 +18,14 @@ from sklearn.ensemble import GradientBoostingRegressor
 
 import argparse
 
-def load_aemodel(model, path, df):
-    print("Path {}".format(path))
-    print("Model ", model)
-    print(df)
-    model.build_model(df.copy())
-    model.load_state_dict(path)
-    model.eval()
-    return model
+# def load_aemodel(model, path, df):
+#     print("Path {}".format(path))
+#     print("Model ", model)
+#     print(df)
+#     model.build_model(df.copy())
+#     model.load_state_dict(path)
+#     model.eval()
+#     return model
 
 def get_predict(ae_model, generator, discriminator, df, normal_features, full_features, l = ''):
 
@@ -112,12 +112,15 @@ if __name__ == "__main__":
     df = df.reset_index(drop = True)
 
     """Preprocess data"""
-    df = preprocess_dataset(df, continuous_features, categorical_features)
+    df = preprocess_dataset(df, [], categorical_features)
     df['ZFYA'] = (df['ZFYA']-df['ZFYA'].mean())/df['ZFYA'].std()
     df = df[['LSAT', 'UGPA', 'sex', 'race', 'ZFYA']]
 
-    df, df_test = train_test_split(df, test_size=0.1, random_state=0)
+
+    _, df_test = train_test_split(df, test_size=0.1, random_state=0)
     df = df_test.copy()
+
+    print(df)
 
     """Load auto encoder"""
     df_autoencoder = df[full_features].copy()

@@ -63,18 +63,20 @@ if __name__ == "__main__":
     df = pd.read_csv(data_path)
 
     """Setup features"""
-    data_name = "compas"
-    dict_ = features_setting(data_name)
+    dict_ = features_setting('compas')
     sensitive_features = dict_["sensitive_features"]
     normal_features = dict_["normal_features"]
     categorical_features = dict_["categorical_features"]
     continuous_features = dict_["continuous_features"]
+    discrete_features = dict_["discrete_features"]
     full_features = dict_["full_features"]
     target = dict_["target"]
-    col_sensitive = ['race_0', 'race_1', 'sex_0', 'sex_1']
+    col_sensitive = ['race_0', 'race_1',
+                     'sex_0', 'sex_1']
+    standard_features = continuous_features + discrete_features
 
     """Preprocess data"""
-    df = preprocess_dataset(df, continuous_features, categorical_features)
+    df = preprocess_dataset(df, standard_features, categorical_features)
     df_generator = df[normal_features]
     df[target] = df[target].astype(float)
 

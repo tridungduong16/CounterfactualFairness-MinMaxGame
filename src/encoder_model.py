@@ -61,6 +61,7 @@ if __name__ == "__main__":
     discrete_features = dict_["discrete_features"]
     full_features = dict_["full_features"]
     target = dict_["target"]
+    standard_features = continuous_features + discrete_features
 
     """Preprocess data"""
     if data_name == "law":
@@ -68,9 +69,14 @@ if __name__ == "__main__":
         df = df[df['race'].isin(selected_race)]
         df = df.reset_index(drop=True)
 
-    df = preprocess_dataset(df, continuous_features, categorical_features)
-    print("Full features ", full_features)
+    print(df.head())
+    df = preprocess_dataset(df, [], categorical_features)
+    print("Full features: ", full_features)
+    print("Categorical features :", categorical_features)
+    print("Continuous_features features: ", continuous_features)
+    print("Standard features: ", standard_features)
     df = df[full_features]
+    print(df.head())
 
     emb_size = 128
     """Model architecture"""

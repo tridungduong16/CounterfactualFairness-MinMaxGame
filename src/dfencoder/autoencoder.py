@@ -311,6 +311,8 @@ class AutoEncoder(torch.nn.Module):
         Returns copy.
         """
         output_df = EncoderDataFrame()
+        # print("Scaler")
+        # print(df.head())
         for ft in self.numeric_fts:
             feature = self.numeric_fts[ft]
             col = df[ft].fillna(feature['mean'])
@@ -329,6 +331,9 @@ class AutoEncoder(torch.nn.Module):
             # col = col.fillna('_other')
             col = pd.Categorical(df[ft], categories=feature['cats'])
             output_df[ft] = col
+
+        # print("Scaler")
+        # print(output_df.head())
 
         return output_df
 
@@ -469,6 +474,8 @@ class AutoEncoder(torch.nn.Module):
         if self.n_megabatches==1:
             df = self.prepare_df(df)
 
+        print("prepare_df")
+        print(df)
         n_updates = len(df)//self.batch_size
         if len(df) % self.batch_size > 0:
             n_updates += 1
@@ -952,6 +959,8 @@ class AutoEncoder(torch.nn.Module):
     def custom_forward(self, X):
         """We do the thang. Takes pandas dataframe as input."""
         # print(X.shape)
+        X = self.prepare_df(X)
+
         num, bin, embeddings = self.encode_input(X)
         # print("number")
         # print(num)
@@ -969,6 +978,41 @@ class AutoEncoder(torch.nn.Module):
         # num, bin, cat = self.decode(encoding)
 
         return encoding
+
+    # def get_representation(self, df, layer=0):
+    #     """
+    #     Computes latent feature vector from hidden layer
+    #         given input dataframe.
+    #
+    #     argument layer (int) specifies which layer to get.
+    #     by default (layer=0), returns the "encoding" layer.
+    #         layer < 0 counts layers back from encoding layer.
+    #         layer > 0 counts layers forward from encoding layer.
+    #     """
+    #     result = []
+    #     n_batches = len(df)//self.eval_batch_size
+    #     if len(df) % self.eval_batch_size != 0:
+    #         n_batches += 1
+    #
+    #     self.eval()
+    #     if self.optim is None:
+    #         self.build_model(df)
+    #     df = self.prepare_df(df)
+    #     with torch.no_grad():
+    #         for i in range(n_batches):
+    #             start = i * self.eval_batch_size
+    #             stop = (i+1) * self.eval_batch_size
+    #             num, bin, embeddings = self.encode_input(df.iloc[start:stop])
+    #             x = torch.cat(num + bin + embeddings, dim=1)
+    #             if layer <= 0:
+    #                 layers = len(self.encoder) + layer
+    #                 x = self.encode(x, layers=layers)
+    #             else:
+    #                 x = self.encode(x)
+    #                 x = self.decode(x, layers=layer)
+    #             result.append(x)
+    #     z = torch.cat(result, dim=0)
+    #     return z
 
 
 

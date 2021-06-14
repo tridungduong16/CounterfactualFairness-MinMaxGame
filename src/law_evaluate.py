@@ -18,13 +18,16 @@ import torch
 import pyro.distributions as dist
 import argparse
 import sys
+import pprint
+import gc
+
 from utils.evaluate_func import evaluate_pred, evaluate_distribution, evaluate_fairness
 from utils.helpers import load_config
 
 
 
 def evaluate_law(df, df_result, col):
-    sensitive_att = ['race']
+    sensitive_att = ['race', 'sex']
     target = 'ZFYA'
     for m in col:
         print(m, sensitive_att)
@@ -59,7 +62,7 @@ if __name__ == "__main__":
         
     """Set up logging"""
     logger = logging.getLogger('genetic')
-    file_handler = logging.FileHandler(filename=conf['evaluate_law'])
+    file_handler = logging.FileHandler(filename=conf['evaluate_law_log'])
     stdout_handler = logging.StreamHandler(sys.stdout)
     formatter = logging.Formatter('%(asctime)s %(name)-12s %(levelname)-8s %(message)s')
     file_handler.setFormatter(formatter)
@@ -122,7 +125,13 @@ if __name__ == "__main__":
     df_result['laplacian'] = df_result['laplacian'].round(decimals=4)
     df_result.to_csv(result_path, index = False)
 
-    logger.debug(df_result[['method', 'RMSE', 'R2score', 'sinkhorn']])
+    print(df_result)
+    print('Collecting...')
+    n = gc.collect()
+    print('Unreachable objects:', n)
+    print('Remaining Garbage:',)
+    pprint.pprint(gc.garbage)
+    # logger.debug(df_result[['method', 'RMSE', 'R2score', 'sinkhorn']])
     sys.modules[__name__].__dict__.clear()
 
     

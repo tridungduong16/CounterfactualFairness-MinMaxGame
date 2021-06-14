@@ -1,64 +1,12 @@
 method,RMSE,MAE,sinkhorn,energy,gaussian,laplacian,R2score
-full_linear,0.9616,0.7824,0.6048,0.8638,0.717,0.528,0.13751009235717326
-full_net,1.0922,0.8732,0.4679,0.2364,0.1753,0.1467,-0.11282959520834446
-unaware_linear,0.984,0.7966,0.1081,0.1962,0.1844,0.1513,0.0967261880153123
-unaware_net,1.1102,0.8816,0.0146,0.0223,0.0173,0.0195,-0.14973585398292744
-level2_lin_True,1.0626,0.8518,0.0143,0.0122,0.0079,0.0159,-0.05321443218803146
-level2_lin_False,1.0342,0.8315,0.014,0.0189,0.017,0.0191,0.0023355879950180958
-level3_lin_True,1.3985,1.0852,0.0563,0.0194,0.0074,0.0128,-0.8243159589920777
-level3_lin_False,1.0614,0.8531,0.0118,0.0054,0.0041,0.0069,-0.05080988996891622
-AL_prediction,0.9241,0.7487,0.984,1.0221,0.6406,0.4581,0.20337744459931395
-GL_prediction,0.959,0.7783,0.2559,0.2673,0.1818,0.135,0.14216761703628855
-GD_prediction,1.0281,0.828,0.0044,0.0339,0.0151,0.054,0.014106688411984258
-2021-06-12 20:22:52,500 genetic      DEBUG                  method    RMSE   R2score  sinkhorn
-0  GD_prediction_0.1  1.0391 -0.007217    0.0258
-1  GD_prediction_0.5  1.0516 -0.031475    0.0012
-2  GD_prediction_1.0  1.0292  0.011975    0.0246
-3  GD_prediction_1.5  1.0714 -0.070826    0.0043
-4  GD_prediction_2.0  1.0632 -0.054482    0.0009
-5  GD_prediction_2.5  1.0496 -0.027589    0.0013
-6  GD_prediction_3.0  1.0291  0.012134    0.0029
-7  GD_prediction_3.5  1.0853 -0.098644    0.0034
-8  GD_prediction_4.0  1.0450 -0.018571    0.0005
-9  GD_prediction_4.5  1.0285  0.013332    0.0005
-2021-06-13 12:44:50,783 genetic      DEBUG                  method    RMSE   R2score  sinkhorn
-0  GD_prediction_0.1  1.0181  0.033121    0.0039
-1  GD_prediction_0.5  1.0255  0.019039    0.0014
-2  GD_prediction_1.0  1.0290  0.012357    0.0032
-3  GD_prediction_1.5  1.0175  0.034209    0.0051
-4  GD_prediction_2.0  1.1441 -0.220997    0.0091
-5  GD_prediction_2.5  1.0432 -0.015206    0.0007
-6  GD_prediction_3.0  1.0791 -0.086225    0.0086
-7  GD_prediction_3.5  1.0282  0.013743    0.0448
-8  GD_prediction_4.0  1.1642 -0.264375    0.0069
-2021-06-13 19:10:38,169 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
-2021-06-13 19:10:38,169 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
-2021-06-13 19:10:38,169 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
-2021-06-13 19:11:22,052 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
-2021-06-13 19:11:22,052 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
-2021-06-13 19:11:22,052 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
-2021-06-13 19:12:56,828 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
-2021-06-13 19:12:56,828 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
-2021-06-13 19:12:56,828 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
-2021-06-13 19:14:11,467 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
-2021-06-13 19:14:11,467 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
-2021-06-13 19:14:11,467 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
-2021-06-13 19:15:24,709 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
-2021-06-13 19:15:24,710 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
-2021-06-13 19:15:24,710 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
-2021-06-13 19:16:46,966 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
-2021-06-13 19:16:46,967 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
-2021-06-13 19:16:46,967 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
-2021-06-13 19:17:11,463 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
-2021-06-13 19:17:11,463 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
-2021-06-13 19:17:11,463 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
-2021-06-13 19:17:11,622 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
-0           full  ...                           0.347791
-1        unaware  ...                           0.158483
-2            cf1  ...                           0.157801
-3            cf2  ...                           0.186716
-4  AL_prediction  ...                           0.236498
-5  GL_prediction  ...                           0.122613
-6  GD_prediction  ...                           0.198036
-
-[7 rows x 13 columns]
+full_linear,0.9616,0.7824,0.6135,0.8677,0.7192,0.5308,0.13751009235717326
+full_net,1.0922,0.8732,0.5352,0.2538,0.1826,0.1597,-0.11282959520834446
+unaware_linear,0.984,0.7966,0.1088,0.197,0.1847,0.1525,0.0967261880153123
+unaware_net,1.1102,0.8816,0.0184,0.0243,0.0184,0.0215,-0.14973585398292744
+level2_lin_True,1.0626,0.8518,0.0216,0.0143,0.0095,0.0179,-0.05321443218803146
+level2_lin_False,1.0342,0.8315,0.0158,0.0208,0.0185,0.021,0.0023355879950180958
+level3_lin_True,1.3985,1.0852,0.0694,0.0205,0.0083,0.0143,-0.8243159589920777
+level3_lin_False,1.0614,0.8531,0.0294,0.0073,0.0053,0.0093,-0.05080988996891622
+AL_prediction,0.9218,0.7476,1.0164,0.9064,0.5131,0.3729,0.20731789003198497
+GL_prediction,0.9549,0.7741,0.2607,0.2622,0.1799,0.1342,0.14937333063776603
+GD_prediction,1.0292,0.8305,0.0004,0.0112,0.0014,0.021,0.011899922546457775

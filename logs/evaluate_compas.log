@@ -1,0 +1,52 @@
+2021-06-13 21:22:44,170 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-13 21:22:44,170 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-13 21:22:44,170 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-13 21:22:44,338 genetic      DEBUG              method  Accuracy  F1 Score  Precision  ...  generalized_entropy_index_race  generalized_entropy_index_sex  true_positive_rate_difference_race  true_positive_rate_difference_sex
+0           full  0.670360  0.666588   0.670491  ...                        0.189277                       0.189277                            0.140041                           0.347791
+1        unaware  0.668975  0.664860   0.669296  ...                        0.191429                       0.191429                            0.173496                           0.158483
+2            cf1  0.613573  0.593811   0.619507  ...                        0.264828                       0.264828                            0.090867                           0.157801
+3            cf2  0.619114  0.608311   0.619963  ...                        0.241047                       0.241047                            0.111587                           0.186716
+4  AL_prediction  0.695291  0.693659   0.694792  ...                        0.165738                       0.165738                            0.170470                           0.259274
+5  GL_prediction  0.700831  0.698942   0.700590  ...                        0.164319                       0.164319                            0.086244                           0.168167
+6  GD_prediction  0.685596  0.683984   0.684928  ...                        0.170617                       0.170617                            0.129408                           0.225859
+
+[7 rows x 13 columns]
+2021-06-13 21:40:25,654 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-13 21:40:25,654 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-13 21:40:25,654 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-13 21:40:25,839 genetic      DEBUG              method  Accuracy  F1 Score  Precision  ...  generalized_entropy_index_race  generalized_entropy_index_sex  true_positive_rate_difference_race  true_positive_rate_difference_sex
+0           full  0.670360  0.666588   0.670491  ...                        0.189277                       0.189277                            0.140041                           0.347791
+1        unaware  0.668975  0.664860   0.669296  ...                        0.191429                       0.191429                            0.173496                           0.158483
+2            cf1  0.613573  0.593811   0.619507  ...                        0.264828                       0.264828                            0.090867                           0.157801
+3            cf2  0.619114  0.608311   0.619963  ...                        0.241047                       0.241047                            0.111587                           0.186716
+4  AL_prediction  0.695291  0.693659   0.694792  ...                        0.165738                       0.165738                            0.170470                           0.259274
+5  GL_prediction  0.700831  0.698942   0.700590  ...                        0.164319                       0.164319                            0.086244                           0.168167
+6  GD_prediction  0.685596  0.683984   0.684928  ...                        0.170617                       0.170617                            0.129408                           0.225859
+
+[7 rows x 13 columns]
+2021-06-13 22:13:26,566 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-13 22:13:26,566 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-13 22:13:26,567 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-13 22:13:26,711 genetic      DEBUG              method  Accuracy  F1 Score  Precision  ...  generalized_entropy_index_race  generalized_entropy_index_sex  true_positive_rate_difference_race  true_positive_rate_difference_sex
+0           full  0.670360  0.666588   0.670491  ...                        0.189277                       0.189277                            0.140041                           0.347791
+1        unaware  0.668975  0.664860   0.669296  ...                        0.191429                       0.191429                            0.173496                           0.158483
+2            cf1  0.613573  0.593811   0.619507  ...                        0.264828                       0.264828                            0.090867                           0.157801
+3            cf2  0.619114  0.608311   0.619963  ...                        0.241047                       0.241047                            0.111587                           0.186716
+4  AL_prediction  0.695291  0.693659   0.694792  ...                        0.165738                       0.165738                            0.170470                           0.259274
+5  GL_prediction  0.702216  0.699091   0.703149  ...                        0.169497                       0.169497                            0.084016                           0.234452
+6  GD_prediction  0.682825  0.678883   0.683684  ...                        0.183265                       0.183265                            0.124953                           0.198991
+
+[7 rows x 13 columns]
+2021-06-13 23:13:20,108 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-13 23:13:20,108 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-13 23:13:20,108 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-13 23:13:20,270 genetic      DEBUG              method  Accuracy  F1 Score  Precision  ...  generalized_entropy_index_race  generalized_entropy_index_sex  true_positive_rate_difference_race  true_positive_rate_difference_sex
+0           full  0.670360  0.666588   0.670491  ...                        0.189277                       0.189277                            0.140041                           0.347791
+1        unaware  0.668975  0.664860   0.669296  ...                        0.191429                       0.191429                            0.173496                           0.158483
+2            cf1  0.613573  0.593811   0.619507  ...                        0.264828                       0.264828                            0.090867                           0.157801
+3            cf2  0.619114  0.608311   0.619963  ...                        0.241047                       0.241047                            0.111587                           0.186716
+4  AL_prediction  0.695291  0.693659   0.694792  ...                        0.165738                       0.165738                            0.170470                           0.259274
+5  GL_prediction  0.700831  0.698475   0.700951  ...                        0.166726                       0.166726                            0.101332                           0.203082
+6  GD_prediction  0.635734  0.634049   0.649505  ...                        0.141196                       0.141196                            0.129786                           0.204719
+
+[7 rows x 13 columns]
