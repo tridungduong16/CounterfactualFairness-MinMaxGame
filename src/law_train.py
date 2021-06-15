@@ -9,7 +9,7 @@ import pprint
 import torch.nn.functional as F
 
 from tqdm import tqdm
-from model_arch.discriminator import DiscriminatorLaw
+from model_arch.discriminator import DiscriminatorLaw, DiscriminatorLawAw
 from dfencoder.autoencoder import AutoEncoder
 from dfencoder.dataframe import EncoderDataFrame
 from utils.evaluate_func import evaluate_pred, evaluate_distribution, evaluate_fairness
@@ -18,7 +18,8 @@ from utils.helpers import setup_logging
 from utils.helpers import load_config
 from utils.helpers import features_setting
 from sklearn.model_selection import train_test_split
-
+from torch.utils.data import DataLoader
+from torch.utils.data import TensorDataset
 
 if __name__ == "__main__":
     """Parsing argument"""
@@ -117,7 +118,7 @@ if __name__ == "__main__":
     """Setup generator and discriminator"""
     emb_size = 64
     discriminator_agnostic = DiscriminatorLaw(emb_size, problem)
-    discriminator_awareness = DiscriminatorLaw(emb_size + 4, problem)
+    discriminator_awareness = DiscriminatorLawAw(emb_size + 4, problem)
     discriminator_agnostic.to(device)
     discriminator_awareness.to(device)
 
@@ -150,10 +151,7 @@ if __name__ == "__main__":
     optimizer3 = torch.optim.SGD(discriminator_awareness.parameters(),
                                  lr=learning_rate, momentum=0.9)
 
-    # scheduler1 = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer1, 'min')
     scheduler1 = torch.optim.lr_scheduler.StepLR(optimizer1, step_size=20, gamma=0.1)
-    # scheduler2 = torch.optim.lr_scheduler.StepLR(optimizer2, step_size=50, gamma=0.1)
-    # scheduler3 = torch.optim.lr_scheduler.StepLR(optimizer3, step_size=50, gamma=0.1)
     scheduler2 = torch.optim.lr_scheduler.CyclicLR(optimizer2, base_lr=learning_rate, max_lr=1e-2)
     scheduler3 = torch.optim.lr_scheduler.CyclicLR(optimizer3, base_lr=learning_rate, max_lr=1e-2)
 
@@ -173,27 +171,45 @@ if __name__ == "__main__":
     losses_aware = []
     losses_gen = []
 
+    """Setup training data"""
+    train_x = torch.tensor(df[full_features].values)
+    train_y = torch.tensor(df[target].values)
+    data_set = TensorDataset(train_x, train_y)
+    train_batches = DataLoader(data_set, batch_size=512, shuffle=True)
+
+
     for i in (range(epochs)):
-        df_train = df.copy().sample(frac=1).reset_index(drop=True)
+        # df_train = df.copy().sample(frac=1).reset_index(drop=True)
 
         sum_loss = []
         sum_loss_aware = []
         sum_loss_gen = []
-        for j in tqdm(range(n_updates)):
+        # for j in tqdm(range(n_updates)):
+        for x_batch, y_batch in tqdm(train_batches):
             path = step % 10
 
-            df_term = df_train.loc[batch_size * j:batch_size * (j + 1)].reset_index(drop=True)
-            df_term_generator = df_term[normal_features].copy()
+            df_term_generator = pd.DataFrame(data=x_batch.detach().numpy()[:, 2:], columns=normal_features)
             df_term_generator = EncoderDataFrame(df_term_generator)
-            df_term_generator_noise = df_term_generator.swap(likelihood=0.001)
-            df_term_autoencoder = df_term[full_features].copy()
+            df_term_autoencoder = pd.DataFrame(data=x_batch.detach().numpy(), columns=full_features)
+
+            # print(df_term_generator)
+            # print("----------------")
+            # print(df_term_autoencoder)
+            # sys.exit(1)
+            # df_term = df_train.loc[batch_size * j:batch_size * (j + 1)].reset_index(drop=True)
+            # df_term_generator = df_term[normal_features].copy()
+            # df_term_generator = EncoderDataFrame(df_term_generator)
+            # df_term_generator_noise = df_term_generator.swap(likelihood=0.001)
+            # df_term_autoencoder = df_term[full_features].copy()
 
             """Label"""
-            Y = torch.Tensor(df_term[target].values).to(device).reshape(-1, 1)
+            Y = y_batch
+            Y = Y.to(device).float().reshape(-1, 1)
+            # Y = torch.Tensor(df_term[target].values).to(device).reshape(-1, 1)
 
             """Feed forward"""
             Z = generator.custom_forward(df_term_generator)
-            Z_noise = generator.custom_forward(df_term_generator_noise)
+            # Z_noise = generator.custom_forward(df_term_generator_noise)
 
             """Get the representation from autoencoder model"""
             S = ae_model.get_representation(
@@ -222,7 +238,7 @@ if __name__ == "__main__":
             emb = torch.cat((emb_cat_race, emb_cat_sex), 1)
 
             """Get the sensitive label encoder"""
-            sensitive_label = torch.tensor(df_term[sensitive_features].values.astype(np.float32)).to(device)
+            sensitive_label = torch.tensor(df_term_autoencoder[sensitive_features].values.astype(np.float32)).to(device)
 
             ZS = torch.cat((Z, emb), 1)
             # ZS = torch.cat((Z, sensitive_label), 1)
@@ -230,7 +246,7 @@ if __name__ == "__main__":
             """Prediction and calculate loss"""
             predictor_awareness = discriminator_awareness(ZS)
             predictor_agnostic = discriminator_agnostic(Z)
-            predictor_agnostic_noise = discriminator_agnostic(Z_noise)
+            # predictor_agnostic_noise = discriminator_agnostic(Z_noise)
 
             """Discriminator loss"""
             loss_agnostic = loss_function(predictor_agnostic, Y)
@@ -272,11 +288,12 @@ if __name__ == "__main__":
             step += 1
 
             del df_term_generator
-            del df_term_generator_noise
             del emb_cat_race
             del emb_cat_sex
             del emb
             del ZS
+            del x_batch
+            del y_batch
 
         """Update learning rate"""
         current_lr = scheduler1.get_last_lr()[0]
@@ -330,9 +347,6 @@ if __name__ == "__main__":
         logger.debug("Generator Agnostic")
         logger.debug(display_gen)
 
-        # logger.debug('Loss Agnostic {:.4f}'.format(sum(sum_loss) / len(sum_loss)))
-        # logger.debug('Loss Awareness {:.4f}'.format(sum(sum_loss_aware) / len(sum_loss)))
-        # logger.debug('Generator loss {:.4f}'.format(sum(sum_loss_gen) / len(sum_loss)))
         logger.debug("RMSE {:.4f}".format(eval['RMSE']))
         logger.debug("Fairness {:.7f}".format(eval_fairness['sinkhorn']))
 

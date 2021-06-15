@@ -118,15 +118,12 @@ if __name__ == "__main__":
 
 
     _, df_test = train_test_split(df, test_size=0.1, random_state=0)
-    df = df_test.copy()
-
-    print(df)
 
     """Load auto encoder"""
-    df_autoencoder = df[full_features].copy()
+    df_autoencoder = df_test[full_features].copy()
     emb_size = 128
     ae_model = AutoEncoder(
-        input_shape=df[full_features].shape[1],
+        input_shape=df_test[full_features].shape[1],
         encoder_layers=[512, 512, emb_size],  # model architecture
         decoder_layers=[],  # decoder optional - you can create bottlenecks if you like
         activation='relu',
@@ -139,14 +136,14 @@ if __name__ == "__main__":
         scaler='gauss_rank',  # gauss rank scaling forces your numeric features into standard normal distributions
     )
     ae_model.to(device)
-    # ae_model = load_aemodel(ae_model, conf['law_encoder'], df_autoencoder)
-    ae_model.build_model(df[full_features].copy())
+    # ae_model = load_aemodel(ae_model, conf['law_encoder'], df_test_autoencoder)
+    ae_model.build_model(df_test[full_features].copy())
     ae_model.load_state_dict(torch.load(conf['law_encoder']))
     ae_model.eval()
 
     """Load generator"""
     emb_size = 64
-    df_generator = df[normal_features]
+    df_generator = df_test[normal_features]
     generator = AutoEncoder(
         input_shape = df_generator.shape[1],
         encoder_layers=[256, 256, emb_size],  # model architecture
@@ -163,7 +160,7 @@ if __name__ == "__main__":
         scaler='gauss_rank',  # gauss rank scaling forces your numeric features into standard normal distributions
     )
     generator.to(device)
-    generator.build_model(df_generator)
+    generator.build_model(df[normal_features])
     generator.eval()
 
     """Load discriminator"""
@@ -178,17 +175,17 @@ if __name__ == "__main__":
             print("Lambda ", l)
             generator.load_state_dict(torch.load(conf["lambda_law_generator"].format(l)))
             discriminator.load_state_dict(torch.load(conf["lambda_law_discriminator"].format(l)))
-            df = get_predict(ae_model, generator, df, normal_features, full_features, l)
+            df_test = get_predict(ae_model, generator, df_test, normal_features, full_features, l)
     else:
         generator.load_state_dict(torch.load(conf['law_generator']))
         discriminator.load_state_dict(torch.load(conf['law_discriminator']))
 
-    df = get_predict(ae_model, generator, discriminator, df, normal_features, full_features)
+    df_test = get_predict(ae_model, generator, discriminator, df_test, normal_features, full_features)
 
     if run_lambda:
-        df.to_csv(conf["ivr_law_lambda"], index = False)
+        df_test.to_csv(conf["ivr_law_lambda"], index = False)
     else:
-        df.to_csv(conf["ivr_law"], index = False)
+        df_test.to_csv(conf["ivr_law"], index = False)
 
     """Autoencoder + Linear regression"""
     # Z = ae_model.get_representation(df_autoencoder)
@@ -211,7 +208,6 @@ if __name__ == "__main__":
     # predictor_agnostic = discriminator_agnostic(Z)
     # y_pred = predictor_agnostic.cpu().detach().numpy().reshape(-1)
     # df["GD_prediction"] = y_pred
-
 
 
 

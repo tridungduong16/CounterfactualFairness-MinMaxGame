@@ -5,9 +5,9 @@ from torch.utils.data import DataLoader
 from torch.utils.data import TensorDataset
 
 
-class DiscriminatorLaw(nn.Module):
+class DiscriminatorLawAw(nn.Module):
     def __init__(self, input_length: int, problem=None):
-        super(DiscriminatorLaw, self).__init__()
+        super(DiscriminatorLawAw, self).__init__()
         self.problem = problem
         dim1 = 32
         dim2 = 8
@@ -30,7 +30,7 @@ class DiscriminatorLaw(nn.Module):
         # x = F.leaky_relu(self.hidden1(x))
         # x = self.batchnorm1(x)
         # x = self.dropout(x)
-        #
+
         # x = F.leaky_relu(self.hidden2(x))
         # x = self.batchnorm2(x)
         # x = self.dropout(x)
@@ -38,18 +38,18 @@ class DiscriminatorLaw(nn.Module):
         x = self.predict(x)
         return x
 
-class DiscriminatorLawAw(nn.Module):
+class DiscriminatorLaw(nn.Module):
     def __init__(self, input_length: int, problem=None):
         super(DiscriminatorLaw, self).__init__()
         self.problem = problem
         dim1 = 32
-        dim2 = 8
-        finaldim = 32
+        dim2 = 16
+        finaldim = 16
         self.hidden = torch.nn.Linear(input_length, dim1)   # hidden layer
         self.hidden1 = torch.nn.Linear(dim1, dim2)   # hidden layer
         self.hidden2 = torch.nn.Linear(dim2, finaldim)   # hidden layer
         self.predict = torch.nn.Linear(finaldim, 1)   # output layer
-        self.dropout = nn.Dropout(0.95)
+        self.dropout = nn.Dropout(0.5)
         self.batchnorm = nn.BatchNorm1d(dim1)
         self.batchnorm1 = nn.BatchNorm1d(dim2)
         self.batchnorm2 = nn.BatchNorm1d(finaldim)
@@ -60,13 +60,13 @@ class DiscriminatorLawAw(nn.Module):
         x = self.batchnorm(x)
         x = self.dropout(x)
 
-        # x = F.leaky_relu(self.hidden1(x))
-        # x = self.batchnorm1(x)
-        # x = self.dropout(x)
-        #
-        # x = F.leaky_relu(self.hidden2(x))
-        # x = self.batchnorm2(x)
-        # x = self.dropout(x)
+        x = F.leaky_relu(self.hidden1(x))
+        x = self.batchnorm1(x)
+        x = self.dropout(x)
+
+        x = F.leaky_relu(self.hidden2(x))
+        x = self.batchnorm2(x)
+        x = self.dropout(x)
 
         x = self.predict(x)
         return x
@@ -239,7 +239,6 @@ def train_law(train_x, train_y):
             loss.backward()
             optimizer.step()
     return Net
-
 
 
 

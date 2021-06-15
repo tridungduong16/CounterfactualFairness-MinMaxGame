@@ -158,7 +158,7 @@ def setup_logging(log_path):
     logger = logging.getLogger('CFairness')
     file_handler = logging.FileHandler(filename=log_path)
     stdout_handler = logging.StreamHandler(sys.stdout)
-    formatter = logging.Formatter('%(asctime)s %(name)-12s %(levelname)-8s %(message)s')
+    formatter = logging.Formatter('%(name)-12s %(message)s')
     file_handler.setFormatter(formatter)
     stdout_handler.setFormatter(formatter)
     logger.addHandler(file_handler)

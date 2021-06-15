@@ -323,7 +323,6 @@ class AutoEncoder(torch.nn.Module):
         for ft in self.binary_fts:
             feature = self.binary_fts[ft]
             output_df[ft] = df[ft].apply(lambda x: feature.get(x, False))
-        
 
         for ft in self.categorical_fts:
             feature = self.categorical_fts[ft]
@@ -958,24 +957,21 @@ class AutoEncoder(torch.nn.Module):
 
     def custom_forward(self, X):
         """We do the thang. Takes pandas dataframe as input."""
-        # print(X.shape)
+
         X = self.prepare_df(X)
 
         num, bin, embeddings = self.encode_input(X)
-        # print("number")
-        # print(num)
-        # print("binary")
-        # print(bin)
-        # print("embedding")
-        # print(embeddings)
+        # print("num", num, "bin", bin, "embed", embeddings)
         x = torch.cat(num + bin + embeddings, dim=1)
-        # print("x")
-        # print(x)
-        # print(x.shape)
         # x = self._independent_straight_through_sampling(x)
 
         encoding = self.encode(x)
+        # print("x")
+        # print(x)
         # num, bin, cat = self.decode(encoding)
+        # print("decode")
+        # print(num, bin, cat)
+        # encoding = torch.cat(num + bin + cat, dim=1)
 
         return encoding
 
