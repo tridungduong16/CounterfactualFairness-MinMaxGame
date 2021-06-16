@@ -10,7 +10,7 @@ class DiscriminatorLawAw(nn.Module):
         super(DiscriminatorLawAw, self).__init__()
         self.problem = problem
         dim1 = 32
-        dim2 = 8
+        dim2 = 16
         finaldim = 32
         self.hidden = torch.nn.Linear(input_length, dim1)   # hidden layer
         self.hidden1 = torch.nn.Linear(dim1, dim2)   # hidden layer
@@ -42,9 +42,9 @@ class DiscriminatorLaw(nn.Module):
     def __init__(self, input_length: int, problem=None):
         super(DiscriminatorLaw, self).__init__()
         self.problem = problem
-        dim1 = 32
-        dim2 = 16
-        finaldim = 16
+        dim1 = 256
+        dim2 = 128
+        finaldim = 128
         self.hidden = torch.nn.Linear(input_length, dim1)   # hidden layer
         self.hidden1 = torch.nn.Linear(dim1, dim2)   # hidden layer
         self.hidden2 = torch.nn.Linear(dim2, finaldim)   # hidden layer
@@ -64,9 +64,10 @@ class DiscriminatorLaw(nn.Module):
         x = self.batchnorm1(x)
         x = self.dropout(x)
 
-        x = F.leaky_relu(self.hidden2(x))
-        x = self.batchnorm2(x)
-        x = self.dropout(x)
+        for i in range(2):
+            x = F.leaky_relu(self.hidden2(x))
+            x = self.batchnorm2(x)
+            x = self.dropout(x)
 
         x = self.predict(x)
         return x

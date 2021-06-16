@@ -24,14 +24,15 @@ from torch.utils.data import TensorDataset
 if __name__ == "__main__":
     """Parsing argument"""
     parser = argparse.ArgumentParser()
-    parser.add_argument('--lambda_weight', type=float, default=5)
-    parser.add_argument('--run_lambda', action='store_true')
+    parser.add_argument('--lambda_weight', type=float, default=100)
+    parser.add_argument('--learning_rate', type=float, default=1-5)
+    parser.add_argument('--random_state', type=int, default=0)
     parser.add_argument('--epoch', type=int, default=50)
 
     args = parser.parse_args()
 
     lambda_weight = args.lambda_weight
-    run_lambda = args.run_lambda
+    random_state = args.random_state
 
     """Device"""
     if torch.cuda.is_available():
@@ -47,8 +48,6 @@ if __name__ == "__main__":
     """Set up logging"""
     logger = setup_logging(conf['log_train_law'])
 
-    if run_lambda:
-        logger.debug("Run lambda with weight {}".format(lambda_weight))
 
     """Load data"""
     data_path = conf['data_law']
@@ -75,8 +74,6 @@ if __name__ == "__main__":
     df = preprocess_dataset(df, [], categorical_features)
     df['ZFYA'] = (df['ZFYA'] - df['ZFYA'].mean()) / df['ZFYA'].std()
     df = df[['LSAT', 'UGPA', 'sex', 'race', 'ZFYA']]
-
-    print(df)
 
     """Setup auto encoder"""
     df_autoencoder = df[full_features].copy()
@@ -392,13 +389,9 @@ if __name__ == "__main__":
 
     """Save model"""
     logger.debug("Saving model......")
-    if run_lambda:
-        torch.save(generator.state_dict(), conf["lambda_law_generator"].format(lambda_weight))
-        torch.save(discriminator_agnostic.state_dict(), conf["lambda_law_discriminator"].format(lambda_weight))
-    else:
-        logger.debug("Save normal model")
-        torch.save(generator.state_dict(), conf["law_generator"])
-        torch.save(discriminator_agnostic.state_dict(), conf["law_discriminator"])
+
+    torch.save(generator.state_dict(), conf["law_generator"])
+    torch.save(discriminator_agnostic.state_dict(), conf["law_discriminator"])
 
     """Output to file"""
     sys.modules[__name__].__dict__.clear()

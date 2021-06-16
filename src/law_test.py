@@ -61,23 +61,23 @@ def get_predict(ae_model, generator, discriminator, df, normal_features, full_fe
 
 if __name__ == "__main__":
     """Parsing argument"""
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--lambda_weight', type=str, default="0.1 0.5 1 1.5 2 2.5 3 3.5 4 4.5 5 5.5 6 6.5 7 7.5 8 8.5 9 9.5 10 20 30 40 50")
-    parser.add_argument('--run_lambda', action='store_true')
+    # parser = argparse.ArgumentParser()
+    # parser.add_argument('--lambda_weight', type=str, default="0.1 0.5 1 1.5 2 2.5 3 3.5 4 4.5 5 5.5 6 6.5 7 7.5 8 8.5 9 9.5 10 20 30 40 50")
+    # parser.add_argument('--run_lambda', action='store_true')
 
-    args = parser.parse_args()
-    run_lambda = args.run_lambda
-    lambda_weight = args.lambda_weight
-    print(lambda_weight)
-    print(lambda_weight.split(" "))
-    lambda_weight = [float(x) for x in lambda_weight.split(' ')]
-    lambda_weight = [str(x) for x in lambda_weight]
+    # args = parser.parse_args()
+    # run_lambda = args.run_lambda
+    # lambda_weight = args.lambda_weight
+    # print(lambda_weight)
+    # print(lambda_weight.split(" "))
+    # lambda_weight = [float(x) for x in lambda_weight.split(' ')]
+    # lambda_weight = [str(x) for x in lambda_weight]
 
 
-    if run_lambda:
-        print("Run lambda with lambda ", lambda_weight)
-    else:
-        print("Run normal flow")
+    # if run_lambda:
+    #     print("Run lambda with lambda ", lambda_weight)
+    # else:
+    #     print("Run normal flow")
 
     """Device"""
     if torch.cuda.is_available():
@@ -170,22 +170,22 @@ if __name__ == "__main__":
     discriminator.load_state_dict(torch.load(conf['law_discriminator']))
     discriminator.eval()
 
-    if run_lambda:
-        for l in lambda_weight:
-            print("Lambda ", l)
-            generator.load_state_dict(torch.load(conf["lambda_law_generator"].format(l)))
-            discriminator.load_state_dict(torch.load(conf["lambda_law_discriminator"].format(l)))
-            df_test = get_predict(ae_model, generator, df_test, normal_features, full_features, l)
-    else:
-        generator.load_state_dict(torch.load(conf['law_generator']))
-        discriminator.load_state_dict(torch.load(conf['law_discriminator']))
+    # if run_lambda:
+    #     for l in lambda_weight:
+    #         print("Lambda ", l)
+    #         generator.load_state_dict(torch.load(conf["lambda_law_generator"].format(l)))
+    #         discriminator.load_state_dict(torch.load(conf["lambda_law_discriminator"].format(l)))
+    #         df_test = get_predict(ae_model, generator, df_test, normal_features, full_features, l)
+    # else:
+    generator.load_state_dict(torch.load(conf['law_generator']))
+    discriminator.load_state_dict(torch.load(conf['law_discriminator']))
 
     df_test = get_predict(ae_model, generator, discriminator, df_test, normal_features, full_features)
 
-    if run_lambda:
-        df_test.to_csv(conf["ivr_law_lambda"], index = False)
-    else:
-        df_test.to_csv(conf["ivr_law"], index = False)
+    # if run_lambda:
+    #     df_test.to_csv(conf["ivr_law_lambda"], index = False)
+    # else:
+    df_test.to_csv(conf["ivr_law"], index = False)
 
     """Autoencoder + Linear regression"""
     # Z = ae_model.get_representation(df_autoencoder)
