@@ -23,12 +23,21 @@ from sklearn.model_selection import StratifiedKFold
 from tqdm import tqdm
 import argparse
 import visdom
+from torch.utils.data import DataLoader
+from torch.utils.data import TensorDataset
 
 if __name__ == "__main__":
     """Parsing argument"""
     parser = argparse.ArgumentParser()
-    parser.add_argument('--data_name', type=str, default='compas')
-    parser.add_argument('--epoch', type=int, default=200)
+    # parser.add_argument('--data_name', type=str, default='compas')
+    # parser.add_argument('--epoch', type=int, default=200)
+
+    """Parsing argument"""
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--lambda_weight', type=float, default=100)
+    parser.add_argument('--learning_rate', type=float, default=1e-5)
+    parser.add_argument('--random_state', type=int, default=0)
+    parser.add_argument('--epoch', type=int, default=50)
 
     """Device"""
     if torch.cuda.is_available():
@@ -159,6 +168,12 @@ if __name__ == "__main__":
     losses = []
     losses_aware = []
     losses_gen = []
+
+    """Setup training data"""
+    train_x = torch.tensor(df[full_features].values)
+    train_y = torch.tensor(df[target].values)
+    data_set = TensorDataset(train_x, train_y)
+    train_batches = DataLoader(data_set, batch_size=512, shuffle=True)
 
     step = 0
     learning_rates = []
@@ -298,15 +313,23 @@ if __name__ == "__main__":
         losses_aware.append(l2)
         losses_gen.append(l3)
 
+
         """Evaluation"""
         eval = evaluate_classifier(y_pred, y_true)
+
+        """Logging"""
+        display_loss = '->'.join([str(round(x,3)) for x in losses])
+        display_aware = '->'.join([str(round(x,3)) for x in losses_aware])
+        display_gen = '->'.join([str(round(x,3)) for x in losses_gen])
+
         logger.debug("Epoch {}".format(i))
-        logger.debug("Loss generator {:.5f}".format(l1))
-        logger.debug("Loss discriminator 1 {:.5f}".format(l2))
-        logger.debug("Loss discriminator 2 {:.5f}".format(l3))
+        logger.debug("Loss Agnostic")
+        logger.debug(display_loss)
+        logger.debug("Loss Awareness")
+        logger.debug(display_aware)
+        logger.debug("Generator Agnostic")
+        logger.debug(display_gen)
         logger.debug("Learning rate {:.10f}".format(current_lr))
-        # logger.debug("Learning rate {:.5f}".format(scheduler2._last_lr))
-        # logger.debug("Learning rate {:.5f}".format(scheduler3._last_lr))
 
         for key, value in eval.items():
             logger.debug("{} {:.4f}".format(key, value))

@@ -50,3 +50,29 @@
 6  GD_prediction  0.635734  0.634049   0.649505  ...                        0.141196                       0.141196                            0.129786                           0.204719
 
 [7 rows x 13 columns]
+2021-06-16 15:52:21,696 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-16 15:52:21,696 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-16 15:52:21,696 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-16 15:52:21,908 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0           full  ...                           0.347791
+1        unaware  ...                           0.158483
+2            cf1  ...                           0.157801
+3            cf2  ...                           0.186716
+4  AL_prediction  ...                           0.283552
+5  GL_prediction  ...                           0.169122
+6  GD_prediction  ...                           0.155619
+
+[7 rows x 13 columns]
+2021-06-16 15:53:28,524 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-16 15:53:28,524 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-16 15:53:28,524 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-16 15:53:28,722 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0           full  ...                           0.347791
+1        unaware  ...                           0.158483
+2            cf1  ...                           0.157801
+3            cf2  ...                           0.186716
+4  AL_prediction  ...                           0.283552
+5  GL_prediction  ...                           0.169122
+6  GD_prediction  ...                           0.155619
+
+[7 rows x 13 columns]

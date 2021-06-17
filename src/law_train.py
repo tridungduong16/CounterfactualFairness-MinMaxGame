@@ -33,6 +33,7 @@ if __name__ == "__main__":
 
     lambda_weight = args.lambda_weight
     random_state = args.random_state
+    learning_rate = args.learning_rate
 
     """Device"""
     if torch.cuda.is_available():
@@ -98,24 +99,24 @@ if __name__ == "__main__":
 
     """Setup hyperparameter"""
     logger.debug('Setup hyperparameter')
-    parameters = {}
-    parameters['epochs'] = args.epoch
-    parameters['learning_rate'] = 1e-2
-    parameters['dataframe'] = df
-    parameters['batch_size'] = 128
-    parameters['problem'] = 'regression'
+    # parameters = {}
+    # parameters['epochs'] = args.epoch
+    # parameters['learning_rate'] = 1e-2
+    # parameters['dataframe'] = df
+    # parameters['batch_size'] = 128
+    # parameters['problem'] = 'regression'
 
     """Hyperparameter"""
-    learning_rate = parameters['learning_rate']
-    epochs = parameters['epochs']
-    dataframe = parameters['dataframe']
-    batch_size = parameters['batch_size']
-    problem = parameters['problem']
+    learning_rate = args.learning_rate
+    epochs = args.epoch
+    dataframe = df
+    batch_size = 128
+    problem = 'regression'
 
     """Setup generator and discriminator"""
     emb_size = 64
     discriminator_agnostic = DiscriminatorLaw(emb_size, problem)
-    discriminator_awareness = DiscriminatorLawAw(emb_size + 4, problem)
+    discriminator_awareness = DiscriminatorLawAw(emb_size + 10, problem)
     discriminator_agnostic.to(device)
     discriminator_awareness.to(device)
 
@@ -175,6 +176,13 @@ if __name__ == "__main__":
     train_batches = DataLoader(data_set, batch_size=512, shuffle=True)
 
 
+    one_hot = ['sex_0', 'sex_1', 'race_0', 'race_1']
+
+    print(df.dtypes)
+
+    # sys.exit()
+
+
     for i in (range(epochs)):
         # df_train = df.copy().sample(frac=1).reset_index(drop=True)
 
@@ -188,6 +196,13 @@ if __name__ == "__main__":
             df_term_generator = pd.DataFrame(data=x_batch.detach().numpy()[:, 2:], columns=normal_features)
             df_term_generator = EncoderDataFrame(df_term_generator)
             df_term_autoencoder = pd.DataFrame(data=x_batch.detach().numpy(), columns=full_features)
+
+            df_term_autoencoder = preprocess_dataset(df_term_autoencoder, [], categorical_features)
+
+            df_term_ohe = pd.get_dummies(df_term_autoencoder, columns=['sex'])
+            df_term_ohe = pd.get_dummies(df_term_ohe, columns=['race'])
+            # print(df_term_ohe)
+            df_term_ohe = df_term_ohe[one_hot]
 
             # print(df_term_generator)
             # print("----------------")
@@ -236,9 +251,13 @@ if __name__ == "__main__":
 
             """Get the sensitive label encoder"""
             sensitive_label = torch.tensor(df_term_autoencoder[sensitive_features].values.astype(np.float32)).to(device)
+            onehot_label = torch.tensor(df_term_ohe.values.astype(np.float32)).to(device)
 
             ZS = torch.cat((Z, emb), 1)
-            # ZS = torch.cat((Z, sensitive_label), 1)
+            ZS = torch.cat((ZS, sensitive_label), 1)
+            ZS = torch.cat((ZS, onehot_label), 1)
+
+            # print(ZS.shape)
 
             """Prediction and calculate loss"""
             predictor_awareness = discriminator_awareness(ZS)
@@ -337,15 +356,16 @@ if __name__ == "__main__":
         display_aware = '->'.join([str(round(x,3)) for x in losses_aware])
         display_gen = '->'.join([str(round(x,3)) for x in losses_gen])
 
-        logger.debug("Loss Agnostic")
+        logger.debug("Law Loss Agnostic")
         logger.debug(display_loss)
-        logger.debug("Loss Awareness")
+        logger.debug("Law Loss Awareness")
         logger.debug(display_aware)
-        logger.debug("Generator Agnostic")
+        logger.debug("Law Generator Agnostic")
         logger.debug(display_gen)
 
         logger.debug("RMSE {:.4f}".format(eval['RMSE']))
         logger.debug("Fairness {:.7f}".format(eval_fairness['sinkhorn']))
+        logger.debug("Learning rate {}".format(current_lr))
 
         del df_train
         del df_generator

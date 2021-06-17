@@ -32,6 +32,64 @@ from aif360.datasets import StandardDataset
 from aif360.metrics import BinaryLabelDatasetMetric, ClassificationMetric
 from collections import Counter
 
+import torch
+
+def guassian_kernel(source, target, kernel_mul=2.0, kernel_num=5, fix_sigma=None):
+    '''
+         Convert the source domain data and target domain data into a kernel matrix, which is the K above
+    Params:
+	     source: source domain data (n * len(x))
+	     target: target domain data (m * len(y))
+	    kernel_mul:
+	     kernel_num: take the number of different Gaussian kernels
+	     fix_sigma: sigma values ​​of different Gaussian kernels
+	Return:
+		 sum(kernel_val): sum of multiple kernel matrices
+    '''
+    n_samples = int(source.size()[0])+int(target.size()[0])# Find the number of rows of the matrix. Generally, the scales of source and target are the same, which is convenient for calculation
+    total = torch.cat([source, target], dim=0)#Combine source and target in column direction
+    #Copy total (n+m) copies
+    total0 = total.unsqueeze(0).expand(int(total.size(0)), int(total.size(0)), int(total.size(1)))
+    #Copy each row of total into (n+m) rows, that is, each data is expanded into (n+m) copies
+    total1 = total.unsqueeze(1).expand(int(total.size(0)), int(total.size(0)), int(total.size(1)))
+    #Find the sum between any two data, the coordinates (i, j) in the obtained matrix represent the l2 distance between the i-th row of data and the j-th row of data in total (0 when i==j)
+    L2_distance = ((total0-total1)**2).sum(2)
+    #Adjust the sigma value of the Gaussian kernel function
+    if fix_sigma:
+        bandwidth = fix_sigma
+    else:
+        bandwidth = torch.sum(L2_distance.data) / (n_samples**2-n_samples)
+    #Take fix_sigma as the median value, and take kernel_mul as a multiple of kernel_num bandwidth values ​​(for example, when fix_sigma is 1, you get [0.25,0.5,1,2,4]
+    bandwidth /= kernel_mul ** (kernel_num // 2)
+    bandwidth_list = [bandwidth * (kernel_mul**i) for i in range(kernel_num)]
+    #Gaussian kernel function mathematical expression
+    kernel_val = [torch.exp(-L2_distance / bandwidth_temp) for bandwidth_temp in bandwidth_list]
+    #Get the final kernel matrix
+    return sum(kernel_val)#/len(kernel_val)
+
+def mmd_rbf(source, target, kernel_mul=2.0, kernel_num=5, fix_sigma=None):
+    '''
+         Calculate the MMD distance between source domain data and target domain data
+    Params:
+	     source: source domain data (n * len(x))
+	     target: target domain data (m * len(y))
+	    kernel_mul:
+	     kernel_num: take the number of different Gaussian kernels
+	     fix_sigma: sigma values ​​of different Gaussian kernels
+	Return:
+		loss: MMD loss
+    '''
+    batch_size = int(source.size()[0])#Generally the default is that the batchsize of the source domain and the target domain are the same
+    kernels = guassian_kernel(source, target,
+        kernel_mul=kernel_mul, kernel_num=kernel_num, fix_sigma=fix_sigma)
+    #According to formula (3) divide the kernel matrix into 4 parts
+    XX = kernels[:batch_size, :batch_size]
+    YY = kernels[batch_size:, batch_size:]
+    XY = kernels[:batch_size, batch_size:]
+    YX = kernels[batch_size:, :batch_size]
+    loss = torch.mean(XX + YY - XY -YX)
+    return loss#Because it is generally n==m, the L matrix is ​​generally not added to the calculation
+
 def evaluate_pred(y_pred, y_true):
     """
     
@@ -93,16 +151,16 @@ def evaluate_distribution(ys, ys_hat):
 
     backend = "auto"
 
-    Loss = SamplesLoss("sinkhorn", p=2, blur=0.05, scaling=0.95, backend = backend)
+    Loss = SamplesLoss("sinkhorn", p=2, blur=0.05, scaling=0.5, backend = backend)
     evaluation['sinkhorn'] = Loss(ys, ys_hat).cpu().detach().numpy() 
     
-    Loss = SamplesLoss("energy", p=2, blur=0.05, scaling=0.95, backend = backend)
-    evaluation["energy"] = Loss(ys, ys_hat).cpu().detach().numpy() 
+    Loss = SamplesLoss("energy", p=2, blur=0.05, scaling=0.5, backend = backend)
+    evaluation["energy"] = Loss(ys, ys_hat).cpu().detach().numpy()
     
-    Loss = SamplesLoss("gaussian", p=2, blur=0.5, scaling=0.95, backend = backend)
+    Loss = SamplesLoss("gaussian", p=2, blur=0.5, scaling=0.5, backend = backend)
     evaluation["gaussian"] = Loss(ys, ys_hat).cpu().detach().numpy()
 
-    Loss = SamplesLoss("laplacian", p=2, blur=0.5, scaling=0.95, backend = backend)
+    Loss = SamplesLoss("laplacian", p=2, blur=0.5, scaling=0.5, backend = backend)
     evaluation["laplacian"] = Loss(ys, ys_hat).cpu().detach().numpy()
 
 

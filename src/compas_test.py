@@ -76,7 +76,7 @@ if __name__ == "__main__":
     standard_features = continuous_features + discrete_features
 
     """Preprocess data"""
-    df = preprocess_dataset(df, standard_features, categorical_features)
+    df = preprocess_dataset(df, [], categorical_features)
     df_generator = df[normal_features]
     df[target] = df[target].astype(float)
 

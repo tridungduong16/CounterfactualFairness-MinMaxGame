@@ -39,27 +39,19 @@ def evaluate_law(df, df_result, col):
     return df_result
 
 if __name__ == "__main__":
-    """Parsing argument"""
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--lambda_weight', type=str, default="0.1 0.5 1 1.5 2 2.5 3 3.5 4 4.5")
-    parser.add_argument('--run_lambda', action='store_true')
-
-    args = parser.parse_args()
-    run_lambda = args.run_lambda
-    lambda_weight = args.lambda_weight
-    lambda_weight = [float(x) for x in lambda_weight.split(' ')]
-    lambda_weight = [str(x) for x in lambda_weight]
-
-
-    if run_lambda:
-        print("Run lambda with lambda ", lambda_weight)
-    else:
-        print("Run normal flow")
-
     """Load configuration"""
     config_path = "/home/trduong/Data/counterfactual_fairness_game_theoric/configuration.yml"
     conf = load_config(config_path)
-        
+
+    """Parsing argument"""
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--data_path', type=str, default=conf["ivr_law"])
+    parser.add_argument('--result_path', type=str, default=conf["evaluate_law"])
+
+    args = parser.parse_args()
+    data_path = args.data_path
+    result_path = args.result_path
+
     """Set up logging"""
     logger = logging.getLogger('genetic')
     file_handler = logging.FileHandler(filename=conf['evaluate_law_log'])
@@ -73,36 +65,16 @@ if __name__ == "__main__":
     
 
     """Load data"""
-    # col_baseline = ["full_linear",
-    #                 "full_net",
-    #                 "unaware_linear",
-    #                 "unaware_net",
-    #                 "level2_lin_True",
-    #                 "level2_lin_False",
-    #                 "level3_lin_True",
-    #                 "level3_lin_False"]
 
-    # col_ivr = ['AL_prediction', 'GL_prediction', 'GD_prediction']
-
-    # col = col_baseline +  col_ivr
-
-    result_path = ''
-    if run_lambda:
-        GD_prediction = 'GD_prediction'
-        col = ['GD_prediction_' + str(l)  for l in lambda_weight]
-        df = pd.read_csv(conf["ivr_law_lambda"])
-        result_path = conf['ivr_law_lambda']
-    else:
-        col = ["full_linear", "full_net",
-                        "unaware_linear", "unaware_net",
-                        "level2_lin_True", "level2_lin_False",
-                        "level3_lin_True", "level3_lin_False",
-                        "AL_prediction", "GL_prediction", "GD_prediction"]
-        df2 = pd.read_csv(conf["ivr_law"])
-        df1 = pd.read_csv(conf['law_baseline'])
-        df2 = df2.drop(columns = ['LSAT','UGPA','ZFYA', 'race','sex'])
-        df = pd.concat([df1, df2], axis=1)
-        result_path = conf['evaluate_law']
+    col = ["full_linear", "full_net",
+                    "unaware_linear", "unaware_net",
+                    "level2_lin_True", "level2_lin_False",
+                    "level3_lin_True", "level3_lin_False",
+                    "AL_prediction", "GL_prediction", "GD_prediction"]
+    df2 = pd.read_csv(data_path)
+    df1 = pd.read_csv(conf['law_baseline'])
+    df2 = df2.drop(columns = ['LSAT','UGPA','ZFYA', 'race','sex'])
+    df = pd.concat([df1, df2], axis=1)
 
 
     df_result = pd.DataFrame()
@@ -131,7 +103,6 @@ if __name__ == "__main__":
     print('Unreachable objects:', n)
     print('Remaining Garbage:',)
     pprint.pprint(gc.garbage)
-    # logger.debug(df_result[['method', 'RMSE', 'R2score', 'sinkhorn']])
     sys.modules[__name__].__dict__.clear()
 
     
