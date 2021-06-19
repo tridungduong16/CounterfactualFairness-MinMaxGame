@@ -83,6 +83,8 @@ if __name__ == "__main__":
     df_result = pd.DataFrame()
 
     """Evaluate performance"""
+
+    print(df)
     df_result = classification_performance(df,
                                         df_result,
                                         sensitive_features,

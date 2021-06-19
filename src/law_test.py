@@ -113,11 +113,11 @@ if __name__ == "__main__":
 
     """Preprocess data"""
     df = preprocess_dataset(df, [], categorical_features)
-    df['ZFYA'] = (df['ZFYA']-df['ZFYA'].mean())/df['ZFYA'].std()
+    # df['ZFYA'] = (df['ZFYA']-df['ZFYA'].mean())/df['ZFYA'].std()
     df = df[['LSAT', 'UGPA', 'sex', 'race', 'ZFYA']]
 
 
-    _, df_test = train_test_split(df, test_size=0.1, random_state=0)
+    _, df_test = train_test_split(df, test_size=0.2, random_state=0)
 
     """Load auto encoder"""
     df_autoencoder = df_test[full_features].copy()

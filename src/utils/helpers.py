@@ -36,13 +36,14 @@ def features_setting(data):
         dict_['full_features'] = dict_['categorical_features'] + dict_['continuous_features']
         dict_['normal_features'] = [x for x in dict_['full_features'] if x not in dict_['sensitive_features']]
         dict_['target'] = 'income'
+        dict_['discrete_features'] = []
 
     elif data == "compas":
         dict_['categorical_features'] = ['age_cat', 'c_charge_degree', 'sex', 'race']
         dict_['continuous_features'] = ['age']
         dict_['discrete_features'] = ['juv_fel_count', 'juv_misd_count', 'juv_other_count', 'priors_count']
         dict_['full_features'] = dict_['categorical_features'] + dict_['continuous_features'] + dict_['discrete_features']
-        dict_['sensitive_features'] = ['race', 'sex']
+        dict_['sensitive_features'] = ['race']
         dict_['normal_features'] = [x for x in dict_['full_features'] if x not in dict_['sensitive_features']]
         dict_['target'] = 'two_year_recid'
 

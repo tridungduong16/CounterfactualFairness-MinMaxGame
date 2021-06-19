@@ -73,7 +73,7 @@ if __name__ == "__main__":
     print(df)
     """Preprocess data"""
     df = preprocess_dataset(df, [], categorical_features)
-    df['ZFYA'] = (df['ZFYA'] - df['ZFYA'].mean()) / df['ZFYA'].std()
+    # df['ZFYA'] = (df['ZFYA'] - df['ZFYA'].mean()) / df['ZFYA'].std()
     df = df[['LSAT', 'UGPA', 'sex', 'race', 'ZFYA']]
 
     """Setup auto encoder"""

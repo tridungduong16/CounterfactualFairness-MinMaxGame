@@ -22,7 +22,9 @@ def get_predict(ae_model, generator, discriminator, df, dict_, l = ''):
     reg = LogisticRegression(solver='saga', max_iter=1000)
     reg.fit(Z, df[dict_["target"]].values)
     y_pred = reg.predict(Z)
-    df["AL_prediction"] = y_pred
+    print(y_pred.reshape(-1))
+    df.loc[:,"AL_prediction"] = y_pred.reshape(-1)
+    df.loc[:,"AL_prediction" + "_proba"] = reg.predict_proba(Z)[:,0].reshape(-1)
 
     """Generator + Linear regression"""
     Z = generator.custom_forward(df_generator)
@@ -30,15 +32,16 @@ def get_predict(ae_model, generator, discriminator, df, dict_, l = ''):
     reg = LogisticRegression(solver='saga', max_iter=1000)
     reg.fit(Z, df[dict_["target"]].values)
     y_pred = reg.predict(Z)
-    df["GL_prediction"] = y_pred
+    df.loc[:,"GL_prediction"] = y_pred.reshape(-1)
+    df.loc[:,"GL_prediction" + "_proba"] = reg.predict_proba(Z)[:,0].reshape(-1)
 
     """Generator + Discriminator"""
     Z = generator.custom_forward(df_generator)
     predictor_agnostic = discriminator(Z)
     y_pred = torch.argmax(predictor_agnostic, dim=1)
     y_pred = y_pred.reshape(-1).cpu().detach().numpy()
-    df[name] = y_pred
-    df[name + "_proba"] = predictor_agnostic.cpu().detach().numpy()[:,0]
+    df.loc[:,name] = y_pred
+    df.loc[:,name + "_proba"] = predictor_agnostic.cpu().detach().numpy()[:,0]
 
 
     return df
@@ -80,7 +83,7 @@ if __name__ == "__main__":
     df_generator = df[normal_features]
     df[target] = df[target].astype(float)
 
-    # df, df_test = train_test_split(df, test_size=0.1, random_state=0)
+    df_train, df_test = train_test_split(df, test_size=0.2, random_state=0)
     # df = df_test.copy()
 
     """Load auto encoder"""
@@ -105,11 +108,11 @@ if __name__ == "__main__":
     ae_model.eval()
 
     """Load generator"""
-    emb_size = 128
+    emb_size_gen = 128
     df_generator = df[normal_features]
     generator= AutoEncoder(
         input_shape = df_generator.shape[1],
-        encoder_layers=[512, 512, emb_size],  # model architecture
+        encoder_layers=[512, 512, emb_size_gen],  # model architecture
         decoder_layers=[],  # decoder optional - you can create bottlenecks if you like
         encoder_dropout = 0.5,
         decoder_dropout = 0.5,
@@ -129,20 +132,20 @@ if __name__ == "__main__":
 
 
     """Load discriminator"""
-    emb_size = 128
-    discriminator = DiscriminatorCompasAg(emb_size)
+    # emb_size = 128
+    discriminator = DiscriminatorCompasAg(emb_size_gen)
     discriminator.to(device)
     discriminator.load_state_dict(torch.load(conf['compas_discriminator']))
     discriminator.eval()
 
     """Split dataset into train and test"""
-    df, df_test = train_test_split(df, test_size=0.1, random_state=0)
-    df = df_test.copy()
+    # df, df_test = train_test_split(df, test_size=0.1, random_state=0)
+    # df = df_test.copy()
 
     # df_generator = df[normal_features]
     # df_autoencoder = df[full_features].copy()
 
-    df = get_predict(ae_model, generator, discriminator, df, dict_)
+    df_test = get_predict(ae_model, generator, discriminator, df_test, dict_)
 
     """Autoencoder + Linear regression"""
     # Z = ae_model.get_representation(df_autoencoder)
@@ -171,7 +174,7 @@ if __name__ == "__main__":
     # df["GD_prediction_proba"] = predictor_agnostic.cpu().detach().numpy()[:,0]
 
     # print(df)
-    df.to_csv(conf["ivr_compas"], index = False)
+    df_test.to_csv(conf["ivr_compas"], index = False)
 
 
 

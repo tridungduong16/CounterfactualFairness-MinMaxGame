@@ -24,96 +24,30 @@ from utils.helpers import features_setting
 
 
 def GroundTruthModel_Adult():
-    count_dict = {'marital_status': 5,
-                  'occupation': 6,
-                  'race': 2,
-                  'gender': 2,
-                  'workclass': 4,
-                  'education': 8}
-
-    prob_education = torch.tensor([1 / count_dict['education']] * count_dict['education'])
-    prob_occupation = torch.tensor([1 / count_dict['occupation']] * count_dict['occupation'])
-    prob_maritalstatus = torch.tensor([1 / count_dict['marital_status']] * count_dict['marital_status'])
-
     exo_dist = {
         'Nrace': dist.Bernoulli(torch.tensor(0.75)),
         'Nsex': dist.Bernoulli(torch.tensor(0.5)),
-        'Neducation': dist.Categorical(probs=prob_education),
-        'Nmarital_status': dist.Categorical(probs=prob_maritalstatus),
-        'Noccupation': dist.Categorical(probs=prob_occupation),
+        'Nage': dist.Normal(torch.tensor(0.), torch.tensor(10.)),
         'Nknowledge1': dist.Normal(torch.tensor(0.), torch.tensor(1.)),
         'Nknowledge2': dist.Normal(torch.tensor(0.), torch.tensor(1.)),
-        'Nknowledge3': dist.Normal(torch.tensor(0.), torch.tensor(1.)),
-        'Nknowledge4': dist.Normal(torch.tensor(0.), torch.tensor(1.)),
-        'Nage': dist.Normal(torch.tensor(0.), torch.tensor(1.))
+        'Nknowledge3': dist.Normal(torch.tensor(0.), torch.tensor(1.))
+
     }
 
-    R = pyro.sample("Race", exo_dist['Nrace'])
     S = pyro.sample("Sex", exo_dist['Nsex'])
+    R = pyro.sample("Race", exo_dist['Nrace'])
+    A = pyro.sample("Age", exo_dist['Nage'])
     K1 = pyro.sample("Knowledge1", exo_dist['Nknowledge1'])
     K2 = pyro.sample("Knowledge2", exo_dist['Nknowledge2'])
     K3 = pyro.sample("Knowledge3", exo_dist['Nknowledge3'])
-    K4 = pyro.sample("Knowledge4", exo_dist['Nknowledge4'])
-    A = pyro.sample("Age", exo_dist['Nage'])
 
-    mu_E = R + S + K1 + K2 + K3 + K4 + A
-    x1, x2, x3, x4, x5, x6, x7 = mu_E - 3, mu_E - 2, mu_E - 1, mu_E, mu_E + 1, mu_E + 2, mu_E + 3
-    E = pyro.sample("Education", dist.Normal(mu_E, 1))
-    if (E >= x7) or (E <= x1):
-        E = np.random.choice([2,5])
-    elif (E>= x1 and E <= x2) or (E>= x6 and E <= x7):
-        E = np.random.choice([0,6,4])
-    elif (E>= x2 and E <= x3) or (E>= x5 and E <= x6):
-        E = np.random.choice([1,7])
-    elif (E >= x3) and (E <= x5):
-        E = np.random.choice([3])
-    E = torch.tensor(E)
-
-    mu_M = R + S + E + K1 + K2 + K3 + K4 + A
-    x1, x2, x3, x4, x5, x6, x7 = mu_M - 3, mu_M - 2, mu_M - 1, mu_M, mu_M + 1, mu_M + 2, mu_M + 3
-    M = pyro.sample("Marital", dist.Normal(mu_M, 1))
-    if (M >= x7) or (M <= x1):
-        M = 4
-    elif (M>= x1 and M <= x2) or (M>= x6 and M <= x7):
-        M = np.random.choice([0,2])
-    elif (M>= x2 and M <= x3) or (M>= x5 and M <= x6):
-        M = 3
-    elif (M >= x3) and (M <= x5):
-        M = 1
-    M = torch.tensor(M)
-
-    mu_O = R + S + E + M + K1 + K2 + K3 + K4
-    x1, x2, x3, x4, x5, x6, x7 = mu_O - 3, mu_O - 2, mu_O - 1, mu_O, mu_O + 1, mu_O + 2, mu_O + 3
-    O = pyro.sample("Occupation", dist.Normal(mu_O, 1))
-    if (O >= x7) or (O <= x1):
-        O = 1
-    elif (O>= x1 and O <= x2) or (O>= x6 and O <= x7):
-        O = np.random.choice([2,3])
-    elif (O>= x2 and O <= x3) or (O>= x5 and O <= x6):
-        O = np.random.choice([4,5])
-    elif (M >= x3) and (O <= x5):
-        O = 0
-    O = torch.tensor(O)
-
-    mu_H = R + S + E + M + O + A + K1 + K2 + K3 + K4
-    H = pyro.sample("Hour", dist.Normal(mu_H, 1))
-
-    # mu_incom = R + S + E + M + O + A + K1 + K2 + K3 + K4 + H
-    # mu_incom = torch.nn.Sigmoid(mu_incom)
-    # I = pyro.sample("income", dist.Bernoulli(mu_incom))
-
-
-    # M = pyro.sample("Marital", dist.Normal(R + S + E + M + K + A + O, 1))
-    # O = pyro.sample("Occupation", dist.Normal(R + S + E + M + K + A + O, 1))
-    # H = pyro.sample("Hour", dist.Normal(R + S + E + M + K1 + K2 + K3 + K4 , 1))
-    # R = pyro.sample("Race", exo_dist['Nrace'])
-    # S = pyro.sample("Sex", exo_dist['Nsex'])
-    # E = pyro.sample("Education", exo_dist['Neducation'])
-    # M = pyro.sample("Marital", exo_dist['Nmarital_status'])
-    # O = pyro.sample("Occupation", exo_dist['Noccupation'])
-    # K = pyro.sample("Knowledge", exo_dist['Nknowledge'])
-    # A = pyro.sample("Age", exo_dist['Nage'])
-    # H = pyro.sample("Hour", dist.Normal(R + S + E + M + K + A + O, 1))
+    # print("Sampling")
+    # print(S,R,A,K1,K2,K3)
+    # M = pyro.sample("Martial", dist.Poisson(torch.exp(R+S+A)))
+    E = pyro.sample("Education", dist.Poisson(torch.exp(R+S+A+K1+K2)))
+    H = pyro.sample("Hour", dist.Normal(R+S+A+K1+K2+K3+E, torch.tensor(10.)))
+    # O = pyro.sample("Occupation", dist.Poisson(torch.exp(R+S+A+M+E)))
+    # W = pyro.sample("Workclass", dist.Poisson(torch.exp(R+S+A+M+E)))
 
 def infer_knowledge_adult(df):
     """
@@ -130,12 +64,7 @@ def infer_knowledge_adult(df):
     hours = []
 
     for i in tqdm(range(len(df))):
-        conditioned = pyro.condition(GroundTruthModel_Adult, data={"H": df["hours_per_week"][i],
-                                                             "A": df["age"][i],
-                                                             "R": df["race"][i],
-                                                             "S": df["gender"][i],
-                                                             "O": df["occupation"][i],
-                                                             "M": df["marital_status"][i]
+        conditioned = pyro.condition(GroundTruthModel_Adult, data={"Hour": df["hours_per_week"][i]
                                                              }
                                      )
         posterior = pyro.infer.Importance(conditioned, num_samples=10).run()
@@ -164,6 +93,98 @@ def infer_knowledge_adult(df):
 
     features = np.concatenate((knowledge1, knowledge2, knowledge3, hours), axis=1)
     return features
+
+
+# # def GroundTruthModel_Adult():
+# #     exo_dist = {
+# #         'Nrace': dist.Bernoulli(torch.tensor(0.75)),
+# #         'Nsex': dist.Bernoulli(torch.tensor(0.5)),
+# #         'Nage': dist.Normal(torch.tensor(0.), torch.tensor(10.)),
+# #         'Nknowledge1': dist.Normal(torch.tensor(0.), torch.tensor(1.)),
+# #         'Nknowledge2': dist.Normal(torch.tensor(0.), torch.tensor(1.)),
+# #         'Nknowledge3': dist.Normal(torch.tensor(0.), torch.tensor(1.))
+# #
+# #     }
+# #
+# #     S = pyro.sample("Sex", exo_dist['Nsex'])
+# #     R = pyro.sample("Race", exo_dist['Nrace'])
+# #     A = pyro.sample("Age", exo_dist['Nage'])
+# #     K1 = pyro.sample("Knowledge1", exo_dist['Nknowledge1'])
+# #     K2 = pyro.sample("Knowledge2", exo_dist['Nknowledge2'])
+# #     # K3 = pyro.sample("Knowledge3", exo_dist['Nknowledge3'])
+# #
+# #     # print("Sampling")
+# #     # print(S,R,A,K1,K2,K3)
+# #     # M = pyro.sample("Martial", dist.Poisson(torch.exp(R+S+A)))
+# #     # E = pyro.sample("Education", dist.Poisson(torch.exp(R+S+A)))
+# #     print("Sum ", R+S+A+K1+K2)
+# #     H = pyro.sample("Hour", dist.Normal(R+S+A+K1+K2, torch.tensor(10.)))
+# #     # O = pyro.sample("Occupation", dist.Poisson(torch.exp(R+S+A+M+E)))
+# #     # W = pyro.sample("Workclass", dist.Poisson(torch.exp(R+S+A+M+E)))
+#
+#
+# def infer_knowledge_adult(df):
+#     """
+#
+#     :param df: DESCRIPTION
+#     :type df: TYPE
+#     :return: DESCRIPTION
+#     :rtype: TYPE
+#     """
+#
+#     knowledge1 = []
+#     knowledge2 = []
+#     knowledge3 = []
+#     hours = []
+#
+#     for i in tqdm(range(len(df))):
+#         print("Index ", i)
+#         dict_ = {"Hour": df["hours_per_week"][i],
+#                                                              "Age": df["age"][i],
+#                                                              "Race": df["race"][i],
+#                                                              "Sex": df["gender"][i],
+#                                                              "Occupation": df["occupation"][i],
+#                                                              "Martial": df["marital_status"][i],
+#                                                              "Workclass": df['workclass']
+#                                                              }
+#
+#         print(dict_)
+#         conditioned = pyro.condition(GroundTruthModel_Adult, data={"Hour": df["hours_per_week"][i],
+#                                                              "Age": df["age"][i],
+#                                                              "Race": df["race"][i],
+#                                                              "Sex": df["gender"][i],
+#                                                              # "Occupation": df["occupation"][i],
+#                                                              # "Martial": df["marital_status"][i],
+#                                                              # "Workclass": df['workclass']
+#                                                              }
+#                                      )
+#
+#         posterior = pyro.infer.Importance(conditioned, num_samples=10).run()
+#
+#         post_marginal_1 = pyro.infer.EmpiricalMarginal(posterior, "Knowledge1")
+#         post_marginal_2 = pyro.infer.EmpiricalMarginal(posterior, "Knowledge2")
+#         # post_marginal_3 = pyro.infer.EmpiricalMarginal(posterior, "Knowledge3")
+#
+#         post_samples1 = [post_marginal_1().item() for _ in range(10)]
+#         post_samples2 = [post_marginal_2().item() for _ in range(10)]
+#         # post_samples3 = [post_marginal_3().item() for _ in range(10)]
+#
+#         mean1 = np.mean(post_samples1)
+#         mean2 = np.mean(post_samples2)
+#         mean3 = np.mean(post_samples3)
+#
+#         knowledge1.append(mean1)
+#         knowledge2.append(mean2)
+#         knowledge3.append(mean3)
+#         hours.append(df["hours_per_week"][i])
+#
+#     knowledge1 = np.array(knowledge1).reshape(-1, 1)
+#     knowledge2 = np.array(knowledge2).reshape(-1, 1)
+#     knowledge3 = np.array(knowledge3).reshape(-1, 1)
+#     hours = np.array(hours).reshape(-1, 1)
+#
+#     features = np.concatenate((knowledge1, knowledge2, knowledge3, hours), axis=1)
+#     return features
 
 def GroundTruthModel1_Compas():
     prob_age = torch.tensor([2/3, 1/6, 1/6])
@@ -219,6 +240,39 @@ def GroundTruthModel2_Compas():
     JO = pyro.sample("JO", dist.Poisson(expO))
     P = pyro.sample("P", dist.Poisson(expP))
 
+
+def GroundTruthModel3_Compas():
+    prob_age = torch.tensor([2/3, 1/6, 1/6])
+
+    exo_dist = {
+        'Nrace': dist.Bernoulli(torch.tensor(0.75)),
+        'Nsex': dist.Bernoulli(torch.tensor(0.5)),
+        'Nage': dist.Normal(torch.tensor(0.), torch.tensor(1.)),
+        'Nagecat': dist.Categorical(probs=prob_age),
+        'UJ': dist.Normal(torch.tensor(0.), torch.tensor(1.)),
+        'UD': dist.Normal(torch.tensor(0.), torch.tensor(1.)),
+    }
+
+    S = pyro.sample("Sex", exo_dist['Nsex'])
+    R = pyro.sample("Race", exo_dist['Nrace'])
+    A = pyro.sample("Age", exo_dist['Nage'])
+    AC = pyro.sample("Age_cat", exo_dist['Nagecat'])
+    UJ = pyro.sample("UJ", exo_dist['UJ'])
+    UD = pyro.sample("UD", exo_dist['UD'])
+
+    expP = torch.exp(R + S + A + AC + UD)
+    P = pyro.sample("P", dist.Poisson(expP))
+
+    expF = torch.exp(R + S + A + AC + UJ + P)
+    expM = torch.exp(R + S + A + AC + UJ + P)
+    expO = torch.exp(R + S + A + AC + UD + P)
+
+
+    # print(expF, expM, expO)
+    JF = pyro.sample("JF", dist.Poisson(expF))
+    JM = pyro.sample("JM", dist.Poisson(expM))
+    JO = pyro.sample("JO", dist.Poisson(expO))
+
 def infer_knowledge_compas(df, model = 1):
     """
 
@@ -233,10 +287,8 @@ def infer_knowledge_compas(df, model = 1):
 
     for i in tqdm(range(len(df))):
         if model == 1:
-            conditioned = pyro.condition(GroundTruthModel1_Compas, data={"S": df["sex"][i],
-                                                                 "A": df["age"][i],
-                                                                 "AC": df["age_cat"][i],
-                                                                 "R": df["race"][i],
+
+            conditioned = pyro.condition(GroundTruthModel1_Compas, data={
                                                                  "JF": df["juv_fel_count"][i],
                                                                  "JM": df["juv_misd_count"][i],
                                                                  "JO": df["juv_other_count"][i],
@@ -244,10 +296,7 @@ def infer_knowledge_compas(df, model = 1):
                                                     }
                                          )
         else:
-            conditioned = pyro.condition(GroundTruthModel2_Compas, data={"S": df["sex"][i],
-                                                                 "A": df["age"][i],
-                                                                 "AC": df["age_cat"][i],
-                                                                 "R": df["race"][i],
+            conditioned = pyro.condition(GroundTruthModel2_Compas, data={
                                                                  "JF": df["juv_fel_count"][i],
                                                                  "JM": df["juv_misd_count"][i],
                                                                  "JO": df["juv_other_count"][i],
@@ -281,6 +330,7 @@ if __name__ == "__main__":
     parser.add_argument('--data_name', type=str, default='compas')
     # parser.add_argument('--data_name', type=str, default='adult')
     # parser.add_argument('--data_name', type=str, default='bank')
+    parser.add_argument('--generate', action='store_true')
     args = parser.parse_args()
 
     """Load configuration"""
@@ -299,6 +349,7 @@ if __name__ == "__main__":
     logger.setLevel(logging.DEBUG)
 
     data_name = args.data_name
+    generate = args.generate
 
     log_path = conf['log_train_{}'.format(data_name)]
     data_path = conf['data_{}'.format(data_name)]
@@ -338,10 +389,91 @@ if __name__ == "__main__":
         print(df[c].value_counts())
 
     print(df)
+    sys.exit(1)
     """Split dataset into train and test"""
-    df_train, df_test = train_test_split(df, test_size=0.1, random_state=0)
+    df_train, df_test = train_test_split(df, test_size=0.2, random_state=0)
     df_train = df.reset_index(drop = True)
     df_test = df_test.reset_index(drop=True)
+
+    # """Full model"""
+    # logger.debug('Full model')
+    # clf = LogisticRegression()
+    # clf.fit(df_train[full_features], df_train[target])
+    # y_pred = clf.predict(df_test[full_features].values)
+    # df_test['full'] = y_pred.reshape(-1)
+    # y_pred = clf.predict_proba(df_test[full_features].values)[:, 0]
+    # df_test['full_proba'] = y_pred.reshape(-1)
+    #
+    # """Unaware model"""
+    # logger.debug('Unware model')
+    # clf = LogisticRegression()
+    # clf.fit(df_train[normal_features], df_train[target])
+    # y_pred = clf.predict(df_test[normal_features].values)
+    # df_test['unaware'] = y_pred.reshape(-1)
+    # y_pred = clf.predict_proba(df_test[normal_features].values)[:, 0]
+    # df_test['unaware_proba'] = y_pred.reshape(-1)
+
+    """Counterfactual fairness model"""
+    # logger.debug('Cf model')
+
+    for i in full_features:
+        df_train[i] = [torch.tensor(x) for x in df_train[i].values]
+        df_test[i] = [torch.tensor(x) for x in df_test[i].values]
+
+    if data_name == 'adult':
+        print("Training set")
+        print(df_train.loc[0])
+        knowledged_train = infer_knowledge_adult(df_train)
+        knowledged_test = infer_knowledge_adult(df_test)
+        clf = LogisticRegression()
+        clf.fit(knowledged_train, df[target])
+        y_pred = clf.predict(knowledged_test)
+        df_test['cf1'] = y_pred.reshape(-1)
+        y_pred = clf.predict_proba(knowledged_test)[:, 0]
+        df_test['cf1_proba'] = y_pred.reshape(-1)
+
+    elif data_name == 'compas':
+        """Groundtruth model 1"""
+
+        if generate:
+            print("Generating features.....................")
+            flag, monte, level = True, False, 2
+            knowledged_train = infer_knowledge_compas(df_train, 1)
+            knowledged_test = infer_knowledge_compas(df_test, 1)
+            np.save(conf['compas_train2_true'], knowledged_train)
+            np.save(conf['compas_test2_true'], knowledged_test)
+
+            flag, monte, level = True, False, 3
+            knowledged_train = infer_knowledge_compas(df_train, 2)
+            knowledged_test = infer_knowledge_compas(df_test, 2)
+            np.save(conf['compas_train3_true'], knowledged_train)
+            np.save(conf['compas_test3_true'], knowledged_test)
+
+            sys.exit(0)
+
+        knowledged_train = np.load(conf['compas_train2_true'])
+        knowledged_test = np.load(conf['compas_test2_true'])
+
+        clf = LogisticRegression()
+        clf.fit(knowledged_train, df[target])
+        y_pred = clf.predict(knowledged_test)
+        df_test['cf1'] = y_pred.reshape(-1)
+        y_pred = clf.predict_proba(knowledged_test)[:, 0]
+        df_test['cf1_proba'] = y_pred.reshape(-1)
+
+        """Groundtruth model 2"""
+        knowledged_train = np.load(conf['compas_train3_true'])
+        knowledged_test = np.load(conf['compas_test3_true'])
+
+        clf = LogisticRegression()
+        clf.fit(knowledged_train, df[target])
+        y_pred = clf.predict(knowledged_test)
+        df_test['cf2'] = y_pred.reshape(-1)
+        y_pred = clf.predict_proba(knowledged_test)[:, 0]
+        df_test['cf2_proba'] = y_pred.reshape(-1)
+
+    for i in full_features:
+        df_test[i] = [x.detach().numpy() for x in df_test[i]]
 
     """Full model"""
     logger.debug('Full model')
@@ -361,41 +493,7 @@ if __name__ == "__main__":
     y_pred = clf.predict_proba(df_test[normal_features].values)[:, 0]
     df_test['unaware_proba'] = y_pred.reshape(-1)
 
-    """Counterfactual fairness model"""
-    for i in normal_features:
-        df_train[i] = [torch.tensor(x) for x in df_train[i].values]
-        df_test[i] = [torch.tensor(x) for x in df_test[i].values]
-
-    if data_name == 'adult':
-        knowledged_train = infer_knowledge_adult(df_train)
-        knowledged_test = infer_knowledge_adult(df_test)
-    elif data_name == 'compas':
-        """Groundtruth model 1"""
-        knowledged_train = infer_knowledge_compas(df_train, 1)
-        knowledged_test = infer_knowledge_compas(df_test, 1)
-
-        clf = LogisticRegression()
-        clf.fit(knowledged_train, df[target])
-        y_pred = clf.predict(knowledged_test)
-        df_test['cf1'] = y_pred.reshape(-1)
-        y_pred = clf.predict_proba(knowledged_test)[:, 0]
-        df_test['cf1_proba'] = y_pred.reshape(-1)
-
-        """Groundtruth model 2"""
-        knowledged_train = infer_knowledge_compas(df_train, 2)
-        knowledged_test = infer_knowledge_compas(df_test, 2)
-
-        clf = LogisticRegression()
-        clf.fit(knowledged_train, df[target])
-        y_pred = clf.predict(knowledged_test)
-        df_test['cf2'] = y_pred.reshape(-1)
-        y_pred = clf.predict_proba(knowledged_test)[:, 0]
-        df_test['cf2_proba'] = y_pred.reshape(-1)
-
-    for i in normal_features:
-        df_test[i] = [x.detach().numpy() for x in df_test[i]]
-
-    df_test.to_csv(conf['result_{}'.format(data_name)], index=False)
-
+    df_test.to_csv(conf[data_name], index=False)
+    print("Output to {}".format(conf[data_name]))
 
 

@@ -5,8 +5,25 @@ data_compas : /home/trduong/Data/counterfactual_fairness_game_theoric/data/proce
 data_german : /home/trduong/Data/counterfactual_fairness_game_theoric/data/processed_adult.csv
 data_bank : /home/trduong/Data/counterfactual_fairness_game_theoric/data/processed_bank.csv
 
+law_train2_false: /home/trduong/Data/counterfactual_fairness_game_theoric/data/generated_features/law_train2_false.npy
+law_test2_false: /home/trduong/Data/counterfactual_fairness_game_theoric/data/generated_features/law_test2_false.npy
+law_train3_false: /home/trduong/Data/counterfactual_fairness_game_theoric/data/generated_features/law_train3_false.npy
+law_test3_false: /home/trduong/Data/counterfactual_fairness_game_theoric/data/generated_features/law_test3_false.npy
+
+law_train2_true: /home/trduong/Data/counterfactual_fairness_game_theoric/data/generated_features/law_train2_true.npy
+law_test2_true: /home/trduong/Data/counterfactual_fairness_game_theoric/data/generated_features/law_test2_true.npy
+law_train3_true: /home/trduong/Data/counterfactual_fairness_game_theoric/data/generated_features/law_train3_true.npy
+law_test3_true: /home/trduong/Data/counterfactual_fairness_game_theoric/data/generated_features/law_test3_true.npy
+
+compas_train2_true: /home/trduong/Data/counterfactual_fairness_game_theoric/data/generated_features/compas_train2_true.npy
+compas_test2_true: /home/trduong/Data/counterfactual_fairness_game_theoric/data/generated_features/compas_test2_true.npy
+compas_train3_true: /home/trduong/Data/counterfactual_fairness_game_theoric/data/generated_features/compas_train3_true.npy
+compas_test3_true: /home/trduong/Data/counterfactual_fairness_game_theoric/data/generated_features/compas_test3_true.npy
+
+
+
 #Result
-law_baseline : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/law_baseline.csv
+law_baseline : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/law.csv
 evaluate_law : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_law.csv
 evaluate_law_lambda : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_law_lambda.csv
 ivr_law : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/law_ivr.csv
@@ -19,6 +36,7 @@ ivr_adult : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/resu
 compas : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
 aif_compas : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_aif.csv
 evaluate_compas : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+evaluate_compas_lamba: /data/trduong/counterfactual_fairness_game_theoric/reports/results/compas/lambda/evaluate/epoch-{}_lambda-{}_lr-{}.csv
 ivr_compas : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
 bank: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/bank.csv
 evaluate_bank: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_bank.csv

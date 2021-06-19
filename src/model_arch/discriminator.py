@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.utils.data import DataLoader
 from torch.utils.data import TensorDataset
-
+from tqdm import tqdm
 
 class DiscriminatorLawAw(nn.Module):
     def __init__(self, input_length: int, problem=None):
@@ -155,9 +155,9 @@ class DiscriminatorCompasAw(nn.Module):
     def __init__(self, input_length: int, problem=None):
         super(DiscriminatorCompasAw, self).__init__()
         self.problem = problem
-        dim1 = 32
-        dim2 = 32
-        finaldim = 32
+        dim1 = 64
+        dim2 = 64
+        finaldim = 64
         self.hidden = torch.nn.Linear(input_length, dim1)   # hidden layer
         self.hidden1 = torch.nn.Linear(dim1, dim2)   # hidden layer
         self.hidden2 = torch.nn.Linear(dim2, finaldim)   # hidden layer
@@ -191,9 +191,9 @@ class DiscriminatorCompasAg(nn.Module):
     def __init__(self, input_length: int, problem=None):
         super(DiscriminatorCompasAg, self).__init__()
         self.problem = problem
-        dim1 = 32
-        dim2 = 32
-        finaldim = 32
+        dim1 = 128
+        dim2 = 64
+        finaldim = 64
         self.hidden = torch.nn.Linear(input_length, dim1)   # hidden layer
         self.hidden1 = torch.nn.Linear(dim1, dim2)   # hidden layer
         self.hidden2 = torch.nn.Linear(dim2, finaldim)   # hidden layer
@@ -206,14 +206,17 @@ class DiscriminatorCompasAg(nn.Module):
         self.batchnorm2 = nn.BatchNorm1d(dim2)
 
     def forward(self, x):
-        x = F.leaky_relu(self.hidden(x))
+        # x = F.elu(self.hidden(x))
+        x = self.prelu(self.hidden(x))
         x = self.dropout(x)
         x = self.batchnorm1(x)
-        # x = F.leaky_relu(self.hidden1(x))
-        # x = self.dropout(x)
-        # x = self.batchnorm2(x)
+        # x = F.elu(self.hidden1(x))
+        x = self.prelu(self.hidden1(x))
+        x = self.dropout(x)
+        x = self.batchnorm2(x)
         for i in range(2):
-            x = F.leaky_relu(self.hidden2(x))
+            # x = F.elu(self.hidden2(x))
+            x = self.prelu(self.hidden2(x))
             x = self.dropout(x)
             x = self.batchnorm2(x)
         x = self.predict(x)
@@ -228,13 +231,13 @@ def train_law(train_x, train_y):
     data_set = TensorDataset(train_x, train_y)
     train_batches = DataLoader(data_set, batch_size=1024, shuffle=False)
 
-    epochs = 500
+    epochs = 250
     learning_rate = 1e-8
 
     loss_fn = torch.nn.SmoothL1Loss()
     optimizer = torch.optim.Adam(Net.parameters(), lr=learning_rate)
-    for i in range(epochs):
-        for x_batch, y_batch in train_batches:
+    for i in tqdm(range(epochs)):
+        for x_batch, y_batch in (train_batches):
             optimizer.zero_grad()
             loss = loss_fn(Net(x_batch), y_batch)
             loss.backward()

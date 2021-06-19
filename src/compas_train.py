@@ -52,17 +52,19 @@ if __name__ == "__main__":
 
     """Load parse argument"""
     args = parser.parse_args()
-    data_name = args.data_name
+    # data_name = args.data_name
+    data_name = "compas"
+    # if data_name == 'compas':
+    log_file = conf['log_train_compas']
+    data_path = conf['data_compas']
+    ae_path = conf['compas_encoder']
+    emb_size_gen = 128
+    emb_size_ae = 128
 
-    if data_name == 'compas':
-        log_file = conf['log_train_compas']
-        data_path = conf['data_compas']
-        ae_path = conf['compas_encoder']
-        emb_size = 128
-        discriminator_agnostic = DiscriminatorCompasAg(emb_size)
-        discriminator_awareness = DiscriminatorCompasAw(emb_size + 2)
-        discriminator_agnostic.to(device)
-        discriminator_awareness.to(device)
+    discriminator_agnostic = DiscriminatorCompasAg(emb_size_gen)
+    discriminator_awareness = DiscriminatorCompasAw(emb_size_gen + emb_size_ae)
+    discriminator_agnostic.to(device)
+    discriminator_awareness.to(device)
 
 
 
@@ -83,12 +85,11 @@ if __name__ == "__main__":
     discrete_features = dict_["discrete_features"]
     full_features = dict_["full_features"]
     target = dict_["target"]
-    col_sensitive = ['race_0', 'race_1',
-                     'sex_0', 'sex_1']
+    col_sensitive = ['race_0', 'race_1']
     standard_features = continuous_features + discrete_features
 
     """Preprocess data"""
-    df = preprocess_dataset(df, standard_features, categorical_features)
+    df = preprocess_dataset(df, [] , categorical_features)
     df_generator = df[normal_features]
     df[target] = df[target].astype(float)
 
@@ -97,7 +98,6 @@ if __name__ == "__main__":
 
     """Setup auto encoder"""
     df_autoencoder = df[full_features].copy()
-    emb_size_ae = 128
     ae_model = AutoEncoder(
         input_shape=df[full_features].shape[1],
         encoder_layers=[512, 512, emb_size_ae],  # model architecture
@@ -123,7 +123,6 @@ if __name__ == "__main__":
     parameters['dataframe'] = df
     parameters['batch_size'] = 256
     parameters['problem'] = 'classification'
-    lambda1, lambda2 = 0.5, 0.01
 
     """Hyperparameter"""
     learning_rate = parameters['learning_rate']
@@ -133,10 +132,10 @@ if __name__ == "__main__":
     problem = parameters['problem']
 
     """Setup generator and discriminator"""
-    emb_size = 128
+    # emb_size = 16
     generator= AutoEncoder(
         input_shape = df_generator.shape[1],
-        encoder_layers=[512, 512, emb_size],  # model architecture
+        encoder_layers=[512, 512, emb_size_gen],  # model architecture
         decoder_layers=[],  # decoder optional - you can create bottlenecks if you like
         encoder_dropout = 0.15,
         decoder_dropout = 0.5,
@@ -180,7 +179,7 @@ if __name__ == "__main__":
     for i in (range(epochs)):
         df_train = df.copy().sample(frac=1).reset_index(drop=True)
         df_dummy = df_train.copy()
-        df_dummy = pd.get_dummies(df_dummy, columns=['sex'])
+        # df_dummy = pd.get_dummies(df_dummy, columns=['sex'])
         df_dummy = pd.get_dummies(df_dummy, columns=['race'])
 
 
@@ -224,7 +223,6 @@ if __name__ == "__main__":
             emb_cat_race = torch.tensor(np.array(emb_cat_race).astype(np.float32)).to(device)
             # emb_cat_sex = torch.tensor(np.array(emb_cat_sex).astype(np.float32)).to(device)
             # emb = torch.cat((emb_cat_race, emb_cat_sex),1)
-
             # print(emb_cat_race.shape)
             # print(emb.shape)
             # sys.exit(1)
@@ -234,9 +232,9 @@ if __name__ == "__main__":
 
             """Concat generator and sensitive representation"""
             Z = generator.custom_forward(batch_generator)
-            # ZS = torch.cat((Z, emb), 1)
-            ZS = torch.cat((Z, emb_cat_race), 1)
+            ZS = torch.cat((Z, batch_Z), 1)
 
+            # ZS = torch.cat((Z, emb_cat_race), 1)
             # ZS = torch.cat((ZS, sensitive_onehot), 1)
             # ZS = torch.cat((ZS, sensitive_label), 1)
 
@@ -318,21 +316,22 @@ if __name__ == "__main__":
         eval = evaluate_classifier(y_pred, y_true)
 
         """Logging"""
-        display_loss = '->'.join([str(round(x,3)) for x in losses])
-        display_aware = '->'.join([str(round(x,3)) for x in losses_aware])
-        display_gen = '->'.join([str(round(x,3)) for x in losses_gen])
+        display_loss = '->'.join([str(round(x,3)) for x in [losses[0], losses[-1]]])
+        display_aware = '->'.join([str(round(x,3)) for x in [losses_aware[0], losses_aware[-1]]])
+        display_gen = '->'.join([str(round(x,3)) for x in [losses_gen[0], losses_gen[-1]]])
 
         logger.debug("Epoch {}".format(i))
-        logger.debug("Loss Agnostic")
-        logger.debug(display_loss)
-        logger.debug("Loss Awareness")
-        logger.debug(display_aware)
-        logger.debug("Generator Agnostic")
-        logger.debug(display_gen)
+        logger.debug("Loss Agnostic {}".format(display_loss))
+        # logger.debug(display_loss)
+        logger.debug("Loss Awareness {}".format(display_aware))
+        # logger.debug(display_aware)
+        logger.debug("Generator Agnostic {}".format(display_gen))
+        # logger.debug(display_gen)
         logger.debug("Learning rate {:.10f}".format(current_lr))
+        logger.debug("Precision {:.3f}, Recall {:.3f}, F-measure {:.3f}".format(eval['Precision'], eval['Recall'], eval['F1 Score']))
 
-        for key, value in eval.items():
-            logger.debug("{} {:.4f}".format(key, value))
+        # for key, value in eval.items():
+        #     logger.debug("{} {:.4f}".format(key, value))
         logger.debug("-"*30)
 
         print('Collecting...')
