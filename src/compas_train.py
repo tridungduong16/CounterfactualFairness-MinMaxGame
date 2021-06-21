@@ -25,6 +25,7 @@ import argparse
 import visdom
 from torch.utils.data import DataLoader
 from torch.utils.data import TensorDataset
+from model_arch.discriminator import init_weights
 
 if __name__ == "__main__":
     """Parsing argument"""
@@ -65,8 +66,8 @@ if __name__ == "__main__":
     discriminator_awareness = DiscriminatorCompasAw(emb_size_gen + emb_size_ae)
     discriminator_agnostic.to(device)
     discriminator_awareness.to(device)
-
-
+    discriminator_agnostic.apply(init_weights)
+    discriminator_awareness.apply(init_weights)
 
     """Set up logging"""
     logger = setup_logging(log_file)

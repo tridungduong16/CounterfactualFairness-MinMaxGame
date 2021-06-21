@@ -1,0 +1,1708 @@
+CFairness    Epoch 0
+CFairness    Loss Agnostic 0.721->0.721
+CFairness    Loss Awareness 0.741->0.741
+CFairness    Generator Agnostic 0.841->0.841
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.522, Recall 0.516, F-measure 0.517
+CFairness    ------------------------------
+CFairness    Epoch 1
+CFairness    Loss Agnostic 0.721->0.711
+CFairness    Loss Awareness 0.741->0.713
+CFairness    Generator Agnostic 0.841->0.925
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.525, Recall 0.520, F-measure 0.521
+CFairness    ------------------------------
+CFairness    Epoch 2
+CFairness    Loss Agnostic 0.721->0.717
+CFairness    Loss Awareness 0.741->0.716
+CFairness    Generator Agnostic 0.841->0.936
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.529, Recall 0.524, F-measure 0.526
+CFairness    ------------------------------
+CFairness    Epoch 3
+CFairness    Loss Agnostic 0.721->0.719
+CFairness    Loss Awareness 0.741->0.707
+CFairness    Generator Agnostic 0.841->0.959
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.533, Recall 0.527, F-measure 0.528
+CFairness    ------------------------------
+CFairness    Epoch 4
+CFairness    Loss Agnostic 0.721->0.706
+CFairness    Loss Awareness 0.741->0.703
+CFairness    Generator Agnostic 0.841->0.902
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.549, Recall 0.542, F-measure 0.543
+CFairness    ------------------------------
+CFairness    Epoch 5
+CFairness    Loss Agnostic 0.721->0.705
+CFairness    Loss Awareness 0.741->0.693
+CFairness    Generator Agnostic 0.841->0.938
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.546, Recall 0.540, F-measure 0.541
+CFairness    ------------------------------
+CFairness    Epoch 6
+CFairness    Loss Agnostic 0.721->0.704
+CFairness    Loss Awareness 0.741->0.687
+CFairness    Generator Agnostic 0.841->0.978
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.551, Recall 0.545, F-measure 0.546
+CFairness    ------------------------------
+CFairness    Epoch 7
+CFairness    Loss Agnostic 0.721->0.702
+CFairness    Loss Awareness 0.741->0.676
+CFairness    Generator Agnostic 0.841->1.018
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.565, Recall 0.559, F-measure 0.560
+CFairness    ------------------------------
+CFairness    Epoch 8
+CFairness    Loss Agnostic 0.721->0.696
+CFairness    Loss Awareness 0.741->0.682
+CFairness    Generator Agnostic 0.841->0.95
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.552, Recall 0.547, F-measure 0.548
+CFairness    ------------------------------
+CFairness    Epoch 9
+CFairness    Loss Agnostic 0.721->0.69
+CFairness    Loss Awareness 0.741->0.677
+CFairness    Generator Agnostic 0.841->0.96
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.573, Recall 0.567, F-measure 0.568
+CFairness    ------------------------------
+CFairness    Epoch 10
+CFairness    Loss Agnostic 0.721->0.684
+CFairness    Loss Awareness 0.741->0.672
+CFairness    Generator Agnostic 0.841->0.94
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.579, Recall 0.574, F-measure 0.575
+CFairness    ------------------------------
+CFairness    Epoch 11
+CFairness    Loss Agnostic 0.721->0.678
+CFairness    Loss Awareness 0.741->0.674
+CFairness    Generator Agnostic 0.841->0.885
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.599, Recall 0.593, F-measure 0.594
+CFairness    ------------------------------
+CFairness    Epoch 12
+CFairness    Loss Agnostic 0.721->0.678
+CFairness    Loss Awareness 0.741->0.672
+CFairness    Generator Agnostic 0.841->0.883
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.594, Recall 0.589, F-measure 0.590
+CFairness    ------------------------------
+CFairness    Epoch 13
+CFairness    Loss Agnostic 0.721->0.666
+CFairness    Loss Awareness 0.741->0.667
+CFairness    Generator Agnostic 0.841->0.83
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.606, Recall 0.602, F-measure 0.603
+CFairness    ------------------------------
+CFairness    Epoch 14
+CFairness    Loss Agnostic 0.721->0.671
+CFairness    Loss Awareness 0.741->0.666
+CFairness    Generator Agnostic 0.841->0.864
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.601, Recall 0.598, F-measure 0.599
+CFairness    ------------------------------
+CFairness    Epoch 15
+CFairness    Loss Agnostic 0.721->0.669
+CFairness    Loss Awareness 0.741->0.673
+CFairness    Generator Agnostic 0.841->0.839
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.609, Recall 0.604, F-measure 0.604
+CFairness    ------------------------------
+CFairness    Epoch 16
+CFairness    Loss Agnostic 0.721->0.664
+CFairness    Loss Awareness 0.741->0.668
+CFairness    Generator Agnostic 0.841->0.812
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.616, Recall 0.609, F-measure 0.610
+CFairness    ------------------------------
+CFairness    Epoch 17
+CFairness    Loss Agnostic 0.721->0.66
+CFairness    Loss Awareness 0.741->0.669
+CFairness    Generator Agnostic 0.841->0.774
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.615, Recall 0.607, F-measure 0.608
+CFairness    ------------------------------
+CFairness    Epoch 18
+CFairness    Loss Agnostic 0.721->0.664
+CFairness    Loss Awareness 0.741->0.669
+CFairness    Generator Agnostic 0.841->0.812
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.634, Recall 0.629, F-measure 0.630
+CFairness    ------------------------------
+CFairness    Epoch 19
+CFairness    Loss Agnostic 0.721->0.653
+CFairness    Loss Awareness 0.741->0.662
+CFairness    Generator Agnostic 0.841->0.769
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.623, Recall 0.619, F-measure 0.620
+CFairness    ------------------------------
+CFairness    Epoch 20
+CFairness    Loss Agnostic 0.721->0.655
+CFairness    Loss Awareness 0.741->0.66
+CFairness    Generator Agnostic 0.841->0.773
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.635, Recall 0.630, F-measure 0.631
+CFairness    ------------------------------
+CFairness    Epoch 21
+CFairness    Loss Agnostic 0.721->0.651
+CFairness    Loss Awareness 0.741->0.661
+CFairness    Generator Agnostic 0.841->0.771
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.631, Recall 0.627, F-measure 0.628
+CFairness    ------------------------------
+CFairness    Epoch 22
+CFairness    Loss Agnostic 0.721->0.652
+CFairness    Loss Awareness 0.741->0.66
+CFairness    Generator Agnostic 0.841->0.752
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.625, Recall 0.624, F-measure 0.624
+CFairness    ------------------------------
+CFairness    Epoch 23
+CFairness    Loss Agnostic 0.721->0.652
+CFairness    Loss Awareness 0.741->0.659
+CFairness    Generator Agnostic 0.841->0.763
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.624, Recall 0.623, F-measure 0.623
+CFairness    ------------------------------
+CFairness    Epoch 24
+CFairness    Loss Agnostic 0.721->0.658
+CFairness    Loss Awareness 0.741->0.659
+CFairness    Generator Agnostic 0.841->0.811
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.632, Recall 0.629, F-measure 0.629
+CFairness    ------------------------------
+CFairness    Epoch 25
+CFairness    Loss Agnostic 0.721->0.652
+CFairness    Loss Awareness 0.741->0.658
+CFairness    Generator Agnostic 0.841->0.766
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.633, Recall 0.629, F-measure 0.630
+CFairness    ------------------------------
+CFairness    Epoch 26
+CFairness    Loss Agnostic 0.721->0.65
+CFairness    Loss Awareness 0.741->0.657
+CFairness    Generator Agnostic 0.841->0.778
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.629, Recall 0.623, F-measure 0.624
+CFairness    ------------------------------
+CFairness    Epoch 27
+CFairness    Loss Agnostic 0.721->0.658
+CFairness    Loss Awareness 0.741->0.653
+CFairness    Generator Agnostic 0.841->0.842
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.636, Recall 0.630, F-measure 0.631
+CFairness    ------------------------------
+CFairness    Epoch 28
+CFairness    Loss Agnostic 0.721->0.652
+CFairness    Loss Awareness 0.741->0.656
+CFairness    Generator Agnostic 0.841->0.778
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.629, Recall 0.626, F-measure 0.627
+CFairness    ------------------------------
+CFairness    Epoch 29
+CFairness    Loss Agnostic 0.721->0.651
+CFairness    Loss Awareness 0.741->0.654
+CFairness    Generator Agnostic 0.841->0.779
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.639, Recall 0.636, F-measure 0.636
+CFairness    ------------------------------
+CFairness    Epoch 30
+CFairness    Loss Agnostic 0.721->0.649
+CFairness    Loss Awareness 0.741->0.653
+CFairness    Generator Agnostic 0.841->0.771
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.632, Recall 0.627, F-measure 0.628
+CFairness    ------------------------------
+CFairness    Epoch 31
+CFairness    Loss Agnostic 0.721->0.65
+CFairness    Loss Awareness 0.741->0.651
+CFairness    Generator Agnostic 0.841->0.778
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.641, Recall 0.637, F-measure 0.638
+CFairness    ------------------------------
+CFairness    Epoch 32
+CFairness    Loss Agnostic 0.721->0.645
+CFairness    Loss Awareness 0.741->0.648
+CFairness    Generator Agnostic 0.841->0.765
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.640, Recall 0.638, F-measure 0.639
+CFairness    ------------------------------
+CFairness    Epoch 33
+CFairness    Loss Agnostic 0.721->0.642
+CFairness    Loss Awareness 0.741->0.648
+CFairness    Generator Agnostic 0.841->0.735
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.639, Recall 0.638, F-measure 0.638
+CFairness    ------------------------------
+CFairness    Epoch 34
+CFairness    Loss Agnostic 0.721->0.638
+CFairness    Loss Awareness 0.741->0.655
+CFairness    Generator Agnostic 0.841->0.7
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.646, Recall 0.644, F-measure 0.644
+CFairness    ------------------------------
+CFairness    Epoch 35
+CFairness    Loss Agnostic 0.721->0.645
+CFairness    Loss Awareness 0.741->0.649
+CFairness    Generator Agnostic 0.841->0.758
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.646, Recall 0.643, F-measure 0.644
+CFairness    ------------------------------
+CFairness    Epoch 36
+CFairness    Loss Agnostic 0.721->0.643
+CFairness    Loss Awareness 0.741->0.652
+CFairness    Generator Agnostic 0.841->0.731
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.646, Recall 0.642, F-measure 0.642
+CFairness    ------------------------------
+CFairness    Epoch 37
+CFairness    Loss Agnostic 0.721->0.636
+CFairness    Loss Awareness 0.741->0.643
+CFairness    Generator Agnostic 0.841->0.722
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.649, Recall 0.646, F-measure 0.646
+CFairness    ------------------------------
+CFairness    Epoch 38
+CFairness    Loss Agnostic 0.721->0.637
+CFairness    Loss Awareness 0.741->0.646
+CFairness    Generator Agnostic 0.841->0.724
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.645, Recall 0.643, F-measure 0.644
+CFairness    ------------------------------
+CFairness    Epoch 39
+CFairness    Loss Agnostic 0.721->0.639
+CFairness    Loss Awareness 0.741->0.647
+CFairness    Generator Agnostic 0.841->0.726
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.649, Recall 0.648, F-measure 0.649
+CFairness    ------------------------------
+CFairness    Epoch 40
+CFairness    Loss Agnostic 0.721->0.643
+CFairness    Loss Awareness 0.741->0.647
+CFairness    Generator Agnostic 0.841->0.74
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.654, Recall 0.654, F-measure 0.654
+CFairness    ------------------------------
+CFairness    Epoch 41
+CFairness    Loss Agnostic 0.721->0.639
+CFairness    Loss Awareness 0.741->0.645
+CFairness    Generator Agnostic 0.841->0.737
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.655, Recall 0.655, F-measure 0.655
+CFairness    ------------------------------
+CFairness    Epoch 42
+CFairness    Loss Agnostic 0.721->0.641
+CFairness    Loss Awareness 0.741->0.642
+CFairness    Generator Agnostic 0.841->0.748
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.652, Recall 0.650, F-measure 0.651
+CFairness    ------------------------------
+CFairness    Epoch 43
+CFairness    Loss Agnostic 0.721->0.64
+CFairness    Loss Awareness 0.741->0.647
+CFairness    Generator Agnostic 0.841->0.728
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.653, Recall 0.651, F-measure 0.652
+CFairness    ------------------------------
+CFairness    Epoch 44
+CFairness    Loss Agnostic 0.721->0.642
+CFairness    Loss Awareness 0.741->0.643
+CFairness    Generator Agnostic 0.841->0.757
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.648, Recall 0.643, F-measure 0.644
+CFairness    ------------------------------
+CFairness    Epoch 45
+CFairness    Loss Agnostic 0.721->0.634
+CFairness    Loss Awareness 0.741->0.648
+CFairness    Generator Agnostic 0.841->0.699
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.650, Recall 0.647, F-measure 0.648
+CFairness    ------------------------------
+CFairness    Epoch 46
+CFairness    Loss Agnostic 0.721->0.638
+CFairness    Loss Awareness 0.741->0.647
+CFairness    Generator Agnostic 0.841->0.718
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.649, Recall 0.646, F-measure 0.646
+CFairness    ------------------------------
+CFairness    Epoch 47
+CFairness    Loss Agnostic 0.721->0.64
+CFairness    Loss Awareness 0.741->0.642
+CFairness    Generator Agnostic 0.841->0.757
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.655, Recall 0.654, F-measure 0.655
+CFairness    ------------------------------
+CFairness    Epoch 48
+CFairness    Loss Agnostic 0.721->0.636
+CFairness    Loss Awareness 0.741->0.643
+CFairness    Generator Agnostic 0.841->0.708
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.654, Recall 0.654, F-measure 0.654
+CFairness    ------------------------------
+CFairness    Epoch 49
+CFairness    Loss Agnostic 0.721->0.638
+CFairness    Loss Awareness 0.741->0.641
+CFairness    Generator Agnostic 0.841->0.734
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.656, Recall 0.657, F-measure 0.656
+CFairness    ------------------------------
+CFairness    Epoch 50
+CFairness    Loss Agnostic 0.721->0.637
+CFairness    Loss Awareness 0.741->0.643
+CFairness    Generator Agnostic 0.841->0.734
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.661, Recall 0.663, F-measure 0.661
+CFairness    ------------------------------
+CFairness    Epoch 51
+CFairness    Loss Agnostic 0.721->0.638
+CFairness    Loss Awareness 0.741->0.641
+CFairness    Generator Agnostic 0.841->0.74
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.656, Recall 0.657, F-measure 0.656
+CFairness    ------------------------------
+CFairness    Epoch 52
+CFairness    Loss Agnostic 0.721->0.634
+CFairness    Loss Awareness 0.741->0.643
+CFairness    Generator Agnostic 0.841->0.73
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.657, Recall 0.658, F-measure 0.657
+CFairness    ------------------------------
+CFairness    Epoch 53
+CFairness    Loss Agnostic 0.721->0.636
+CFairness    Loss Awareness 0.741->0.641
+CFairness    Generator Agnostic 0.841->0.748
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.657, Recall 0.655, F-measure 0.656
+CFairness    ------------------------------
+CFairness    Epoch 54
+CFairness    Loss Agnostic 0.721->0.636
+CFairness    Loss Awareness 0.741->0.636
+CFairness    Generator Agnostic 0.841->0.729
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.654, Recall 0.652, F-measure 0.652
+CFairness    ------------------------------
+CFairness    Epoch 55
+CFairness    Loss Agnostic 0.721->0.637
+CFairness    Loss Awareness 0.741->0.643
+CFairness    Generator Agnostic 0.841->0.709
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.652, Recall 0.652, F-measure 0.652
+CFairness    ------------------------------
+CFairness    Epoch 56
+CFairness    Loss Agnostic 0.721->0.637
+CFairness    Loss Awareness 0.741->0.641
+CFairness    Generator Agnostic 0.841->0.711
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.658, Recall 0.658, F-measure 0.658
+CFairness    ------------------------------
+CFairness    Epoch 57
+CFairness    Loss Agnostic 0.721->0.635
+CFairness    Loss Awareness 0.741->0.642
+CFairness    Generator Agnostic 0.841->0.72
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.655, Recall 0.655, F-measure 0.655
+CFairness    ------------------------------
+CFairness    Epoch 58
+CFairness    Loss Agnostic 0.721->0.632
+CFairness    Loss Awareness 0.741->0.64
+CFairness    Generator Agnostic 0.841->0.716
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.657, Recall 0.656, F-measure 0.656
+CFairness    ------------------------------
+CFairness    Epoch 59
+CFairness    Loss Agnostic 0.721->0.634
+CFairness    Loss Awareness 0.741->0.641
+CFairness    Generator Agnostic 0.841->0.717
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.656, Recall 0.651, F-measure 0.652
+CFairness    ------------------------------
+CFairness    Epoch 60
+CFairness    Loss Agnostic 0.721->0.635
+CFairness    Loss Awareness 0.741->0.643
+CFairness    Generator Agnostic 0.841->0.711
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.657, Recall 0.654, F-measure 0.655
+CFairness    ------------------------------
+CFairness    Epoch 61
+CFairness    Loss Agnostic 0.721->0.635
+CFairness    Loss Awareness 0.741->0.644
+CFairness    Generator Agnostic 0.841->0.7
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.649, Recall 0.648, F-measure 0.648
+CFairness    ------------------------------
+CFairness    Epoch 62
+CFairness    Loss Agnostic 0.721->0.628
+CFairness    Loss Awareness 0.741->0.64
+CFairness    Generator Agnostic 0.841->0.695
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.658, Recall 0.656, F-measure 0.656
+CFairness    ------------------------------
+CFairness    Epoch 63
+CFairness    Loss Agnostic 0.721->0.634
+CFairness    Loss Awareness 0.741->0.644
+CFairness    Generator Agnostic 0.841->0.704
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.649, Recall 0.645, F-measure 0.646
+CFairness    ------------------------------
+CFairness    Epoch 64
+CFairness    Loss Agnostic 0.721->0.631
+CFairness    Loss Awareness 0.741->0.642
+CFairness    Generator Agnostic 0.841->0.698
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.660, Recall 0.656, F-measure 0.657
+CFairness    ------------------------------
+CFairness    Epoch 65
+CFairness    Loss Agnostic 0.721->0.632
+CFairness    Loss Awareness 0.741->0.638
+CFairness    Generator Agnostic 0.841->0.727
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.657, Recall 0.656, F-measure 0.656
+CFairness    ------------------------------
+CFairness    Epoch 66
+CFairness    Loss Agnostic 0.721->0.633
+CFairness    Loss Awareness 0.741->0.641
+CFairness    Generator Agnostic 0.841->0.693
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.656, Recall 0.655, F-measure 0.656
+CFairness    ------------------------------
+CFairness    Epoch 67
+CFairness    Loss Agnostic 0.721->0.632
+CFairness    Loss Awareness 0.741->0.64
+CFairness    Generator Agnostic 0.841->0.698
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.657, Recall 0.655, F-measure 0.656
+CFairness    ------------------------------
+CFairness    Epoch 68
+CFairness    Loss Agnostic 0.721->0.632
+CFairness    Loss Awareness 0.741->0.641
+CFairness    Generator Agnostic 0.841->0.698
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.659, Recall 0.657, F-measure 0.658
+CFairness    ------------------------------
+CFairness    Epoch 69
+CFairness    Loss Agnostic 0.721->0.632
+CFairness    Loss Awareness 0.741->0.637
+CFairness    Generator Agnostic 0.841->0.73
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.650, Recall 0.649, F-measure 0.649
+CFairness    ------------------------------
+CFairness    Epoch 70
+CFairness    Loss Agnostic 0.721->0.632
+CFairness    Loss Awareness 0.741->0.637
+CFairness    Generator Agnostic 0.841->0.724
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.653, Recall 0.653, F-measure 0.653
+CFairness    ------------------------------
+CFairness    Epoch 71
+CFairness    Loss Agnostic 0.721->0.635
+CFairness    Loss Awareness 0.741->0.641
+CFairness    Generator Agnostic 0.841->0.722
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.656, Recall 0.656, F-measure 0.656
+CFairness    ------------------------------
+CFairness    Epoch 72
+CFairness    Loss Agnostic 0.721->0.634
+CFairness    Loss Awareness 0.741->0.639
+CFairness    Generator Agnostic 0.841->0.717
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.660, Recall 0.659, F-measure 0.660
+CFairness    ------------------------------
+CFairness    Epoch 73
+CFairness    Loss Agnostic 0.721->0.631
+CFairness    Loss Awareness 0.741->0.639
+CFairness    Generator Agnostic 0.841->0.703
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.661, Recall 0.660, F-measure 0.660
+CFairness    ------------------------------
+CFairness    Epoch 74
+CFairness    Loss Agnostic 0.721->0.633
+CFairness    Loss Awareness 0.741->0.636
+CFairness    Generator Agnostic 0.841->0.738
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.663, Recall 0.661, F-measure 0.661
+CFairness    ------------------------------
+CFairness    Epoch 75
+CFairness    Loss Agnostic 0.721->0.63
+CFairness    Loss Awareness 0.741->0.637
+CFairness    Generator Agnostic 0.841->0.711
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.661, Recall 0.653, F-measure 0.654
+CFairness    ------------------------------
+CFairness    Epoch 76
+CFairness    Loss Agnostic 0.721->0.633
+CFairness    Loss Awareness 0.741->0.641
+CFairness    Generator Agnostic 0.841->0.699
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.652, Recall 0.638, F-measure 0.638
+CFairness    ------------------------------
+CFairness    Epoch 77
+CFairness    Loss Agnostic 0.721->0.639
+CFairness    Loss Awareness 0.741->0.639
+CFairness    Generator Agnostic 0.841->0.729
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.655, Recall 0.643, F-measure 0.643
+CFairness    ------------------------------
+CFairness    Epoch 78
+CFairness    Loss Agnostic 0.721->0.636
+CFairness    Loss Awareness 0.741->0.637
+CFairness    Generator Agnostic 0.841->0.732
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.660, Recall 0.652, F-measure 0.653
+CFairness    ------------------------------
+CFairness    Epoch 79
+CFairness    Loss Agnostic 0.721->0.632
+CFairness    Loss Awareness 0.741->0.64
+CFairness    Generator Agnostic 0.841->0.69
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.662, Recall 0.659, F-measure 0.660
+CFairness    ------------------------------
+CFairness    Epoch 80
+CFairness    Loss Agnostic 0.721->0.631
+CFairness    Loss Awareness 0.741->0.644
+CFairness    Generator Agnostic 0.841->0.686
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.659, Recall 0.656, F-measure 0.657
+CFairness    ------------------------------
+CFairness    Epoch 81
+CFairness    Loss Agnostic 0.721->0.629
+CFairness    Loss Awareness 0.741->0.635
+CFairness    Generator Agnostic 0.841->0.705
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.661, Recall 0.660, F-measure 0.660
+CFairness    ------------------------------
+CFairness    Epoch 82
+CFairness    Loss Agnostic 0.721->0.63
+CFairness    Loss Awareness 0.741->0.635
+CFairness    Generator Agnostic 0.841->0.698
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.657, Recall 0.657, F-measure 0.657
+CFairness    ------------------------------
+CFairness    Epoch 83
+CFairness    Loss Agnostic 0.721->0.633
+CFairness    Loss Awareness 0.741->0.637
+CFairness    Generator Agnostic 0.841->0.718
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.662, Recall 0.658, F-measure 0.659
+CFairness    ------------------------------
+CFairness    Epoch 84
+CFairness    Loss Agnostic 0.721->0.634
+CFairness    Loss Awareness 0.741->0.637
+CFairness    Generator Agnostic 0.841->0.718
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.661, Recall 0.659, F-measure 0.659
+CFairness    ------------------------------
+CFairness    Epoch 85
+CFairness    Loss Agnostic 0.721->0.632
+CFairness    Loss Awareness 0.741->0.636
+CFairness    Generator Agnostic 0.841->0.733
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.651, Recall 0.650, F-measure 0.650
+CFairness    ------------------------------
+CFairness    Epoch 86
+CFairness    Loss Agnostic 0.721->0.634
+CFairness    Loss Awareness 0.741->0.637
+CFairness    Generator Agnostic 0.841->0.718
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.660, Recall 0.660, F-measure 0.660
+CFairness    ------------------------------
+CFairness    Epoch 87
+CFairness    Loss Agnostic 0.721->0.631
+CFairness    Loss Awareness 0.741->0.636
+CFairness    Generator Agnostic 0.841->0.702
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.662, Recall 0.662, F-measure 0.662
+CFairness    ------------------------------
+CFairness    Epoch 88
+CFairness    Loss Agnostic 0.721->0.633
+CFairness    Loss Awareness 0.741->0.634
+CFairness    Generator Agnostic 0.841->0.705
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.661, Recall 0.661, F-measure 0.661
+CFairness    ------------------------------
+CFairness    Epoch 89
+CFairness    Loss Agnostic 0.721->0.632
+CFairness    Loss Awareness 0.741->0.633
+CFairness    Generator Agnostic 0.841->0.722
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.662, Recall 0.656, F-measure 0.656
+CFairness    ------------------------------
+CFairness    Epoch 90
+CFairness    Loss Agnostic 0.721->0.635
+CFairness    Loss Awareness 0.741->0.637
+CFairness    Generator Agnostic 0.841->0.725
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.661, Recall 0.657, F-measure 0.657
+CFairness    ------------------------------
+CFairness    Epoch 91
+CFairness    Loss Agnostic 0.721->0.629
+CFairness    Loss Awareness 0.741->0.637
+CFairness    Generator Agnostic 0.841->0.685
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.666, Recall 0.659, F-measure 0.660
+CFairness    ------------------------------
+CFairness    Epoch 92
+CFairness    Loss Agnostic 0.721->0.632
+CFairness    Loss Awareness 0.741->0.633
+CFairness    Generator Agnostic 0.841->0.715
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.666, Recall 0.662, F-measure 0.663
+CFairness    ------------------------------
+CFairness    Epoch 93
+CFairness    Loss Agnostic 0.721->0.629
+CFairness    Loss Awareness 0.741->0.634
+CFairness    Generator Agnostic 0.841->0.698
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.664, Recall 0.664, F-measure 0.664
+CFairness    ------------------------------
+CFairness    Epoch 94
+CFairness    Loss Agnostic 0.721->0.629
+CFairness    Loss Awareness 0.741->0.633
+CFairness    Generator Agnostic 0.841->0.696
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.663, Recall 0.662, F-measure 0.662
+CFairness    ------------------------------
+CFairness    Epoch 95
+CFairness    Loss Agnostic 0.721->0.63
+CFairness    Loss Awareness 0.741->0.634
+CFairness    Generator Agnostic 0.841->0.713
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.665, Recall 0.663, F-measure 0.664
+CFairness    ------------------------------
+CFairness    Epoch 96
+CFairness    Loss Agnostic 0.721->0.628
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.702
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.662, Recall 0.661, F-measure 0.661
+CFairness    ------------------------------
+CFairness    Epoch 97
+CFairness    Loss Agnostic 0.721->0.628
+CFairness    Loss Awareness 0.741->0.638
+CFairness    Generator Agnostic 0.841->0.676
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.666, Recall 0.666, F-measure 0.666
+CFairness    ------------------------------
+CFairness    Epoch 98
+CFairness    Loss Agnostic 0.721->0.628
+CFairness    Loss Awareness 0.741->0.634
+CFairness    Generator Agnostic 0.841->0.691
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.663, Recall 0.661, F-measure 0.661
+CFairness    ------------------------------
+CFairness    Epoch 99
+CFairness    Loss Agnostic 0.721->0.629
+CFairness    Loss Awareness 0.741->0.637
+CFairness    Generator Agnostic 0.841->0.682
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.667, Recall 0.662, F-measure 0.663
+CFairness    ------------------------------
+CFairness    Epoch 100
+CFairness    Loss Agnostic 0.721->0.63
+CFairness    Loss Awareness 0.741->0.634
+CFairness    Generator Agnostic 0.841->0.7
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.664, Recall 0.660, F-measure 0.660
+CFairness    ------------------------------
+CFairness    Epoch 101
+CFairness    Loss Agnostic 0.721->0.629
+CFairness    Loss Awareness 0.741->0.633
+CFairness    Generator Agnostic 0.841->0.702
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.666, Recall 0.661, F-measure 0.662
+CFairness    ------------------------------
+CFairness    Epoch 102
+CFairness    Loss Agnostic 0.721->0.629
+CFairness    Loss Awareness 0.741->0.633
+CFairness    Generator Agnostic 0.841->0.711
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.663, Recall 0.659, F-measure 0.660
+CFairness    ------------------------------
+CFairness    Epoch 103
+CFairness    Loss Agnostic 0.721->0.631
+CFairness    Loss Awareness 0.741->0.633
+CFairness    Generator Agnostic 0.841->0.706
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.660, Recall 0.655, F-measure 0.656
+CFairness    ------------------------------
+CFairness    Epoch 104
+CFairness    Loss Agnostic 0.721->0.627
+CFairness    Loss Awareness 0.741->0.634
+CFairness    Generator Agnostic 0.841->0.701
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.663, Recall 0.659, F-measure 0.660
+CFairness    ------------------------------
+CFairness    Epoch 105
+CFairness    Loss Agnostic 0.721->0.627
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.69
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.663, Recall 0.659, F-measure 0.660
+CFairness    ------------------------------
+CFairness    Epoch 106
+CFairness    Loss Agnostic 0.721->0.628
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.699
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.670, Recall 0.666, F-measure 0.667
+CFairness    ------------------------------
+CFairness    Epoch 107
+CFairness    Loss Agnostic 0.721->0.627
+CFairness    Loss Awareness 0.741->0.636
+CFairness    Generator Agnostic 0.841->0.683
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.665, Recall 0.662, F-measure 0.663
+CFairness    ------------------------------
+CFairness    Epoch 108
+CFairness    Loss Agnostic 0.721->0.627
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.698
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.660, Recall 0.656, F-measure 0.657
+CFairness    ------------------------------
+CFairness    Epoch 109
+CFairness    Loss Agnostic 0.721->0.628
+CFairness    Loss Awareness 0.741->0.634
+CFairness    Generator Agnostic 0.841->0.701
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.666, Recall 0.662, F-measure 0.663
+CFairness    ------------------------------
+CFairness    Epoch 110
+CFairness    Loss Agnostic 0.721->0.625
+CFairness    Loss Awareness 0.741->0.629
+CFairness    Generator Agnostic 0.841->0.703
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.667, Recall 0.664, F-measure 0.665
+CFairness    ------------------------------
+CFairness    Epoch 111
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.635
+CFairness    Generator Agnostic 0.841->0.675
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.668, Recall 0.664, F-measure 0.665
+CFairness    ------------------------------
+CFairness    Epoch 112
+CFairness    Loss Agnostic 0.721->0.626
+CFairness    Loss Awareness 0.741->0.634
+CFairness    Generator Agnostic 0.841->0.689
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.663, Recall 0.660, F-measure 0.660
+CFairness    ------------------------------
+CFairness    Epoch 113
+CFairness    Loss Agnostic 0.721->0.628
+CFairness    Loss Awareness 0.741->0.634
+CFairness    Generator Agnostic 0.841->0.696
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.661, Recall 0.658, F-measure 0.659
+CFairness    ------------------------------
+CFairness    Epoch 114
+CFairness    Loss Agnostic 0.721->0.629
+CFairness    Loss Awareness 0.741->0.629
+CFairness    Generator Agnostic 0.841->0.734
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.667, Recall 0.663, F-measure 0.663
+CFairness    ------------------------------
+CFairness    Epoch 115
+CFairness    Loss Agnostic 0.721->0.628
+CFairness    Loss Awareness 0.741->0.634
+CFairness    Generator Agnostic 0.841->0.692
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.666, Recall 0.661, F-measure 0.662
+CFairness    ------------------------------
+CFairness    Epoch 116
+CFairness    Loss Agnostic 0.721->0.628
+CFairness    Loss Awareness 0.741->0.633
+CFairness    Generator Agnostic 0.841->0.706
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.673, Recall 0.669, F-measure 0.669
+CFairness    ------------------------------
+CFairness    Epoch 117
+CFairness    Loss Agnostic 0.721->0.625
+CFairness    Loss Awareness 0.741->0.634
+CFairness    Generator Agnostic 0.841->0.678
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.670, Recall 0.667, F-measure 0.667
+CFairness    ------------------------------
+CFairness    Epoch 118
+CFairness    Loss Agnostic 0.721->0.626
+CFairness    Loss Awareness 0.741->0.629
+CFairness    Generator Agnostic 0.841->0.696
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.665, Recall 0.661, F-measure 0.662
+CFairness    ------------------------------
+CFairness    Epoch 119
+CFairness    Loss Agnostic 0.721->0.627
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.699
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.666, Recall 0.662, F-measure 0.663
+CFairness    ------------------------------
+CFairness    Epoch 120
+CFairness    Loss Agnostic 0.721->0.626
+CFairness    Loss Awareness 0.741->0.633
+CFairness    Generator Agnostic 0.841->0.689
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.667, Recall 0.664, F-measure 0.664
+CFairness    ------------------------------
+CFairness    Epoch 121
+CFairness    Loss Agnostic 0.721->0.626
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.685
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.670, Recall 0.666, F-measure 0.666
+CFairness    ------------------------------
+CFairness    Epoch 122
+CFairness    Loss Agnostic 0.721->0.627
+CFairness    Loss Awareness 0.741->0.629
+CFairness    Generator Agnostic 0.841->0.714
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.667, Recall 0.662, F-measure 0.663
+CFairness    ------------------------------
+CFairness    Epoch 123
+CFairness    Loss Agnostic 0.721->0.627
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.683
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.667, Recall 0.664, F-measure 0.665
+CFairness    ------------------------------
+CFairness    Epoch 124
+CFairness    Loss Agnostic 0.721->0.628
+CFairness    Loss Awareness 0.741->0.634
+CFairness    Generator Agnostic 0.841->0.691
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.668, Recall 0.666, F-measure 0.666
+CFairness    ------------------------------
+CFairness    Epoch 125
+CFairness    Loss Agnostic 0.721->0.629
+CFairness    Loss Awareness 0.741->0.634
+CFairness    Generator Agnostic 0.841->0.699
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.672, Recall 0.669, F-measure 0.669
+CFairness    ------------------------------
+CFairness    Epoch 126
+CFairness    Loss Agnostic 0.721->0.629
+CFairness    Loss Awareness 0.741->0.634
+CFairness    Generator Agnostic 0.841->0.702
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.671, Recall 0.668, F-measure 0.668
+CFairness    ------------------------------
+CFairness    Epoch 127
+CFairness    Loss Agnostic 0.721->0.623
+CFairness    Loss Awareness 0.741->0.634
+CFairness    Generator Agnostic 0.841->0.657
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.669, Recall 0.666, F-measure 0.667
+CFairness    ------------------------------
+CFairness    Epoch 128
+CFairness    Loss Agnostic 0.721->0.628
+CFairness    Loss Awareness 0.741->0.634
+CFairness    Generator Agnostic 0.841->0.68
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.666, Recall 0.664, F-measure 0.664
+CFairness    ------------------------------
+CFairness    Epoch 129
+CFairness    Loss Agnostic 0.721->0.628
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.705
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.664, Recall 0.661, F-measure 0.661
+CFairness    ------------------------------
+CFairness    Epoch 130
+CFairness    Loss Agnostic 0.721->0.623
+CFairness    Loss Awareness 0.741->0.633
+CFairness    Generator Agnostic 0.841->0.666
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.670, Recall 0.668, F-measure 0.669
+CFairness    ------------------------------
+CFairness    Epoch 131
+CFairness    Loss Agnostic 0.721->0.627
+CFairness    Loss Awareness 0.741->0.633
+CFairness    Generator Agnostic 0.841->0.685
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.666, Recall 0.664, F-measure 0.665
+CFairness    ------------------------------
+CFairness    Epoch 132
+CFairness    Loss Agnostic 0.721->0.625
+CFairness    Loss Awareness 0.741->0.631
+CFairness    Generator Agnostic 0.841->0.694
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.668, Recall 0.667, F-measure 0.667
+CFairness    ------------------------------
+CFairness    Epoch 133
+CFairness    Loss Agnostic 0.721->0.626
+CFairness    Loss Awareness 0.741->0.631
+CFairness    Generator Agnostic 0.841->0.701
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.669, Recall 0.668, F-measure 0.668
+CFairness    ------------------------------
+CFairness    Epoch 134
+CFairness    Loss Agnostic 0.721->0.626
+CFairness    Loss Awareness 0.741->0.633
+CFairness    Generator Agnostic 0.841->0.691
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.674, Recall 0.674, F-measure 0.674
+CFairness    ------------------------------
+CFairness    Epoch 135
+CFairness    Loss Agnostic 0.721->0.628
+CFairness    Loss Awareness 0.741->0.631
+CFairness    Generator Agnostic 0.841->0.71
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.669, Recall 0.669, F-measure 0.669
+CFairness    ------------------------------
+CFairness    Epoch 136
+CFairness    Loss Agnostic 0.721->0.628
+CFairness    Loss Awareness 0.741->0.634
+CFairness    Generator Agnostic 0.841->0.696
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.672, Recall 0.672, F-measure 0.672
+CFairness    ------------------------------
+CFairness    Epoch 137
+CFairness    Loss Agnostic 0.721->0.627
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.692
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.671, Recall 0.671, F-measure 0.671
+CFairness    ------------------------------
+CFairness    Epoch 138
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.634
+CFairness    Generator Agnostic 0.841->0.663
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.662, Recall 0.660, F-measure 0.661
+CFairness    ------------------------------
+CFairness    Epoch 139
+CFairness    Loss Agnostic 0.721->0.628
+CFairness    Loss Awareness 0.741->0.633
+CFairness    Generator Agnostic 0.841->0.706
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.668, Recall 0.667, F-measure 0.667
+CFairness    ------------------------------
+CFairness    Epoch 140
+CFairness    Loss Agnostic 0.721->0.627
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.697
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.670, Recall 0.668, F-measure 0.669
+CFairness    ------------------------------
+CFairness    Epoch 141
+CFairness    Loss Agnostic 0.721->0.627
+CFairness    Loss Awareness 0.741->0.635
+CFairness    Generator Agnostic 0.841->0.68
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.669, Recall 0.666, F-measure 0.667
+CFairness    ------------------------------
+CFairness    Epoch 142
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.634
+CFairness    Generator Agnostic 0.841->0.677
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.668, Recall 0.666, F-measure 0.666
+CFairness    ------------------------------
+CFairness    Epoch 143
+CFairness    Loss Agnostic 0.721->0.626
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.691
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.667, Recall 0.665, F-measure 0.665
+CFairness    ------------------------------
+CFairness    Epoch 144
+CFairness    Loss Agnostic 0.721->0.626
+CFairness    Loss Awareness 0.741->0.633
+CFairness    Generator Agnostic 0.841->0.681
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.665, Recall 0.662, F-measure 0.663
+CFairness    ------------------------------
+CFairness    Epoch 145
+CFairness    Loss Agnostic 0.721->0.626
+CFairness    Loss Awareness 0.741->0.633
+CFairness    Generator Agnostic 0.841->0.693
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.666, Recall 0.664, F-measure 0.664
+CFairness    ------------------------------
+CFairness    Epoch 146
+CFairness    Loss Agnostic 0.721->0.627
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.69
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.668, Recall 0.665, F-measure 0.666
+CFairness    ------------------------------
+CFairness    Epoch 147
+CFairness    Loss Agnostic 0.721->0.625
+CFairness    Loss Awareness 0.741->0.637
+CFairness    Generator Agnostic 0.841->0.669
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.668, Recall 0.665, F-measure 0.665
+CFairness    ------------------------------
+CFairness    Epoch 148
+CFairness    Loss Agnostic 0.721->0.623
+CFairness    Loss Awareness 0.741->0.63
+CFairness    Generator Agnostic 0.841->0.67
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.667, Recall 0.664, F-measure 0.664
+CFairness    ------------------------------
+CFairness    Epoch 149
+CFairness    Loss Agnostic 0.721->0.626
+CFairness    Loss Awareness 0.741->0.634
+CFairness    Generator Agnostic 0.841->0.684
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.668, Recall 0.664, F-measure 0.665
+CFairness    ------------------------------
+CFairness    Epoch 150
+CFairness    Loss Agnostic 0.721->0.623
+CFairness    Loss Awareness 0.741->0.636
+CFairness    Generator Agnostic 0.841->0.648
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.666, Recall 0.663, F-measure 0.663
+CFairness    ------------------------------
+CFairness    Epoch 151
+CFairness    Loss Agnostic 0.721->0.625
+CFairness    Loss Awareness 0.741->0.631
+CFairness    Generator Agnostic 0.841->0.693
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.675, Recall 0.672, F-measure 0.673
+CFairness    ------------------------------
+CFairness    Epoch 152
+CFairness    Loss Agnostic 0.721->0.625
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.691
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.667, Recall 0.664, F-measure 0.665
+CFairness    ------------------------------
+CFairness    Epoch 153
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.631
+CFairness    Generator Agnostic 0.841->0.68
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.666, Recall 0.664, F-measure 0.664
+CFairness    ------------------------------
+CFairness    Epoch 154
+CFairness    Loss Agnostic 0.721->0.625
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.684
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.669, Recall 0.666, F-measure 0.667
+CFairness    ------------------------------
+CFairness    Epoch 155
+CFairness    Loss Agnostic 0.721->0.626
+CFairness    Loss Awareness 0.741->0.634
+CFairness    Generator Agnostic 0.841->0.675
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.669, Recall 0.666, F-measure 0.667
+CFairness    ------------------------------
+CFairness    Epoch 156
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.662
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.671, Recall 0.668, F-measure 0.669
+CFairness    ------------------------------
+CFairness    Epoch 157
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.631
+CFairness    Generator Agnostic 0.841->0.672
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.669, Recall 0.666, F-measure 0.667
+CFairness    ------------------------------
+CFairness    Epoch 158
+CFairness    Loss Agnostic 0.721->0.627
+CFairness    Loss Awareness 0.741->0.631
+CFairness    Generator Agnostic 0.841->0.698
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.669, Recall 0.666, F-measure 0.667
+CFairness    ------------------------------
+CFairness    Epoch 159
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.628
+CFairness    Generator Agnostic 0.841->0.688
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.679, Recall 0.676, F-measure 0.677
+CFairness    ------------------------------
+CFairness    Epoch 160
+CFairness    Loss Agnostic 0.721->0.627
+CFairness    Loss Awareness 0.741->0.633
+CFairness    Generator Agnostic 0.841->0.688
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.667, Recall 0.662, F-measure 0.663
+CFairness    ------------------------------
+CFairness    Epoch 161
+CFairness    Loss Agnostic 0.721->0.625
+CFairness    Loss Awareness 0.741->0.633
+CFairness    Generator Agnostic 0.841->0.686
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.667, Recall 0.661, F-measure 0.662
+CFairness    ------------------------------
+CFairness    Epoch 162
+CFairness    Loss Agnostic 0.721->0.622
+CFairness    Loss Awareness 0.741->0.634
+CFairness    Generator Agnostic 0.841->0.676
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.673, Recall 0.668, F-measure 0.669
+CFairness    ------------------------------
+CFairness    Epoch 163
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.633
+CFairness    Generator Agnostic 0.841->0.674
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.668, Recall 0.663, F-measure 0.664
+CFairness    ------------------------------
+CFairness    Epoch 164
+CFairness    Loss Agnostic 0.721->0.625
+CFairness    Loss Awareness 0.741->0.633
+CFairness    Generator Agnostic 0.841->0.674
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.667, Recall 0.663, F-measure 0.664
+CFairness    ------------------------------
+CFairness    Epoch 165
+CFairness    Loss Agnostic 0.721->0.628
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.71
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.668, Recall 0.665, F-measure 0.665
+CFairness    ------------------------------
+CFairness    Epoch 166
+CFairness    Loss Agnostic 0.721->0.626
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.697
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.667, Recall 0.665, F-measure 0.665
+CFairness    ------------------------------
+CFairness    Epoch 167
+CFairness    Loss Agnostic 0.721->0.626
+CFairness    Loss Awareness 0.741->0.631
+CFairness    Generator Agnostic 0.841->0.696
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.670, Recall 0.668, F-measure 0.669
+CFairness    ------------------------------
+CFairness    Epoch 168
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.631
+CFairness    Generator Agnostic 0.841->0.671
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.670, Recall 0.668, F-measure 0.668
+CFairness    ------------------------------
+CFairness    Epoch 169
+CFairness    Loss Agnostic 0.721->0.625
+CFairness    Loss Awareness 0.741->0.631
+CFairness    Generator Agnostic 0.841->0.695
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.665, Recall 0.662, F-measure 0.663
+CFairness    ------------------------------
+CFairness    Epoch 170
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.634
+CFairness    Generator Agnostic 0.841->0.667
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.671, Recall 0.668, F-measure 0.669
+CFairness    ------------------------------
+CFairness    Epoch 171
+CFairness    Loss Agnostic 0.721->0.626
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.684
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.668, Recall 0.666, F-measure 0.666
+CFairness    ------------------------------
+CFairness    Epoch 172
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.63
+CFairness    Generator Agnostic 0.841->0.677
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.667, Recall 0.663, F-measure 0.664
+CFairness    ------------------------------
+CFairness    Epoch 173
+CFairness    Loss Agnostic 0.721->0.626
+CFairness    Loss Awareness 0.741->0.631
+CFairness    Generator Agnostic 0.841->0.701
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.674, Recall 0.671, F-measure 0.671
+CFairness    ------------------------------
+CFairness    Epoch 174
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.631
+CFairness    Generator Agnostic 0.841->0.675
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.670, Recall 0.667, F-measure 0.667
+CFairness    ------------------------------
+CFairness    Epoch 175
+CFairness    Loss Agnostic 0.721->0.627
+CFairness    Loss Awareness 0.741->0.633
+CFairness    Generator Agnostic 0.841->0.682
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.667, Recall 0.665, F-measure 0.665
+CFairness    ------------------------------
+CFairness    Epoch 176
+CFairness    Loss Agnostic 0.721->0.623
+CFairness    Loss Awareness 0.741->0.634
+CFairness    Generator Agnostic 0.841->0.675
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.670, Recall 0.668, F-measure 0.669
+CFairness    ------------------------------
+CFairness    Epoch 177
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.63
+CFairness    Generator Agnostic 0.841->0.697
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.673, Recall 0.671, F-measure 0.671
+CFairness    ------------------------------
+CFairness    Epoch 178
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.678
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.672, Recall 0.668, F-measure 0.669
+CFairness    ------------------------------
+CFairness    Epoch 179
+CFairness    Loss Agnostic 0.721->0.623
+CFairness    Loss Awareness 0.741->0.631
+CFairness    Generator Agnostic 0.841->0.672
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.669, Recall 0.666, F-measure 0.667
+CFairness    ------------------------------
+CFairness    Epoch 180
+CFairness    Loss Agnostic 0.721->0.626
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.698
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.672, Recall 0.669, F-measure 0.670
+CFairness    ------------------------------
+CFairness    Epoch 181
+CFairness    Loss Agnostic 0.721->0.625
+CFairness    Loss Awareness 0.741->0.633
+CFairness    Generator Agnostic 0.841->0.683
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.670, Recall 0.668, F-measure 0.669
+CFairness    ------------------------------
+CFairness    Epoch 182
+CFairness    Loss Agnostic 0.721->0.626
+CFairness    Loss Awareness 0.741->0.634
+CFairness    Generator Agnostic 0.841->0.68
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.668, Recall 0.666, F-measure 0.667
+CFairness    ------------------------------
+CFairness    Epoch 183
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.631
+CFairness    Generator Agnostic 0.841->0.682
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.667, Recall 0.666, F-measure 0.666
+CFairness    ------------------------------
+CFairness    Epoch 184
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.629
+CFairness    Generator Agnostic 0.841->0.698
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.671, Recall 0.668, F-measure 0.669
+CFairness    ------------------------------
+CFairness    Epoch 185
+CFairness    Loss Agnostic 0.721->0.626
+CFairness    Loss Awareness 0.741->0.631
+CFairness    Generator Agnostic 0.841->0.687
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.668, Recall 0.666, F-measure 0.666
+CFairness    ------------------------------
+CFairness    Epoch 186
+CFairness    Loss Agnostic 0.721->0.625
+CFairness    Loss Awareness 0.741->0.635
+CFairness    Generator Agnostic 0.841->0.664
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.672, Recall 0.669, F-measure 0.670
+CFairness    ------------------------------
+CFairness    Epoch 187
+CFairness    Loss Agnostic 0.721->0.626
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.682
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.670, Recall 0.667, F-measure 0.668
+CFairness    ------------------------------
+CFairness    Epoch 188
+CFairness    Loss Agnostic 0.721->0.623
+CFairness    Loss Awareness 0.741->0.63
+CFairness    Generator Agnostic 0.841->0.696
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.668, Recall 0.666, F-measure 0.666
+CFairness    ------------------------------
+CFairness    Epoch 189
+CFairness    Loss Agnostic 0.721->0.627
+CFairness    Loss Awareness 0.741->0.634
+CFairness    Generator Agnostic 0.841->0.701
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.665, Recall 0.664, F-measure 0.664
+CFairness    ------------------------------
+CFairness    Epoch 190
+CFairness    Loss Agnostic 0.721->0.623
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.672
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.671, Recall 0.670, F-measure 0.670
+CFairness    ------------------------------
+CFairness    Epoch 191
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.676
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.673, Recall 0.672, F-measure 0.672
+CFairness    ------------------------------
+CFairness    Epoch 192
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.683
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.675, Recall 0.674, F-measure 0.674
+CFairness    ------------------------------
+CFairness    Epoch 193
+CFairness    Loss Agnostic 0.721->0.623
+CFairness    Loss Awareness 0.741->0.631
+CFairness    Generator Agnostic 0.841->0.682
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.663, Recall 0.662, F-measure 0.663
+CFairness    ------------------------------
+CFairness    Epoch 194
+CFairness    Loss Agnostic 0.721->0.625
+CFairness    Loss Awareness 0.741->0.635
+CFairness    Generator Agnostic 0.841->0.681
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.673, Recall 0.672, F-measure 0.673
+CFairness    ------------------------------
+CFairness    Epoch 195
+CFairness    Loss Agnostic 0.721->0.627
+CFairness    Loss Awareness 0.741->0.629
+CFairness    Generator Agnostic 0.841->0.71
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.670, Recall 0.668, F-measure 0.668
+CFairness    ------------------------------
+CFairness    Epoch 196
+CFairness    Loss Agnostic 0.721->0.623
+CFairness    Loss Awareness 0.741->0.633
+CFairness    Generator Agnostic 0.841->0.669
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.679, Recall 0.676, F-measure 0.677
+CFairness    ------------------------------
+CFairness    Epoch 197
+CFairness    Loss Agnostic 0.721->0.625
+CFairness    Loss Awareness 0.741->0.634
+CFairness    Generator Agnostic 0.841->0.672
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.672, Recall 0.669, F-measure 0.669
+CFairness    ------------------------------
+CFairness    Epoch 198
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.63
+CFairness    Generator Agnostic 0.841->0.696
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.671, Recall 0.668, F-measure 0.669
+CFairness    ------------------------------
+CFairness    Epoch 199
+CFairness    Loss Agnostic 0.721->0.623
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.671
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.674, Recall 0.671, F-measure 0.671
+CFairness    ------------------------------
+CFairness    Epoch 200
+CFairness    Loss Agnostic 0.721->0.621
+CFairness    Loss Awareness 0.741->0.63
+CFairness    Generator Agnostic 0.841->0.676
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.667, Recall 0.664, F-measure 0.665
+CFairness    ------------------------------
+CFairness    Epoch 201
+CFairness    Loss Agnostic 0.721->0.623
+CFairness    Loss Awareness 0.741->0.629
+CFairness    Generator Agnostic 0.841->0.7
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.670, Recall 0.667, F-measure 0.668
+CFairness    ------------------------------
+CFairness    Epoch 202
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.63
+CFairness    Generator Agnostic 0.841->0.673
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.674, Recall 0.671, F-measure 0.671
+CFairness    ------------------------------
+CFairness    Epoch 203
+CFairness    Loss Agnostic 0.721->0.627
+CFairness    Loss Awareness 0.741->0.631
+CFairness    Generator Agnostic 0.841->0.709
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.666, Recall 0.664, F-measure 0.664
+CFairness    ------------------------------
+CFairness    Epoch 204
+CFairness    Loss Agnostic 0.721->0.626
+CFairness    Loss Awareness 0.741->0.633
+CFairness    Generator Agnostic 0.841->0.681
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.669, Recall 0.667, F-measure 0.668
+CFairness    ------------------------------
+CFairness    Epoch 205
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.633
+CFairness    Generator Agnostic 0.841->0.671
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.662, Recall 0.660, F-measure 0.661
+CFairness    ------------------------------
+CFairness    Epoch 206
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.682
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.667, Recall 0.664, F-measure 0.664
+CFairness    ------------------------------
+CFairness    Epoch 207
+CFairness    Loss Agnostic 0.721->0.623
+CFairness    Loss Awareness 0.741->0.631
+CFairness    Generator Agnostic 0.841->0.678
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.674, Recall 0.671, F-measure 0.672
+CFairness    ------------------------------
+CFairness    Epoch 208
+CFairness    Loss Agnostic 0.721->0.625
+CFairness    Loss Awareness 0.741->0.631
+CFairness    Generator Agnostic 0.841->0.695
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.669, Recall 0.666, F-measure 0.667
+CFairness    ------------------------------
+CFairness    Epoch 209
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.681
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.663, Recall 0.660, F-measure 0.660
+CFairness    ------------------------------
+CFairness    Epoch 210
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.633
+CFairness    Generator Agnostic 0.841->0.684
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.668, Recall 0.666, F-measure 0.667
+CFairness    ------------------------------
+CFairness    Epoch 211
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.686
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.669, Recall 0.666, F-measure 0.667
+CFairness    ------------------------------
+CFairness    Epoch 212
+CFairness    Loss Agnostic 0.721->0.623
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.674
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.668, Recall 0.665, F-measure 0.666
+CFairness    ------------------------------
+CFairness    Epoch 213
+CFairness    Loss Agnostic 0.721->0.626
+CFairness    Loss Awareness 0.741->0.633
+CFairness    Generator Agnostic 0.841->0.689
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.665, Recall 0.662, F-measure 0.663
+CFairness    ------------------------------
+CFairness    Epoch 214
+CFairness    Loss Agnostic 0.721->0.625
+CFairness    Loss Awareness 0.741->0.634
+CFairness    Generator Agnostic 0.841->0.663
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.675, Recall 0.672, F-measure 0.673
+CFairness    ------------------------------
+CFairness    Epoch 215
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.674
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.667, Recall 0.665, F-measure 0.665
+CFairness    ------------------------------
+CFairness    Epoch 216
+CFairness    Loss Agnostic 0.721->0.623
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.685
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.673, Recall 0.671, F-measure 0.671
+CFairness    ------------------------------
+CFairness    Epoch 217
+CFairness    Loss Agnostic 0.721->0.626
+CFairness    Loss Awareness 0.741->0.631
+CFairness    Generator Agnostic 0.841->0.693
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.669, Recall 0.666, F-measure 0.667
+CFairness    ------------------------------
+CFairness    Epoch 218
+CFairness    Loss Agnostic 0.721->0.625
+CFairness    Loss Awareness 0.741->0.631
+CFairness    Generator Agnostic 0.841->0.694
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.671, Recall 0.668, F-measure 0.669
+CFairness    ------------------------------
+CFairness    Epoch 219
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.631
+CFairness    Generator Agnostic 0.841->0.696
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.670, Recall 0.667, F-measure 0.668
+CFairness    ------------------------------
+CFairness    Epoch 220
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.631
+CFairness    Generator Agnostic 0.841->0.68
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.670, Recall 0.667, F-measure 0.668
+CFairness    ------------------------------
+CFairness    Epoch 221
+CFairness    Loss Agnostic 0.721->0.622
+CFairness    Loss Awareness 0.741->0.635
+CFairness    Generator Agnostic 0.841->0.665
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.670, Recall 0.666, F-measure 0.667
+CFairness    ------------------------------
+CFairness    Epoch 222
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.633
+CFairness    Generator Agnostic 0.841->0.68
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.668, Recall 0.665, F-measure 0.666
+CFairness    ------------------------------
+CFairness    Epoch 223
+CFairness    Loss Agnostic 0.721->0.622
+CFairness    Loss Awareness 0.741->0.627
+CFairness    Generator Agnostic 0.841->0.689
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.668, Recall 0.666, F-measure 0.666
+CFairness    ------------------------------
+CFairness    Epoch 224
+CFairness    Loss Agnostic 0.721->0.622
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.663
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.672, Recall 0.669, F-measure 0.670
+CFairness    ------------------------------
+CFairness    Epoch 225
+CFairness    Loss Agnostic 0.721->0.623
+CFairness    Loss Awareness 0.741->0.631
+CFairness    Generator Agnostic 0.841->0.672
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.665, Recall 0.662, F-measure 0.662
+CFairness    ------------------------------
+CFairness    Epoch 226
+CFairness    Loss Agnostic 0.721->0.626
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.683
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.666, Recall 0.663, F-measure 0.664
+CFairness    ------------------------------
+CFairness    Epoch 227
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.634
+CFairness    Generator Agnostic 0.841->0.676
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.669, Recall 0.666, F-measure 0.667
+CFairness    ------------------------------
+CFairness    Epoch 228
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.631
+CFairness    Generator Agnostic 0.841->0.687
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.668, Recall 0.665, F-measure 0.666
+CFairness    ------------------------------
+CFairness    Epoch 229
+CFairness    Loss Agnostic 0.721->0.623
+CFairness    Loss Awareness 0.741->0.63
+CFairness    Generator Agnostic 0.841->0.681
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.670, Recall 0.667, F-measure 0.668
+CFairness    ------------------------------
+CFairness    Epoch 230
+CFairness    Loss Agnostic 0.721->0.625
+CFairness    Loss Awareness 0.741->0.633
+CFairness    Generator Agnostic 0.841->0.676
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.669, Recall 0.667, F-measure 0.667
+CFairness    ------------------------------
+CFairness    Epoch 231
+CFairness    Loss Agnostic 0.721->0.626
+CFairness    Loss Awareness 0.741->0.633
+CFairness    Generator Agnostic 0.841->0.683
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.669, Recall 0.667, F-measure 0.667
+CFairness    ------------------------------
+CFairness    Epoch 232
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.685
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.668, Recall 0.666, F-measure 0.666
+CFairness    ------------------------------
+CFairness    Epoch 233
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.632
+CFairness    Generator Agnostic 0.841->0.686
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.664, Recall 0.661, F-measure 0.662
+CFairness    ------------------------------
+CFairness    Epoch 234
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.631
+CFairness    Generator Agnostic 0.841->0.694
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.668, Recall 0.666, F-measure 0.666
+CFairness    ------------------------------
+CFairness    Epoch 235
+CFairness    Loss Agnostic 0.721->0.625
+CFairness    Loss Awareness 0.741->0.631
+CFairness    Generator Agnostic 0.841->0.687
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.667, Recall 0.665, F-measure 0.665
+CFairness    ------------------------------
+CFairness    Epoch 236
+CFairness    Loss Agnostic 0.721->0.623
+CFairness    Loss Awareness 0.741->0.631
+CFairness    Generator Agnostic 0.841->0.675
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.671, Recall 0.668, F-measure 0.669
+CFairness    ------------------------------
+CFairness    Epoch 237
+CFairness    Loss Agnostic 0.721->0.623
+CFairness    Loss Awareness 0.741->0.633
+CFairness    Generator Agnostic 0.841->0.681
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.670, Recall 0.667, F-measure 0.668
+CFairness    ------------------------------
+CFairness    Epoch 238
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.631
+CFairness    Generator Agnostic 0.841->0.69
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.668, Recall 0.665, F-measure 0.666
+CFairness    ------------------------------
+CFairness    Epoch 239
+CFairness    Loss Agnostic 0.721->0.624
+CFairness    Loss Awareness 0.741->0.633
+CFairness    Generator Agnostic 0.841->0.678
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.672, Recall 0.669, F-measure 0.670
+CFairness    ------------------------------
+CFairness    Epoch 240
+CFairness    Loss Agnostic 0.721->0.625
+CFairness    Loss Awareness 0.741->0.633
+CFairness    Generator Agnostic 0.841->0.682
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.669, Recall 0.666, F-measure 0.667
+CFairness    ------------------------------
+CFairness    Epoch 241
+CFairness    Loss Agnostic 0.721->0.619
+CFairness    Loss Awareness 0.741->0.631
+CFairness    Generator Agnostic 0.841->0.668
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.669, Recall 0.667, F-measure 0.668
+CFairness    ------------------------------
+CFairness    Epoch 242
+CFairness    Loss Agnostic 0.721->0.626
+CFairness    Loss Awareness 0.741->0.633
+CFairness    Generator Agnostic 0.841->0.69
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.669, Recall 0.666, F-measure 0.667
+CFairness    ------------------------------
+CFairness    Epoch 243
+CFairness    Loss Agnostic 0.721->0.623
+CFairness    Loss Awareness 0.741->0.633
+CFairness    Generator Agnostic 0.841->0.66
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.665, Recall 0.662, F-measure 0.663
+CFairness    ------------------------------

@@ -5,6 +5,11 @@ from torch.utils.data import DataLoader
 from torch.utils.data import TensorDataset
 from tqdm import tqdm
 
+def init_weights(m):
+    if type(m) == nn.Linear:
+        torch.nn.init.xavier_uniform(m.weight)
+        m.bias.data.fill_(0.01)
+
 class DiscriminatorLawAw(nn.Module):
     def __init__(self, input_length: int, problem=None):
         super(DiscriminatorLawAw, self).__init__()
@@ -231,7 +236,7 @@ def train_law(train_x, train_y):
     data_set = TensorDataset(train_x, train_y)
     train_batches = DataLoader(data_set, batch_size=1024, shuffle=False)
 
-    epochs = 250
+    epochs = 120
     learning_rate = 1e-8
 
     loss_fn = torch.nn.SmoothL1Loss()

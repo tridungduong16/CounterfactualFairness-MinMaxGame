@@ -261,7 +261,7 @@ def infer_knowledge_level3(df, flag=True, monte=True):
 
 
 def train(knowledged_train, knowledged_test, y_train, level, flag):
-
+    print("Shape ", knowledged_train.shape, y_train.shape)
     reg = GradientBoostingRegressor(random_state=0)
     reg.fit(knowledged_train, y_train)
 
@@ -379,7 +379,7 @@ if __name__ == "__main__":
     df = df.reset_index(drop = True)
 
     """Preprocess data"""
-    df = preprocess_dataset(df, continuous_features, categorical_features)
+    df = preprocess_dataset(df, [], categorical_features)
     # df['ZFYA'] = (df['ZFYA']-df['ZFYA'].mean())/df['ZFYA'].std()
 
     # le = preprocessing.LabelEncoder()
@@ -437,32 +437,32 @@ if __name__ == "__main__":
             df_train[i] = [torch.tensor(x) for x in df_train[i].values]
             df_test[i] = [torch.tensor(x) for x in df_test[i].values]
 
-        print("True causal model")
-        flag, monte, level = True, False, 2
-        knowledged_train = infer_knowledge_level2(df_train, flag, monte)
-        knowledged_test = infer_knowledge_level2(df_test, flag, monte)
-        np.save(conf['law_train2_true'], knowledged_train)
-        np.save(conf['law_test2_true'], knowledged_test)
-
-        flag, monte, level = True, False, 3
-        knowledged_train = infer_knowledge_level3(df_train, flag, monte)
-        knowledged_test = infer_knowledge_level3(df_test, flag, monte)
-        np.save(conf['law_train3_true'], knowledged_train)
-        np.save(conf['law_test3_true'], knowledged_test)
-
-        print("False causal model")
-
-        flag, monte, level = False, False, 2
-        knowledged_train = infer_knowledge_level2(df_train, flag, monte)
-        knowledged_test = infer_knowledge_level2(df_test, flag, monte)
-        np.save(conf['law_train2_false'], knowledged_train)
-        np.save(conf['law_test2_false'], knowledged_test)
+        # print("True causal model")
+        # flag, monte, level = True, False, 2
+        # knowledged_train = infer_knowledge_level2(df_train, flag, monte)
+        # knowledged_test = infer_knowledge_level2(df_test, flag, monte)
+        # np.save(conf['law_train2_true'], knowledged_train)
+        # np.save(conf['law_test2_true'], knowledged_test)
+        #
+        # flag, monte, level = True, False, 3
+        # knowledged_train = infer_knowledge_level3(df_train, flag, monte)
+        # knowledged_test = infer_knowledge_level3(df_test, flag, monte)
+        # np.save(conf['law_train3_true'], knowledged_train)
+        # np.save(conf['law_test3_true'], knowledged_test)
+        #
+        # print("False causal model")
+        #
+        # flag, monte, level = False, False, 2
+        # knowledged_train = infer_knowledge_level2(df_train, flag, monte)
+        # knowledged_test = infer_knowledge_level2(df_test, flag, monte)
+        # np.save(conf['law_train2_false'], knowledged_train)
+        # np.save(conf['law_test2_false'], knowledged_test)
 
         flag, monte, level = False, False, 3
         knowledged_train = infer_knowledge_level3(df_train, flag, monte)
         knowledged_test = infer_knowledge_level3(df_test, flag, monte)
         np.save(conf['law_train3_false'], knowledged_train)
-        np.save(conf['law_train3_false'], knowledged_test)
+        np.save(conf['law_test3_false'], knowledged_test)
 
         sys.exit(0)
 
@@ -497,24 +497,32 @@ if __name__ == "__main__":
     y_pred = model(test_x)
     df_test['unaware_net'] = y_pred.detach().numpy()
 
+    print("True level 2 model")
     flag, monte, level = True, False, 2
     knowledged_train = np.load(conf['law_train2_true'])
     knowledged_test = np.load(conf['law_test2_true'])
     df_test = train(knowledged_train, knowledged_test, df_train['ZFYA'].values, level, flag)
 
+    print("False level 2 model")
     flag, monte, level = False, False, 2
     knowledged_train = np.load(conf['law_train2_false'])
     knowledged_test = np.load(conf['law_test2_false'])
+    print(knowledged_train.shape, knowledged_test.shape, df_train.shape)
     df_test = train(knowledged_train, knowledged_test, df_train['ZFYA'].values, level, flag)
 
+    print("True level 3 model")
     flag, monte, level = True, False, 3
     knowledged_train = np.load(conf['law_train3_true'])
     knowledged_test = np.load(conf['law_test3_true'])
     df_test = train(knowledged_train, knowledged_test, df_train['ZFYA'].values, level, flag)
 
+    print("False level 2 model")
     flag, monte, level = False, False, 3
-    knowledged_train = np.load(conf['law_train3_false'])
+
+    knowledged_train = np.load(conf['law_train3_true'])
     knowledged_test = np.load(conf['law_test3_false'])
+    # print(knowledged_train.shape, knowledged_test.shape, df_train.shape)
+
     df_test = train(knowledged_train, knowledged_test, df_train['ZFYA'].values, level, flag)
 
     """Output the result"""

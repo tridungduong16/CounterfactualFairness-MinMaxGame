@@ -20,7 +20,10 @@ compas_test2_true: /home/trduong/Data/counterfactual_fairness_game_theoric/data/
 compas_train3_true: /home/trduong/Data/counterfactual_fairness_game_theoric/data/generated_features/compas_train3_true.npy
 compas_test3_true: /home/trduong/Data/counterfactual_fairness_game_theoric/data/generated_features/compas_test3_true.npy
 
-
+adult_train2_true: /home/trduong/Data/counterfactual_fairness_game_theoric/data/generated_features/adult_train2_true.npy
+adult_test2_true: /home/trduong/Data/counterfactual_fairness_game_theoric/data/generated_features/adult_test2_true.npy
+adult_train3_true: /home/trduong/Data/counterfactual_fairness_game_theoric/data/generated_features/adult_train3_true.npy
+adult_test3_true: /home/trduong/Data/counterfactual_fairness_game_theoric/data/generated_features/adult_test3_true.npy
 
 #Result
 law_baseline : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/law.csv
@@ -33,11 +36,13 @@ adult : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/
 evaluate_adult : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
 evaluate_adult_lambda : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
 ivr_adult : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
+
 compas : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
 aif_compas : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_aif.csv
 evaluate_compas : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
-evaluate_compas_lamba: /data/trduong/counterfactual_fairness_game_theoric/reports/results/compas/lambda/evaluate/epoch-{}_lambda-{}_lr-{}.csv
+evaluate_compas_lamba: /data/trduong/counterfactual_fairness_game_theoric/reports/results/compas/lambda/evaluate/epoch-{}_lambda-{}_lr-{}_random-{}.csv
 ivr_compas : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+
 bank: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/bank.csv
 evaluate_bank: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_bank.csv
 ivr_bank : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/bank_ivr.csv

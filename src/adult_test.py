@@ -26,7 +26,7 @@ if __name__ == "__main__":
     logger = setup_logging(conf['log_train_adult'])
 
     """Load data"""
-    data_path = conf['processed_data_adult']
+    data_path = conf['data_adult']
     df = pd.read_csv(data_path)
 
     """Setup features"""
@@ -41,11 +41,11 @@ if __name__ == "__main__":
     col_sensitive = ['race_0', 'race_1', 'sex_0', 'sex_1']
 
     """Preprocess data"""
-    df = preprocess_dataset(df, continuous_features, categorical_features)
+    df = preprocess_dataset(df, [], categorical_features)
     df_generator = df[normal_features]
     df[target] = df[target].astype(float)
 
-    # df, df_test = train_test_split(df, test_size=0.1, random_state=0)
+    df_train, df_test = train_test_split(df, test_size=0.1, random_state=0)
     # df = df_test.copy()
 
     """Load auto encoder"""
@@ -100,35 +100,36 @@ if __name__ == "__main__":
     discriminator_agnostic.load_state_dict(torch.load(conf['adult_discriminator']))
     discriminator_agnostic.eval()
 
+    df_generator = df_test[normal_features].copy()
+    df_autoencoder = df_test[full_features].copy()
 
     """Autoencoder + Linear regression"""
     Z = ae_model.get_representation(df_autoencoder)
     Z = Z.cpu().detach().numpy()
     reg = LogisticRegression(solver='saga', max_iter=1000)
-    reg.fit(Z, df[target].values)
+    reg.fit(Z, df_test[target].values)
     y_pred = reg.predict(Z)
-    df["AL_prediction"] = y_pred
-    df["AL_prediction_proba"] = reg.predict_proba(Z)[:,0]
+    df_test["AL_prediction"] = y_pred
+    df_test["AL_prediction_proba"] = reg.predict_proba(Z)[:,0]
 
     """Generator + Linear regression"""
     Z = generator.custom_forward(df_generator)
     Z = Z.cpu().detach().numpy()
     reg = LogisticRegression(solver='saga', max_iter=1000)
-    reg.fit(Z, df[target].values)
+    reg.fit(Z, df_test[target].values)
     y_pred = reg.predict(Z)
-    df["GL_prediction"] = y_pred
-    df["GL_prediction_proba"] = reg.predict_proba(Z)[:,0]
+    df_test["GL_prediction"] = y_pred
+    df_test["GL_prediction_proba"] = reg.predict_proba(Z)[:,0]
 
     """Generator + Discriminator"""
     Z = generator.custom_forward(df_generator)
     predictor_agnostic = discriminator_agnostic(Z)
     y_pred = torch.argmax(predictor_agnostic, dim=1)
     y_pred = y_pred.reshape(-1).cpu().detach().numpy()
-    df["GD_prediction"] = y_pred
-    df["GD_prediction_proba"] = predictor_agnostic.cpu().detach().numpy()[:,0]
+    df_test["GD_prediction"] = y_pred
+    df_test["GD_prediction_proba"] = predictor_agnostic.cpu().detach().numpy()[:,0]
 
-    print(df)
-    df.to_csv(conf["result_ivr_adult"], index = False)
+    df_test.to_csv(conf["ivr_adult"], index = False)
 
 
 

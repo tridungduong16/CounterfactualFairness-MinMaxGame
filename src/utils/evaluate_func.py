@@ -215,7 +215,9 @@ def fair_metrics(df, target, label, sensitive, data_name = None):
                   classified_metric.average_abs_odds_difference(),
               'balanced_acc': 0.5 * (classified_metric.true_positive_rate()
                                         + classified_metric.true_negative_rate()),
-              'smoothed_empirical_differential_fairness': classified_metric.smoothed_empirical_differential_fairness()
+              'smoothed_empirical_differential_fairness': classified_metric.smoothed_empirical_differential_fairness(),
+              'consistency': classified_metric.consistency(),
+              'between_all_groups_theil_index': classified_metric.between_all_groups_theil_index()
               }
 
     return result

@@ -71,14 +71,24 @@ if __name__ == "__main__":
     df2 = pd.read_csv(ivr_path)
     df2 = df2.drop(columns=full_features+[target])
     df = pd.concat([df1, df2], axis=1)
-    col = ['full',
-           'unaware',
-           'cf1',
-           'cf2',
-           'AL_prediction',
-           'GL_prediction',
-           'GD_prediction'
-           ]
+
+    if data_name == 'compas':
+        col = ['full',
+               'unaware',
+               'cf1',
+               'cf2',
+               'AL_prediction',
+               'GL_prediction',
+               'GD_prediction'
+               ]
+    else:
+        col = ['full',
+               'unaware',
+               'cf1',
+               'AL_prediction',
+               'GL_prediction',
+               'GD_prediction'
+               ]
 
     df_result = pd.DataFrame()
 
@@ -95,6 +105,7 @@ if __name__ == "__main__":
     cols = list(df_result)
     cols.insert(0, cols.pop(cols.index('method')))
     df_result = df_result[cols]
+    print("Output to {}".format(evaluate_path))
     df_result.to_csv(evaluate_path, index = False)
     
     logger.debug(df_result)

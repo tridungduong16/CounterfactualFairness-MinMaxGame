@@ -43,7 +43,7 @@ if __name__ == "__main__":
         dict_ = features_setting("law")
         save_path = conf['law_encoder']
     elif data_name == "adult":
-        data_path = conf['processed_data_adult']
+        data_path = conf['data_adult']
         dict_ = features_setting("adult")
         save_path = conf['adult_encoder']
     elif data_name == "compas":

@@ -5,6 +5,7 @@ import sys
 import torch.nn.functional as F
 import numpy as np
 import visdom
+import argparse
 
 from model_arch.discriminator import DiscriminatorAdultAw, DiscriminatorAdultAg
 from dfencoder.autoencoder import AutoEncoder
@@ -29,10 +30,25 @@ if __name__ == "__main__":
     config_path = "/home/trduong/Data/counterfactual_fairness_game_theoric/configuration.yml"
     conf = load_config(config_path)
 
+    """Parsing argument"""
+    parser = argparse.ArgumentParser()
+
+    """Parsing argument"""
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--lambda_weight', type=float, default=100)
+    parser.add_argument('--learning_rate', type=float, default=1e-5)
+    parser.add_argument('--random_state', type=int, default=0)
+    parser.add_argument('--epoch', type=int, default=50)
+    args = parser.parse_args()
+
+    lambda_weight = args.lambda_weight
+    learning_rate = args.learning_rate
+    epochs = args.epoch
+
     """Setup for dataset"""
     data_name = "adult"
     log_path = conf['log_train_adult']
-    data_path = conf['processed_data_adult']
+    data_path = conf['data_adult']
     ae_path = conf['adult_encoder']
     generator_path = conf["adult_generator"]
     discriminator_path = conf["adult_discriminator"]
@@ -54,7 +70,7 @@ if __name__ == "__main__":
     target = dict_["target"]
 
     """Preprocess data"""
-    df = preprocess_dataset(df, continuous_features, categorical_features)
+    df = preprocess_dataset(df, [], categorical_features)
     df_generator = df[normal_features]
     df[target] = df[target].astype(float)
 
@@ -81,16 +97,16 @@ if __name__ == "__main__":
 
     """Setup hyperparameter"""
     parameters = {}
-    parameters['epochs'] = 200
-    parameters['learning_rate'] = 1e-4
+    # parameters['epochs'] = 200
+    # parameters['learning_rate'] = learning_rate
     parameters['dataframe'] = df
     parameters['batch_size'] = 256
     parameters['problem'] = 'classification'
     lambda1, lambda2 = 0.5, 0.01
 
     """Hyperparameter"""
-    learning_rate = parameters['learning_rate']
-    epochs = parameters['epochs']
+    # learning_rate = parameters['learning_rate']
+    # epochs = parameters['epochs']
     dataframe = parameters['dataframe']
     batch_size = parameters['batch_size']
     problem = parameters['problem']
@@ -196,7 +212,7 @@ if __name__ == "__main__":
             # loss_agnostic += loss_fn(prediction_ag_noise, Y.reshape(-1))
             loss_awareness = loss_fn(prediction_aw, Y.reshape(-1))
             diff_loss = F.leaky_relu(loss_agnostic - loss_awareness)
-            gen_loss = 10 * diff_loss + loss_agnostic
+            gen_loss = lambda_weight * diff_loss + loss_agnostic
 
             """Track loss"""
             sum_loss.append(loss_agnostic.cpu().detach().numpy())
