@@ -12,6 +12,41 @@ from utils.helpers import features_setting
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import GradientBoostingClassifier
 
+
+def get_predict(ae_model, generator, discriminator, df_train, df_test, dict_, l = ''):
+    name = 'GD_prediction' + str(l)
+
+
+    Z = ae_model.get_representation(df_train[dict_["full_features"]].copy())
+    Z = Z.cpu().detach().numpy()
+    reg = LogisticRegression(solver='saga', max_iter=10)
+    reg.fit(Z, df_train[dict_["target"]].values)
+    Z_test = ae_model.get_representation(df_test[dict_["full_features"]].copy()).cpu().detach().numpy()
+    y_pred = reg.predict(Z_test)
+    df_test.loc[:,"AL_prediction"] = y_pred.reshape(-1)
+    df_test.loc[:,"AL_prediction" + "_proba"] = reg.predict_proba(Z_test)[:,0].reshape(-1)
+
+    """Generator + Linear regression"""
+    Z = generator.custom_forward(df_train[dict_["normal_features"]].copy())
+    Z = Z.cpu().detach().numpy()
+    reg = LogisticRegression(solver='saga', max_iter=10)
+    reg.fit(Z, df_train[dict_["target"]].values)
+    Z_test = generator.get_representation(df_test[dict_["normal_features"]].copy()).cpu().detach().numpy()
+    y_pred = reg.predict(Z_test)
+    df_test.loc[:,"GL_prediction"] = y_pred.reshape(-1)
+    df_test.loc[:,"GL_prediction" + "_proba"] = reg.predict_proba(Z_test)[:,0].reshape(-1)
+
+    """Generator + Discriminator"""
+    Z = generator.custom_forward(df_test[dict_["normal_features"]].copy())
+    predictor_agnostic = discriminator(Z)
+    y_pred = torch.argmax(predictor_agnostic, dim=1)
+    y_pred = y_pred.reshape(-1).cpu().detach().numpy()
+    df_test.loc[:,name] = y_pred
+    df_test.loc[:,name + "_proba"] = predictor_agnostic.cpu().detach().numpy()[:,0]
+
+
+    return df_test
+
 if __name__ == "__main__":
     """Device"""
     if torch.cuda.is_available():
@@ -99,39 +134,42 @@ if __name__ == "__main__":
 
 
     """Load discriminator"""
-    discriminator_agnostic = DiscriminatorAdultAg(emb_size_gen)
-    discriminator_agnostic.to(device)
-    discriminator_agnostic.load_state_dict(torch.load(conf['adult_discriminator']))
-    discriminator_agnostic.eval()
+    discriminator = DiscriminatorAdultAg(emb_size_gen)
+    discriminator.to(device)
+    discriminator.load_state_dict(torch.load(conf['adult_discriminator']))
+    discriminator.eval()
 
-    df_generator = df_test[normal_features].copy()
-    df_autoencoder = df_test[full_features].copy()
+    # df_generator = df_test[normal_features].copy()
+    # df_autoencoder = df_test[full_features].copy()
+
+
+    df_test = get_predict(ae_model, generator, discriminator, df_train, df_test, dict_)
 
     """Autoencoder + Linear regression"""
-    Z = ae_model.get_representation(df_autoencoder)
-    Z = Z.cpu().detach().numpy()
-    clf = LogisticRegression()
-    clf.fit(Z, df_test[target].values)
-    y_pred = clf.predict(Z)
-    df_test["AL_prediction"] = y_pred
-    df_test["AL_prediction_proba"] = clf.predict_proba(Z)[:,0]
+    # Z = ae_model.get_representation(df_autoencoder)
+    # Z = Z.cpu().detach().numpy()
+    # clf = LogisticRegression()
+    # clf.fit(Z, df_test[target].values)
+    # y_pred = clf.predict(Z)
+    # df_test["AL_prediction"] = y_pred
+    # df_test["AL_prediction_proba"] = clf.predict_proba(Z)[:,0]
 
     """Generator + Linear regression"""
-    Z = generator.custom_forward(df_generator)
-    Z = Z.cpu().detach().numpy()
-    clf = LogisticRegression()
-    clf.fit(Z, df_test[target].values)
-    y_pred = clf.predict(Z)
-    df_test["GL_prediction"] = y_pred
-    df_test["GL_prediction_proba"] = clf.predict_proba(Z)[:,0]
+    # Z = generator.custom_forward(df_generator)
+    # Z = Z.cpu().detach().numpy()
+    # clf = LogisticRegression()
+    # clf.fit(Z, df_test[target].values)
+    # y_pred = clf.predict(Z)
+    # df_test["GL_prediction"] = y_pred
+    # df_test["GL_prediction_proba"] = clf.predict_proba(Z)[:,0]
 
     """Generator + Discriminator"""
-    Z = generator.custom_forward(df_generator)
-    predictor_agnostic = discriminator_agnostic(Z)
-    y_pred = torch.argmax(predictor_agnostic, dim=1)
-    y_pred = y_pred.reshape(-1).cpu().detach().numpy()
-    df_test["GD_prediction"] = y_pred
-    df_test["GD_prediction_proba"] = predictor_agnostic.cpu().detach().numpy()[:,0]
+    # Z = generator.custom_forward(df_generator)
+    # predictor_agnostic = discriminator_agnostic(Z)
+    # y_pred = torch.argmax(predictor_agnostic, dim=1)
+    # y_pred = y_pred.reshape(-1).cpu().detach().numpy()
+    # df_test["GD_prediction"] = y_pred
+    # df_test["GD_prediction_proba"] = predictor_agnostic.cpu().detach().numpy()[:,0]
 
     df_test.to_csv(conf["ivr_adult"], index = False)
 

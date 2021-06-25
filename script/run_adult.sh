@@ -5,7 +5,7 @@ export LD_LIBRARY_PATH=/usr/local/cudnn8.0-11.0/lib64:$LD_LIBRARY_PATH
 export LIBRARY_PATH=/usr/local/cudnn8.0-11.0/lib64:$LIBRARY_PATH
 
 learning_rate=0.001
-ep=112
+ep=185
 random_state=0
 path=/home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult
 lambda_path=/home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult/lambda
@@ -27,3 +27,5 @@ for random_state in 0 1 2 3 4 5 6 7 8 9 10
         clear
       done
   done
+
+

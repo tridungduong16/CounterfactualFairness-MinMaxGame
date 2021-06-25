@@ -5,7 +5,7 @@ export LD_LIBRARY_PATH=/usr/local/cudnn8.0-11.0/lib64:$LD_LIBRARY_PATH
 export LIBRARY_PATH=/usr/local/cudnn8.0-11.0/lib64:$LIBRARY_PATH
 
 learning_rate=0.001
-ep=111
+ep=108
 random_state=0
 path=/home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas
 lambda_path=/home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas/lambda

@@ -7,7 +7,7 @@ from tqdm import tqdm
 
 def init_weights(m):
     if type(m) == nn.Linear:
-        torch.nn.init.xavier_uniform(m.weight)
+        torch.nn.init.xavier_uniform_(m.weight)
         m.bias.data.fill_(0.01)
 
 class DiscriminatorLawAw(nn.Module):
@@ -255,5 +255,23 @@ def train_law(train_x, train_y):
             optimizer.step()
     return Net
 
+def train_classification(train_x, train_y):
+    Net = DiscriminatorCompasAg(train_x.shape[1])
+    data_set = TensorDataset(train_x, train_y)
+    train_batches = DataLoader(data_set, batch_size=1024, shuffle=False)
 
+    epochs = 120
+    learning_rate = 1e-8
+
+    normedWeights = torch.FloatTensor([0.45, 0.55])
+    loss_fn = nn.CrossEntropyLoss(normedWeights)
+
+    optimizer = torch.optim.Adam(Net.parameters(), lr=learning_rate)
+    for i in tqdm(range(epochs)):
+        for x_batch, y_batch in (train_batches):
+            optimizer.zero_grad()
+            loss = loss_fn(Net(x_batch), y_batch.reshape(-1))
+            loss.backward()
+            optimizer.step()
+    return Net
 

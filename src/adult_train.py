@@ -154,7 +154,7 @@ if __name__ == "__main__":
     losses = []
     losses_aware = []
     losses_gen = []
-
+    learning_rates = []
     step = 0
     for i in (range(epochs)):
         sum_loss = []
@@ -234,6 +234,17 @@ if __name__ == "__main__":
                 loss_awareness.backward()
                 optimizer3.step()
             step += 1
+
+        """Update learning rate"""
+        current_lr = scheduler1.get_last_lr()[0]
+        scheduler1.step()
+        scheduler2.step()
+        scheduler3.step()
+        learning_rates.append(current_lr)
+        if current_lr <= 1e-9:
+            optimizer1.param_groups[0]['lr'] = learning_rate
+            optimizer2.param_groups[0]['lr'] = learning_rate
+            optimizer3.param_groups[0]['lr'] = learning_rate
 
         """Get the final prediction"""
         df_generator = df[normal_features].copy()

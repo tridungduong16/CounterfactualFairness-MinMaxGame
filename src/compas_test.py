@@ -10,41 +10,40 @@ from utils.helpers import load_config
 from utils.helpers import features_setting
 from sklearn.model_selection import train_test_split
 
-def get_predict(ae_model, generator, discriminator, df, dict_, l = ''):
-
+# def get_predict(ae_model, generator, discriminator, df, dict_, l = ''):
+def get_predict(ae_model, generator, discriminator, df_train, df_test, dict_, l = ''):
     name = 'GD_prediction' + str(l)
 
-    df_generator = df[dict_["normal_features"]].copy()
-    df_autoencoder = df[dict_["full_features"]].copy()
 
-    Z = ae_model.get_representation(df_autoencoder)
+    Z = ae_model.get_representation(df_train[dict_["full_features"]].copy())
     Z = Z.cpu().detach().numpy()
-    reg = LogisticRegression(solver='saga', max_iter=1000)
-    reg.fit(Z, df[dict_["target"]].values)
-    y_pred = reg.predict(Z)
-    print(y_pred.reshape(-1))
-    df.loc[:,"AL_prediction"] = y_pred.reshape(-1)
-    df.loc[:,"AL_prediction" + "_proba"] = reg.predict_proba(Z)[:,0].reshape(-1)
+    reg = LogisticRegression(solver='saga', max_iter=10)
+    reg.fit(Z, df_train[dict_["target"]].values)
+    Z_test = ae_model.get_representation(df_test[dict_["full_features"]].copy()).cpu().detach().numpy()
+    y_pred = reg.predict(Z_test)
+    df_test.loc[:,"AL_prediction"] = y_pred.reshape(-1)
+    df_test.loc[:,"AL_prediction" + "_proba"] = reg.predict_proba(Z_test)[:,0].reshape(-1)
 
     """Generator + Linear regression"""
-    Z = generator.custom_forward(df_generator)
+    Z = generator.custom_forward(df_train[dict_["normal_features"]].copy())
     Z = Z.cpu().detach().numpy()
-    reg = LogisticRegression(solver='saga', max_iter=1000)
-    reg.fit(Z, df[dict_["target"]].values)
-    y_pred = reg.predict(Z)
-    df.loc[:,"GL_prediction"] = y_pred.reshape(-1)
-    df.loc[:,"GL_prediction" + "_proba"] = reg.predict_proba(Z)[:,0].reshape(-1)
+    reg = LogisticRegression(solver='saga', max_iter=10)
+    reg.fit(Z, df_train[dict_["target"]].values)
+    Z_test = generator.custom_forward(df_test[dict_["normal_features"]].copy()).cpu().detach().numpy()
+    y_pred = reg.predict(Z_test)
+    df_test.loc[:,"GL_prediction"] = y_pred.reshape(-1)
+    df_test.loc[:,"GL_prediction" + "_proba"] = reg.predict_proba(Z_test)[:,0].reshape(-1)
 
     """Generator + Discriminator"""
-    Z = generator.custom_forward(df_generator)
+    Z = generator.custom_forward(df_test[dict_["normal_features"]].copy())
     predictor_agnostic = discriminator(Z)
     y_pred = torch.argmax(predictor_agnostic, dim=1)
     y_pred = y_pred.reshape(-1).cpu().detach().numpy()
-    df.loc[:,name] = y_pred
-    df.loc[:,name + "_proba"] = predictor_agnostic.cpu().detach().numpy()[:,0]
+    df_test.loc[:,name] = y_pred
+    df_test.loc[:,name + "_proba"] = predictor_agnostic.cpu().detach().numpy()[:,0]
 
 
-    return df
+    return df_test
 
 if __name__ == "__main__":
     """Device"""
@@ -145,7 +144,7 @@ if __name__ == "__main__":
     # df_generator = df[normal_features]
     # df_autoencoder = df[full_features].copy()
 
-    df_test = get_predict(ae_model, generator, discriminator, df_test, dict_)
+    df_test = get_predict(ae_model, generator, discriminator, df_train, df_test, dict_)
 
     """Autoencoder + Linear regression"""
     # Z = ae_model.get_representation(df_autoencoder)
