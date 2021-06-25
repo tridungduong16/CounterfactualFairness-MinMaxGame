@@ -145,7 +145,7 @@ class DiscriminatorAdultAg(nn.Module):
         x = self.prelu(self.hidden1(x))
         x = self.dropout(x)
         x = self.batchnorm2(x)
-        for i in range(3):
+        for i in range(10):
             x = self.prelu(self.hidden2(x))
             x = self.dropout(x)
             x = self.batchnorm2(x)
@@ -205,6 +205,7 @@ class DiscriminatorCompasAg(nn.Module):
         self.hidden1 = torch.nn.Linear(dim1, dim2)   # hidden layer
         self.hidden2 = torch.nn.Linear(dim2, dim3)   # hidden layer
         self.hidden3 = torch.nn.Linear(dim3, dim4)   # hidden layer
+        self.hidden44 = torch.nn.Linear(dim4, dim4)   # hidden layer
         self.hidden4 = torch.nn.Linear(dim4, dim5)   # hidden layer
         self.hidden5 = torch.nn.Linear(dim5, dim6)   # hidden layer
         self.predict = torch.nn.Linear(finaldim, 2)   # output layer
@@ -225,6 +226,8 @@ class DiscriminatorCompasAg(nn.Module):
         x = self.batchnorm1(self.dropout(self.prelu(self.hidden1(x))))
         x = self.batchnorm2(self.dropout(self.prelu(self.hidden2(x))))
         x = self.batchnorm3(self.dropout(self.prelu(self.hidden3(x))))
+        # for i in range(10):
+        #     x = self.batchnorm3(self.dropout(self.prelu(self.hidden44(x))))
         x = self.batchnorm4(self.dropout(self.prelu(self.hidden4(x))))
         x = self.batchnorm5(self.dropout(self.prelu(self.hidden5(x))))
         x = self.predict(x)

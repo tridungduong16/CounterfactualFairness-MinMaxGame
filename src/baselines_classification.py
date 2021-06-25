@@ -702,7 +702,7 @@ if __name__ == "__main__":
         print(c)
         print(le_name_mapping)
         print(df[c].value_counts())
-    sys.exit(0)
+    # sys.exit(0)
     # print(df)
     # sys.exit(1)
     """Split dataset into train and test"""
@@ -810,7 +810,7 @@ if __name__ == "__main__":
         knowledged_test = np.load(conf['compas_test1'])
 
         clf = LogisticRegression()
-        clf.fit(knowledged_train, df[target])
+        clf.fit(knowledged_train, df_train[target])
         y_pred = clf.predict(knowledged_test)
         df_test['cf1'] = y_pred.reshape(-1)
         y_pred = clf.predict_proba(knowledged_test)[:, 0]
@@ -821,7 +821,7 @@ if __name__ == "__main__":
         knowledged_test = np.load(conf['compas_test2'])
 
         clf = LogisticRegression()
-        clf.fit(knowledged_train, df[target])
+        clf.fit(knowledged_train, df_train[target])
         y_pred = clf.predict(knowledged_test)
         df_test['cf2'] = y_pred.reshape(-1)
         y_pred = clf.predict_proba(knowledged_test)[:, 0]
@@ -832,7 +832,7 @@ if __name__ == "__main__":
         knowledged_test = np.load(conf['compas_test3'])
 
         clf = LogisticRegression()
-        clf.fit(knowledged_train, df[target])
+        clf.fit(knowledged_train, df_train[target])
         y_pred = clf.predict(knowledged_test)
         df_test['cf3'] = y_pred.reshape(-1)
         y_pred = clf.predict_proba(knowledged_test)[:, 0]

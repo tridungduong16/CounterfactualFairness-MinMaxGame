@@ -170,7 +170,7 @@ def evaluate_distribution(ys, ys_hat):
 
 def fair_metrics(df, target, label, sensitive, data_name = None):
     if data_name == 'compas':
-        if sensitive == 'gender':
+        if sensitive == 'sex':
             privileged_classes = 1
         if sensitive == 'race':
             privileged_classes = 0
@@ -222,7 +222,7 @@ def fair_metrics(df, target, label, sensitive, data_name = None):
               'between_all_groups_theil_index_{}'.format(sensitive): classified_metric.between_all_groups_theil_index(),
               'between_group_generalized_entropy_index_{}'.format(sensitive): classified_metric.between_group_generalized_entropy_index(),
               'between_group_coefficient_of_variation_{}'.format(sensitive):  classified_metric.between_group_coefficient_of_variation(),
-              'generalized_true_positive_rate_{}'.format(sensitive): classified_metric.generalized_true_positive_rate()
+              # 'generalized_true_positive_rate_{}'.format(sensitive): classified_metric.generalized_true_positive_rate()
               }
 
     return result
