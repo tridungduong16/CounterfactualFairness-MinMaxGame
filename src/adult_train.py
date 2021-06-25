@@ -111,11 +111,12 @@ if __name__ == "__main__":
     batch_size = parameters['batch_size']
     problem = parameters['problem']
 
+    emb_size_gen = 256
+
     """Setup generator and discriminator"""
-    emb_size = 128
     generator= AutoEncoder(
         input_shape = df_generator.shape[1],
-        encoder_layers=[512, 512, emb_size],  # model architecture
+        encoder_layers=[512, 512, emb_size_gen],  # model architecture
         decoder_layers=[],  # decoder optional - you can create bottlenecks if you like
         encoder_dropout = 0.15,
         decoder_dropout = 0.5,
@@ -132,23 +133,21 @@ if __name__ == "__main__":
     generator.to(device)
 
 
-    discriminator_agnostic = DiscriminatorAdultAg(emb_size, problem)
-    discriminator_awareness = DiscriminatorAdultAw(emb_size + 4, problem)
+    discriminator_agnostic = DiscriminatorAdultAg(emb_size_gen, problem)
+    discriminator_awareness = DiscriminatorAdultAw(emb_size_gen + emb_size_ae, problem)
     discriminator_agnostic.to(device)
     discriminator_awareness.to(device)
 
     optimizer1 = torch.optim.Adam(generator.parameters(), lr=1e-2)
-    optimizer2 = torch.optim.SGD(discriminator_agnostic.parameters(),
-                                 lr=1e-2, momentum=0.9)
-    optimizer3 = torch.optim.SGD(discriminator_awareness.parameters(),
-                                 lr=1e-2, momentum=0.9)
+    optimizer2 = torch.optim.SGD(discriminator_agnostic.parameters(),lr=1e-2, momentum=0.9)
+    optimizer3 = torch.optim.SGD(discriminator_awareness.parameters(),lr=1e-2, momentum=0.9)
 
     scheduler1 = torch.optim.lr_scheduler.StepLR(optimizer1, step_size=50, gamma=0.1)
     scheduler2 = torch.optim.lr_scheduler.StepLR(optimizer2, step_size=50, gamma=0.1)
     scheduler3 = torch.optim.lr_scheduler.StepLR(optimizer3, step_size=50, gamma=0.1)
 
     weights = [df[target].value_counts()[0], df[target].value_counts()[1]]
-    normedWeights = [0.4, 0.6]
+    normedWeights = [0.3, 0.7]
     normedWeights = torch.FloatTensor(normedWeights).to(device)
     loss_fn = nn.CrossEntropyLoss(normedWeights)
 
@@ -164,7 +163,7 @@ if __name__ == "__main__":
 
         df_train = df.copy().sample(frac=1).reset_index(drop=True)
         """Split batch size"""
-        skf = StratifiedKFold(n_splits=300, random_state=0, shuffle=True)
+        skf = StratifiedKFold(n_splits=120, random_state=0, shuffle=True)
         for train_index, test_index in tqdm(skf.split(df_train[full_features], df_train[target])):
 
             batch_ae = df_train.iloc[test_index,:][full_features].copy()
@@ -200,18 +199,18 @@ if __name__ == "__main__":
 
             """Concat generator and sensitive representation"""
             Z = generator.custom_forward(batch_generator)
-            Z_noise = generator.custom_forward(batch_generator_noise)
-            ZS = torch.cat((Z, emb), 1)
+            # Z_noise = generator.custom_forward(batch_generator_noise)
+            ZS = torch.cat((Z, batch_Z), 1)
 
             prediction_ag = discriminator_agnostic(Z)
-            prediction_ag_noise = discriminator_agnostic(Z_noise)
+            # prediction_ag_noise = discriminator_agnostic(Z_noise)
             prediction_aw = discriminator_awareness(ZS)
 
             """Measure loss"""
             loss_agnostic = loss_fn(prediction_ag, Y.reshape(-1))
             # loss_agnostic += loss_fn(prediction_ag_noise, Y.reshape(-1))
             loss_awareness = loss_fn(prediction_aw, Y.reshape(-1))
-            diff_loss = F.leaky_relu(loss_agnostic - loss_awareness)
+            diff_loss = F.rrelu(loss_agnostic - loss_awareness)
             gen_loss = lambda_weight * diff_loss + loss_agnostic
 
             """Track loss"""
@@ -224,21 +223,21 @@ if __name__ == "__main__":
             optimizer2.zero_grad()
             optimizer3.zero_grad()
 
-            path = step % 10
-            if path in [0, 1, 2]:
+            path = step % 7
+            if path in [0]:
                 gen_loss.backward()
                 optimizer1.step()
-            elif path in [3, 4, 5, 6, 7]:
+            elif path in [1, 2, 3]:
                 loss_agnostic.backward()
                 optimizer2.step()
-            elif path in [8, 9]:
+            elif path in [4, 5, 6]:
                 loss_awareness.backward()
                 optimizer3.step()
             step += 1
 
         """Get the final prediction"""
         df_generator = df[normal_features].copy()
-        Z = generator.get_representation(df_generator)
+        Z = generator.custom_forward(df_generator)
         y_pred = discriminator_agnostic(Z)
         y_pred = torch.argmax(y_pred, dim=1)
         y_pred = y_pred.reshape(-1).cpu().detach().numpy()
@@ -254,11 +253,20 @@ if __name__ == "__main__":
         """Evaluation"""
         eval = evaluate_classifier(y_pred, y_true)
         logger.debug("Epoch {}".format(i))
-        logger.debug('Loss Agnostic {:.4f}'.format(l1))
-        logger.debug('Loss Awareness {:.4f}'.format(l2))
-        logger.debug('Generator loss {:.4f}'.format(l3))
-        for key, value in eval.items():
-            logger.debug("{} {:.4f}".format(key, value))
+        # logger.debug('Loss Agnostic {:.4f}'.format(l1))
+        # logger.debug('Loss Awareness {:.4f}'.format(l2))
+        # logger.debug('Generator loss {:.4f}'.format(l3))
+
+
+        display_loss = '->'.join([str(round(x,3)) for x in [losses[0], losses[-1]]])
+        display_aware = '->'.join([str(round(x,3)) for x in [losses_aware[0], losses_aware[-1]]])
+        display_gen = '->'.join([str(round(x,3)) for x in [losses_gen[0], losses_gen[-1]]])
+
+        logger.debug("Adult Loss Agnostic {}".format(display_loss))
+        logger.debug("Adult Loss Awareness {}".format(display_aware))
+        logger.debug("Adult Generator Agnostic {}".format(display_gen))
+        logger.debug("Precision {:.3f}, Recall {:.3f}, F-measure {:.3f}".format(eval['Precision'], eval['Recall'], eval['F1 Score']))
+
         logger.debug("-"*30)
 
     viz = visdom.Visdom()

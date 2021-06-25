@@ -96,7 +96,7 @@ if __name__ == "__main__":
 
     """Train model"""
     ae_model.to(device)
-    ae_model.fit(df, epochs=1000)
+    ae_model.fit(df, epochs=10000)
     # print(ae_model)
     # race_feature = ae_model.categorical_fts['race']
     # cats = race_feature['cats']

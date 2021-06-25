@@ -114,9 +114,9 @@ if __name__ == "__main__":
     problem = 'regression'
 
     """Setup generator and discriminator"""
-    emb_size = 64
-    discriminator_agnostic = DiscriminatorLaw(emb_size, problem)
-    discriminator_awareness = DiscriminatorLawAw(emb_size + 10, problem)
+    emb_size_gen = 128
+    discriminator_agnostic = DiscriminatorLaw(emb_size_gen, problem)
+    discriminator_awareness = DiscriminatorLawAw(emb_size_gen + emb_size, problem)
     discriminator_agnostic.to(device)
     discriminator_awareness.to(device)
 
@@ -196,13 +196,12 @@ if __name__ == "__main__":
             df_term_generator = pd.DataFrame(data=x_batch.detach().numpy()[:, 2:], columns=normal_features)
             df_term_generator = EncoderDataFrame(df_term_generator)
             df_term_autoencoder = pd.DataFrame(data=x_batch.detach().numpy(), columns=full_features)
-
-            df_term_autoencoder = preprocess_dataset(df_term_autoencoder, [], categorical_features)
-
-            df_term_ohe = pd.get_dummies(df_term_autoencoder, columns=['sex'])
-            df_term_ohe = pd.get_dummies(df_term_ohe, columns=['race'])
+            # df_term_autoencoder = preprocess_dataset(df_term_autoencoder, [], categorical_features)
+            # batch_Z = ae_model.get_representation(df_term_autoencoder)
+            # df_term_ohe = pd.get_dummies(df_term_autoencoder, columns=['sex'])
+            # df_term_ohe = pd.get_dummies(df_term_ohe, columns=['race'])
             # print(df_term_ohe)
-            df_term_ohe = df_term_ohe[one_hot]
+            # df_term_ohe = df_term_ohe[one_hot]
 
             # print(df_term_generator)
             # print("----------------")
@@ -250,12 +249,12 @@ if __name__ == "__main__":
             emb = torch.cat((emb_cat_race, emb_cat_sex), 1)
 
             """Get the sensitive label encoder"""
-            sensitive_label = torch.tensor(df_term_autoencoder[sensitive_features].values.astype(np.float32)).to(device)
-            onehot_label = torch.tensor(df_term_ohe.values.astype(np.float32)).to(device)
+            # sensitive_label = torch.tensor(df_term_autoencoder[sensitive_features].values.astype(np.float32)).to(device)
+            # onehot_label = torch.tensor(df_term_ohe.values.astype(np.float32)).to(device)
 
-            ZS = torch.cat((Z, emb), 1)
-            ZS = torch.cat((ZS, sensitive_label), 1)
-            ZS = torch.cat((ZS, onehot_label), 1)
+            ZS = torch.cat((Z, S), 1)
+            # ZS = torch.cat((ZS, sensitive_label), 1)
+            # ZS = torch.cat((ZS, onehot_label), 1)
 
             # print(ZS.shape)
 
@@ -352,9 +351,10 @@ if __name__ == "__main__":
         logger.debug("Prediction")
         logger.debug(y_pred)
 
-        display_loss = '->'.join([str(round(x,3)) for x in losses])
-        display_aware = '->'.join([str(round(x,3)) for x in losses_aware])
-        display_gen = '->'.join([str(round(x,3)) for x in losses_gen])
+
+        display_loss = '->'.join([str(round(x,3)) for x in [losses[0], losses[-1]]])
+        display_aware = '->'.join([str(round(x,3)) for x in [losses_aware[0], losses_aware[-1]]])
+        display_gen = '->'.join([str(round(x,3)) for x in [losses_gen[0], losses_gen[-1]]])
 
         logger.debug("Law Loss Agnostic")
         logger.debug(display_loss)

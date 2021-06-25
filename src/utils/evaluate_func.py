@@ -170,7 +170,10 @@ def evaluate_distribution(ys, ys_hat):
 
 def fair_metrics(df, target, label, sensitive, data_name = None):
     if data_name == 'compas':
-        privileged_classes = 0
+        if sensitive == 'gender':
+            privileged_classes = 1
+        if sensitive == 'race':
+            privileged_classes = 0
     elif data_name == 'adult':
         privileged_classes = 1
     elif data_name == 'bank':
@@ -187,7 +190,6 @@ def fair_metrics(df, target, label, sensitive, data_name = None):
     dataset_pred.labels = df[target].values
 
     attr = dataset_pred.protected_attribute_names[0]
-
     idx = dataset_pred.protected_attribute_names.index(attr)
     privileged_groups = [{attr: dataset_pred.privileged_protected_attributes[idx][0]}]
     unprivileged_groups = [{attr: dataset_pred.unprivileged_protected_attributes[idx][0]}]
@@ -207,17 +209,20 @@ def fair_metrics(df, target, label, sensitive, data_name = None):
                   classified_metric.generalized_entropy_index(alpha=2),
               # 'generalized_entropy_error': classified_metric.generalized_entropy_error(),
               # 'consistency_score': classified_metric.consistency_score(),
-              'coefficient_of_variation': classified_metric.coefficient_of_variation(),
-              'theil_index' : classified_metric.theil_index(),
+              'coefficient_of_variation_{}'.format(sensitive): classified_metric.coefficient_of_variation(),
+              'theil_index_{}'.format(sensitive) : classified_metric.theil_index(),
               'equal_opportunity_difference_{}'.format(sensitive):
                   classified_metric.equal_opportunity_difference(),
               'average_abs_odds_difference_{}'.format(sensitive):
                   classified_metric.average_abs_odds_difference(),
               'balanced_acc': 0.5 * (classified_metric.true_positive_rate()
                                         + classified_metric.true_negative_rate()),
-              'smoothed_empirical_differential_fairness': classified_metric.smoothed_empirical_differential_fairness(),
-              'consistency': classified_metric.consistency(),
-              'between_all_groups_theil_index': classified_metric.between_all_groups_theil_index()
+              # 'smoothed_empirical_differential_fairness': classified_metric.smoothed_empirical_differential_fairness(),
+              # 'consistency': classified_metric.consistency(),
+              'between_all_groups_theil_index_{}'.format(sensitive): classified_metric.between_all_groups_theil_index(),
+              'between_group_generalized_entropy_index_{}'.format(sensitive): classified_metric.between_group_generalized_entropy_index(),
+              'between_group_coefficient_of_variation_{}'.format(sensitive):  classified_metric.between_group_coefficient_of_variation(),
+              'generalized_true_positive_rate_{}'.format(sensitive): classified_metric.generalized_true_positive_rate()
               }
 
     return result
@@ -244,18 +249,19 @@ def evaluate_fairness(sensitive_att, df, target, label=None, problem = "regressi
     df_term = df.copy()
     if problem == "classification":
         for s in sensitive_att:
-            ys = df_term[df_term[s] == 1][target + "_proba"].values
-            ys_hat = df_term[df_term[s] == 0][target + "_proba"].values
-            ys = torch.Tensor(ys).to(device).reshape(-1,1)
-            ys_hat = torch.Tensor(ys_hat).to(device).reshape(-1,1)
-            eval_fair = evaluate_distribution(ys, ys_hat)
+            # return eval_performance
+            # ys = df_term[df_term[s] == 1][target + "_proba"].values
+            # ys_hat = df_term[df_term[s] == 0][target + "_proba"].values
+            # ys = torch.Tensor(ys).to(device).reshape(-1,1)
+            # ys_hat = torch.Tensor(ys_hat).to(device).reshape(-1,1)
+            # eval_fair = evaluate_distribution(ys, ys_hat)
             # sinkhorn += eval_fair['sinkhorn']
             # energy += eval_fair['energy']
             # gaussian += eval_fair['gaussian']
             # laplacian += eval_fair['laplacian']
             eval = fair_metrics(df, target, label, s, dataname)
             eval_performance.update(eval)
-            eval_performance.update(eval_fair)
+            # eval_performance.update(eval_fair)
 
     elif problem == "regression":
         df = df.sample(frac=0.5, replace=True, random_state=0)

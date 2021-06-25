@@ -55,11 +55,15 @@ if __name__ == "__main__":
     args = parser.parse_args()
     # data_name = args.data_name
     data_name = "compas"
+    lambda_weight = args.lambda_weight
+    learning_rate = args.learning_rate
+    epochs = args.epoch
+
     # if data_name == 'compas':
     log_file = conf['log_train_compas']
     data_path = conf['data_compas']
     ae_path = conf['compas_encoder']
-    emb_size_gen = 128
+    emb_size_gen = 256
     emb_size_ae = 128
 
     discriminator_agnostic = DiscriminatorCompasAg(emb_size_gen)
@@ -117,20 +121,12 @@ if __name__ == "__main__":
     ae_model.load_state_dict(torch.load(ae_path))
     ae_model.eval()
 
-    """Setup hyperparameter"""
-    parameters = {}
-    parameters['epochs'] = args.epoch
-    parameters['learning_rate'] = 1e-3
-    parameters['dataframe'] = df
-    parameters['batch_size'] = 256
-    parameters['problem'] = 'classification'
-
     """Hyperparameter"""
-    learning_rate = parameters['learning_rate']
-    epochs = parameters['epochs']
-    dataframe = parameters['dataframe']
-    batch_size = parameters['batch_size']
-    problem = parameters['problem']
+    learning_rate = args.learning_rate
+    epochs = args.epoch
+    dataframe = df
+    batch_size = 256
+    problem = 'classification'
 
     """Setup generator and discriminator"""
     # emb_size = 16
@@ -152,14 +148,14 @@ if __name__ == "__main__":
     generator.build_model(df_generator)
     generator.to(device)
 
-    learning_rate = 1e-3
+    # learning_rate = 1e-3
     optimizer1 = torch.optim.Adam(generator.parameters(), lr=learning_rate)
     optimizer2 = torch.optim.SGD(discriminator_agnostic.parameters(),lr=learning_rate, momentum=0.9)
     optimizer3 = torch.optim.SGD(discriminator_awareness.parameters(),lr=learning_rate, momentum=0.9)
 
-    scheduler1 = torch.optim.lr_scheduler.StepLR(optimizer1, step_size=100, gamma=0.1)
-    scheduler2 = torch.optim.lr_scheduler.StepLR(optimizer2, step_size=100, gamma=0.1)
-    scheduler3 = torch.optim.lr_scheduler.StepLR(optimizer3, step_size=100, gamma=0.1)
+    scheduler1 = torch.optim.lr_scheduler.StepLR(optimizer1, step_size=50, gamma=0.1)
+    scheduler2 = torch.optim.lr_scheduler.StepLR(optimizer2, step_size=50, gamma=0.1)
+    scheduler3 = torch.optim.lr_scheduler.StepLR(optimizer3, step_size=50, gamma=0.1)
 
     normedWeights = [0.45, 0.55]
     normedWeights = torch.FloatTensor(normedWeights).to(device)
@@ -257,7 +253,7 @@ if __name__ == "__main__":
             loss_agnostic = loss_fn(prediction_ag, Y.reshape(-1))
             loss_awareness = loss_fn(prediction_aw, Y.reshape(-1))
             diff_loss = F.leaky_relu(loss_agnostic - loss_awareness)
-            gen_loss = 10 * diff_loss + loss_agnostic
+            gen_loss = lambda_weight * diff_loss + loss_agnostic
 
             """Track loss"""
             sum_loss.append(loss_agnostic.cpu().detach().numpy())
@@ -270,14 +266,14 @@ if __name__ == "__main__":
             optimizer3.zero_grad()
 
             # 012, 3456, 789
-            path = step % 10
+            path = step % 7
             if path in [0]:
                 gen_loss.backward()
                 optimizer1.step()
-            elif path in [1, 2, 3, 4, 5]:
+            elif path in [1, 2, 3]:
                 loss_agnostic.backward()
                 optimizer2.step()
-            elif path in [6, 7, 8, 9]:
+            elif path in [4, 5, 6]:
                 loss_awareness.backward()
                 optimizer3.step()
             step += 1
@@ -322,11 +318,11 @@ if __name__ == "__main__":
         display_gen = '->'.join([str(round(x,3)) for x in [losses_gen[0], losses_gen[-1]]])
 
         logger.debug("Epoch {}".format(i))
-        logger.debug("Loss Agnostic {}".format(display_loss))
+        logger.debug("Compas Loss Agnostic {}".format(display_loss))
         # logger.debug(display_loss)
-        logger.debug("Loss Awareness {}".format(display_aware))
+        logger.debug("Compas Loss Awareness {}".format(display_aware))
         # logger.debug(display_aware)
-        logger.debug("Generator Agnostic {}".format(display_gen))
+        logger.debug("Compas Generator Agnostic {}".format(display_gen))
         # logger.debug(display_gen)
         logger.debug("Learning rate {:.10f}".format(current_lr))
         logger.debug("Precision {:.3f}, Recall {:.3f}, F-measure {:.3f}".format(eval['Precision'], eval['Recall'], eval['F1 Score']))

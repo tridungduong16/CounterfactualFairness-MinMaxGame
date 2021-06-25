@@ -15,10 +15,13 @@ law_test2_true: /home/trduong/Data/counterfactual_fairness_game_theoric/data/gen
 law_train3_true: /home/trduong/Data/counterfactual_fairness_game_theoric/data/generated_features/law_train3_true.npy
 law_test3_true: /home/trduong/Data/counterfactual_fairness_game_theoric/data/generated_features/law_test3_true.npy
 
-compas_train2_true: /home/trduong/Data/counterfactual_fairness_game_theoric/data/generated_features/compas_train2_true.npy
-compas_test2_true: /home/trduong/Data/counterfactual_fairness_game_theoric/data/generated_features/compas_test2_true.npy
-compas_train3_true: /home/trduong/Data/counterfactual_fairness_game_theoric/data/generated_features/compas_train3_true.npy
-compas_test3_true: /home/trduong/Data/counterfactual_fairness_game_theoric/data/generated_features/compas_test3_true.npy
+
+compas_train1: /home/trduong/Data/counterfactual_fairness_game_theoric/data/generated_features/compas_train1.npy
+compas_test1: /home/trduong/Data/counterfactual_fairness_game_theoric/data/generated_features/compas_test2.npy
+compas_train2: /home/trduong/Data/counterfactual_fairness_game_theoric/data/generated_features/compas_train2.npy
+compas_test2: /home/trduong/Data/counterfactual_fairness_game_theoric/data/generated_features/compas_test2.npy
+compas_train3: /home/trduong/Data/counterfactual_fairness_game_theoric/data/generated_features/compas_train3.npy
+compas_test3: /home/trduong/Data/counterfactual_fairness_game_theoric/data/generated_features/compas_test3.npy
 
 adult_train2_true: /home/trduong/Data/counterfactual_fairness_game_theoric/data/generated_features/adult_train2_true.npy
 adult_test2_true: /home/trduong/Data/counterfactual_fairness_game_theoric/data/generated_features/adult_test2_true.npy
@@ -34,7 +37,7 @@ ivr_law_lambda : /home/trduong/Data/counterfactual_fairness_game_theoric/reports
 
 adult : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
 evaluate_adult : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
-evaluate_adult_lambda : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
+evaluate_adult_lambda: /data/trduong/counterfactual_fairness_game_theoric/reports/results/adult/lambda/evaluate/epoch-{}_lambda-{}_lr-{}_random-{}.csv
 ivr_adult : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
 
 compas : /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv

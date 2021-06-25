@@ -4,14 +4,14 @@ export CPATH=/usr/local/cudnn8.0-11.0/include:$CPATH
 export LD_LIBRARY_PATH=/usr/local/cudnn8.0-11.0/lib64:$LD_LIBRARY_PATH
 export LIBRARY_PATH=/usr/local/cudnn8.0-11.0/lib64:$LIBRARY_PATH
 
-learning_rate=0.01
-ep=400
+learning_rate=0.001
+ep=160
 random_state=0
 path=/home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas
 lambda_path=/home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas/lambda
 for random_state in 0 1 2 3 4 5 6 7 8 9 10
   do
-    for lambda_weight in 0.001 0.01 0.1 1 10 20 30 40 50 60 70 80 90 100
+    for lambda_weight in 10 20 30 40 50 60 70 80 90 100
       do
         evaluate_path="${lambda_path}/evaluate/epoch-${ep}_lambda-${lambda_weight}_lr-${learning_rate}_random-${random_state}.csv"
         result_path="${lambda_path}/result/epoch-${ep}_lambda-${lambda_weight}_lr-${learning_rate}_random-${random_state}.csv"
@@ -24,6 +24,7 @@ for random_state in 0 1 2 3 4 5 6 7 8 9 10
         rm -rf /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
         echo $evaluate_path
         echo $result_path
+        clear
       done
   done
 

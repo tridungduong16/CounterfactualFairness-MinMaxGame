@@ -142,7 +142,7 @@ if __name__ == "__main__":
     ae_model.eval()
 
     """Load generator"""
-    emb_size = 64
+    emb_size = 128
     df_generator = df_test[normal_features]
     generator = AutoEncoder(
         input_shape = df_generator.shape[1],
@@ -164,7 +164,6 @@ if __name__ == "__main__":
     generator.eval()
 
     """Load discriminator"""
-    emb_size = 64
     discriminator = DiscriminatorLaw(emb_size)
     discriminator.to(device)
     discriminator.load_state_dict(torch.load(conf['law_discriminator']))

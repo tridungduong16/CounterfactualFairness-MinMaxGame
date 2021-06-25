@@ -1,5 +1,6 @@
 import torch
 import pandas as pd
+import sys
 
 from sklearn.linear_model import LogisticRegression
 from model_arch.discriminator import DiscriminatorAdultAg
@@ -9,6 +10,7 @@ from utils.helpers import setup_logging
 from utils.helpers import load_config
 from utils.helpers import features_setting
 from sklearn.model_selection import train_test_split
+from sklearn.ensemble import GradientBoostingClassifier
 
 if __name__ == "__main__":
     """Device"""
@@ -45,15 +47,18 @@ if __name__ == "__main__":
     df_generator = df[normal_features]
     df[target] = df[target].astype(float)
 
-    df_train, df_test = train_test_split(df, test_size=0.1, random_state=0)
+    df_train, df_test = train_test_split(df, test_size=0.2, random_state=0)
+    # print(df_train[target].value_counts(), df_test[target].value_counts())
+    # df_term = df.groupby(target).reset_index(drop=True)
+    # print(df_term[target].value_counts())
     # df = df_test.copy()
-
+    # sys.exit(1)
     """Load auto encoder"""
     df_autoencoder = df[full_features].copy()
-    emb_size = 128
+    emb_size_gen = 128
     ae_model = AutoEncoder(
         input_shape=df[full_features].shape[1],
-        encoder_layers=[512, 512, emb_size],  # model architecture
+        encoder_layers=[512, 512, emb_size_gen],  # model architecture
         decoder_layers=[],  # decoder optional - you can create bottlenecks if you like
         activation='relu',
         swap_p=0.2,  # noise parameter
@@ -70,11 +75,11 @@ if __name__ == "__main__":
     ae_model.eval()
 
     """Load generator"""
-    emb_size = 128
+    emb_size_gen = 256
     df_generator = df[normal_features]
     generator= AutoEncoder(
         input_shape = df_generator.shape[1],
-        encoder_layers=[512, 512, emb_size],  # model architecture
+        encoder_layers=[512, 512, emb_size_gen],  # model architecture
         decoder_layers=[],  # decoder optional - you can create bottlenecks if you like
         encoder_dropout = 0.5,
         decoder_dropout = 0.5,
@@ -94,8 +99,7 @@ if __name__ == "__main__":
 
 
     """Load discriminator"""
-    emb_size = 128
-    discriminator_agnostic = DiscriminatorAdultAg(emb_size)
+    discriminator_agnostic = DiscriminatorAdultAg(emb_size_gen)
     discriminator_agnostic.to(device)
     discriminator_agnostic.load_state_dict(torch.load(conf['adult_discriminator']))
     discriminator_agnostic.eval()
@@ -106,20 +110,20 @@ if __name__ == "__main__":
     """Autoencoder + Linear regression"""
     Z = ae_model.get_representation(df_autoencoder)
     Z = Z.cpu().detach().numpy()
-    reg = LogisticRegression(solver='saga', max_iter=1000)
-    reg.fit(Z, df_test[target].values)
-    y_pred = reg.predict(Z)
+    clf = LogisticRegression()
+    clf.fit(Z, df_test[target].values)
+    y_pred = clf.predict(Z)
     df_test["AL_prediction"] = y_pred
-    df_test["AL_prediction_proba"] = reg.predict_proba(Z)[:,0]
+    df_test["AL_prediction_proba"] = clf.predict_proba(Z)[:,0]
 
     """Generator + Linear regression"""
     Z = generator.custom_forward(df_generator)
     Z = Z.cpu().detach().numpy()
-    reg = LogisticRegression(solver='saga', max_iter=1000)
-    reg.fit(Z, df_test[target].values)
-    y_pred = reg.predict(Z)
+    clf = LogisticRegression()
+    clf.fit(Z, df_test[target].values)
+    y_pred = clf.predict(Z)
     df_test["GL_prediction"] = y_pred
-    df_test["GL_prediction_proba"] = reg.predict_proba(Z)[:,0]
+    df_test["GL_prediction_proba"] = clf.predict_proba(Z)[:,0]
 
     """Generator + Discriminator"""
     Z = generator.custom_forward(df_generator)

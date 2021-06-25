@@ -1,0 +1,282 @@
+CFairness    Epoch 0
+CFairness    Adult Loss Agnostic 0.649->0.649
+CFairness    Adult Loss Awareness 0.667->0.667
+CFairness    Adult Generator Agnostic 0.544->0.544
+CFairness    Precision 0.785, Recall 0.706, F-measure 0.726
+CFairness    ------------------------------
+CFairness    Epoch 1
+CFairness    Adult Loss Agnostic 0.649->0.563
+CFairness    Adult Loss Awareness 0.667->0.577
+CFairness    Adult Generator Agnostic 0.544->0.49
+CFairness    Precision 0.815, Recall 0.758, F-measure 0.772
+CFairness    ------------------------------
+CFairness    Epoch 2
+CFairness    Adult Loss Agnostic 0.649->0.543
+CFairness    Adult Loss Awareness 0.667->0.546
+CFairness    Adult Generator Agnostic 0.544->0.634
+CFairness    Precision 0.814, Recall 0.758, F-measure 0.773
+CFairness    ------------------------------
+CFairness    Epoch 3
+CFairness    Adult Loss Agnostic 0.649->0.541
+CFairness    Adult Loss Awareness 0.667->0.542
+CFairness    Adult Generator Agnostic 0.544->0.656
+CFairness    Precision 0.819, Recall 0.779, F-measure 0.791
+CFairness    ------------------------------
+CFairness    Epoch 4
+CFairness    Adult Loss Agnostic 0.649->0.534
+CFairness    Adult Loss Awareness 0.667->0.532
+CFairness    Adult Generator Agnostic 0.544->0.693
+CFairness    Precision 0.821, Recall 0.779, F-measure 0.790
+CFairness    ------------------------------
+CFairness    Epoch 5
+CFairness    Adult Loss Agnostic 0.649->0.529
+CFairness    Adult Loss Awareness 0.667->0.529
+CFairness    Adult Generator Agnostic 0.544->0.635
+CFairness    Precision 0.811, Recall 0.789, F-measure 0.797
+CFairness    ------------------------------
+CFairness    Epoch 6
+CFairness    Adult Loss Agnostic 0.649->0.53
+CFairness    Adult Loss Awareness 0.667->0.527
+CFairness    Adult Generator Agnostic 0.544->0.697
+CFairness    Precision 0.825, Recall 0.779, F-measure 0.791
+CFairness    ------------------------------
+CFairness    Epoch 7
+CFairness    Adult Loss Agnostic 0.649->0.522
+CFairness    Adult Loss Awareness 0.667->0.521
+CFairness    Adult Generator Agnostic 0.544->0.632
+CFairness    Precision 0.826, Recall 0.774, F-measure 0.788
+CFairness    ------------------------------
+CFairness    Epoch 8
+CFairness    Adult Loss Agnostic 0.649->0.524
+CFairness    Adult Loss Awareness 0.667->0.522
+CFairness    Adult Generator Agnostic 0.544->0.668
+CFairness    Precision 0.824, Recall 0.786, F-measure 0.797
+CFairness    ------------------------------
+CFairness    Epoch 9
+CFairness    Adult Loss Agnostic 0.649->0.525
+CFairness    Adult Loss Awareness 0.667->0.521
+CFairness    Adult Generator Agnostic 0.544->0.689
+CFairness    Precision 0.828, Recall 0.765, F-measure 0.780
+CFairness    ------------------------------
+CFairness    Epoch 10
+CFairness    Adult Loss Agnostic 0.649->0.525
+CFairness    Adult Loss Awareness 0.667->0.521
+CFairness    Adult Generator Agnostic 0.544->0.695
+CFairness    Precision 0.819, Recall 0.780, F-measure 0.791
+CFairness    ------------------------------
+CFairness    Epoch 11
+CFairness    Adult Loss Agnostic 0.649->0.522
+CFairness    Adult Loss Awareness 0.667->0.521
+CFairness    Adult Generator Agnostic 0.544->0.644
+CFairness    Precision 0.825, Recall 0.779, F-measure 0.791
+CFairness    ------------------------------
+CFairness    Epoch 12
+CFairness    Adult Loss Agnostic 0.649->0.518
+CFairness    Adult Loss Awareness 0.667->0.518
+CFairness    Adult Generator Agnostic 0.544->0.608
+CFairness    Precision 0.828, Recall 0.795, F-measure 0.805
+CFairness    ------------------------------
+CFairness    Epoch 13
+CFairness    Adult Loss Agnostic 0.649->0.519
+CFairness    Adult Loss Awareness 0.667->0.518
+CFairness    Adult Generator Agnostic 0.544->0.615
+CFairness    Precision 0.826, Recall 0.783, F-measure 0.795
+CFairness    ------------------------------
+CFairness    Epoch 14
+CFairness    Adult Loss Agnostic 0.649->0.517
+CFairness    Adult Loss Awareness 0.667->0.516
+CFairness    Adult Generator Agnostic 0.544->0.626
+CFairness    Precision 0.826, Recall 0.798, F-measure 0.806
+CFairness    ------------------------------
+CFairness    Epoch 15
+CFairness    Adult Loss Agnostic 0.649->0.517
+CFairness    Adult Loss Awareness 0.667->0.516
+CFairness    Adult Generator Agnostic 0.544->0.614
+CFairness    Precision 0.822, Recall 0.797, F-measure 0.805
+CFairness    ------------------------------
+CFairness    Epoch 16
+CFairness    Adult Loss Agnostic 0.649->0.519
+CFairness    Adult Loss Awareness 0.667->0.517
+CFairness    Adult Generator Agnostic 0.544->0.651
+CFairness    Precision 0.825, Recall 0.787, F-measure 0.798
+CFairness    ------------------------------
+CFairness    Epoch 17
+CFairness    Adult Loss Agnostic 0.649->0.519
+CFairness    Adult Loss Awareness 0.667->0.516
+CFairness    Adult Generator Agnostic 0.544->0.655
+CFairness    Precision 0.827, Recall 0.782, F-measure 0.794
+CFairness    ------------------------------
+CFairness    Epoch 18
+CFairness    Adult Loss Agnostic 0.649->0.519
+CFairness    Adult Loss Awareness 0.667->0.516
+CFairness    Adult Generator Agnostic 0.544->0.644
+CFairness    Precision 0.822, Recall 0.794, F-measure 0.803
+CFairness    ------------------------------
+CFairness    Epoch 19
+CFairness    Adult Loss Agnostic 0.649->0.52
+CFairness    Adult Loss Awareness 0.667->0.516
+CFairness    Adult Generator Agnostic 0.544->0.699
+CFairness    Precision 0.827, Recall 0.782, F-measure 0.794
+CFairness    ------------------------------
+CFairness    Epoch 20
+CFairness    Adult Loss Agnostic 0.649->0.521
+CFairness    Adult Loss Awareness 0.667->0.518
+CFairness    Adult Generator Agnostic 0.544->0.669
+CFairness    Precision 0.819, Recall 0.799, F-measure 0.806
+CFairness    ------------------------------
+CFairness    Epoch 21
+CFairness    Adult Loss Agnostic 0.649->0.52
+CFairness    Adult Loss Awareness 0.667->0.518
+CFairness    Adult Generator Agnostic 0.544->0.638
+CFairness    Precision 0.822, Recall 0.792, F-measure 0.802
+CFairness    ------------------------------
+CFairness    Epoch 22
+CFairness    Adult Loss Agnostic 0.649->0.519
+CFairness    Adult Loss Awareness 0.667->0.517
+CFairness    Adult Generator Agnostic 0.544->0.648
+CFairness    Precision 0.825, Recall 0.784, F-measure 0.795
+CFairness    ------------------------------
+CFairness    Epoch 23
+CFairness    Adult Loss Agnostic 0.649->0.52
+CFairness    Adult Loss Awareness 0.667->0.518
+CFairness    Adult Generator Agnostic 0.544->0.658
+CFairness    Precision 0.822, Recall 0.783, F-measure 0.794
+CFairness    ------------------------------
+CFairness    Epoch 24
+CFairness    Adult Loss Agnostic 0.649->0.523
+CFairness    Adult Loss Awareness 0.667->0.519
+CFairness    Adult Generator Agnostic 0.544->0.705
+CFairness    Precision 0.820, Recall 0.785, F-measure 0.796
+CFairness    ------------------------------
+CFairness    Epoch 25
+CFairness    Adult Loss Agnostic 0.649->0.52
+CFairness    Adult Loss Awareness 0.667->0.517
+CFairness    Adult Generator Agnostic 0.544->0.679
+CFairness    Precision 0.828, Recall 0.777, F-measure 0.790
+CFairness    ------------------------------
+CFairness    Epoch 26
+CFairness    Adult Loss Agnostic 0.649->0.518
+CFairness    Adult Loss Awareness 0.667->0.515
+CFairness    Adult Generator Agnostic 0.544->0.655
+CFairness    Precision 0.830, Recall 0.780, F-measure 0.793
+CFairness    ------------------------------
+CFairness    Epoch 27
+CFairness    Adult Loss Agnostic 0.649->0.516
+CFairness    Adult Loss Awareness 0.667->0.514
+CFairness    Adult Generator Agnostic 0.544->0.628
+CFairness    Precision 0.834, Recall 0.781, F-measure 0.794
+CFairness    ------------------------------
+CFairness    Epoch 28
+CFairness    Adult Loss Agnostic 0.649->0.516
+CFairness    Adult Loss Awareness 0.667->0.513
+CFairness    Adult Generator Agnostic 0.544->0.642
+CFairness    Precision 0.827, Recall 0.794, F-measure 0.804
+CFairness    ------------------------------
+CFairness    Epoch 29
+CFairness    Adult Loss Agnostic 0.649->0.514
+CFairness    Adult Loss Awareness 0.667->0.512
+CFairness    Adult Generator Agnostic 0.544->0.648
+CFairness    Precision 0.829, Recall 0.785, F-measure 0.797
+CFairness    ------------------------------
+CFairness    Epoch 30
+CFairness    Adult Loss Agnostic 0.649->0.514
+CFairness    Adult Loss Awareness 0.667->0.512
+CFairness    Adult Generator Agnostic 0.544->0.621
+CFairness    Precision 0.828, Recall 0.793, F-measure 0.803
+CFairness    ------------------------------
+CFairness    Epoch 31
+CFairness    Adult Loss Agnostic 0.649->0.517
+CFairness    Adult Loss Awareness 0.667->0.514
+CFairness    Adult Generator Agnostic 0.544->0.649
+CFairness    Precision 0.827, Recall 0.790, F-measure 0.801
+CFairness    ------------------------------
+CFairness    Epoch 32
+CFairness    Adult Loss Agnostic 0.649->0.516
+CFairness    Adult Loss Awareness 0.667->0.514
+CFairness    Adult Generator Agnostic 0.544->0.653
+CFairness    Precision 0.829, Recall 0.790, F-measure 0.801
+CFairness    ------------------------------
+CFairness    Epoch 33
+CFairness    Adult Loss Agnostic 0.649->0.516
+CFairness    Adult Loss Awareness 0.667->0.513
+CFairness    Adult Generator Agnostic 0.544->0.669
+CFairness    Precision 0.823, Recall 0.798, F-measure 0.807
+CFairness    ------------------------------
+CFairness    Epoch 34
+CFairness    Adult Loss Agnostic 0.649->0.518
+CFairness    Adult Loss Awareness 0.667->0.514
+CFairness    Adult Generator Agnostic 0.544->0.682
+CFairness    Precision 0.819, Recall 0.797, F-measure 0.804
+CFairness    ------------------------------
+CFairness    Epoch 35
+CFairness    Adult Loss Agnostic 0.649->0.518
+CFairness    Adult Loss Awareness 0.667->0.515
+CFairness    Adult Generator Agnostic 0.544->0.655
+CFairness    Precision 0.825, Recall 0.799, F-measure 0.807
+CFairness    ------------------------------
+CFairness    Epoch 36
+CFairness    Adult Loss Agnostic 0.649->0.516
+CFairness    Adult Loss Awareness 0.667->0.513
+CFairness    Adult Generator Agnostic 0.544->0.652
+CFairness    Precision 0.822, Recall 0.795, F-measure 0.804
+CFairness    ------------------------------
+CFairness    Epoch 37
+CFairness    Adult Loss Agnostic 0.649->0.52
+CFairness    Adult Loss Awareness 0.667->0.515
+CFairness    Adult Generator Agnostic 0.544->0.71
+CFairness    Precision 0.818, Recall 0.793, F-measure 0.801
+CFairness    ------------------------------
+CFairness    Epoch 38
+CFairness    Adult Loss Agnostic 0.649->0.523
+CFairness    Adult Loss Awareness 0.667->0.517
+CFairness    Adult Generator Agnostic 0.544->0.708
+CFairness    Precision 0.821, Recall 0.786, F-measure 0.796
+CFairness    ------------------------------
+CFairness    Epoch 39
+CFairness    Adult Loss Agnostic 0.649->0.523
+CFairness    Adult Loss Awareness 0.667->0.517
+CFairness    Adult Generator Agnostic 0.544->0.736
+CFairness    Precision 0.819, Recall 0.789, F-measure 0.798
+CFairness    ------------------------------
+CFairness    Epoch 40
+CFairness    Adult Loss Agnostic 0.649->0.52
+CFairness    Adult Loss Awareness 0.667->0.517
+CFairness    Adult Generator Agnostic 0.544->0.674
+CFairness    Precision 0.825, Recall 0.791, F-measure 0.801
+CFairness    ------------------------------
+CFairness    Epoch 41
+CFairness    Adult Loss Agnostic 0.649->0.516
+CFairness    Adult Loss Awareness 0.667->0.513
+CFairness    Adult Generator Agnostic 0.544->0.683
+CFairness    Precision 0.831, Recall 0.779, F-measure 0.792
+CFairness    ------------------------------
+CFairness    Epoch 42
+CFairness    Adult Loss Agnostic 0.649->0.517
+CFairness    Adult Loss Awareness 0.667->0.512
+CFairness    Adult Generator Agnostic 0.544->0.705
+CFairness    Precision 0.831, Recall 0.776, F-measure 0.790
+CFairness    ------------------------------
+CFairness    Epoch 43
+CFairness    Adult Loss Agnostic 0.649->0.519
+CFairness    Adult Loss Awareness 0.667->0.513
+CFairness    Adult Generator Agnostic 0.544->0.739
+CFairness    Precision 0.824, Recall 0.790, F-measure 0.800
+CFairness    ------------------------------
+CFairness    Epoch 44
+CFairness    Adult Loss Agnostic 0.649->0.518
+CFairness    Adult Loss Awareness 0.667->0.513
+CFairness    Adult Generator Agnostic 0.544->0.74
+CFairness    Precision 0.826, Recall 0.799, F-measure 0.807
+CFairness    ------------------------------
+CFairness    Epoch 45
+CFairness    Adult Loss Agnostic 0.649->0.516
+CFairness    Adult Loss Awareness 0.667->0.512
+CFairness    Adult Generator Agnostic 0.544->0.676
+CFairness    Precision 0.825, Recall 0.794, F-measure 0.804
+CFairness    ------------------------------
+CFairness    Epoch 46
+CFairness    Adult Loss Agnostic 0.649->0.516
+CFairness    Adult Loss Awareness 0.667->0.512
+CFairness    Adult Generator Agnostic 0.544->0.679
+CFairness    Precision 0.823, Recall 0.804, F-measure 0.811
+CFairness    ------------------------------

@@ -73,8 +73,10 @@ if __name__ == "__main__":
     df = pd.concat([df1, df2], axis=1)
 
     if data_name == 'compas':
-        col = ['full',
-               'unaware',
+        col = ['full_log',
+               'full_gbr',
+               'unaware_log',
+               'unaware_gbr',
                'cf1',
                'cf2',
                'AL_prediction',
@@ -82,9 +84,12 @@ if __name__ == "__main__":
                'GD_prediction'
                ]
     else:
-        col = ['full',
-               'unaware',
+        col = ['full_log',
+               'full_gbr',
+               'unaware_log',
+               'unaware_gbr',
                'cf1',
+               'cf2',
                'AL_prediction',
                'GL_prediction',
                'GD_prediction'

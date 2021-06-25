@@ -139,20 +139,18 @@ class DiscriminatorAdultAg(nn.Module):
         self.batchnorm2 = nn.BatchNorm1d(64)
 
     def forward(self, x):
-        x = F.leaky_relu(self.hidden(x))
+        x = self.prelu(self.hidden(x))
         x = self.dropout(x)
         x = self.batchnorm1(x)
-        x = F.leaky_relu(self.hidden1(x))
+        x = self.prelu(self.hidden1(x))
         x = self.dropout(x)
         x = self.batchnorm2(x)
-        for i in range(10):
-            x = F.leaky_relu(self.hidden2(x))
-            # x = self.dropout(x)
+        for i in range(3):
+            x = self.prelu(self.hidden2(x))
+            x = self.dropout(x)
             x = self.batchnorm2(x)
         x = self.predict(x)
-        # x = self.dropout(x)
         x = self.soft(x)
-        # x = self.dropout(x)
 
         return x
 
@@ -196,34 +194,39 @@ class DiscriminatorCompasAg(nn.Module):
     def __init__(self, input_length: int, problem=None):
         super(DiscriminatorCompasAg, self).__init__()
         self.problem = problem
-        dim1 = 128
-        dim2 = 64
-        finaldim = 64
+        dim1 = 256
+        dim2 = 128
+        dim3 = 64
+        dim4 = 32
+        dim5 = 16
+        dim6 = 8
+        finaldim = 8
         self.hidden = torch.nn.Linear(input_length, dim1)   # hidden layer
         self.hidden1 = torch.nn.Linear(dim1, dim2)   # hidden layer
-        self.hidden2 = torch.nn.Linear(dim2, finaldim)   # hidden layer
+        self.hidden2 = torch.nn.Linear(dim2, dim3)   # hidden layer
+        self.hidden3 = torch.nn.Linear(dim3, dim4)   # hidden layer
+        self.hidden4 = torch.nn.Linear(dim4, dim5)   # hidden layer
+        self.hidden5 = torch.nn.Linear(dim5, dim6)   # hidden layer
         self.predict = torch.nn.Linear(finaldim, 2)   # output layer
         self.dropout = nn.Dropout(0.5)
         self.soft = nn.Softmax(dim=1)
         self.prelu = nn.PReLU(num_parameters=1, init=0.25)
         self.sig = nn.Sigmoid()
-        self.batchnorm1 = nn.BatchNorm1d(dim1)
-        self.batchnorm2 = nn.BatchNorm1d(dim2)
+        self.batchnorm = nn.BatchNorm1d(dim1)
+        self.batchnorm1 = nn.BatchNorm1d(dim2)
+        self.batchnorm2 = nn.BatchNorm1d(dim3)
+        self.batchnorm3 = nn.BatchNorm1d(dim4)
+        self.batchnorm4 = nn.BatchNorm1d(dim5)
+        self.batchnorm5 = nn.BatchNorm1d(dim6)
 
     def forward(self, x):
-        # x = F.elu(self.hidden(x))
-        x = self.prelu(self.hidden(x))
-        x = self.dropout(x)
-        x = self.batchnorm1(x)
-        # x = F.elu(self.hidden1(x))
-        x = self.prelu(self.hidden1(x))
-        x = self.dropout(x)
-        x = self.batchnorm2(x)
-        for i in range(2):
-            # x = F.elu(self.hidden2(x))
-            x = self.prelu(self.hidden2(x))
-            x = self.dropout(x)
-            x = self.batchnorm2(x)
+
+        x = self.batchnorm(self.dropout(self.prelu(self.hidden(x))))
+        x = self.batchnorm1(self.dropout(self.prelu(self.hidden1(x))))
+        x = self.batchnorm2(self.dropout(self.prelu(self.hidden2(x))))
+        x = self.batchnorm3(self.dropout(self.prelu(self.hidden3(x))))
+        x = self.batchnorm4(self.dropout(self.prelu(self.hidden4(x))))
+        x = self.batchnorm5(self.dropout(self.prelu(self.hidden5(x))))
         x = self.predict(x)
         x = self.soft(x)
 

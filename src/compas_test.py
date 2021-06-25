@@ -65,6 +65,9 @@ if __name__ == "__main__":
     data_path = conf['data_compas']
     df = pd.read_csv(data_path)
 
+    emb_size_gen = 256
+    emb_size = 128
+
     """Setup features"""
     dict_ = features_setting('compas')
     sensitive_features = dict_["sensitive_features"]
@@ -88,7 +91,6 @@ if __name__ == "__main__":
 
     """Load auto encoder"""
     df_autoencoder = df[full_features].copy()
-    emb_size = 128
     ae_model = AutoEncoder(
         input_shape=df[full_features].shape[1],
         encoder_layers=[512, 512, emb_size],  # model architecture
@@ -108,7 +110,6 @@ if __name__ == "__main__":
     ae_model.eval()
 
     """Load generator"""
-    emb_size_gen = 128
     df_generator = df[normal_features]
     generator= AutoEncoder(
         input_shape = df_generator.shape[1],
@@ -129,7 +130,6 @@ if __name__ == "__main__":
     generator.build_model(df_generator)
     generator.load_state_dict(torch.load(conf['compas_generator']))
     generator.eval()
-
 
     """Load discriminator"""
     # emb_size = 128
