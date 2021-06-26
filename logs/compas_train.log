@@ -1,623 +1,966 @@
 CFairness    Epoch 0
-CFairness    Compas Loss Agnostic 0.728->0.728
-CFairness    Compas Loss Awareness 0.756->0.756
-CFairness    Compas Generator Agnostic 1.026->1.026
+CFairness    Compas Loss Agnostic 0.725->0.725
+CFairness    Compas Loss Awareness 0.747->0.747
+CFairness    Compas Generator Agnostic 1.196->1.196
 CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.521, Recall 0.506, F-measure 0.504
+CFairness    Precision 0.502, Recall 0.485, F-measure 0.478
 CFairness    ------------------------------
 CFairness    Epoch 1
-CFairness    Compas Loss Agnostic 0.728->0.724
-CFairness    Compas Loss Awareness 0.756->0.748
-CFairness    Compas Generator Agnostic 1.026->0.996
+CFairness    Compas Loss Agnostic 0.725->0.722
+CFairness    Compas Loss Awareness 0.747->0.736
+CFairness    Compas Generator Agnostic 1.196->1.247
 CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.495, Recall 0.483, F-measure 0.481
+CFairness    Precision 0.507, Recall 0.491, F-measure 0.486
 CFairness    ------------------------------
 CFairness    Epoch 2
-CFairness    Compas Loss Agnostic 0.728->0.725
-CFairness    Compas Loss Awareness 0.756->0.749
-CFairness    Compas Generator Agnostic 1.026->1.073
+CFairness    Compas Loss Agnostic 0.725->0.727
+CFairness    Compas Loss Awareness 0.747->0.732
+CFairness    Compas Generator Agnostic 1.196->1.473
 CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.517, Recall 0.503, F-measure 0.501
+CFairness    Precision 0.519, Recall 0.502, F-measure 0.498
 CFairness    ------------------------------
 CFairness    Epoch 3
-CFairness    Compas Loss Agnostic 0.728->0.727
-CFairness    Compas Loss Awareness 0.756->0.737
-CFairness    Compas Generator Agnostic 1.026->1.238
+CFairness    Compas Loss Agnostic 0.725->0.731
+CFairness    Compas Loss Awareness 0.747->0.727
+CFairness    Compas Generator Agnostic 1.196->1.79
 CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.511, Recall 0.499, F-measure 0.497
+CFairness    Precision 0.515, Recall 0.500, F-measure 0.496
 CFairness    ------------------------------
 CFairness    Epoch 4
-CFairness    Compas Loss Agnostic 0.728->0.721
-CFairness    Compas Loss Awareness 0.756->0.72
-CFairness    Compas Generator Agnostic 1.026->1.314
+CFairness    Compas Loss Agnostic 0.725->0.724
+CFairness    Compas Loss Awareness 0.747->0.714
+CFairness    Compas Generator Agnostic 1.196->1.765
 CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.502, Recall 0.490, F-measure 0.489
+CFairness    Precision 0.506, Recall 0.492, F-measure 0.490
 CFairness    ------------------------------
 CFairness    Epoch 5
-CFairness    Compas Loss Agnostic 0.728->0.72
-CFairness    Compas Loss Awareness 0.756->0.732
-CFairness    Compas Generator Agnostic 1.026->1.078
+CFairness    Compas Loss Agnostic 0.725->0.725
+CFairness    Compas Loss Awareness 0.747->0.72
+CFairness    Compas Generator Agnostic 1.196->1.629
 CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.521, Recall 0.509, F-measure 0.508
+CFairness    Precision 0.512, Recall 0.498, F-measure 0.496
 CFairness    ------------------------------
 CFairness    Epoch 6
-CFairness    Compas Loss Agnostic 0.728->0.715
-CFairness    Compas Loss Awareness 0.756->0.735
-CFairness    Compas Generator Agnostic 1.026->1.019
+CFairness    Compas Loss Agnostic 0.725->0.725
+CFairness    Compas Loss Awareness 0.747->0.715
+CFairness    Compas Generator Agnostic 1.196->1.759
 CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.517, Recall 0.505, F-measure 0.504
+CFairness    Precision 0.513, Recall 0.499, F-measure 0.497
 CFairness    ------------------------------
 CFairness    Epoch 7
-CFairness    Compas Loss Agnostic 0.728->0.714
-CFairness    Compas Loss Awareness 0.756->0.744
-CFairness    Compas Generator Agnostic 1.026->0.975
+CFairness    Compas Loss Agnostic 0.725->0.724
+CFairness    Compas Loss Awareness 0.747->0.707
+CFairness    Compas Generator Agnostic 1.196->1.95
 CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.520, Recall 0.508, F-measure 0.508
+CFairness    Precision 0.510, Recall 0.497, F-measure 0.494
 CFairness    ------------------------------
 CFairness    Epoch 8
-CFairness    Compas Loss Agnostic 0.728->0.713
-CFairness    Compas Loss Awareness 0.756->0.734
-CFairness    Compas Generator Agnostic 1.026->1.011
+CFairness    Compas Loss Agnostic 0.725->0.72
+CFairness    Compas Loss Awareness 0.747->0.7
+CFairness    Compas Generator Agnostic 1.196->2.004
 CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.519, Recall 0.508, F-measure 0.508
+CFairness    Precision 0.508, Recall 0.495, F-measure 0.493
 CFairness    ------------------------------
 CFairness    Epoch 9
-CFairness    Compas Loss Agnostic 0.728->0.713
-CFairness    Compas Loss Awareness 0.756->0.726
-CFairness    Compas Generator Agnostic 1.026->1.057
+CFairness    Compas Loss Agnostic 0.725->0.716
+CFairness    Compas Loss Awareness 0.747->0.7
+CFairness    Compas Generator Agnostic 1.196->1.975
 CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.529, Recall 0.518, F-measure 0.518
+CFairness    Precision 0.513, Recall 0.502, F-measure 0.501
 CFairness    ------------------------------
 CFairness    Epoch 10
-CFairness    Compas Loss Agnostic 0.728->0.71
-CFairness    Compas Loss Awareness 0.756->0.72
-CFairness    Compas Generator Agnostic 1.026->1.1
+CFairness    Compas Loss Agnostic 0.725->0.716
+CFairness    Compas Loss Awareness 0.747->0.695
+CFairness    Compas Generator Agnostic 1.196->2.07
 CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.520, Recall 0.509, F-measure 0.509
+CFairness    Precision 0.510, Recall 0.498, F-measure 0.497
 CFairness    ------------------------------
 CFairness    Epoch 11
-CFairness    Compas Loss Agnostic 0.728->0.709
-CFairness    Compas Loss Awareness 0.756->0.708
-CFairness    Compas Generator Agnostic 1.026->1.213
+CFairness    Compas Loss Agnostic 0.725->0.712
+CFairness    Compas Loss Awareness 0.747->0.691
+CFairness    Compas Generator Agnostic 1.196->2.082
 CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.533, Recall 0.522, F-measure 0.522
+CFairness    Precision 0.509, Recall 0.498, F-measure 0.497
 CFairness    ------------------------------
 CFairness    Epoch 12
-CFairness    Compas Loss Agnostic 0.728->0.715
-CFairness    Compas Loss Awareness 0.756->0.707
-CFairness    Compas Generator Agnostic 1.026->1.449
+CFairness    Compas Loss Agnostic 0.725->0.718
+CFairness    Compas Loss Awareness 0.747->0.695
+CFairness    Compas Generator Agnostic 1.196->2.114
 CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.533, Recall 0.523, F-measure 0.523
+CFairness    Precision 0.519, Recall 0.509, F-measure 0.509
 CFairness    ------------------------------
 CFairness    Epoch 13
-CFairness    Compas Loss Agnostic 0.728->0.706
-CFairness    Compas Loss Awareness 0.756->0.696
-CFairness    Compas Generator Agnostic 1.026->1.431
+CFairness    Compas Loss Agnostic 0.725->0.716
+CFairness    Compas Loss Awareness 0.747->0.688
+CFairness    Compas Generator Agnostic 1.196->2.256
 CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.529, Recall 0.519, F-measure 0.519
+CFairness    Precision 0.522, Recall 0.512, F-measure 0.512
 CFairness    ------------------------------
 CFairness    Epoch 14
-CFairness    Compas Loss Agnostic 0.728->0.704
-CFairness    Compas Loss Awareness 0.756->0.703
-CFairness    Compas Generator Agnostic 1.026->1.25
+CFairness    Compas Loss Agnostic 0.725->0.708
+CFairness    Compas Loss Awareness 0.747->0.686
+CFairness    Compas Generator Agnostic 1.196->2.044
 CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.538, Recall 0.527, F-measure 0.527
+CFairness    Precision 0.518, Recall 0.508, F-measure 0.508
 CFairness    ------------------------------
 CFairness    Epoch 15
-CFairness    Compas Loss Agnostic 0.728->0.702
-CFairness    Compas Loss Awareness 0.756->0.699
-CFairness    Compas Generator Agnostic 1.026->1.303
+CFairness    Compas Loss Agnostic 0.725->0.71
+CFairness    Compas Loss Awareness 0.747->0.685
+CFairness    Compas Generator Agnostic 1.196->2.255
 CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.538, Recall 0.529, F-measure 0.529
+CFairness    Precision 0.527, Recall 0.517, F-measure 0.517
 CFairness    ------------------------------
 CFairness    Epoch 16
-CFairness    Compas Loss Agnostic 0.728->0.701
-CFairness    Compas Loss Awareness 0.756->0.691
-CFairness    Compas Generator Agnostic 1.026->1.413
+CFairness    Compas Loss Agnostic 0.725->0.711
+CFairness    Compas Loss Awareness 0.747->0.691
+CFairness    Compas Generator Agnostic 1.196->1.965
 CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.545, Recall 0.534, F-measure 0.534
+CFairness    Precision 0.526, Recall 0.517, F-measure 0.518
 CFairness    ------------------------------
 CFairness    Epoch 17
-CFairness    Compas Loss Agnostic 0.728->0.702
-CFairness    Compas Loss Awareness 0.756->0.682
-CFairness    Compas Generator Agnostic 1.026->1.613
+CFairness    Compas Loss Agnostic 0.725->0.708
+CFairness    Compas Loss Awareness 0.747->0.682
+CFairness    Compas Generator Agnostic 1.196->2.18
 CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.537, Recall 0.527, F-measure 0.528
+CFairness    Precision 0.515, Recall 0.507, F-measure 0.507
 CFairness    ------------------------------
 CFairness    Epoch 18
-CFairness    Compas Loss Agnostic 0.728->0.7
-CFairness    Compas Loss Awareness 0.756->0.692
-CFairness    Compas Generator Agnostic 1.026->1.357
+CFairness    Compas Loss Agnostic 0.725->0.706
+CFairness    Compas Loss Awareness 0.747->0.681
+CFairness    Compas Generator Agnostic 1.196->2.047
 CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.543, Recall 0.533, F-measure 0.534
+CFairness    Precision 0.523, Recall 0.513, F-measure 0.514
 CFairness    ------------------------------
 CFairness    Epoch 19
-CFairness    Compas Loss Agnostic 0.728->0.697
-CFairness    Compas Loss Awareness 0.756->0.696
-CFairness    Compas Generator Agnostic 1.026->1.143
+CFairness    Compas Loss Agnostic 0.725->0.71
+CFairness    Compas Loss Awareness 0.747->0.677
+CFairness    Compas Generator Agnostic 1.196->2.382
 CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.543, Recall 0.534, F-measure 0.534
+CFairness    Precision 0.525, Recall 0.517, F-measure 0.518
 CFairness    ------------------------------
 CFairness    Epoch 20
-CFairness    Compas Loss Agnostic 0.728->0.697
-CFairness    Compas Loss Awareness 0.756->0.69
-CFairness    Compas Generator Agnostic 1.026->1.328
+CFairness    Compas Loss Agnostic 0.725->0.699
+CFairness    Compas Loss Awareness 0.747->0.682
+CFairness    Compas Generator Agnostic 1.196->1.821
 CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.548, Recall 0.538, F-measure 0.538
+CFairness    Precision 0.519, Recall 0.512, F-measure 0.512
 CFairness    ------------------------------
 CFairness    Epoch 21
-CFairness    Compas Loss Agnostic 0.728->0.694
-CFairness    Compas Loss Awareness 0.756->0.685
-CFairness    Compas Generator Agnostic 1.026->1.384
+CFairness    Compas Loss Agnostic 0.725->0.703
+CFairness    Compas Loss Awareness 0.747->0.678
+CFairness    Compas Generator Agnostic 1.196->2.249
 CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.539, Recall 0.529, F-measure 0.529
+CFairness    Precision 0.520, Recall 0.511, F-measure 0.512
 CFairness    ------------------------------
 CFairness    Epoch 22
-CFairness    Compas Loss Agnostic 0.728->0.69
-CFairness    Compas Loss Awareness 0.756->0.691
-CFairness    Compas Generator Agnostic 1.026->1.178
+CFairness    Compas Loss Agnostic 0.725->0.703
+CFairness    Compas Loss Awareness 0.747->0.676
+CFairness    Compas Generator Agnostic 1.196->2.211
 CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.546, Recall 0.535, F-measure 0.535
+CFairness    Precision 0.528, Recall 0.519, F-measure 0.519
 CFairness    ------------------------------
 CFairness    Epoch 23
-CFairness    Compas Loss Agnostic 0.728->0.69
-CFairness    Compas Loss Awareness 0.756->0.682
-CFairness    Compas Generator Agnostic 1.026->1.288
+CFairness    Compas Loss Agnostic 0.725->0.701
+CFairness    Compas Loss Awareness 0.747->0.675
+CFairness    Compas Generator Agnostic 1.196->2.134
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.540, Recall 0.532, F-measure 0.533
+CFairness    ------------------------------
+CFairness    Epoch 24
+CFairness    Compas Loss Agnostic 0.725->0.706
+CFairness    Compas Loss Awareness 0.747->0.673
+CFairness    Compas Generator Agnostic 1.196->2.351
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.526, Recall 0.517, F-measure 0.517
+CFairness    ------------------------------
+CFairness    Epoch 25
+CFairness    Compas Loss Agnostic 0.725->0.703
+CFairness    Compas Loss Awareness 0.747->0.674
+CFairness    Compas Generator Agnostic 1.196->2.256
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.529, Recall 0.519, F-measure 0.520
+CFairness    ------------------------------
+CFairness    Epoch 26
+CFairness    Compas Loss Agnostic 0.725->0.7
+CFairness    Compas Loss Awareness 0.747->0.671
+CFairness    Compas Generator Agnostic 1.196->2.28
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.529, Recall 0.522, F-measure 0.522
+CFairness    ------------------------------
+CFairness    Epoch 27
+CFairness    Compas Loss Agnostic 0.725->0.704
+CFairness    Compas Loss Awareness 0.747->0.667
+CFairness    Compas Generator Agnostic 1.196->2.544
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.539, Recall 0.530, F-measure 0.530
+CFairness    ------------------------------
+CFairness    Epoch 28
+CFairness    Compas Loss Agnostic 0.725->0.7
+CFairness    Compas Loss Awareness 0.747->0.672
+CFairness    Compas Generator Agnostic 1.196->2.169
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.537, Recall 0.528, F-measure 0.529
+CFairness    ------------------------------
+CFairness    Epoch 29
+CFairness    Compas Loss Agnostic 0.725->0.697
+CFairness    Compas Loss Awareness 0.747->0.665
+CFairness    Compas Generator Agnostic 1.196->2.257
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.536, Recall 0.527, F-measure 0.527
+CFairness    ------------------------------
+CFairness    Epoch 30
+CFairness    Compas Loss Agnostic 0.725->0.696
+CFairness    Compas Loss Awareness 0.747->0.666
+CFairness    Compas Generator Agnostic 1.196->2.269
 CFairness    Learning rate 0.0010000000
 CFairness    Precision 0.548, Recall 0.538, F-measure 0.538
 CFairness    ------------------------------
-CFairness    Epoch 24
-CFairness    Compas Loss Agnostic 0.728->0.69
-CFairness    Compas Loss Awareness 0.756->0.681
-CFairness    Compas Generator Agnostic 1.026->1.304
+CFairness    Epoch 31
+CFairness    Compas Loss Agnostic 0.725->0.694
+CFairness    Compas Loss Awareness 0.747->0.664
+CFairness    Compas Generator Agnostic 1.196->2.239
 CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.552, Recall 0.543, F-measure 0.544
+CFairness    Precision 0.547, Recall 0.537, F-measure 0.538
 CFairness    ------------------------------
-CFairness    Epoch 25
-CFairness    Compas Loss Agnostic 0.728->0.691
-CFairness    Compas Loss Awareness 0.756->0.676
-CFairness    Compas Generator Agnostic 1.026->1.454
+CFairness    Epoch 32
+CFairness    Compas Loss Agnostic 0.725->0.695
+CFairness    Compas Loss Awareness 0.747->0.667
+CFairness    Compas Generator Agnostic 1.196->2.219
 CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.548, Recall 0.539, F-measure 0.539
+CFairness    Precision 0.547, Recall 0.537, F-measure 0.538
 CFairness    ------------------------------
-CFairness    Epoch 26
-CFairness    Compas Loss Agnostic 0.728->0.687
-CFairness    Compas Loss Awareness 0.756->0.675
-CFairness    Compas Generator Agnostic 1.026->1.422
+CFairness    Epoch 33
+CFairness    Compas Loss Agnostic 0.725->0.691
+CFairness    Compas Loss Awareness 0.747->0.662
+CFairness    Compas Generator Agnostic 1.196->2.171
 CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.565, Recall 0.555, F-measure 0.555
+CFairness    Precision 0.544, Recall 0.535, F-measure 0.535
 CFairness    ------------------------------
-CFairness    Epoch 27
-CFairness    Compas Loss Agnostic 0.728->0.687
-CFairness    Compas Loss Awareness 0.756->0.67
-CFairness    Compas Generator Agnostic 1.026->1.49
+CFairness    Epoch 34
+CFairness    Compas Loss Agnostic 0.725->0.688
+CFairness    Compas Loss Awareness 0.747->0.661
+CFairness    Compas Generator Agnostic 1.196->2.17
 CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.560, Recall 0.548, F-measure 0.548
+CFairness    Precision 0.545, Recall 0.536, F-measure 0.536
 CFairness    ------------------------------
-CFairness    Epoch 28
-CFairness    Compas Loss Agnostic 0.728->0.688
-CFairness    Compas Loss Awareness 0.756->0.677
-CFairness    Compas Generator Agnostic 1.026->1.391
+CFairness    Epoch 35
+CFairness    Compas Loss Agnostic 0.725->0.689
+CFairness    Compas Loss Awareness 0.747->0.666
+CFairness    Compas Generator Agnostic 1.196->1.986
 CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.557, Recall 0.547, F-measure 0.547
+CFairness    Precision 0.547, Recall 0.536, F-measure 0.536
 CFairness    ------------------------------
-CFairness    Epoch 29
-CFairness    Compas Loss Agnostic 0.728->0.689
-CFairness    Compas Loss Awareness 0.756->0.672
-CFairness    Compas Generator Agnostic 1.026->1.398
+CFairness    Epoch 36
+CFairness    Compas Loss Agnostic 0.725->0.689
+CFairness    Compas Loss Awareness 0.747->0.665
+CFairness    Compas Generator Agnostic 1.196->2.023
 CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.552, Recall 0.542, F-measure 0.542
+CFairness    Precision 0.558, Recall 0.547, F-measure 0.547
 CFairness    ------------------------------
-CFairness    Epoch 30
-CFairness    Compas Loss Agnostic 0.728->0.685
-CFairness    Compas Loss Awareness 0.756->0.669
-CFairness    Compas Generator Agnostic 1.026->1.447
+CFairness    Epoch 37
+CFairness    Compas Loss Agnostic 0.725->0.688
+CFairness    Compas Loss Awareness 0.747->0.662
+CFairness    Compas Generator Agnostic 1.196->2.07
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.555, Recall 0.545, F-measure 0.545
+CFairness    ------------------------------
+CFairness    Epoch 38
+CFairness    Compas Loss Agnostic 0.725->0.682
+CFairness    Compas Loss Awareness 0.747->0.666
+CFairness    Compas Generator Agnostic 1.196->1.747
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.557, Recall 0.548, F-measure 0.548
+CFairness    ------------------------------
+CFairness    Epoch 39
+CFairness    Compas Loss Agnostic 0.725->0.68
+CFairness    Compas Loss Awareness 0.747->0.665
+CFairness    Compas Generator Agnostic 1.196->1.676
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.560, Recall 0.551, F-measure 0.551
+CFairness    ------------------------------
+CFairness    Epoch 40
+CFairness    Compas Loss Agnostic 0.725->0.678
+CFairness    Compas Loss Awareness 0.747->0.654
+CFairness    Compas Generator Agnostic 1.196->2.047
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.574, Recall 0.564, F-measure 0.565
+CFairness    ------------------------------
+CFairness    Epoch 41
+CFairness    Compas Loss Agnostic 0.725->0.68
+CFairness    Compas Loss Awareness 0.747->0.653
+CFairness    Compas Generator Agnostic 1.196->2.121
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.570, Recall 0.560, F-measure 0.561
+CFairness    ------------------------------
+CFairness    Epoch 42
+CFairness    Compas Loss Agnostic 0.725->0.675
+CFairness    Compas Loss Awareness 0.747->0.657
+CFairness    Compas Generator Agnostic 1.196->1.833
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.572, Recall 0.562, F-measure 0.562
+CFairness    ------------------------------
+CFairness    Epoch 43
+CFairness    Compas Loss Agnostic 0.725->0.679
+CFairness    Compas Loss Awareness 0.747->0.656
+CFairness    Compas Generator Agnostic 1.196->1.893
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.573, Recall 0.563, F-measure 0.563
+CFairness    ------------------------------
+CFairness    Epoch 44
+CFairness    Compas Loss Agnostic 0.725->0.681
+CFairness    Compas Loss Awareness 0.747->0.656
+CFairness    Compas Generator Agnostic 1.196->1.996
+CFairness    Learning rate 0.0010000000
+CFairness    Precision 0.570, Recall 0.558, F-measure 0.557
+CFairness    ------------------------------
+CFairness    Epoch 45
+CFairness    Compas Loss Agnostic 0.725->0.68
+CFairness    Compas Loss Awareness 0.747->0.657
+CFairness    Compas Generator Agnostic 1.196->2.042
 CFairness    Learning rate 0.0010000000
 CFairness    Precision 0.569, Recall 0.558, F-measure 0.558
 CFairness    ------------------------------
-CFairness    Epoch 31
-CFairness    Compas Loss Agnostic 0.728->0.681
-CFairness    Compas Loss Awareness 0.756->0.667
-CFairness    Compas Generator Agnostic 1.026->1.463
-CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.562, Recall 0.550, F-measure 0.549
-CFairness    ------------------------------
-CFairness    Epoch 32
-CFairness    Compas Loss Agnostic 0.728->0.682
-CFairness    Compas Loss Awareness 0.756->0.669
-CFairness    Compas Generator Agnostic 1.026->1.415
-CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.570, Recall 0.558, F-measure 0.558
-CFairness    ------------------------------
-CFairness    Epoch 33
-CFairness    Compas Loss Agnostic 0.728->0.681
-CFairness    Compas Loss Awareness 0.756->0.674
-CFairness    Compas Generator Agnostic 1.026->1.184
-CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.572, Recall 0.561, F-measure 0.561
-CFairness    ------------------------------
-CFairness    Epoch 34
-CFairness    Compas Loss Agnostic 0.728->0.68
-CFairness    Compas Loss Awareness 0.756->0.669
-CFairness    Compas Generator Agnostic 1.026->1.309
-CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.578, Recall 0.566, F-measure 0.566
-CFairness    ------------------------------
-CFairness    Epoch 35
-CFairness    Compas Loss Agnostic 0.728->0.673
-CFairness    Compas Loss Awareness 0.756->0.664
-CFairness    Compas Generator Agnostic 1.026->1.296
-CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.571, Recall 0.561, F-measure 0.561
-CFairness    ------------------------------
-CFairness    Epoch 36
-CFairness    Compas Loss Agnostic 0.728->0.678
-CFairness    Compas Loss Awareness 0.756->0.669
-CFairness    Compas Generator Agnostic 1.026->1.261
-CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.577, Recall 0.566, F-measure 0.566
-CFairness    ------------------------------
-CFairness    Epoch 37
-CFairness    Compas Loss Agnostic 0.728->0.676
-CFairness    Compas Loss Awareness 0.756->0.671
-CFairness    Compas Generator Agnostic 1.026->1.247
-CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.580, Recall 0.568, F-measure 0.568
-CFairness    ------------------------------
-CFairness    Epoch 38
-CFairness    Compas Loss Agnostic 0.728->0.681
-CFairness    Compas Loss Awareness 0.756->0.668
-CFairness    Compas Generator Agnostic 1.026->1.356
-CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.575, Recall 0.564, F-measure 0.565
-CFairness    ------------------------------
-CFairness    Epoch 39
-CFairness    Compas Loss Agnostic 0.728->0.681
-CFairness    Compas Loss Awareness 0.756->0.667
-CFairness    Compas Generator Agnostic 1.026->1.417
-CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.575, Recall 0.564, F-measure 0.564
-CFairness    ------------------------------
-CFairness    Epoch 40
-CFairness    Compas Loss Agnostic 0.728->0.678
-CFairness    Compas Loss Awareness 0.756->0.661
-CFairness    Compas Generator Agnostic 1.026->1.475
-CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.580, Recall 0.569, F-measure 0.569
-CFairness    ------------------------------
-CFairness    Epoch 41
-CFairness    Compas Loss Agnostic 0.728->0.675
-CFairness    Compas Loss Awareness 0.756->0.657
-CFairness    Compas Generator Agnostic 1.026->1.525
-CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.572, Recall 0.563, F-measure 0.563
-CFairness    ------------------------------
-CFairness    Epoch 42
-CFairness    Compas Loss Agnostic 0.728->0.677
-CFairness    Compas Loss Awareness 0.756->0.662
-CFairness    Compas Generator Agnostic 1.026->1.371
-CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.582, Recall 0.572, F-measure 0.573
-CFairness    ------------------------------
-CFairness    Epoch 43
-CFairness    Compas Loss Agnostic 0.728->0.672
-CFairness    Compas Loss Awareness 0.756->0.659
-CFairness    Compas Generator Agnostic 1.026->1.319
-CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.589, Recall 0.578, F-measure 0.579
-CFairness    ------------------------------
-CFairness    Epoch 44
-CFairness    Compas Loss Agnostic 0.728->0.668
-CFairness    Compas Loss Awareness 0.756->0.657
-CFairness    Compas Generator Agnostic 1.026->1.267
-CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.596, Recall 0.586, F-measure 0.587
-CFairness    ------------------------------
-CFairness    Epoch 45
-CFairness    Compas Loss Agnostic 0.728->0.672
-CFairness    Compas Loss Awareness 0.756->0.659
-CFairness    Compas Generator Agnostic 1.026->1.383
-CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.581, Recall 0.574, F-measure 0.575
-CFairness    ------------------------------
 CFairness    Epoch 46
-CFairness    Compas Loss Agnostic 0.728->0.673
-CFairness    Compas Loss Awareness 0.756->0.653
-CFairness    Compas Generator Agnostic 1.026->1.493
+CFairness    Compas Loss Agnostic 0.725->0.677
+CFairness    Compas Loss Awareness 0.747->0.656
+CFairness    Compas Generator Agnostic 1.196->1.939
 CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.587, Recall 0.580, F-measure 0.580
+CFairness    Precision 0.579, Recall 0.567, F-measure 0.566
 CFairness    ------------------------------
 CFairness    Epoch 47
-CFairness    Compas Loss Agnostic 0.728->0.667
-CFairness    Compas Loss Awareness 0.756->0.656
-CFairness    Compas Generator Agnostic 1.026->1.289
+CFairness    Compas Loss Agnostic 0.725->0.678
+CFairness    Compas Loss Awareness 0.747->0.654
+CFairness    Compas Generator Agnostic 1.196->1.96
 CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.585, Recall 0.578, F-measure 0.579
+CFairness    Precision 0.580, Recall 0.570, F-measure 0.570
 CFairness    ------------------------------
 CFairness    Epoch 48
-CFairness    Compas Loss Agnostic 0.728->0.669
-CFairness    Compas Loss Awareness 0.756->0.652
-CFairness    Compas Generator Agnostic 1.026->1.42
+CFairness    Compas Loss Agnostic 0.725->0.676
+CFairness    Compas Loss Awareness 0.747->0.655
+CFairness    Compas Generator Agnostic 1.196->1.94
 CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.584, Recall 0.577, F-measure 0.578
+CFairness    Precision 0.591, Recall 0.581, F-measure 0.581
 CFairness    ------------------------------
 CFairness    Epoch 49
-CFairness    Compas Loss Agnostic 0.728->0.668
-CFairness    Compas Loss Awareness 0.756->0.654
-CFairness    Compas Generator Agnostic 1.026->1.356
+CFairness    Compas Loss Agnostic 0.725->0.673
+CFairness    Compas Loss Awareness 0.747->0.649
+CFairness    Compas Generator Agnostic 1.196->2.005
 CFairness    Learning rate 0.0010000000
-CFairness    Precision 0.596, Recall 0.589, F-measure 0.590
+CFairness    Precision 0.588, Recall 0.579, F-measure 0.580
 CFairness    ------------------------------
 CFairness    Epoch 50
-CFairness    Compas Loss Agnostic 0.728->0.665
-CFairness    Compas Loss Awareness 0.756->0.658
-CFairness    Compas Generator Agnostic 1.026->1.288
+CFairness    Compas Loss Agnostic 0.725->0.671
+CFairness    Compas Loss Awareness 0.747->0.652
+CFairness    Compas Generator Agnostic 1.196->1.786
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.595, Recall 0.587, F-measure 0.588
+CFairness    Precision 0.589, Recall 0.580, F-measure 0.580
 CFairness    ------------------------------
 CFairness    Epoch 51
-CFairness    Compas Loss Agnostic 0.728->0.668
-CFairness    Compas Loss Awareness 0.756->0.655
-CFairness    Compas Generator Agnostic 1.026->1.292
+CFairness    Compas Loss Agnostic 0.725->0.675
+CFairness    Compas Loss Awareness 0.747->0.653
+CFairness    Compas Generator Agnostic 1.196->1.851
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.592, Recall 0.584, F-measure 0.585
+CFairness    Precision 0.592, Recall 0.583, F-measure 0.584
 CFairness    ------------------------------
 CFairness    Epoch 52
-CFairness    Compas Loss Agnostic 0.728->0.668
-CFairness    Compas Loss Awareness 0.756->0.655
-CFairness    Compas Generator Agnostic 1.026->1.293
+CFairness    Compas Loss Agnostic 0.725->0.675
+CFairness    Compas Loss Awareness 0.747->0.655
+CFairness    Compas Generator Agnostic 1.196->1.805
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.598, Recall 0.590, F-measure 0.591
+CFairness    Precision 0.589, Recall 0.578, F-measure 0.579
 CFairness    ------------------------------
 CFairness    Epoch 53
-CFairness    Compas Loss Agnostic 0.728->0.665
-CFairness    Compas Loss Awareness 0.756->0.655
-CFairness    Compas Generator Agnostic 1.026->1.316
+CFairness    Compas Loss Agnostic 0.725->0.671
+CFairness    Compas Loss Awareness 0.747->0.651
+CFairness    Compas Generator Agnostic 1.196->1.862
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.594, Recall 0.586, F-measure 0.587
+CFairness    Precision 0.585, Recall 0.575, F-measure 0.575
 CFairness    ------------------------------
 CFairness    Epoch 54
-CFairness    Compas Loss Agnostic 0.728->0.665
-CFairness    Compas Loss Awareness 0.756->0.651
-CFairness    Compas Generator Agnostic 1.026->1.326
+CFairness    Compas Loss Agnostic 0.725->0.674
+CFairness    Compas Loss Awareness 0.747->0.651
+CFairness    Compas Generator Agnostic 1.196->1.994
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.596, Recall 0.588, F-measure 0.589
+CFairness    Precision 0.590, Recall 0.580, F-measure 0.581
 CFairness    ------------------------------
 CFairness    Epoch 55
-CFairness    Compas Loss Agnostic 0.728->0.669
-CFairness    Compas Loss Awareness 0.756->0.651
-CFairness    Compas Generator Agnostic 1.026->1.354
+CFairness    Compas Loss Agnostic 0.725->0.667
+CFairness    Compas Loss Awareness 0.747->0.656
+CFairness    Compas Generator Agnostic 1.196->1.565
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.603, Recall 0.596, F-measure 0.596
+CFairness    Precision 0.582, Recall 0.573, F-measure 0.573
 CFairness    ------------------------------
 CFairness    Epoch 56
-CFairness    Compas Loss Agnostic 0.728->0.671
-CFairness    Compas Loss Awareness 0.756->0.655
-CFairness    Compas Generator Agnostic 1.026->1.351
+CFairness    Compas Loss Agnostic 0.725->0.669
+CFairness    Compas Loss Awareness 0.747->0.652
+CFairness    Compas Generator Agnostic 1.196->1.732
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.593, Recall 0.586, F-measure 0.587
+CFairness    Precision 0.582, Recall 0.572, F-measure 0.573
 CFairness    ------------------------------
 CFairness    Epoch 57
-CFairness    Compas Loss Agnostic 0.728->0.667
-CFairness    Compas Loss Awareness 0.756->0.649
-CFairness    Compas Generator Agnostic 1.026->1.409
+CFairness    Compas Loss Agnostic 0.725->0.675
+CFairness    Compas Loss Awareness 0.747->0.655
+CFairness    Compas Generator Agnostic 1.196->1.774
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.590, Recall 0.583, F-measure 0.584
+CFairness    Precision 0.588, Recall 0.578, F-measure 0.578
 CFairness    ------------------------------
 CFairness    Epoch 58
-CFairness    Compas Loss Agnostic 0.728->0.665
-CFairness    Compas Loss Awareness 0.756->0.65
-CFairness    Compas Generator Agnostic 1.026->1.333
+CFairness    Compas Loss Agnostic 0.725->0.671
+CFairness    Compas Loss Awareness 0.747->0.657
+CFairness    Compas Generator Agnostic 1.196->1.622
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.596, Recall 0.589, F-measure 0.590
+CFairness    Precision 0.578, Recall 0.569, F-measure 0.569
 CFairness    ------------------------------
 CFairness    Epoch 59
-CFairness    Compas Loss Agnostic 0.728->0.67
-CFairness    Compas Loss Awareness 0.756->0.654
-CFairness    Compas Generator Agnostic 1.026->1.414
+CFairness    Compas Loss Agnostic 0.725->0.671
+CFairness    Compas Loss Awareness 0.747->0.654
+CFairness    Compas Generator Agnostic 1.196->1.803
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.595, Recall 0.588, F-measure 0.588
+CFairness    Precision 0.592, Recall 0.582, F-measure 0.582
 CFairness    ------------------------------
 CFairness    Epoch 60
-CFairness    Compas Loss Agnostic 0.728->0.67
-CFairness    Compas Loss Awareness 0.756->0.653
-CFairness    Compas Generator Agnostic 1.026->1.431
+CFairness    Compas Loss Agnostic 0.725->0.673
+CFairness    Compas Loss Awareness 0.747->0.655
+CFairness    Compas Generator Agnostic 1.196->1.83
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.597, Recall 0.589, F-measure 0.590
+CFairness    Precision 0.581, Recall 0.571, F-measure 0.571
 CFairness    ------------------------------
 CFairness    Epoch 61
-CFairness    Compas Loss Agnostic 0.728->0.672
-CFairness    Compas Loss Awareness 0.756->0.659
-CFairness    Compas Generator Agnostic 1.026->1.326
+CFairness    Compas Loss Agnostic 0.725->0.671
+CFairness    Compas Loss Awareness 0.747->0.657
+CFairness    Compas Generator Agnostic 1.196->1.642
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.603, Recall 0.596, F-measure 0.596
+CFairness    Precision 0.583, Recall 0.574, F-measure 0.574
 CFairness    ------------------------------
 CFairness    Epoch 62
-CFairness    Compas Loss Agnostic 0.728->0.668
-CFairness    Compas Loss Awareness 0.756->0.651
-CFairness    Compas Generator Agnostic 1.026->1.406
+CFairness    Compas Loss Agnostic 0.725->0.676
+CFairness    Compas Loss Awareness 0.747->0.657
+CFairness    Compas Generator Agnostic 1.196->1.837
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.594, Recall 0.586, F-measure 0.587
+CFairness    Precision 0.596, Recall 0.585, F-measure 0.586
 CFairness    ------------------------------
 CFairness    Epoch 63
-CFairness    Compas Loss Agnostic 0.728->0.667
-CFairness    Compas Loss Awareness 0.756->0.653
-CFairness    Compas Generator Agnostic 1.026->1.293
+CFairness    Compas Loss Agnostic 0.725->0.672
+CFairness    Compas Loss Awareness 0.747->0.654
+CFairness    Compas Generator Agnostic 1.196->1.769
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.599, Recall 0.591, F-measure 0.592
+CFairness    Precision 0.594, Recall 0.584, F-measure 0.585
 CFairness    ------------------------------
 CFairness    Epoch 64
-CFairness    Compas Loss Agnostic 0.728->0.667
-CFairness    Compas Loss Awareness 0.756->0.654
-CFairness    Compas Generator Agnostic 1.026->1.278
+CFairness    Compas Loss Agnostic 0.725->0.676
+CFairness    Compas Loss Awareness 0.747->0.654
+CFairness    Compas Generator Agnostic 1.196->1.939
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.600, Recall 0.592, F-measure 0.593
+CFairness    Precision 0.590, Recall 0.580, F-measure 0.580
 CFairness    ------------------------------
 CFairness    Epoch 65
-CFairness    Compas Loss Agnostic 0.728->0.665
-CFairness    Compas Loss Awareness 0.756->0.655
-CFairness    Compas Generator Agnostic 1.026->1.286
+CFairness    Compas Loss Agnostic 0.725->0.67
+CFairness    Compas Loss Awareness 0.747->0.658
+CFairness    Compas Generator Agnostic 1.196->1.621
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.597, Recall 0.589, F-measure 0.590
+CFairness    Precision 0.589, Recall 0.580, F-measure 0.580
 CFairness    ------------------------------
 CFairness    Epoch 66
-CFairness    Compas Loss Agnostic 0.728->0.664
-CFairness    Compas Loss Awareness 0.756->0.654
-CFairness    Compas Generator Agnostic 1.026->1.212
+CFairness    Compas Loss Agnostic 0.725->0.673
+CFairness    Compas Loss Awareness 0.747->0.657
+CFairness    Compas Generator Agnostic 1.196->1.741
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.605, Recall 0.597, F-measure 0.598
+CFairness    Precision 0.587, Recall 0.576, F-measure 0.576
 CFairness    ------------------------------
 CFairness    Epoch 67
-CFairness    Compas Loss Agnostic 0.728->0.666
-CFairness    Compas Loss Awareness 0.756->0.652
-CFairness    Compas Generator Agnostic 1.026->1.324
+CFairness    Compas Loss Agnostic 0.725->0.673
+CFairness    Compas Loss Awareness 0.747->0.656
+CFairness    Compas Generator Agnostic 1.196->1.729
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.598, Recall 0.589, F-measure 0.590
+CFairness    Precision 0.584, Recall 0.574, F-measure 0.575
 CFairness    ------------------------------
 CFairness    Epoch 68
-CFairness    Compas Loss Agnostic 0.728->0.668
-CFairness    Compas Loss Awareness 0.756->0.653
-CFairness    Compas Generator Agnostic 1.026->1.353
+CFairness    Compas Loss Agnostic 0.725->0.67
+CFairness    Compas Loss Awareness 0.747->0.658
+CFairness    Compas Generator Agnostic 1.196->1.589
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.601, Recall 0.593, F-measure 0.594
+CFairness    Precision 0.578, Recall 0.568, F-measure 0.568
 CFairness    ------------------------------
 CFairness    Epoch 69
-CFairness    Compas Loss Agnostic 0.728->0.664
-CFairness    Compas Loss Awareness 0.756->0.653
-CFairness    Compas Generator Agnostic 1.026->1.277
+CFairness    Compas Loss Agnostic 0.725->0.673
+CFairness    Compas Loss Awareness 0.747->0.655
+CFairness    Compas Generator Agnostic 1.196->1.745
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.598, Recall 0.590, F-measure 0.590
+CFairness    Precision 0.594, Recall 0.583, F-measure 0.583
 CFairness    ------------------------------
 CFairness    Epoch 70
-CFairness    Compas Loss Agnostic 0.728->0.663
-CFairness    Compas Loss Awareness 0.756->0.653
-CFairness    Compas Generator Agnostic 1.026->1.26
+CFairness    Compas Loss Agnostic 0.725->0.674
+CFairness    Compas Loss Awareness 0.747->0.658
+CFairness    Compas Generator Agnostic 1.196->1.748
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.595, Recall 0.587, F-measure 0.588
+CFairness    Precision 0.590, Recall 0.580, F-measure 0.581
 CFairness    ------------------------------
 CFairness    Epoch 71
-CFairness    Compas Loss Agnostic 0.728->0.671
-CFairness    Compas Loss Awareness 0.756->0.651
-CFairness    Compas Generator Agnostic 1.026->1.449
+CFairness    Compas Loss Agnostic 0.725->0.672
+CFairness    Compas Loss Awareness 0.747->0.657
+CFairness    Compas Generator Agnostic 1.196->1.672
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.597, Recall 0.588, F-measure 0.589
+CFairness    Precision 0.598, Recall 0.587, F-measure 0.587
 CFairness    ------------------------------
 CFairness    Epoch 72
-CFairness    Compas Loss Agnostic 0.728->0.667
-CFairness    Compas Loss Awareness 0.756->0.651
-CFairness    Compas Generator Agnostic 1.026->1.371
+CFairness    Compas Loss Agnostic 0.725->0.673
+CFairness    Compas Loss Awareness 0.747->0.652
+CFairness    Compas Generator Agnostic 1.196->1.922
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.601, Recall 0.593, F-measure 0.593
+CFairness    Precision 0.594, Recall 0.583, F-measure 0.583
 CFairness    ------------------------------
 CFairness    Epoch 73
-CFairness    Compas Loss Agnostic 0.728->0.668
-CFairness    Compas Loss Awareness 0.756->0.654
-CFairness    Compas Generator Agnostic 1.026->1.344
+CFairness    Compas Loss Agnostic 0.725->0.671
+CFairness    Compas Loss Awareness 0.747->0.652
+CFairness    Compas Generator Agnostic 1.196->1.796
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.600, Recall 0.594, F-measure 0.594
+CFairness    Precision 0.597, Recall 0.587, F-measure 0.587
 CFairness    ------------------------------
 CFairness    Epoch 74
-CFairness    Compas Loss Agnostic 0.728->0.669
-CFairness    Compas Loss Awareness 0.756->0.656
-CFairness    Compas Generator Agnostic 1.026->1.315
+CFairness    Compas Loss Agnostic 0.725->0.672
+CFairness    Compas Loss Awareness 0.747->0.658
+CFairness    Compas Generator Agnostic 1.196->1.655
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.607, Recall 0.601, F-measure 0.602
+CFairness    Precision 0.588, Recall 0.579, F-measure 0.579
 CFairness    ------------------------------
 CFairness    Epoch 75
-CFairness    Compas Loss Agnostic 0.728->0.668
-CFairness    Compas Loss Awareness 0.756->0.652
-CFairness    Compas Generator Agnostic 1.026->1.347
+CFairness    Compas Loss Agnostic 0.725->0.67
+CFairness    Compas Loss Awareness 0.747->0.658
+CFairness    Compas Generator Agnostic 1.196->1.521
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.599, Recall 0.592, F-measure 0.593
+CFairness    Precision 0.586, Recall 0.575, F-measure 0.576
 CFairness    ------------------------------
 CFairness    Epoch 76
-CFairness    Compas Loss Agnostic 0.728->0.663
-CFairness    Compas Loss Awareness 0.756->0.655
-CFairness    Compas Generator Agnostic 1.026->1.186
+CFairness    Compas Loss Agnostic 0.725->0.671
+CFairness    Compas Loss Awareness 0.747->0.654
+CFairness    Compas Generator Agnostic 1.196->1.777
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.601, Recall 0.594, F-measure 0.595
+CFairness    Precision 0.593, Recall 0.584, F-measure 0.584
 CFairness    ------------------------------
 CFairness    Epoch 77
-CFairness    Compas Loss Agnostic 0.728->0.668
-CFairness    Compas Loss Awareness 0.756->0.654
-CFairness    Compas Generator Agnostic 1.026->1.335
+CFairness    Compas Loss Agnostic 0.725->0.673
+CFairness    Compas Loss Awareness 0.747->0.651
+CFairness    Compas Generator Agnostic 1.196->1.873
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.597, Recall 0.590, F-measure 0.590
+CFairness    Precision 0.583, Recall 0.573, F-measure 0.573
 CFairness    ------------------------------
 CFairness    Epoch 78
-CFairness    Compas Loss Agnostic 0.728->0.666
-CFairness    Compas Loss Awareness 0.756->0.652
-CFairness    Compas Generator Agnostic 1.026->1.35
+CFairness    Compas Loss Agnostic 0.725->0.672
+CFairness    Compas Loss Awareness 0.747->0.657
+CFairness    Compas Generator Agnostic 1.196->1.746
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.597, Recall 0.591, F-measure 0.591
+CFairness    Precision 0.590, Recall 0.582, F-measure 0.582
 CFairness    ------------------------------
 CFairness    Epoch 79
-CFairness    Compas Loss Agnostic 0.728->0.664
-CFairness    Compas Loss Awareness 0.756->0.655
-CFairness    Compas Generator Agnostic 1.026->1.209
+CFairness    Compas Loss Agnostic 0.725->0.67
+CFairness    Compas Loss Awareness 0.747->0.654
+CFairness    Compas Generator Agnostic 1.196->1.755
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.603, Recall 0.594, F-measure 0.594
+CFairness    Precision 0.590, Recall 0.580, F-measure 0.580
 CFairness    ------------------------------
 CFairness    Epoch 80
-CFairness    Compas Loss Agnostic 0.728->0.665
-CFairness    Compas Loss Awareness 0.756->0.655
-CFairness    Compas Generator Agnostic 1.026->1.329
+CFairness    Compas Loss Agnostic 0.725->0.671
+CFairness    Compas Loss Awareness 0.747->0.655
+CFairness    Compas Generator Agnostic 1.196->1.681
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.611, Recall 0.603, F-measure 0.603
+CFairness    Precision 0.584, Recall 0.573, F-measure 0.573
 CFairness    ------------------------------
 CFairness    Epoch 81
-CFairness    Compas Loss Agnostic 0.728->0.662
-CFairness    Compas Loss Awareness 0.756->0.656
-CFairness    Compas Generator Agnostic 1.026->1.184
+CFairness    Compas Loss Agnostic 0.725->0.67
+CFairness    Compas Loss Awareness 0.747->0.657
+CFairness    Compas Generator Agnostic 1.196->1.605
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.599, Recall 0.590, F-measure 0.591
+CFairness    Precision 0.595, Recall 0.584, F-measure 0.584
 CFairness    ------------------------------
 CFairness    Epoch 82
-CFairness    Compas Loss Agnostic 0.728->0.668
-CFairness    Compas Loss Awareness 0.756->0.651
-CFairness    Compas Generator Agnostic 1.026->1.378
+CFairness    Compas Loss Agnostic 0.725->0.67
+CFairness    Compas Loss Awareness 0.747->0.655
+CFairness    Compas Generator Agnostic 1.196->1.705
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.594, Recall 0.586, F-measure 0.586
+CFairness    Precision 0.592, Recall 0.580, F-measure 0.580
 CFairness    ------------------------------
 CFairness    Epoch 83
-CFairness    Compas Loss Agnostic 0.728->0.664
-CFairness    Compas Loss Awareness 0.756->0.652
-CFairness    Compas Generator Agnostic 1.026->1.316
+CFairness    Compas Loss Agnostic 0.725->0.669
+CFairness    Compas Loss Awareness 0.747->0.652
+CFairness    Compas Generator Agnostic 1.196->1.663
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.604, Recall 0.596, F-measure 0.596
+CFairness    Precision 0.593, Recall 0.584, F-measure 0.584
 CFairness    ------------------------------
 CFairness    Epoch 84
-CFairness    Compas Loss Agnostic 0.728->0.664
-CFairness    Compas Loss Awareness 0.756->0.652
-CFairness    Compas Generator Agnostic 1.026->1.315
+CFairness    Compas Loss Agnostic 0.725->0.672
+CFairness    Compas Loss Awareness 0.747->0.657
+CFairness    Compas Generator Agnostic 1.196->1.626
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.601, Recall 0.593, F-measure 0.594
+CFairness    Precision 0.585, Recall 0.575, F-measure 0.575
 CFairness    ------------------------------
 CFairness    Epoch 85
-CFairness    Compas Loss Agnostic 0.728->0.666
-CFairness    Compas Loss Awareness 0.756->0.655
-CFairness    Compas Generator Agnostic 1.026->1.349
+CFairness    Compas Loss Agnostic 0.725->0.671
+CFairness    Compas Loss Awareness 0.747->0.652
+CFairness    Compas Generator Agnostic 1.196->1.82
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.611, Recall 0.603, F-measure 0.603
+CFairness    Precision 0.590, Recall 0.581, F-measure 0.581
 CFairness    ------------------------------
 CFairness    Epoch 86
-CFairness    Compas Loss Agnostic 0.728->0.662
-CFairness    Compas Loss Awareness 0.756->0.649
-CFairness    Compas Generator Agnostic 1.026->1.313
+CFairness    Compas Loss Agnostic 0.725->0.671
+CFairness    Compas Loss Awareness 0.747->0.654
+CFairness    Compas Generator Agnostic 1.196->1.78
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.602, Recall 0.595, F-measure 0.596
+CFairness    Precision 0.590, Recall 0.580, F-measure 0.580
 CFairness    ------------------------------
 CFairness    Epoch 87
-CFairness    Compas Loss Agnostic 0.728->0.664
-CFairness    Compas Loss Awareness 0.756->0.657
-CFairness    Compas Generator Agnostic 1.026->1.186
+CFairness    Compas Loss Agnostic 0.725->0.671
+CFairness    Compas Loss Awareness 0.747->0.655
+CFairness    Compas Generator Agnostic 1.196->1.685
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.606, Recall 0.598, F-measure 0.599
+CFairness    Precision 0.591, Recall 0.581, F-measure 0.581
 CFairness    ------------------------------
 CFairness    Epoch 88
-CFairness    Compas Loss Agnostic 0.728->0.663
-CFairness    Compas Loss Awareness 0.756->0.649
-CFairness    Compas Generator Agnostic 1.026->1.324
+CFairness    Compas Loss Agnostic 0.725->0.672
+CFairness    Compas Loss Awareness 0.747->0.654
+CFairness    Compas Generator Agnostic 1.196->1.757
 CFairness    Learning rate 0.0001000000
-CFairness    Precision 0.601, Recall 0.593, F-measure 0.593
+CFairness    Precision 0.597, Recall 0.587, F-measure 0.588
+CFairness    ------------------------------
+CFairness    Epoch 89
+CFairness    Compas Loss Agnostic 0.725->0.669
+CFairness    Compas Loss Awareness 0.747->0.656
+CFairness    Compas Generator Agnostic 1.196->1.634
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.591, Recall 0.581, F-measure 0.582
+CFairness    ------------------------------
+CFairness    Epoch 90
+CFairness    Compas Loss Agnostic 0.725->0.672
+CFairness    Compas Loss Awareness 0.747->0.658
+CFairness    Compas Generator Agnostic 1.196->1.649
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.590, Recall 0.580, F-measure 0.581
+CFairness    ------------------------------
+CFairness    Epoch 91
+CFairness    Compas Loss Agnostic 0.725->0.668
+CFairness    Compas Loss Awareness 0.747->0.657
+CFairness    Compas Generator Agnostic 1.196->1.469
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.585, Recall 0.576, F-measure 0.576
+CFairness    ------------------------------
+CFairness    Epoch 92
+CFairness    Compas Loss Agnostic 0.725->0.67
+CFairness    Compas Loss Awareness 0.747->0.656
+CFairness    Compas Generator Agnostic 1.196->1.664
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.599, Recall 0.590, F-measure 0.590
+CFairness    ------------------------------
+CFairness    Epoch 93
+CFairness    Compas Loss Agnostic 0.725->0.671
+CFairness    Compas Loss Awareness 0.747->0.655
+CFairness    Compas Generator Agnostic 1.196->1.787
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.597, Recall 0.586, F-measure 0.586
+CFairness    ------------------------------
+CFairness    Epoch 94
+CFairness    Compas Loss Agnostic 0.725->0.668
+CFairness    Compas Loss Awareness 0.747->0.654
+CFairness    Compas Generator Agnostic 1.196->1.664
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.590, Recall 0.579, F-measure 0.580
+CFairness    ------------------------------
+CFairness    Epoch 95
+CFairness    Compas Loss Agnostic 0.725->0.674
+CFairness    Compas Loss Awareness 0.747->0.651
+CFairness    Compas Generator Agnostic 1.196->1.833
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.595, Recall 0.584, F-measure 0.585
+CFairness    ------------------------------
+CFairness    Epoch 96
+CFairness    Compas Loss Agnostic 0.725->0.67
+CFairness    Compas Loss Awareness 0.747->0.653
+CFairness    Compas Generator Agnostic 1.196->1.719
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.592, Recall 0.582, F-measure 0.582
+CFairness    ------------------------------
+CFairness    Epoch 97
+CFairness    Compas Loss Agnostic 0.725->0.668
+CFairness    Compas Loss Awareness 0.747->0.652
+CFairness    Compas Generator Agnostic 1.196->1.687
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.586, Recall 0.576, F-measure 0.577
+CFairness    ------------------------------
+CFairness    Epoch 98
+CFairness    Compas Loss Agnostic 0.725->0.672
+CFairness    Compas Loss Awareness 0.747->0.656
+CFairness    Compas Generator Agnostic 1.196->1.708
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.593, Recall 0.582, F-measure 0.582
+CFairness    ------------------------------
+CFairness    Epoch 99
+CFairness    Compas Loss Agnostic 0.725->0.668
+CFairness    Compas Loss Awareness 0.747->0.656
+CFairness    Compas Generator Agnostic 1.196->1.608
+CFairness    Learning rate 0.0001000000
+CFairness    Precision 0.588, Recall 0.578, F-measure 0.578
+CFairness    ------------------------------
+CFairness    Epoch 100
+CFairness    Compas Loss Agnostic 0.725->0.67
+CFairness    Compas Loss Awareness 0.747->0.656
+CFairness    Compas Generator Agnostic 1.196->1.604
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.597, Recall 0.588, F-measure 0.589
+CFairness    ------------------------------
+CFairness    Epoch 101
+CFairness    Compas Loss Agnostic 0.725->0.669
+CFairness    Compas Loss Awareness 0.747->0.655
+CFairness    Compas Generator Agnostic 1.196->1.689
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.596, Recall 0.587, F-measure 0.588
+CFairness    ------------------------------
+CFairness    Epoch 102
+CFairness    Compas Loss Agnostic 0.725->0.67
+CFairness    Compas Loss Awareness 0.747->0.654
+CFairness    Compas Generator Agnostic 1.196->1.668
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.595, Recall 0.584, F-measure 0.584
+CFairness    ------------------------------
+CFairness    Epoch 103
+CFairness    Compas Loss Agnostic 0.725->0.671
+CFairness    Compas Loss Awareness 0.747->0.654
+CFairness    Compas Generator Agnostic 1.196->1.762
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.587, Recall 0.577, F-measure 0.578
+CFairness    ------------------------------
+CFairness    Epoch 104
+CFairness    Compas Loss Agnostic 0.725->0.667
+CFairness    Compas Loss Awareness 0.747->0.658
+CFairness    Compas Generator Agnostic 1.196->1.463
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.593, Recall 0.586, F-measure 0.586
+CFairness    ------------------------------
+CFairness    Epoch 105
+CFairness    Compas Loss Agnostic 0.725->0.674
+CFairness    Compas Loss Awareness 0.747->0.656
+CFairness    Compas Generator Agnostic 1.196->1.787
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.592, Recall 0.584, F-measure 0.584
+CFairness    ------------------------------
+CFairness    Epoch 106
+CFairness    Compas Loss Agnostic 0.725->0.668
+CFairness    Compas Loss Awareness 0.747->0.656
+CFairness    Compas Generator Agnostic 1.196->1.633
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.595, Recall 0.585, F-measure 0.586
+CFairness    ------------------------------
+CFairness    Epoch 107
+CFairness    Compas Loss Agnostic 0.725->0.668
+CFairness    Compas Loss Awareness 0.747->0.656
+CFairness    Compas Generator Agnostic 1.196->1.542
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.590, Recall 0.580, F-measure 0.581
+CFairness    ------------------------------
+CFairness    Epoch 108
+CFairness    Compas Loss Agnostic 0.725->0.671
+CFairness    Compas Loss Awareness 0.747->0.653
+CFairness    Compas Generator Agnostic 1.196->1.705
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.595, Recall 0.585, F-measure 0.586
+CFairness    ------------------------------
+CFairness    Epoch 109
+CFairness    Compas Loss Agnostic 0.725->0.67
+CFairness    Compas Loss Awareness 0.747->0.652
+CFairness    Compas Generator Agnostic 1.196->1.778
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.600, Recall 0.589, F-measure 0.589
+CFairness    ------------------------------
+CFairness    Epoch 110
+CFairness    Compas Loss Agnostic 0.725->0.673
+CFairness    Compas Loss Awareness 0.747->0.655
+CFairness    Compas Generator Agnostic 1.196->1.817
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.592, Recall 0.582, F-measure 0.582
+CFairness    ------------------------------
+CFairness    Epoch 111
+CFairness    Compas Loss Agnostic 0.725->0.667
+CFairness    Compas Loss Awareness 0.747->0.657
+CFairness    Compas Generator Agnostic 1.196->1.498
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.603, Recall 0.592, F-measure 0.593
+CFairness    ------------------------------
+CFairness    Epoch 112
+CFairness    Compas Loss Agnostic 0.725->0.667
+CFairness    Compas Loss Awareness 0.747->0.657
+CFairness    Compas Generator Agnostic 1.196->1.585
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.600, Recall 0.591, F-measure 0.592
+CFairness    ------------------------------
+CFairness    Epoch 113
+CFairness    Compas Loss Agnostic 0.725->0.671
+CFairness    Compas Loss Awareness 0.747->0.653
+CFairness    Compas Generator Agnostic 1.196->1.775
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.606, Recall 0.596, F-measure 0.596
+CFairness    ------------------------------
+CFairness    Epoch 114
+CFairness    Compas Loss Agnostic 0.725->0.666
+CFairness    Compas Loss Awareness 0.747->0.658
+CFairness    Compas Generator Agnostic 1.196->1.474
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.596, Recall 0.587, F-measure 0.588
+CFairness    ------------------------------
+CFairness    Epoch 115
+CFairness    Compas Loss Agnostic 0.725->0.674
+CFairness    Compas Loss Awareness 0.747->0.655
+CFairness    Compas Generator Agnostic 1.196->1.778
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.597, Recall 0.588, F-measure 0.588
+CFairness    ------------------------------
+CFairness    Epoch 116
+CFairness    Compas Loss Agnostic 0.725->0.67
+CFairness    Compas Loss Awareness 0.747->0.654
+CFairness    Compas Generator Agnostic 1.196->1.737
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.584, Recall 0.575, F-measure 0.575
+CFairness    ------------------------------
+CFairness    Epoch 117
+CFairness    Compas Loss Agnostic 0.725->0.669
+CFairness    Compas Loss Awareness 0.747->0.656
+CFairness    Compas Generator Agnostic 1.196->1.638
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.599, Recall 0.589, F-measure 0.589
+CFairness    ------------------------------
+CFairness    Epoch 118
+CFairness    Compas Loss Agnostic 0.725->0.67
+CFairness    Compas Loss Awareness 0.747->0.66
+CFairness    Compas Generator Agnostic 1.196->1.555
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.591, Recall 0.581, F-measure 0.581
+CFairness    ------------------------------
+CFairness    Epoch 119
+CFairness    Compas Loss Agnostic 0.725->0.667
+CFairness    Compas Loss Awareness 0.747->0.656
+CFairness    Compas Generator Agnostic 1.196->1.568
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.594, Recall 0.585, F-measure 0.585
+CFairness    ------------------------------
+CFairness    Epoch 120
+CFairness    Compas Loss Agnostic 0.725->0.669
+CFairness    Compas Loss Awareness 0.747->0.657
+CFairness    Compas Generator Agnostic 1.196->1.599
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.598, Recall 0.587, F-measure 0.587
+CFairness    ------------------------------
+CFairness    Epoch 121
+CFairness    Compas Loss Agnostic 0.725->0.671
+CFairness    Compas Loss Awareness 0.747->0.651
+CFairness    Compas Generator Agnostic 1.196->1.928
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.586, Recall 0.576, F-measure 0.576
+CFairness    ------------------------------
+CFairness    Epoch 122
+CFairness    Compas Loss Agnostic 0.725->0.666
+CFairness    Compas Loss Awareness 0.747->0.657
+CFairness    Compas Generator Agnostic 1.196->1.52
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.590, Recall 0.580, F-measure 0.580
+CFairness    ------------------------------
+CFairness    Epoch 123
+CFairness    Compas Loss Agnostic 0.725->0.673
+CFairness    Compas Loss Awareness 0.747->0.655
+CFairness    Compas Generator Agnostic 1.196->1.759
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.599, Recall 0.589, F-measure 0.589
+CFairness    ------------------------------
+CFairness    Epoch 124
+CFairness    Compas Loss Agnostic 0.725->0.672
+CFairness    Compas Loss Awareness 0.747->0.655
+CFairness    Compas Generator Agnostic 1.196->1.717
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.599, Recall 0.589, F-measure 0.590
+CFairness    ------------------------------
+CFairness    Epoch 125
+CFairness    Compas Loss Agnostic 0.725->0.668
+CFairness    Compas Loss Awareness 0.747->0.656
+CFairness    Compas Generator Agnostic 1.196->1.59
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.591, Recall 0.581, F-measure 0.582
+CFairness    ------------------------------
+CFairness    Epoch 126
+CFairness    Compas Loss Agnostic 0.725->0.669
+CFairness    Compas Loss Awareness 0.747->0.655
+CFairness    Compas Generator Agnostic 1.196->1.561
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.598, Recall 0.588, F-measure 0.588
+CFairness    ------------------------------
+CFairness    Epoch 127
+CFairness    Compas Loss Agnostic 0.725->0.671
+CFairness    Compas Loss Awareness 0.747->0.657
+CFairness    Compas Generator Agnostic 1.196->1.702
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.593, Recall 0.584, F-measure 0.584
+CFairness    ------------------------------
+CFairness    Epoch 128
+CFairness    Compas Loss Agnostic 0.725->0.674
+CFairness    Compas Loss Awareness 0.747->0.654
+CFairness    Compas Generator Agnostic 1.196->1.757
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.591, Recall 0.582, F-measure 0.582
+CFairness    ------------------------------
+CFairness    Epoch 129
+CFairness    Compas Loss Agnostic 0.725->0.672
+CFairness    Compas Loss Awareness 0.747->0.656
+CFairness    Compas Generator Agnostic 1.196->1.616
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.597, Recall 0.588, F-measure 0.588
+CFairness    ------------------------------
+CFairness    Epoch 130
+CFairness    Compas Loss Agnostic 0.725->0.669
+CFairness    Compas Loss Awareness 0.747->0.656
+CFairness    Compas Generator Agnostic 1.196->1.565
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.593, Recall 0.584, F-measure 0.584
+CFairness    ------------------------------
+CFairness    Epoch 131
+CFairness    Compas Loss Agnostic 0.725->0.667
+CFairness    Compas Loss Awareness 0.747->0.655
+CFairness    Compas Generator Agnostic 1.196->1.517
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.603, Recall 0.593, F-measure 0.593
+CFairness    ------------------------------
+CFairness    Epoch 132
+CFairness    Compas Loss Agnostic 0.725->0.674
+CFairness    Compas Loss Awareness 0.747->0.653
+CFairness    Compas Generator Agnostic 1.196->1.905
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.600, Recall 0.590, F-measure 0.591
+CFairness    ------------------------------
+CFairness    Epoch 133
+CFairness    Compas Loss Agnostic 0.725->0.668
+CFairness    Compas Loss Awareness 0.747->0.657
+CFairness    Compas Generator Agnostic 1.196->1.49
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.585, Recall 0.577, F-measure 0.577
+CFairness    ------------------------------
+CFairness    Epoch 134
+CFairness    Compas Loss Agnostic 0.725->0.671
+CFairness    Compas Loss Awareness 0.747->0.654
+CFairness    Compas Generator Agnostic 1.196->1.734
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.594, Recall 0.584, F-measure 0.585
+CFairness    ------------------------------
+CFairness    Epoch 135
+CFairness    Compas Loss Agnostic 0.725->0.671
+CFairness    Compas Loss Awareness 0.747->0.657
+CFairness    Compas Generator Agnostic 1.196->1.661
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.589, Recall 0.579, F-measure 0.579
+CFairness    ------------------------------
+CFairness    Epoch 136
+CFairness    Compas Loss Agnostic 0.725->0.669
+CFairness    Compas Loss Awareness 0.747->0.652
+CFairness    Compas Generator Agnostic 1.196->1.726
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.593, Recall 0.584, F-measure 0.584
+CFairness    ------------------------------
+CFairness    Epoch 137
+CFairness    Compas Loss Agnostic 0.725->0.672
+CFairness    Compas Loss Awareness 0.747->0.655
+CFairness    Compas Generator Agnostic 1.196->1.644
+CFairness    Learning rate 0.0000100000
+CFairness    Precision 0.598, Recall 0.590, F-measure 0.590
 CFairness    ------------------------------

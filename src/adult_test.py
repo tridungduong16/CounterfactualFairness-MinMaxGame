@@ -12,29 +12,40 @@ from utils.helpers import features_setting
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import GradientBoostingClassifier
 
+def train_simple_classifier(Z_train,y_train, Z_test, clf):
+    clf.fit(Z_train, y_train)
+    return clf.predict(Z_test), clf.predict_proba(Z_test)[:,0].reshape(-1)
 
 def get_predict(ae_model, generator, discriminator, df_train, df_test, dict_, l = ''):
-    name = 'GD_prediction' + str(l)
+    name = 'GD' + str(l)
 
-
-    Z = ae_model.get_representation(df_train[dict_["full_features"]].copy())
-    Z = Z.cpu().detach().numpy()
-    reg = LogisticRegression(solver='saga', max_iter=10)
-    reg.fit(Z, df_train[dict_["target"]].values)
+    """Auto-encoder"""
+    Z = ae_model.get_representation(df_train[dict_["full_features"]].copy()).cpu().detach().numpy()
     Z_test = ae_model.get_representation(df_test[dict_["full_features"]].copy()).cpu().detach().numpy()
-    y_pred = reg.predict(Z_test)
-    df_test.loc[:,"AL_prediction"] = y_pred.reshape(-1)
-    df_test.loc[:,"AL_prediction" + "_proba"] = reg.predict_proba(Z_test)[:,0].reshape(-1)
 
-    """Generator + Linear regression"""
-    Z = generator.custom_forward(df_train[dict_["normal_features"]].copy())
-    Z = Z.cpu().detach().numpy()
-    reg = LogisticRegression(solver='saga', max_iter=10)
-    reg.fit(Z, df_train[dict_["target"]].values)
-    Z_test = generator.get_representation(df_test[dict_["normal_features"]].copy()).cpu().detach().numpy()
-    y_pred = reg.predict(Z_test)
-    df_test.loc[:,"GL_prediction"] = y_pred.reshape(-1)
-    df_test.loc[:,"GL_prediction" + "_proba"] = reg.predict_proba(Z_test)[:,0].reshape(-1)
+    clf = LogisticRegression(solver='saga', max_iter=10)
+    y_pred, y_pred_proba = train_simple_classifier(Z, df_train[dict_["target"]].values, Z_test, clf)
+    df_test.loc[:,"AL"] = y_pred.reshape(-1)
+    df_test.loc[:,"AL" + "_proba"] = clf.predict_proba(Z_test)[:,0].reshape(-1)
+
+    clf = GradientBoostingClassifier()
+    y_pred, y_pred_proba = train_simple_classifier(Z, df_train[dict_["target"]].values, Z_test, clf)
+    df_test.loc[:,"AGbr"] = y_pred.reshape(-1)
+    df_test.loc[:,"AGbr" + "_proba"] = clf.predict_proba(Z_test)[:,0].reshape(-1)
+
+    """Generator"""
+    Z = generator.custom_forward(df_train[dict_["normal_features"]].copy()).cpu().detach().numpy()
+    Z_test = generator.custom_forward(df_test[dict_["normal_features"]].copy()).cpu().detach().numpy()
+
+    clf = LogisticRegression(solver='saga', max_iter=10)
+    y_pred, y_pred_proba = train_simple_classifier(Z, df_train[dict_["target"]].values, Z_test, clf)
+    df_test.loc[:,"GL"] = y_pred.reshape(-1)
+    df_test.loc[:,"GL" + "_proba"] = clf.predict_proba(Z_test)[:,0].reshape(-1)
+
+    clf = GradientBoostingClassifier()
+    y_pred, y_pred_proba = train_simple_classifier(Z, df_train[dict_["target"]].values, Z_test, clf)
+    df_test.loc[:,"GGbr"] = y_pred.reshape(-1)
+    df_test.loc[:,"GGbr" + "_proba"] = clf.predict_proba(Z_test)[:,0].reshape(-1)
 
     """Generator + Discriminator"""
     Z = generator.custom_forward(df_test[dict_["normal_features"]].copy())
@@ -43,7 +54,6 @@ def get_predict(ae_model, generator, discriminator, df_train, df_test, dict_, l 
     y_pred = y_pred.reshape(-1).cpu().detach().numpy()
     df_test.loc[:,name] = y_pred
     df_test.loc[:,name + "_proba"] = predictor_agnostic.cpu().detach().numpy()[:,0]
-
 
     return df_test
 

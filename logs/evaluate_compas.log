@@ -12036,3 +12036,1116 @@
 8  GD_prediction  0.755105  0.649743   0.570184  0.755105  ...                        0.162159            0.280898          0.280898                              0.000000                            0.000000
 
 [9 rows x 24 columns]
+2021-06-25 21:43:51,068 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-25 21:43:51,068 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-25 21:43:51,068 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-25 21:43:51,413 genetic      DEBUG              method  Accuracy  F1 Score  Precision    Recall  ...  generalized_entropy_index_sex  theil_index_race  theil_index_sex  true_positive_rate_difference_race  true_positive_rate_difference_sex
+0       full_log  0.670132  0.663615   0.672190  0.670132  ...                       0.198693          0.284520         0.284520                            0.140823                          -0.351560
+1       full_gbr  0.674290  0.669641   0.674923  0.674290  ...                       0.190060          0.270936         0.270936                            0.131355                          -0.299291
+2    unaware_log  0.672211  0.665941   0.674196  0.672211  ...                       0.196750          0.281798         0.281798                            0.169565                          -0.156738
+3    unaware_gbr  0.671518  0.666344   0.672431  0.671518  ...                       0.193473          0.276011         0.276011                            0.156294                          -0.159149
+4            cf1  0.623701  0.603066   0.631753  0.623701  ...                       0.258974          0.369678         0.369678                            0.084861                          -0.147801
+5            cf2  0.629245  0.626759   0.627522  0.629245  ...                       0.204240          0.285661         0.285661                            0.084681                          -0.155603
+6  AL_prediction  0.667360  0.663307   0.667199  0.667360  ...                       0.191498          0.271689         0.271689                            0.148429                          -0.324610
+7  GL_prediction  0.674983  0.671601   0.674710  0.674983  ...                       0.184618          0.261896         0.261896                            0.118941                          -0.143972
+8  GD_prediction  0.623008  0.620022   0.641207  0.623008  ...                       0.138474          0.184834         0.184834                            0.103402                          -0.117092
+
+[9 rows x 24 columns]
+2021-06-25 22:13:41,749 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-25 22:13:41,749 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-25 22:13:41,749 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-25 22:13:42,090 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.305106
+7  GL_prediction  ...                          -0.176879
+8  GD_prediction  ...                          -0.190426
+
+[9 rows x 24 columns]
+2021-06-25 22:20:00,117 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
+2021-06-25 22:20:00,117 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
+2021-06-25 22:20:00,117 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
+2021-06-25 22:20:00,758 genetic      DEBUG              method  ...  true_positive_rate_difference_race
+0       full_log  ...                           -0.195478
+1       full_gbr  ...                           -0.110055
+2    unaware_log  ...                           -0.086870
+3    unaware_gbr  ...                           -0.089283
+4            cf1  ...                           -0.005832
+5            cf2  ...                            0.011510
+6  AL_prediction  ...                           -0.148168
+7  GL_prediction  ...                           -0.074244
+8  GD_prediction  ...                           -0.057748
+
+[9 rows x 24 columns]
+2021-06-25 22:40:58,024 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-25 22:40:58,025 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-25 22:40:58,025 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-25 22:40:58,354 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.322837
+7  GL_prediction  ...                          -0.150284
+8  GD_prediction  ...                          -0.177092
+
+[9 rows x 24 columns]
+2021-06-25 22:46:32,255 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
+2021-06-25 22:46:32,255 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
+2021-06-25 22:46:32,255 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
+2021-06-25 22:46:32,882 genetic      DEBUG              method  ...  true_positive_rate_difference_race
+0       full_log  ...                           -0.195478
+1       full_gbr  ...                           -0.110055
+2    unaware_log  ...                           -0.086870
+3    unaware_gbr  ...                           -0.089283
+4            cf1  ...                           -0.005832
+5            cf2  ...                            0.011510
+6  AL_prediction  ...                           -0.155467
+7  GL_prediction  ...                           -0.052737
+8  GD_prediction  ...                           -0.007740
+
+[9 rows x 24 columns]
+2021-06-25 22:57:54,513 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-25 22:57:54,514 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-25 22:57:54,514 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-25 22:57:54,840 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.321064
+7  GL_prediction  ...                          -0.181418
+8  GD_prediction  ...                          -0.161986
+
+[9 rows x 24 columns]
+2021-06-25 23:09:10,358 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
+2021-06-25 23:09:10,358 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
+2021-06-25 23:09:10,358 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
+2021-06-25 23:09:10,981 genetic      DEBUG              method  ...  true_positive_rate_difference_race
+0       full_log  ...                           -0.195478
+1       full_gbr  ...                           -0.110055
+2    unaware_log  ...                           -0.086870
+3    unaware_gbr  ...                           -0.089283
+4            cf1  ...                           -0.005832
+5            cf2  ...                            0.011510
+6  AL_prediction  ...                           -0.148168
+7  GL_prediction  ...                           -0.042499
+8  GD_prediction  ...                           -0.042269
+
+[9 rows x 24 columns]
+2021-06-25 23:14:37,257 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-25 23:14:37,257 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-25 23:14:37,257 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-25 23:14:37,582 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.321064
+7  GL_prediction  ...                          -0.181560
+8  GD_prediction  ...                          -0.225106
+
+[9 rows x 24 columns]
+2021-06-25 23:31:22,552 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-25 23:31:22,552 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-25 23:31:22,552 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-25 23:31:22,879 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.305106
+7  GL_prediction  ...                          -0.187376
+8  GD_prediction  ...                          -0.194113
+
+[9 rows x 24 columns]
+2021-06-25 23:31:47,246 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
+2021-06-25 23:31:47,247 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
+2021-06-25 23:31:47,247 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
+2021-06-25 23:31:47,875 genetic      DEBUG              method  ...  true_positive_rate_difference_race
+0       full_log  ...                           -0.195478
+1       full_gbr  ...                           -0.110055
+2    unaware_log  ...                           -0.086870
+3    unaware_gbr  ...                           -0.089283
+4            cf1  ...                           -0.005832
+5            cf2  ...                            0.011510
+6  AL_prediction  ...                           -0.150226
+7  GL_prediction  ...                           -0.020846
+8  GD_prediction  ...                           -0.082485
+
+[9 rows x 24 columns]
+2021-06-25 23:48:06,844 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-25 23:48:06,845 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-25 23:48:06,845 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-25 23:48:07,171 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.319291
+7  GL_prediction  ...                          -0.166738
+8  GD_prediction  ...                          -0.181844
+
+[9 rows x 24 columns]
+2021-06-25 23:54:27,820 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
+2021-06-25 23:54:27,820 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
+2021-06-25 23:54:27,820 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
+2021-06-25 23:54:28,445 genetic      DEBUG              method  ...  true_positive_rate_difference_race
+0       full_log  ...                           -0.195478
+1       full_gbr  ...                           -0.110055
+2    unaware_log  ...                           -0.086870
+3    unaware_gbr  ...                           -0.089283
+4            cf1  ...                           -0.005832
+5            cf2  ...                            0.011510
+6  AL_prediction  ...                           -0.146111
+7  GL_prediction  ...                           -0.055726
+8  GD_prediction  ...                           -0.045062
+
+[9 rows x 24 columns]
+2021-06-26 00:05:01,194 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 00:05:01,194 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 00:05:01,194 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 00:05:01,532 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.321702
+7  GL_prediction  ...                          -0.180284
+8  GD_prediction  ...                          -0.205532
+
+[9 rows x 24 columns]
+2021-06-26 00:16:47,580 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
+2021-06-26 00:16:47,580 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
+2021-06-26 00:16:47,580 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
+2021-06-26 00:16:48,196 genetic      DEBUG              method  ...  true_positive_rate_difference_race
+0       full_log  ...                           -0.195478
+1       full_gbr  ...                           -0.110055
+2    unaware_log  ...                           -0.086870
+3    unaware_gbr  ...                           -0.089283
+4            cf1  ...                           -0.005832
+5            cf2  ...                            0.011510
+6  AL_prediction  ...                           -0.148854
+7  GL_prediction  ...                           -0.029763
+8  GD_prediction  ...                            0.000000
+
+[9 rows x 24 columns]
+2021-06-26 00:21:47,599 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 00:21:47,599 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 00:21:47,599 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 00:21:47,932 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.322837
+7  GL_prediction  ...                          -0.144965
+8  GD_prediction  ...                          -0.203972
+
+[9 rows x 24 columns]
+2021-06-26 00:38:24,146 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 00:38:24,146 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 00:38:24,146 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 00:38:24,480 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.314610
+7  GL_prediction  ...                          -0.209149
+8  GD_prediction  ...                          -0.159716
+
+[9 rows x 24 columns]
+2021-06-26 00:39:28,491 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
+2021-06-26 00:39:28,491 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
+2021-06-26 00:39:28,491 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
+2021-06-26 00:39:29,114 genetic      DEBUG              method  ...  true_positive_rate_difference_race
+0       full_log  ...                           -0.195478
+1       full_gbr  ...                           -0.110055
+2    unaware_log  ...                           -0.086870
+3    unaware_gbr  ...                           -0.089283
+4            cf1  ...                           -0.005832
+5            cf2  ...                            0.011510
+6  AL_prediction  ...                           -0.143367
+7  GL_prediction  ...                           -0.064151
+8  GD_prediction  ...                           -0.077153
+
+[9 rows x 24 columns]
+2021-06-26 00:55:27,489 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 00:55:27,490 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 00:55:27,490 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 00:55:27,818 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.314610
+7  GL_prediction  ...                          -0.184965
+8  GD_prediction  ...                          -0.180000
+
+[9 rows x 24 columns]
+2021-06-26 01:01:49,236 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
+2021-06-26 01:01:49,236 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
+2021-06-26 01:01:49,236 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
+2021-06-26 01:01:49,847 genetic      DEBUG              method  ...  true_positive_rate_difference_race
+0       full_log  ...                           -0.195478
+1       full_gbr  ...                           -0.110055
+2    unaware_log  ...                           -0.086870
+3    unaware_gbr  ...                           -0.089283
+4            cf1  ...                           -0.005832
+5            cf2  ...                            0.011510
+6  AL_prediction  ...                           -0.145425
+7  GL_prediction  ...                           -0.060722
+8  GD_prediction  ...                           -0.073323
+
+[9 rows x 24 columns]
+2021-06-26 01:12:23,374 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 01:12:23,374 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 01:12:23,374 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 01:12:23,705 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.312837
+7  GL_prediction  ...                          -0.163830
+8  GD_prediction  ...                          -0.183617
+
+[9 rows x 24 columns]
+2021-06-26 01:24:44,138 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
+2021-06-26 01:24:44,138 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
+2021-06-26 01:24:44,138 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
+2021-06-26 01:24:44,768 genetic      DEBUG              method  ...  true_positive_rate_difference_race
+0       full_log  ...                           -0.195478
+1       full_gbr  ...                           -0.110055
+2    unaware_log  ...                           -0.086870
+3    unaware_gbr  ...                           -0.089283
+4            cf1  ...                           -0.005832
+5            cf2  ...                            0.011510
+6  AL_prediction  ...                           -0.146111
+7  GL_prediction  ...                           -0.058274
+8  GD_prediction  ...                           -0.039210
+
+[9 rows x 24 columns]
+2021-06-26 01:29:10,452 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 01:29:10,452 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 01:29:10,452 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 01:29:10,786 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.321064
+7  GL_prediction  ...                          -0.164468
+8  GD_prediction  ...                          -0.180567
+
+[9 rows x 24 columns]
+2021-06-26 01:45:58,845 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 01:45:58,845 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 01:45:58,845 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 01:45:59,179 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.321064
+7  GL_prediction  ...                          -0.180922
+8  GD_prediction  ...                          -0.198440
+
+[9 rows x 24 columns]
+2021-06-26 01:47:14,986 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
+2021-06-26 01:47:14,986 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
+2021-06-26 01:47:14,986 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
+2021-06-26 01:47:15,602 genetic      DEBUG              method  ...  true_positive_rate_difference_race
+0       full_log  ...                           -0.195478
+1       full_gbr  ...                           -0.110055
+2    unaware_log  ...                           -0.086870
+3    unaware_gbr  ...                           -0.089283
+4            cf1  ...                           -0.005832
+5            cf2  ...                            0.011510
+6  AL_prediction  ...                           -0.148168
+7  GL_prediction  ...                           -0.001397
+8  GD_prediction  ...                            0.000000
+
+[9 rows x 24 columns]
+2021-06-26 02:02:45,543 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 02:02:45,543 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 02:02:45,543 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 02:02:45,871 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.314610
+7  GL_prediction  ...                          -0.195603
+8  GD_prediction  ...                          -0.161844
+
+[9 rows x 24 columns]
+2021-06-26 02:09:44,453 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
+2021-06-26 02:09:44,454 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
+2021-06-26 02:09:44,454 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
+2021-06-26 02:09:45,067 genetic      DEBUG              method  ...  true_positive_rate_difference_race
+0       full_log  ...                           -0.195478
+1       full_gbr  ...                           -0.110055
+2    unaware_log  ...                           -0.086870
+3    unaware_gbr  ...                           -0.089283
+4            cf1  ...                           -0.005832
+5            cf2  ...                            0.011510
+6  AL_prediction  ...                           -0.147482
+7  GL_prediction  ...                           -0.046174
+8  GD_prediction  ...                           -0.061083
+
+[9 rows x 24 columns]
+2021-06-26 02:19:38,208 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 02:19:38,209 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 02:19:38,209 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 02:19:38,540 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.314610
+7  GL_prediction  ...                          -0.172695
+8  GD_prediction  ...                          -0.167589
+
+[9 rows x 24 columns]
+2021-06-26 02:32:10,022 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
+2021-06-26 02:32:10,022 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
+2021-06-26 02:32:10,022 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
+2021-06-26 02:32:10,652 genetic      DEBUG              method  ...  true_positive_rate_difference_race
+0       full_log  ...                           -0.195478
+1       full_gbr  ...                           -0.110055
+2    unaware_log  ...                           -0.086870
+3    unaware_gbr  ...                           -0.089283
+4            cf1  ...                           -0.005832
+5            cf2  ...                            0.011510
+6  AL_prediction  ...                           -0.147482
+7  GL_prediction  ...                           -0.026479
+8  GD_prediction  ...                            0.000000
+
+[9 rows x 24 columns]
+2021-06-26 02:36:25,070 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 02:36:25,071 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 02:36:25,071 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 02:36:25,403 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.324610
+7  GL_prediction  ...                          -0.160284
+8  GD_prediction  ...                          -0.168723
+
+[9 rows x 24 columns]
+2021-06-26 02:53:18,460 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 02:53:18,460 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 02:53:18,460 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 02:53:18,803 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.315745
+7  GL_prediction  ...                          -0.199645
+8  GD_prediction  ...                          -0.208298
+
+[9 rows x 24 columns]
+2021-06-26 02:54:33,057 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
+2021-06-26 02:54:33,057 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
+2021-06-26 02:54:33,057 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
+2021-06-26 02:54:33,687 genetic      DEBUG              method  ...  true_positive_rate_difference_race
+0       full_log  ...                           -0.195478
+1       full_gbr  ...                           -0.110055
+2    unaware_log  ...                           -0.086870
+3    unaware_gbr  ...                           -0.089283
+4            cf1  ...                           -0.005832
+5            cf2  ...                            0.011510
+6  AL_prediction  ...                           -0.148168
+7  GL_prediction  ...                           -0.044066
+8  GD_prediction  ...                            0.000000
+
+[9 rows x 24 columns]
+2021-06-26 03:10:21,460 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 03:10:21,460 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 03:10:21,461 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 03:10:21,793 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.324610
+7  GL_prediction  ...                          -0.171418
+8  GD_prediction  ...                          -0.203262
+
+[9 rows x 24 columns]
+2021-06-26 03:17:13,678 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
+2021-06-26 03:17:13,678 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
+2021-06-26 03:17:13,678 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
+2021-06-26 03:17:14,296 genetic      DEBUG              method  ...  true_positive_rate_difference_race
+0       full_log  ...                           -0.195478
+1       full_gbr  ...                           -0.110055
+2    unaware_log  ...                           -0.086870
+3    unaware_gbr  ...                           -0.089283
+4            cf1  ...                           -0.005832
+5            cf2  ...                            0.011510
+6  AL_prediction  ...                           -0.149540
+7  GL_prediction  ...                           -0.035200
+8  GD_prediction  ...                            0.000000
+
+[9 rows x 24 columns]
+2021-06-26 03:27:09,638 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 03:27:09,638 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 03:27:09,638 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 03:27:09,965 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.321064
+7  GL_prediction  ...                          -0.192553
+8  GD_prediction  ...                          -0.180284
+
+[9 rows x 24 columns]
+2021-06-26 03:39:48,602 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
+2021-06-26 03:39:48,602 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
+2021-06-26 03:39:48,602 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
+2021-06-26 03:39:49,216 genetic      DEBUG              method  ...  true_positive_rate_difference_race
+0       full_log  ...                           -0.195478
+1       full_gbr  ...                           -0.110055
+2    unaware_log  ...                           -0.086870
+3    unaware_gbr  ...                           -0.089283
+4            cf1  ...                           -0.005832
+5            cf2  ...                            0.011510
+6  AL_prediction  ...                           -0.150226
+7  GL_prediction  ...                           -0.039460
+8  GD_prediction  ...                           -0.051676
+
+[9 rows x 24 columns]
+2021-06-26 03:43:58,493 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 03:43:58,493 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 03:43:58,493 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 03:43:58,829 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.305106
+7  GL_prediction  ...                          -0.175603
+8  GD_prediction  ...                          -0.210213
+
+[9 rows x 24 columns]
+2021-06-26 04:00:53,294 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 04:00:53,294 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 04:00:53,294 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 04:00:53,631 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.312837
+7  GL_prediction  ...                          -0.163191
+8  GD_prediction  ...                          -0.122553
+
+[9 rows x 24 columns]
+2021-06-26 04:02:10,920 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
+2021-06-26 04:02:10,920 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
+2021-06-26 04:02:10,920 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
+2021-06-26 04:02:11,546 genetic      DEBUG              method  ...  true_positive_rate_difference_race
+0       full_log  ...                           -0.195478
+1       full_gbr  ...                           -0.110055
+2    unaware_log  ...                           -0.086870
+3    unaware_gbr  ...                           -0.089283
+4            cf1  ...                           -0.005832
+5            cf2  ...                            0.011510
+6  AL_prediction  ...                           -0.148854
+7  GL_prediction  ...                           -0.060282
+8  GD_prediction  ...                           -0.056772
+
+[9 rows x 24 columns]
+2021-06-26 04:17:47,208 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 04:17:47,208 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 04:17:47,208 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 04:17:47,538 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.324610
+7  GL_prediction  ...                          -0.145461
+8  GD_prediction  ...                          -0.195887
+
+[9 rows x 24 columns]
+2021-06-26 04:24:33,347 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
+2021-06-26 04:24:33,347 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
+2021-06-26 04:24:33,347 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
+2021-06-26 04:24:33,968 genetic      DEBUG              method  ...  true_positive_rate_difference_race
+0       full_log  ...                           -0.195478
+1       full_gbr  ...                           -0.110055
+2    unaware_log  ...                           -0.086870
+3    unaware_gbr  ...                           -0.089283
+4            cf1  ...                           -0.005832
+5            cf2  ...                            0.011510
+6  AL_prediction  ...                           -0.149540
+7  GL_prediction  ...                            0.000000
+8  GD_prediction  ...                            0.000000
+
+[9 rows x 24 columns]
+2021-06-26 04:34:42,613 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 04:34:42,613 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 04:34:42,613 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 04:34:42,944 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.312837
+7  GL_prediction  ...                          -0.158014
+8  GD_prediction  ...                          -0.138440
+
+[9 rows x 24 columns]
+2021-06-26 04:46:51,228 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
+2021-06-26 04:46:51,228 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
+2021-06-26 04:46:51,228 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
+2021-06-26 04:46:51,859 genetic      DEBUG              method  ...  true_positive_rate_difference_race
+0       full_log  ...                           -0.195478
+1       full_gbr  ...                           -0.110055
+2    unaware_log  ...                           -0.086870
+3    unaware_gbr  ...                           -0.089283
+4            cf1  ...                           -0.005832
+5            cf2  ...                            0.011510
+6  AL_prediction  ...                           -0.148168
+7  GL_prediction  ...                           -0.050779
+8  GD_prediction  ...                            0.000000
+
+[9 rows x 24 columns]
+2021-06-26 04:51:35,238 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 04:51:35,238 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 04:51:35,238 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 04:51:35,577 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.314610
+7  GL_prediction  ...                          -0.174965
+8  GD_prediction  ...                          -0.201348
+
+[9 rows x 24 columns]
+2021-06-26 05:08:35,468 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 05:08:35,468 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 05:08:35,468 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 05:08:35,805 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.322837
+7  GL_prediction  ...                          -0.182057
+8  GD_prediction  ...                          -0.183759
+
+[9 rows x 24 columns]
+2021-06-26 05:09:18,528 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
+2021-06-26 05:09:18,528 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
+2021-06-26 05:09:18,528 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
+2021-06-26 05:09:19,149 genetic      DEBUG              method  ...  true_positive_rate_difference_race
+0       full_log  ...                           -0.195478
+1       full_gbr  ...                           -0.110055
+2    unaware_log  ...                           -0.086870
+3    unaware_gbr  ...                           -0.089283
+4            cf1  ...                           -0.005832
+5            cf2  ...                            0.011510
+6  AL_prediction  ...                           -0.149540
+7  GL_prediction  ...                           -0.049993
+8  GD_prediction  ...                           -0.012251
+
+[9 rows x 24 columns]
+2021-06-26 05:25:30,197 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 05:25:30,197 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 05:25:30,197 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 05:25:30,530 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.313972
+7  GL_prediction  ...                          -0.170922
+8  GD_prediction  ...                          -0.197872
+
+[9 rows x 24 columns]
+2021-06-26 05:31:58,010 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
+2021-06-26 05:31:58,010 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
+2021-06-26 05:31:58,010 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
+2021-06-26 05:31:58,633 genetic      DEBUG              method  ...  true_positive_rate_difference_race
+0       full_log  ...                           -0.195478
+1       full_gbr  ...                           -0.110055
+2    unaware_log  ...                           -0.086870
+3    unaware_gbr  ...                           -0.089283
+4            cf1  ...                           -0.005832
+5            cf2  ...                            0.011510
+6  AL_prediction  ...                           -0.148854
+7  GL_prediction  ...                           -0.023735
+8  GD_prediction  ...                            0.000686
+
+[9 rows x 24 columns]
+2021-06-26 05:42:43,703 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 05:42:43,703 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 05:42:43,703 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 05:42:44,039 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.322837
+7  GL_prediction  ...                          -0.174965
+8  GD_prediction  ...                          -0.187801
+
+[9 rows x 24 columns]
+2021-06-26 05:54:27,117 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
+2021-06-26 05:54:27,117 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
+2021-06-26 05:54:27,117 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
+2021-06-26 05:54:27,734 genetic      DEBUG              method  ...  true_positive_rate_difference_race
+0       full_log  ...                           -0.195478
+1       full_gbr  ...                           -0.110055
+2    unaware_log  ...                           -0.086870
+3    unaware_gbr  ...                           -0.089283
+4            cf1  ...                           -0.005832
+5            cf2  ...                            0.011510
+6  AL_prediction  ...                           -0.150226
+7  GL_prediction  ...                           -0.031770
+8  GD_prediction  ...                           -0.066760
+
+[9 rows x 24 columns]
+2021-06-26 05:59:35,745 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 05:59:35,745 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 05:59:35,745 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 05:59:36,075 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.321702
+7  GL_prediction  ...                          -0.196879
+8  GD_prediction  ...                          -0.197943
+
+[9 rows x 24 columns]
+2021-06-26 06:16:27,615 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 06:16:27,615 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 06:16:27,615 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 06:16:27,945 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.312837
+7  GL_prediction  ...                          -0.170922
+8  GD_prediction  ...                          -0.119645
+
+[9 rows x 24 columns]
+2021-06-26 06:16:51,874 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
+2021-06-26 06:16:51,874 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
+2021-06-26 06:16:51,875 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
+2021-06-26 06:16:52,491 genetic      DEBUG              method  ...  true_positive_rate_difference_race
+0       full_log  ...                           -0.195478
+1       full_gbr  ...                           -0.110055
+2    unaware_log  ...                           -0.086870
+3    unaware_gbr  ...                           -0.089283
+4            cf1  ...                           -0.005832
+5            cf2  ...                            0.011510
+6  AL_prediction  ...                           -0.148854
+7  GL_prediction  ...                           -0.045242
+8  GD_prediction  ...                           -0.050204
+
+[9 rows x 24 columns]
+2021-06-26 06:33:18,490 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 06:33:18,490 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 06:33:18,490 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 06:33:18,827 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.321064
+7  GL_prediction  ...                          -0.150284
+8  GD_prediction  ...                          -0.185319
+
+[9 rows x 24 columns]
+2021-06-26 06:39:12,238 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
+2021-06-26 06:39:12,238 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
+2021-06-26 06:39:12,238 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
+2021-06-26 06:39:12,856 genetic      DEBUG              method  ...  true_positive_rate_difference_race
+0       full_log  ...                           -0.195478
+1       full_gbr  ...                           -0.110055
+2    unaware_log  ...                           -0.086870
+3    unaware_gbr  ...                           -0.089283
+4            cf1  ...                           -0.005832
+5            cf2  ...                            0.011510
+6  AL_prediction  ...                           -0.147482
+7  GL_prediction  ...                           -0.063025
+8  GD_prediction  ...                           -0.070044
+
+[9 rows x 24 columns]
+2021-06-26 06:50:08,597 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 06:50:08,598 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 06:50:08,598 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 06:50:08,929 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.322837
+7  GL_prediction  ...                          -0.156099
+8  GD_prediction  ...                          -0.165319
+
+[9 rows x 24 columns]
+2021-06-26 07:01:47,437 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
+2021-06-26 07:01:47,437 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
+2021-06-26 07:01:47,437 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
+2021-06-26 07:01:48,065 genetic      DEBUG              method  ...  true_positive_rate_difference_race
+0       full_log  ...                           -0.195478
+1       full_gbr  ...                           -0.110055
+2    unaware_log  ...                           -0.086870
+3    unaware_gbr  ...                           -0.089283
+4            cf1  ...                           -0.005832
+5            cf2  ...                            0.011510
+6  AL_prediction  ...                           -0.150226
+7  GL_prediction  ...                           -0.044557
+8  GD_prediction  ...                           -0.054074
+
+[9 rows x 24 columns]
+2021-06-26 07:06:51,901 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 07:06:51,901 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 07:06:51,901 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 07:06:52,230 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.322837
+7  GL_prediction  ...                          -0.199645
+8  GD_prediction  ...                          -0.210426
+
+[9 rows x 24 columns]
+2021-06-26 07:23:37,302 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 07:23:37,302 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 07:23:37,302 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 07:23:37,635 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.316383
+7  GL_prediction  ...                          -0.162199
+8  GD_prediction  ...                          -0.146596
+
+[9 rows x 24 columns]
+2021-06-26 07:24:32,623 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
+2021-06-26 07:24:32,623 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
+2021-06-26 07:24:32,623 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
+2021-06-26 07:24:33,244 genetic      DEBUG              method  ...  true_positive_rate_difference_race
+0       full_log  ...                           -0.195478
+1       full_gbr  ...                           -0.110055
+2    unaware_log  ...                           -0.086870
+3    unaware_gbr  ...                           -0.089283
+4            cf1  ...                           -0.005832
+5            cf2  ...                            0.011510
+6  AL_prediction  ...                           -0.148168
+7  GL_prediction  ...                           -0.070129
+8  GD_prediction  ...                           -0.080868
+
+[9 rows x 24 columns]
+2021-06-26 07:40:29,768 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 07:40:29,768 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 07:40:29,768 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 07:40:30,101 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.317518
+7  GL_prediction  ...                          -0.197518
+8  GD_prediction  ...                          -0.137730
+
+[9 rows x 24 columns]
+2021-06-26 07:46:53,192 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
+2021-06-26 07:46:53,192 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
+2021-06-26 07:46:53,192 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
+2021-06-26 07:46:53,819 genetic      DEBUG              method  ...  true_positive_rate_difference_race
+0       full_log  ...                           -0.195478
+1       full_gbr  ...                           -0.110055
+2    unaware_log  ...                           -0.086870
+3    unaware_gbr  ...                           -0.089283
+4            cf1  ...                           -0.005832
+5            cf2  ...                            0.011510
+6  AL_prediction  ...                           -0.149540
+7  GL_prediction  ...                           -0.007620
+8  GD_prediction  ...                            0.000000
+
+[9 rows x 24 columns]
+2021-06-26 07:57:28,880 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 07:57:28,880 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 07:57:28,880 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 07:57:29,216 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.301560
+7  GL_prediction  ...                          -0.189787
+8  GD_prediction  ...                          -0.157589
+
+[9 rows x 24 columns]
+2021-06-26 08:09:18,229 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
+2021-06-26 08:09:18,229 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
+2021-06-26 08:09:18,229 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
+2021-06-26 08:09:18,849 genetic      DEBUG              method  ...  true_positive_rate_difference_race
+0       full_log  ...                           -0.195478
+1       full_gbr  ...                           -0.110055
+2    unaware_log  ...                           -0.086870
+3    unaware_gbr  ...                           -0.089283
+4            cf1  ...                           -0.005832
+5            cf2  ...                            0.011510
+6  AL_prediction  ...                           -0.149540
+7  GL_prediction  ...                           -0.033828
+8  GD_prediction  ...                            0.000000
+
+[9 rows x 24 columns]
+2021-06-26 08:14:28,563 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 08:14:28,563 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 08:14:28,563 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 08:14:28,903 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.314610
+7  GL_prediction  ...                          -0.202057
+8  GD_prediction  ...                          -0.174752
+
+[9 rows x 24 columns]
+2021-06-26 08:31:17,308 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 08:31:17,308 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 08:31:17,308 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 08:31:17,642 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.321064
+7  GL_prediction  ...                          -0.157234
+8  GD_prediction  ...                          -0.190567
+
+[9 rows x 24 columns]
+2021-06-26 08:31:44,822 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
+2021-06-26 08:31:44,822 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
+2021-06-26 08:31:44,822 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
+2021-06-26 08:31:45,446 genetic      DEBUG              method  ...  true_positive_rate_difference_race
+0       full_log  ...                           -0.195478
+1       full_gbr  ...                           -0.110055
+2    unaware_log  ...                           -0.086870
+3    unaware_gbr  ...                           -0.089283
+4            cf1  ...                           -0.005832
+5            cf2  ...                            0.011510
+6  AL_prediction  ...                           -0.149540
+7  GL_prediction  ...                           -0.035250
+8  GD_prediction  ...                           -0.076707
+
+[9 rows x 24 columns]
+2021-06-26 08:48:06,375 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 08:48:06,375 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 08:48:06,375 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 08:48:06,711 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.314610
+7  GL_prediction  ...                          -0.179645
+8  GD_prediction  ...                          -0.213121
+
+[9 rows x 24 columns]
+2021-06-26 08:54:14,498 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
+2021-06-26 08:54:14,498 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
+2021-06-26 08:54:14,498 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
+2021-06-26 08:54:15,126 genetic      DEBUG              method  ...  true_positive_rate_difference_race
+0       full_log  ...                           -0.195478
+1       full_gbr  ...                           -0.110055
+2    unaware_log  ...                           -0.086870
+3    unaware_gbr  ...                           -0.089283
+4            cf1  ...                           -0.005832
+5            cf2  ...                            0.011510
+6  AL_prediction  ...                           -0.149540
+7  GL_prediction  ...                           -0.044802
+8  GD_prediction  ...                           -0.072447
+
+[9 rows x 24 columns]
+2021-06-26 09:04:54,801 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 09:04:54,801 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 09:04:54,801 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 09:04:55,128 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.322837
+7  GL_prediction  ...                          -0.199149
+8  GD_prediction  ...                          -0.151986
+
+[9 rows x 24 columns]
+2021-06-26 09:16:52,134 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
+2021-06-26 09:16:52,135 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
+2021-06-26 09:16:52,135 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
+2021-06-26 09:16:52,759 genetic      DEBUG              method  ...  true_positive_rate_difference_race
+0       full_log  ...                           -0.195478
+1       full_gbr  ...                           -0.110055
+2    unaware_log  ...                           -0.086870
+3    unaware_gbr  ...                           -0.089283
+4            cf1  ...                           -0.005832
+5            cf2  ...                            0.011510
+6  AL_prediction  ...                           -0.148168
+7  GL_prediction  ...                           -0.048131
+8  GD_prediction  ...                           -0.066269
+
+[9 rows x 24 columns]
+2021-06-26 09:21:43,315 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 09:21:43,315 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 09:21:43,315 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 09:21:43,653 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.305106
+7  GL_prediction  ...                          -0.174965
+8  GD_prediction  ...                          -0.159220
+
+[9 rows x 24 columns]
+2021-06-26 09:38:45,190 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 09:38:45,190 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 09:38:45,190 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 09:38:45,523 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.314610
+7  GL_prediction  ...                          -0.154965
+8  GD_prediction  ...                          -0.129220
+
+[9 rows x 24 columns]
+2021-06-26 09:39:32,063 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
+2021-06-26 09:39:32,064 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
+2021-06-26 09:39:32,064 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
+2021-06-26 09:39:32,698 genetic      DEBUG              method  ...  true_positive_rate_difference_race
+0       full_log  ...                           -0.195478
+1       full_gbr  ...                           -0.110055
+2    unaware_log  ...                           -0.086870
+3    unaware_gbr  ...                           -0.089283
+4            cf1  ...                           -0.005832
+5            cf2  ...                            0.011510
+6  AL_prediction  ...                           -0.146111
+7  GL_prediction  ...                           -0.017908
+8  GD_prediction  ...                           -0.073373
+
+[9 rows x 24 columns]
+2021-06-26 09:55:43,713 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas.csv
+2021-06-26 09:55:43,713 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_compas.csv
+2021-06-26 09:55:43,713 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/compas_ivr.csv
+2021-06-26 09:55:44,063 genetic      DEBUG              method  ...  true_positive_rate_difference_sex
+0       full_log  ...                          -0.351560
+1       full_gbr  ...                          -0.299291
+2    unaware_log  ...                          -0.156738
+3    unaware_gbr  ...                          -0.159149
+4            cf1  ...                          -0.147801
+5            cf2  ...                          -0.155603
+6  AL_prediction  ...                          -0.324610
+7  GL_prediction  ...                          -0.190426
+8  GD_prediction  ...                          -0.159220
+
+[9 rows x 24 columns]
+2021-06-26 10:02:28,424 genetic      DEBUG    Baseline path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult.csv
+2021-06-26 10:02:28,425 genetic      DEBUG    Evaluate path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
+2021-06-26 10:02:28,425 genetic      DEBUG    Invariant path: /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
