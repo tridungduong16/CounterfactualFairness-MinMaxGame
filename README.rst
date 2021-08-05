@@ -1,41 +1,30 @@
 Counterfactual fairness under unknown causalknowledge: a game-theoretic approach
 ======================================================================
 
-*Our work pay attention to counterfactual fairness with 
-
-Author: `Dung Duong <https://scholar.google.com/citations?user=hoq2nt8AAAAJ&hl=en>`_, `Qian Li <https://scholar.google.com/citations?hl=en&user=yic0QMYAAAAJ>`_, `Guandong Xu <https://scholar.google.com/citations?user=kcrdCq4AAAAJ&hl=en&oi=ao>`_
-
-This is the code used for the paper `Counterfactual fairness under unknown causalknowledge: a game-theoretic approach <https://arxiv.org/abs/2105.00703>`_.
-
+*Our work pay attention to counterfactual fairness with unknown structural causal model
 
 How to run
 -------------------------
 
-Build the classifier model
+Generate the latent features for counterfactual fairness baselines
+
+.. code-block:: console
+    python src/law_baselines.py --generate
+    python src/baselines_classification.py --data_name adult --generate
+    python src/baselines_classification.py --data_name compas --generate
+
+Run the baselines method
 
 .. code-block:: console
 
-	python /multiobj-scm-cf/src/model_adult.py
-	python /multiobj-scm-cf/src/model_credit.py
-	python /multiobj-scm-cf/src/model_simple.py
-	python /multiobj-scm-cf/src/model_sangiovese.py
+    python src/law_baselines.py
+    python src/baselines_classification.py --data_name adult
+    python src/baselines_classification.py --data_name compas
 
-
-Build the auto-encoder model
+Run the our method
 
 .. code-block:: console
 
-	python /multiobj-scm-cf/src/dfencoder_adult.py
-	python /multiobj-scm-cf/src/dfencoder_credit.py
-
-Reproduce the results
-
-.. code-block:: console
-
-	python /multiobj-scm-cf/src/run_simplebn.py
-	python /multiobj-scm-cf/src/run_adult.py
-	python /multiobj-scm-cf/src/run_credit.py
-	python /multiobj-scm-cf/src/run_sangiovese.py
-
-
-
+    bash /script/run_adult.sh
+    bash /script/run_compas.sh
+    bash /script/run_law.sh
