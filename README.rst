@@ -13,6 +13,15 @@ Generate the latent features for counterfactual fairness baselines
     python src/baselines_classification.py --data_name adult --generate
     python src/baselines_classification.py --data_name compas --generate
 
+
+Generate the latent features for counterfactual fairness baselines
+
+.. code-block:: console
+    python src/law_baselines.py --generate
+    python src/baselines_classification.py --data_name adult --generate
+    python src/baselines_classification.py --data_name compas --generate
+
+
 Run the baselines method
 
 .. code-block:: console
