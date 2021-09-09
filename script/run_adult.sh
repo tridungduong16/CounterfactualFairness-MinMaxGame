@@ -15,13 +15,13 @@ for random_state in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 2
       do
         evaluate_path="${lambda_path}/evaluate/epoch-${ep}_lambda-${lambda_weight}_lr-${learning_rate}_random-${random_state}.csv"
         result_path="${lambda_path}/result/epoch-${ep}_lambda-${lambda_weight}_lr-${learning_rate}_random-${random_state}.csv"
-        python /data/trduong/counterfactual_fairness_game_theoric/src/adult_train.py --epoch $ep --lambda_weight $lambda_weight --learning_rate $learning_rate
-        python /data/trduong/counterfactual_fairness_game_theoric/src/adult_test.py
-        python /data/trduong/counterfactual_fairness_game_theoric/src/evaluate_classifier.py --data_name adult
-        cp /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv $evaluate_path
-        cp /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv $result_path
-        rm -rf /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
-        rm -rf /home/trduong/Data/counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
+        python /counterfactual_fairness_game_theoric/src/adult_train.py --epoch $ep --lambda_weight $lambda_weight --learning_rate $learning_rate
+        python /counterfactual_fairness_game_theoric/src/adult_test.py
+        python /counterfactual_fairness_game_theoric/src/evaluate_classifier.py --data_name adult
+        cp /counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv $evaluate_path
+        cp /counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv $result_path
+        rm -rf /counterfactual_fairness_game_theoric/reports/results/adult_ivr.csv
+        rm -rf /counterfactual_fairness_game_theoric/reports/results/evaluate_adult.csv
         echo $evaluate_path
         echo $result_path
         clear
