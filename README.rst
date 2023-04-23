@@ -30,3 +30,19 @@ Run the our method
     bash /script/run_adult.sh
     bash /script/run_compas.sh
     bash /script/run_law.sh
+
+
+Citing
+-------
+If you find my work useful for your research work, please cite it as follows.
+
+Duong, T. D., Li, Q., & Xu, G. (2022) Achieving Counterfactual Fairness with Imperfect Structural Causal Model
+(Under review for Knowledge-based System)
+
+
+Reference:
+-------------------------
+
+- Mahajan, D., Tan, C., & Sharma, A. (2019). Preserving causal constraints in counterfactual explanations for machine learning classifiers. arXiv preprint arXiv:1912.03277.
+- Van Looveren, A., & Klaise, J. (2019). Interpretable counterfactual explanations guided by prototypes. arXiv preprint arXiv:1907.02584.
+- AutoEncoders for DataFrames: https://github.com/AlliedToasters/dfencoder
